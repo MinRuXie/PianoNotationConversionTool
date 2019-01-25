@@ -1,0 +1,162 @@
+html, body{
+    margin: 0;
+    height: 100%;
+}
+
+.container-fluid{
+    padding: 0;
+    height: 100%;
+}
+
+.text{
+    background: #F1D7B4;
+    position: relative;
+    height: 35%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 5px 10px;
+    font-size: 80%;
+}
+
+.piano{
+    position: relative;
+    height: 65%;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    background: #999;
+}
+
+.piano .fas{
+    font-size: 200%;
+}
+
+.piano .fa-angle-left{
+    position: fixed;
+    left: 5%;
+}
+
+.piano .fa-angle-right{
+    position: fixed;
+    left: 95%;
+}
+
+.group{
+    position: absolute;
+    bottom: 0;
+    width: 50%;
+    height: 80%;
+    float: left;
+}
+
+.group_left{
+    position: absolute;
+    bottom: 0;
+    width: 14.28%;
+    height: 80%;
+    float: left;
+}
+
+.group_right{
+    position: absolute;
+    bottom: 0;
+    width: 7.14%;
+    height: 80%;
+    float: left;
+    left: 364.28%
+}
+
+.ivory{
+    position: relative;
+    background: #fff;
+    width: 14.28%;
+    height: 100%;
+    border-left: 1px solid #666;
+    float: left;
+    text-align: center;
+    box-sizing: border-box;
+    cursor:pointer;
+    line-height: 1.5;
+    font-weight: 900;
+}
+
+.ivory .key{
+    display: none;
+}
+
+.group_left .ivory{
+    width: 50%;
+}
+
+.group_right .ivory{
+    width: 100%;
+}
+
+.ivory span{
+    position: absolute;
+    bottom: 3px;
+    /*text-align: center;*/
+    left: 30%;
+    right:30%;
+    font-size: 70%;
+}
+
+/*.group .re::before,
+.group .mi::before,
+.group .sol::before,
+.group .la::before,
+.group .si::before,
+.group_left .si::before{
+    content: '';
+    position: absolute;
+    background: #000;
+    width: 50%;
+    height: 50%;
+    left: -25%;
+}*/
+
+.ebony{
+    position: absolute;
+    background: #000;
+    width: 8%;
+    height: 50%;
+    cursor: pointer;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.ebony span{
+    display:none;
+}
+
+.ebony .key{
+    display:none;
+}
+
+.group_left .ebony{
+    width: 32%;
+}
+
+.warn_size{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #000;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    /*text-align: center;*/
+}
+
+.warn_size span{
+    position: absolute;
+    top: 40%;
+    left:20%;
+    right: 20%;
+}
+
+@media (max-width: 480px){
+    .warn_size{
+        display: block;
+    }
+}
