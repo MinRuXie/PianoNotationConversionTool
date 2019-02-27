@@ -9,21 +9,40 @@ html, body{
 }
 
 .text{
-    background: #F1D7B4;
-    position: relative;
-    height: 35%;
+    background: rgb(41, 41, 41);
+    /* position: relative; */
+    height: 57%;
     overflow-y: scroll;
     overflow-x: hidden;
     padding: 5px 10px;
     font-size: 80%;
+    width: 90%;
+    float: left;
+}
+
+.toolbox {
+    background-color: rgb(50, 50, 50);
+    /* position: relative; */
+    height: 57%;
+    width: 10%;
+    float: left;
 }
 
 .piano{
     position: relative;
-    height: 65%;
+    width: 100%;
+    height: 43%;
     overflow-y: hidden;
     overflow-x: scroll;
     background: #999;
+}
+
+.slide {
+    width: 100%;
+    height: 8%;
+    position: fixed;
+    bottom: 34.8%;
+    pointer-events: none; /* 失去作用能力 */
 }
 
 .piano .fas{
@@ -31,13 +50,17 @@ html, body{
 }
 
 .piano .fa-angle-left{
-    position: fixed;
+    position: absolute;
     left: 5%;
+    top: 50%; /* 距離上面 50% */
+    transform: translateY(-50%); /* 扣掉自己的 50% 高度 */
 }
 
 .piano .fa-angle-right{
-    position: fixed;
+    position: absolute;
     left: 95%;
+    top: 50%; /* 距離上面 50% */
+    transform: translateY(-50%); /* 扣掉自己的 50% 高度 */
 }
 
 .group{
@@ -133,7 +156,43 @@ html, body{
 }
 
 .group_left .ebony{
-    width: 32%;
+    width: 28%;
+}
+
+.line {
+    width: 90%;
+    display: inline-block; /* 吃自己的現在的長寬 */
+    padding: 5px;
+    background-color: #353535;
+}
+
+.note {
+    /* background-color: rgba(165, 217, 232, 0.9); */
+    border: 1px solid transparent; /* 透明框 */
+    min-width: 5%;
+    text-align: center;
+    border-radius: 5px;
+    margin-right: 2px;
+    margin-bottom: 2px;
+    float: left;
+    color: rgb(255, 255, 255);
+    font-weight: 500;
+}
+
+.toolbutton {
+    background-color: rgb(189, 189, 190);
+    width: 60%;
+    border: 2px solid rgb(121, 121, 121);
+    color: rgb(121, 121, 121);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.selected {
+    opacity: 0.6;
 }
 
 .warn_size{
@@ -159,4 +218,13 @@ html, body{
     .warn_size{
         display: block;
     }
+}
+
+* {
+    /* 不能反白 */
+    -moz-user-select: none; 
+    -webkit-user-select: none; 
+    -ms-user-select:none; 
+    user-select:none;
+    -o-user-select:none;
 }

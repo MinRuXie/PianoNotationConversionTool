@@ -1,11 +1,11 @@
 $(function(){
     //變數準備
     $piano = $('.piano');
-    //var notes = '';
+    $text = $('.text');
     
     //建立琴鍵
     function buildPiano(){
-        //白建
+        //白鍵
         ivory_do = '<div class="ivory do"><span>1</span></div>';
         ivory_re = '<div class="ivory re"><span>2</span></div>';
         ivory_mi = '<div class="ivory mi"><span>3</span></div>';
@@ -13,8 +13,7 @@ $(function(){
         ivory_sol = '<div class="ivory sol"><span>5</span></div>';
         ivory_la = '<div class="ivory la"><span>6</span></div>';
         ivory_si = '<div class="ivory si"><span>7</span></div>';
-        colors = ['#9D9D9D', '#96685D', '#FF5959', '#F39C10', '#7FBB19', '#2CACB8', '#1F3C9A', '#8107B6', '#E65389'];
-        keys = ['[[[[[]]]]]', '[[[[]]]]', '[[[]]]', '[[]]', '[]', '', '()', '(())', '((()))'];
+        colors = ['#828282', '#AD766A', '#D5404A', '#FFB11B',  '#90B44B', '#58B2DC', '#005CAF',  '#A8497A', '#E87A90'];
 
         //黑鍵
         ebony_bre = '<div class="ebony bre"><span>b2</span></div>';
@@ -46,16 +45,12 @@ $(function(){
 
         //新增白鍵 Key
         $group_left.find('.ivory').each(function(){
-            headstr = keys[0].substring(0, keys[0].length/2);
-            endstr = keys[0].substring(keys[0].length/2, keys[0].length);
-            $(this).append('<div class="key">' + headstr + $(this).text() + endstr + '</div>');
+            $(this).append('<div class="key">' + $(this).text() + '</div>');
         });
 
         //新增黑鍵 Key
         $group_left.find('.ebony').each(function(){
-            headstr = keys[0].substring(0, keys[0].length/2);
-            endstr = keys[0].substring(keys[0].length/2, keys[0].length);
-            $(this).append('<div class="key">' + headstr + $(this).text() + endstr + '</div>');
+            $(this).append('<div class="key">' + $(this).text() + '</div>');
         });
 
 
@@ -107,16 +102,12 @@ $(function(){
 
             //新增白鍵 Key
             $(this).find('.ivory').each(function(){
-                headstr = keys[index+1].substring(0, keys[index+1].length/2);
-                endstr = keys[index+1].substring(keys[index+1].length/2, keys[index+1].length);
-                $(this).append('<div class="key">' + headstr + $(this).text() + endstr + '</div>');
+                $(this).append('<div class="key">' + $(this).text() + '</div>');
             });
 
             //新增黑鍵 Key
             $(this).find('.ebony').each(function(){
-                headstr = keys[index+1].substring(0, keys[index+1].length/2);
-                endstr = keys[index+1].substring(keys[index+1].length/2, keys[index+1].length);
-                $(this).append('<div class="key">' + headstr + $(this).text() + endstr + '</div>');
+                $(this).append('<div class="key">' + $(this).text() + '</div>');
             });
         });
 
@@ -137,20 +128,73 @@ $(function(){
 
         //新增白鍵 Key
         $group_right.find('.ivory').each(function(){
-            headstr = keys[8].substring(0, keys[8].length/2);
-            endstr = keys[8].substring(keys[8].length/2, keys[8].length);
-            $(this).append('<div class="key">' + headstr + $(this).text() + endstr + '</div>');
+            $(this).append('<div class="key">' + $(this).text() + '</div>');
         });
     }
 
     //建立琴鍵
     buildPiano();
 
-    //紀錄簡譜
-    function note(key){
-        $text = $('.text').find('textarea');
-        notes = $text.val() + ' ' + key;
-        $text.val(notes);
+    //新增簡譜軌道
+    addNoteLine();
+
+    //-------------------
+    // 紀錄簡譜
+    //-------------------
+    function note(key, color){
+        //移除前一個焦點
+        $text.find(".note").removeClass('selected');
+
+        //取得目前軌道
+        $noteLine = $text.find('.line').last();
+
+        if(key=='0'){
+            //新增空格
+            $noteLine.append('<div class="note selected" style="background-color: '+ color +'; color: transparent">' + key + '</div>');
+        }else{
+            //新增音符
+            $noteLine.append('<div class="note selected" style="background-color: '+ color +';">' + key + '</div>');
+        }
+    }
+
+    //-------------------
+    // 刪除簡譜
+    //-------------------
+    function delNote(){    
+        //目前焦點音符
+        $focuseNote = $text.find(".selected");
+
+        //如果軌道刪完是空的就移除
+        if($focuseNote.parent('.line').children().length==1 && $text.find('.line').length!==1){
+            $focuseNote.parent('.line').remove();
+        }else{
+            //移除目前焦點音符
+            $focuseNote.remove();
+
+            //先按換行再按刪除的人
+            if($text.find('.line').length!==1 && $text.find('.line').last().children().length==0){
+                $text.find('.line').last().remove();
+            }
+        }
+
+        //將焦點移至最後一個音符
+        $nextfocuseNote = $text.find(".note").last();
+
+        //將焦點移至下一個音符
+        $nextfocuseNote.addClass("selected");
+    }
+
+    //-------------------
+    // 新增一行簡譜軌道
+    //-------------------
+    function addNoteLine(){      
+        if($text.find('.line').length>=1){
+            if($text.find('.line').last().children().length!==0){
+                $text.append("<div class='line'></div>");
+            }
+        }else{
+            $text.append("<div class='line'></div>");
+        }
     }
 
 
@@ -159,9 +203,9 @@ $(function(){
         //註冊點擊事件
         $('.ivory').each(function(index){
             $(this).on('touchstart', function(event){
-                $(this).css({'background': '#999'});
+                $(this).css({'background': '#f2f2f2'});
                 //紀錄簡譜
-                note($(this).find('.key').text());
+                note($(this).find('.key').text(), $(this).find('span').css('background-color'));
             })
             .on('touchend', function(event){
                 $(this).css({'background': '#fff'});
@@ -170,12 +214,35 @@ $(function(){
 
         $('.ebony').each(function(index){
             $(this).on('touchstart', function(event){
-                $(this).css({'background': '#999'});
+                $(this).css({'background': '#444'});
                 //紀錄簡譜
-                note($(this).find('.key').text());
+                note($(this).find('.key').text(), $(this).prevAll('.ivory').find('span').css('background-color'));
             })
             .on('touchend', function(event){
                 $(this).css({'background': '#000'});
+            });
+        });
+
+        $('.toolbutton').each(function(index){
+            $(this).on('touchstart', function(event){
+                $(this).css({'background': '#999'});
+
+                //刪除
+                if (index===0){
+                    //刪除簡譜
+                    delNote();
+                //空格
+                }else if(index===1){
+                    //紀錄簡譜
+                    note('0', 'rgba(255, 255, 255, 0.2)');
+                //換行
+                }else{
+                    //新增簡譜軌道
+                    addNoteLine();
+                }
+            })
+            .on('touchend', function(event){
+                $(this).css({'background': '#BDBDBE'});
             });
         });
     }else{
@@ -183,9 +250,9 @@ $(function(){
         //註冊點擊事件
         $('.ivory').each(function(index){
             $(this).on('mousedown', function(event){
-                $(this).css({'background': '#999'});
+                $(this).css({'background': '#f2f2f2'});
                 //紀錄簡譜
-                note($(this).find('.key').text());
+                note($(this).find('.key').text(), $(this).find("span").css('background-color'));
             })
             .on('mouseup', function(event){
                 $(this).css({'background': '#fff'});
@@ -194,12 +261,35 @@ $(function(){
 
         $('.ebony').each(function(index){
             $(this).on('mousedown', function(event){
-                $(this).css({'background': '#999'});
+                $(this).css({'background': '#444'});
                 //紀錄簡譜
-                note($(this).find('.key').text());
+                note($(this).find('.key').text(), $(this).prevAll('.ivory').find('span').css('background-color'));
             })
             .on('mouseup', function(event){
                 $(this).css({'background': '#000'});
+            });
+        });
+
+        $('.toolbutton').each(function(index){
+            $(this).on('mousedown', function(event){
+                $(this).css({'background': '#999'});
+
+                //刪除
+                if (index===0){
+                    //刪除簡譜
+                    delNote();
+                //空格
+                }else if(index===1){
+                    //紀錄簡譜
+                    note('0', 'rgba(255, 255, 255, 0.2)');
+                //換行
+                }else{
+                    //新增簡譜軌道
+                    addNoteLine();
+                }
+            })
+            .on('mouseup', function(event){
+                $(this).css({'background': '#BDBDBE'});
             });
         });
     }
