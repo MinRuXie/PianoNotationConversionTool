@@ -1,5 +1,5 @@
-# University of Iowa Electronic Music Studios ¿ûµ^Áä­µÀÉ¸ê·½
+ï»¿# University of Iowa Electronic Music Studios é‹¼ç´éµéŸ³æª”è³‡æº
 http://theremin.music.uiowa.edu/MISpiano.html
 
-# ¸ü¤J°Êµe
+# è¼‰å…¥å‹•ç•«
 https://loading.io/
