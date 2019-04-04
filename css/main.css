@@ -160,7 +160,7 @@ html, body{
 }
 
 .line {
-    width: 90%;
+    width: 100%;
     display: inline-block; /* 吃自己的現在的長寬 */
     padding: 5px;
 	background-color: #353535;
@@ -185,19 +185,25 @@ html, body{
     float: left;
     color: rgb(255, 255, 255);
     font-weight: 500;
-    font-size: 25px;
+    font-size: 20px;
+	height: 24px;
+	line-height: 24px;
 }
+
+/*.note:first-letter {
+	font-size: 15px;
+}*/
 
 .toolbutton {
     background-color: rgb(189, 189, 190);
-    width: 60%;
+    width: 100%;
     border: 2px solid rgb(121, 121, 121);
     color: rgb(121, 121, 121);
     font-weight: 700;
     text-align: center;
     margin-bottom: 5px;
     border-radius: 5px;
-    font-size: 12px;
+    font-size: 15px;
 }
 
 .selected {
@@ -233,7 +239,7 @@ html, body{
     transform: translateX(-50%); /* 扣掉自己的 50% 高度 */
 }
 
-@media (max-width: 480px){
+@media screen and (max-width: 480px){
     .warn_size{
         display: block;
     }
