@@ -220,13 +220,21 @@ $(function(){
     //-------------------
     // 新增一行簡譜軌道
     //-------------------
-    function addNoteLine(){      
-        if($text.find('.line').length>=1){
+    function addNoteLine(color){      
+        var colorClass = '';
+		switch(color){
+			case 'black': {colorClass='line_color_black';break;}
+			case 'white': {colorClass='line_color_white';break;}
+		}
+		
+		if($text.find('.line').length>=1){
             if($text.find('.line').last().children().length!==0){
                 $text.append("<div class='line'></div>");
+				$text.find('.line').last().addClass(colorClass); //改變背景顏色
             }
         }else{
             $text.append("<div class='line'></div>");
+			$text.find('.line').last().addClass(colorClass); //改變背景顏色
         }
     }
 
@@ -291,11 +299,15 @@ $(function(){
                 }else if(index===1){
                     //紀錄簡譜
                     note('0', 'rgba(255, 255, 255, 0.2)');
-                //換行
-                }else{
+                //換行(黑)
+                }else if(index===2){
                     //新增簡譜軌道
-                    addNoteLine();
-                }
+                    addNoteLine('black');
+                //換行(白)
+				}else{
+					//新增簡譜軌道
+                    addNoteLine('white');
+				}
             })
             .on('touchend', function(event){
                 $(this).css({'background': '#BDBDBE'});
@@ -345,11 +357,15 @@ $(function(){
                 }else if(index===1){
                     //紀錄簡譜
                     note('0', 'rgba(255, 255, 255, 0.2)');
-                //換行
-                }else{
+                //換行(黑)
+                }else if(index===2){
                     //新增簡譜軌道
-                    addNoteLine();
-                }
+                    addNoteLine('black');
+                //換行(白)
+				}else{
+					//新增簡譜軌道
+                    addNoteLine('white');
+				}
             })
             .on('mouseup', function(event){
                 $(this).css({'background': '#BDBDBE'});
@@ -365,8 +381,13 @@ $(function(){
 					break;
 				}
 				case 13: { //Enter
-					//新增簡譜軌道
-                    addNoteLine();
+					if(event.ctrlKey){
+						//新增簡譜軌道
+						addNoteLine('white');
+					}else{
+						//新增簡譜軌道
+						addNoteLine('black');
+					}
 					break;
 				}
 				case 32: { //Space
