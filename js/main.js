@@ -357,9 +357,23 @@ $(function(){
         });
 		
 		$(window).on('keydown', function(event){
-			if(event.keyCode==32){ //空白鍵
-				//紀錄簡譜
-                note('0', 'rgba(255, 255, 255, 0.2)');
+			//alert(event.keyCode);
+			switch(event.keyCode){
+				case 8: { //Backspace
+					//刪除簡譜
+                    delNote();
+					break;
+				}
+				case 13: { //Enter
+					//新增簡譜軌道
+                    addNoteLine();
+					break;
+				}
+				case 32: { //Space
+					//紀錄簡譜
+					note('0', 'rgba(255, 255, 255, 0.2)');
+					break;
+				}
 			}
 		});
     }
