@@ -265,4 +265,5 @@ html, body{
     -ms-user-select:none; 
     user-select:none;
     -o-user-select:none;
+	font-family: 'Galindo', 'Noto Sans TC', cursive;
 }
