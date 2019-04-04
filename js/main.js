@@ -247,6 +247,9 @@ $(function(){
     }
 
 
+	//-------------------
+    // 行動裝置
+    //-------------------
     if(isMobile.phone){
         //alert(isMobile.phone);
         //註冊點擊事件
@@ -298,6 +301,9 @@ $(function(){
                 $(this).css({'background': '#BDBDBE'});
             });
         });
+	//-------------------
+    // 電腦
+    //-------------------
     }else{
         //alert(isMobile.phone);
         //註冊點擊事件
@@ -349,5 +355,12 @@ $(function(){
                 $(this).css({'background': '#BDBDBE'});
             });
         });
+		
+		$(window).on('keydown', function(event){
+			if(event.keyCode==32){ //空白鍵
+				//紀錄簡譜
+                note('0', 'rgba(255, 255, 255, 0.2)');
+			}
+		});
     }
 });
