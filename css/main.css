@@ -117,7 +117,6 @@ html, body{
 .ivory span{
     position: absolute;
     bottom: 3px;
-    /*text-align: center;*/
     left: 30%;
     right:30%;
     font-size: 70%;
@@ -137,21 +136,32 @@ html, body{
     left: -25%;
 }*/
 
-.ebony{
+.ebony, .ebony_1, .ebony_2, .ebony_3, .ebony_4, .ebony_5{
     position: absolute;
     background: #000;
     width: 8%;
-    height: 50%;
+    height: 12%;
+}
+
+.ebony_child {
+    position: relative;
+    background: #000;
+    width: 100%;
+    height: 100%;
     cursor: pointer;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+    text-align: center;
 }
 
-.ebony span{
-    display:none;
+.ebony, .ebony_1, .ebony_2, .ebony_3, .ebony_4, .ebony_5 span{
+    color: #fff;
 }
 
-.ebony .key{
+.ebony .key,
+.ebony_1 .key,
+.ebony_2 .key,
+.ebony_3 .key,
+.ebony_4 .key,
+.ebony_5 .key{
     display:none;
 }
 
@@ -212,7 +222,7 @@ html, body{
 
 .warn_size{
     display: none;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     background: #000;
