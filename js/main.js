@@ -89,26 +89,23 @@ $(function(){
         $group_left.append(ebony);
         $ebony = $group_left.find('.ebony');
         $ebony.css({left: '35%', top: '0'});
-
-        //新增黑鍵(降)
-        $ebony.append(ebony_bsi);
         
 		//新增黑鍵(升)
         $ebony.append(ebony_ula);
+		
+		//新增黑鍵(降)
+        $ebony.append(ebony_bsi);
+
+        //新增黑鍵(升)不顯示(配合調性)
+        $ebony.append(ebony_ula_2);
         
 		//新增黑鍵(降)不顯示(配合調性)
         $ebony.append(ebony_bsi_2);
   
-		//新增黑鍵(升)不顯示(配合調性)
-        $ebony.append(ebony_ula_2);
-        $ebony_left_ula_2 = $ebony.find('.ula_2');
-        $ebony_left_ula_2.css({'border-bottom-left-radius': '5px', 'border-bottom-right-radius': '5px'});
-
         //上色
         $group_left.find('.ebony_child').find('span').css({
             'background': colors[0],
             'color': '#fff',
-            'display': 'block'
         });
 
         //新增白鍵內容
@@ -175,13 +172,6 @@ $(function(){
             $ebony_5 = $(this).find('.ebony_5');
             $ebony_5.css({left: '82%', top: '0'});
 
-
-            //新增黑鍵(降)------------
-            $ebony_1.append(ebony_bre);
-            $ebony_2.append(ebony_bmi);
-            $ebony_3.append(ebony_bsol);
-            $ebony_4.append(ebony_bla);
-            $ebony_5.append(ebony_bsi);
 			
 			//新增黑鍵(升)------------
             $ebony_1.append(ebony_udo);
@@ -190,6 +180,20 @@ $(function(){
             $ebony_4.append(ebony_usol);
             $ebony_5.append(ebony_ula);
 			
+			//新增黑鍵(降)------------
+            $ebony_1.append(ebony_bre);
+            $ebony_2.append(ebony_bmi);
+            $ebony_3.append(ebony_bsol);
+            $ebony_4.append(ebony_bla);
+            $ebony_5.append(ebony_bsi);
+
+            //黑鍵(升)不顯示(配合調性)
+            $ebony_1.append(ebony_udo_2);
+            $ebony_2.append(ebony_ure_2);
+            $ebony_3.append(ebony_ufa_2);
+            $ebony_4.append(ebony_usol_2);
+            $ebony_5.append(ebony_ula_2);
+			
 			//黑鍵(降)不顯示(配合調性)------------
             $ebony_1.append(ebony_bre_2);
             $ebony_2.append(ebony_bmi_2);
@@ -197,32 +201,10 @@ $(function(){
             $ebony_4.append(ebony_bla_2);
             $ebony_5.append(ebony_bsi_2);
 			
-			//黑鍵(升)不顯示(配合調性)
-            $ebony_1.append(ebony_udo_2);
-            $ebony_udo_2 = $ebony_1.find('.udo_2');
-            $ebony_udo_2.css({'border-bottom-left-radius': '5px', 'border-bottom-right-radius': '5px'});
-
-            $ebony_2.append(ebony_ure_2);
-            $ebony_ure_2 = $ebony_2.find('.ure_2');
-            $ebony_ure_2.css({'border-bottom-left-radius': '5px', 'border-bottom-right-radius': '5px'});
-
-            $ebony_3.append(ebony_ufa_2);
-            $ebony_ufa_2 = $ebony_3.find('.ufa_2');
-            $ebony_ufa_2.css({'border-bottom-left-radius': '5px', 'border-bottom-right-radius': '5px'});
-
-            $ebony_4.append(ebony_usol_2);
-            $ebony_usol_2 = $ebony_4.find('.usol_2');
-            $ebony_usol_2.css({'border-bottom-left-radius': '5px', 'border-bottom-right-radius': '5px'});
-
-            $ebony_5.append(ebony_ula_2);
-            $ebony_ula_2 = $ebony_5.find('.ula_2');
-            $ebony_ula_2.css({'border-bottom-left-radius': '5px', 'border-bottom-right-radius': '5px'});
-
             //上色
             $(this).find('.ebony_child').find('span').css({
                 'background': colors[index+1],
                 'color': '#fff',
-                'display': 'block'
             });
 
             //新增白鍵內容

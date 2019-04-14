@@ -140,20 +140,27 @@ html, body{
     position: absolute;
     background: #000;
     width: 8%;
-    height: 12%;
+    height: 65%;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    overflow: hidden;
 }
 
 .ebony_child {
     position: relative;
     background: #000;
     width: 100%;
-    height: 100%;
+    height: 25%;
     cursor: pointer;
     text-align: center;
 }
 
-.ebony, .ebony_1, .ebony_2, .ebony_3, .ebony_4, .ebony_5 span{
+.ebony span, .ebony_1 span, .ebony_2 span, .ebony_3 span, .ebony_4 span, .ebony_5 span{
     color: #fff;
+    height: 100%;
+    display: flex; /*flex: 彈性盒子*/
+    align-items: center; /*flex: 垂直置中*/
+    justify-content: center; /*flex: 水平置中*/
 }
 
 .ebony .key,
