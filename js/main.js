@@ -97,10 +97,10 @@ $(function(){
         $ebony.append(ebony_bsi);
 
         //新增黑鍵(升)不顯示(配合調性)
-        $ebony.append(ebony_ula_2);
+        // $ebony.append(ebony_ula_2);
         
 		//新增黑鍵(降)不顯示(配合調性)
-        $ebony.append(ebony_bsi_2);
+        // $ebony.append(ebony_bsi_2);
   
         //上色
         $group_left.find('.ebony_child').find('span').css({
@@ -188,18 +188,18 @@ $(function(){
             $ebony_5.append(ebony_bsi);
 
             //黑鍵(升)不顯示(配合調性)
-            $ebony_1.append(ebony_udo_2);
-            $ebony_2.append(ebony_ure_2);
-            $ebony_3.append(ebony_ufa_2);
-            $ebony_4.append(ebony_usol_2);
-            $ebony_5.append(ebony_ula_2);
+            // $ebony_1.append(ebony_udo_2);
+            // $ebony_2.append(ebony_ure_2);
+            // $ebony_3.append(ebony_ufa_2);
+            // $ebony_4.append(ebony_usol_2);
+            // $ebony_5.append(ebony_ula_2);
 			
 			//黑鍵(降)不顯示(配合調性)------------
-            $ebony_1.append(ebony_bre_2);
-            $ebony_2.append(ebony_bmi_2);
-            $ebony_3.append(ebony_bsol_2);
-            $ebony_4.append(ebony_bla_2);
-            $ebony_5.append(ebony_bsi_2);
+            // $ebony_1.append(ebony_bre_2);
+            // $ebony_2.append(ebony_bmi_2);
+            // $ebony_3.append(ebony_bsol_2);
+            // $ebony_4.append(ebony_bla_2);
+            // $ebony_5.append(ebony_bsi_2);
 			
             //上色
             $(this).find('.ebony_child').find('span').css({
