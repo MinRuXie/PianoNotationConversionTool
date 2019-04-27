@@ -1,6 +1,7 @@
 html, body{
     margin: 0;
     height: 100%;
+    overflow-y: hidden;
 }
 
 .container-fluid{
@@ -12,7 +13,7 @@ html, body{
     background: rgb(41, 41, 41);
     /* position: relative; */
     height: 57%;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     padding: 5px 10px;
     font-size: 80%;
@@ -49,14 +50,14 @@ html, body{
     font-size: 200%;
 }
 
-.piano .fa-angle-left{
+.slide .fa-angle-left{
     position: absolute;
     left: 5%;
     top: 50%; /* 距離上面 50% */
     transform: translateY(-50%); /* 扣掉自己的 50% 高度 */
 }
 
-.piano .fa-angle-right{
+.slide .fa-angle-right{
     position: absolute;
     left: 95%;
     top: 50%; /* 距離上面 50% */
@@ -170,6 +171,7 @@ html, body{
     display: flex; /*flex: 彈性盒子*/
     align-items: center; /*flex: 垂直置中*/
     justify-content: center; /*flex: 水平置中*/
+    font-size: 0.8vw;
 }
 
 .ebony .key,
@@ -298,4 +300,23 @@ html, body{
     user-select:none;
     -o-user-select:none;
 	font-family: 'Galindo', 'Noto Sans TC', cursive;
+}
+
+/* 螢幕寬度大於1024px */
+@media screen and (min-width: 1024px) {
+    .piano{
+        height: 35%;
+    }
+
+    .text, .toolbox {
+        height: 65%;
+    }
+
+    .slide {
+        display: none;
+    }
+
+    .group_left, .group, .group_right {
+        height: 100%;
+    }
 }

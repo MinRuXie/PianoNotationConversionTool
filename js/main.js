@@ -9,6 +9,7 @@ $(function(){
     //變數準備
     $piano = $('.piano');
     $text = $('.text');
+    $toolbox = $('.toolbox');
 
     //設定卷軸(人為觸發才生效)
     $piano.animate({'scrollLeft': '2000vw'}, 500);
@@ -376,6 +377,25 @@ $(function(){
         notekey.play();
     }
 
+    //-------------------
+    // 鋼琴面板控制
+    //-------------------
+    function controlPianoLayout(kind){
+        switch(kind){
+            case "close": {
+                $text.animate({'height': '100%'}, 300);
+                $toolbox.animate({'height': '100%'}, 300);
+                $piano.animate({'height': '0%'}, 300);
+                break;
+            }
+            case "open": {
+                $text.animate({'height': '65%'}, 300);
+                $toolbox.animate({'height': '65%'}, 300);
+                $piano.animate({'height': '35%'}, 300);
+                break;
+            }
+        }
+    }
 
 	//-------------------
     // 行動裝置
@@ -415,23 +435,32 @@ $(function(){
             $(this).on('touchstart', function(event){
                 $(this).css({'background': '#999'});
 
-                //刪除
-                if (index===0){
-                    //刪除簡譜
-                    delNote();
-                //空格
-                }else if(index===1){
-                    //紀錄簡譜
-                    note('0', 'rgba(255, 255, 255, 0.2)');
-                //換行(黑)
-                }else if(index===2){
-                    //新增簡譜軌道
-                    addNoteLine('black');
-                //換行(白)
-				}else{
-					//新增簡譜軌道
-                    addNoteLine('white');
-				}
+                switch(index){
+                    case 0: { //刪除
+                        delNote(); //刪除簡譜
+                        break;
+                    }
+                    case 1: { //空格
+                        note('0', 'rgba(255, 255, 255, 0.2)'); //紀錄簡譜
+                        break;
+                    }
+                    case 2: { //換行(黑)
+                        addNoteLine('black'); //新增簡譜軌道
+                        break;
+                    }
+                    case 3: {
+                        addNoteLine('white'); //新增簡譜軌道
+                        break;
+                    }
+                    case 4: { //開啟鋼琴
+                        controlPianoLayout('open');
+                        break;
+                    }
+                    case 5: { //關閉鋼琴
+                        controlPianoLayout('close');
+                        break;
+                    }
+                }
             })
             .on('touchend', function(event){
                 $(this).css({'background': '#BDBDBE'});
@@ -475,23 +504,32 @@ $(function(){
             $(this).on('mousedown', function(event){
                 $(this).css({'background': '#999'});
 
-                //刪除
-                if (index===0){
-                    //刪除簡譜
-                    delNote();
-                //空格
-                }else if(index===1){
-                    //紀錄簡譜
-                    note('0', 'rgba(255, 255, 255, 0.2)');
-                //換行(黑)
-                }else if(index===2){
-                    //新增簡譜軌道
-                    addNoteLine('black');
-                //換行(白)
-				}else{
-					//新增簡譜軌道
-                    addNoteLine('white');
-				}
+                switch(index){
+                    case 0: { //刪除
+                        delNote(); //刪除簡譜
+                        break;
+                    }
+                    case 1: { //空格
+                        note('0', 'rgba(255, 255, 255, 0.2)'); //紀錄簡譜
+                        break;
+                    }
+                    case 2: { //換行(黑)
+                        addNoteLine('black'); //新增簡譜軌道
+                        break;
+                    }
+                    case 3: {
+                        addNoteLine('white'); //新增簡譜軌道
+                        break;
+                    }
+                    case 4: { //開啟鋼琴
+                        controlPianoLayout('open');
+                        break;
+                    }
+                    case 5: { //關閉鋼琴
+                        controlPianoLayout('close');
+                        break;
+                    }
+                }
             })
             .on('mouseup', function(event){
                 $(this).css({'background': '#BDBDBE'});
