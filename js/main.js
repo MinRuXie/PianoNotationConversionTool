@@ -268,6 +268,8 @@ $(function(){
     // 紀錄簡譜
     //-------------------
     function note(key, color){
+        moveScrollY(); //移動文字區塊卷軸置最下方
+
         //移除前一個焦點
         $text.find(".note").removeClass('selected');
 
@@ -281,14 +283,14 @@ $(function(){
             //新增音符
             $noteLine.append('<div class="note selected" style="background-color: '+ color +';">' + key + '</div>');
         }
-
-        moveScrollY(); //移動文字區塊卷軸置最下方
     }
 
     //-------------------
     // 刪除簡譜
     //-------------------
     function delNote(){    
+        moveScrollY(); //移動文字區塊卷軸置最下方
+
         //目前焦點音符
         $focuseNote = $text.find(".selected");
 
@@ -310,8 +312,6 @@ $(function(){
 
         //將焦點移至下一個音符
         $nextfocuseNote.addClass("selected");
-
-        moveScrollY(); //移動文字區塊卷軸置最下方
     }
 
     //-------------------
@@ -349,7 +349,7 @@ $(function(){
     // 移動文字區塊卷軸位置
     //-------------------
     function moveScrollY(){
-        var text_height = $text.height(); //取得元素高度
+        text_height = $text.find('.line').height()*$text.find('.line').length;
         $text.animate({'scrollTop': text_height}, 200); //移動卷軸至文字區塊最下方
     }
 
