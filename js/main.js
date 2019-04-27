@@ -53,18 +53,18 @@ $(function(){
         ebony_ula = '<div class="ebony_child ula"><span>#6</span></div>';
 		
 		//黑鍵(降)不顯示(配合調性)
-        ebony_bre_2 = '<div class="ebony_child bre_2"><span>2</span></div>';
-        ebony_bmi_2 = '<div class="ebony_child bmi_2"><span>3</span></div>';
-        ebony_bsol_2 = '<div class="ebony_child bsol_2"><span>5</span></div>';
-        ebony_bla_2 = '<div class="ebony_child bla_2"><span>6</span></div>';
-        ebony_bsi_2 = '<div class="ebony_child bsi_2"><span>7</span></div>';
+        // ebony_bre_2 = '<div class="ebony_child bre_2"><span>2</span></div>';
+        // ebony_bmi_2 = '<div class="ebony_child bmi_2"><span>3</span></div>';
+        // ebony_bsol_2 = '<div class="ebony_child bsol_2"><span>5</span></div>';
+        // ebony_bla_2 = '<div class="ebony_child bla_2"><span>6</span></div>';
+        // ebony_bsi_2 = '<div class="ebony_child bsi_2"><span>7</span></div>';
 		
 		//黑鍵(升)不顯示(配合調性)
-        ebony_udo_2 = '<div class="ebony_child udo_2"><span>1</span></div>';
-        ebony_ure_2 = '<div class="ebony_child ure_2"><span>2</span></div>';
-        ebony_ufa_2 = '<div class="ebony_child ufa_2"><span>4</span></div>';
-        ebony_usol_2 = '<div class="ebony_child usol_2"><span>5</span></div>';
-        ebony_ula_2 = '<div class="ebony_child ula_2"><span>6</span></div>';
+        // ebony_udo_2 = '<div class="ebony_child udo_2"><span>1</span></div>';
+        // ebony_ure_2 = '<div class="ebony_child ure_2"><span>2</span></div>';
+        // ebony_ufa_2 = '<div class="ebony_child ufa_2"><span>4</span></div>';
+        // ebony_usol_2 = '<div class="ebony_child usol_2"><span>5</span></div>';
+        // ebony_ula_2 = '<div class="ebony_child ula_2"><span>6</span></div>';
 		
 
         //-------------------
