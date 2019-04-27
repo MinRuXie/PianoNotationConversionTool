@@ -53,15 +53,15 @@ html, body{
 .slide .fa-angle-left{
     position: absolute;
     left: 5%;
-    top: 50%; /* 距離上面 50% */
-    transform: translateY(-50%); /* 扣掉自己的 50% 高度 */
+    top: 51%; /* 距離上面 50% */
+    transform: translateY(-49%); /* 扣掉自己的 50% 高度 */
 }
 
 .slide .fa-angle-right{
     position: absolute;
     left: 95%;
-    top: 50%; /* 距離上面 50% */
-    transform: translateY(-50%); /* 扣掉自己的 50% 高度 */
+    top: 51%; /* 距離上面 50% */
+    transform: translateY(-49%); /* 扣掉自己的 50% 高度 */
 }
 
 .group{

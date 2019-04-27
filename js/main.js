@@ -12,6 +12,8 @@ $(function(){
     $toolbox = $('.toolbox');
     var cur_piano_x_scroll = 0;//卷軸位置
 
+    $('.toolbutton').eq(4).css('display', 'none'); //開啟
+
     //設定卷軸(人為觸發才生效)
     $piano.animate({'scrollLeft': '2000vw'}, 500);
     recordScrollX(); //紀錄卷軸位置
@@ -358,17 +360,21 @@ $(function(){
     function controlPianoLayout(kind){
         switch(kind){
             case "close": {
-                $text.animate({'height': '100%'}, 300);
-                $toolbox.animate({'height': '100%'}, 300);
-                $piano.animate({'height': '0%'}, 300);
+                $text.stop().animate({'height': '100%'}, 300);
+                $toolbox.stop().animate({'height': '100%'}, 300);
+                $piano.stop().animate({'height': '0%'}, 300);
                 recordScrollX(); //紀錄卷軸位置
+                $('.toolbutton').eq(4).css('display', 'block'); //開啟
+                $('.toolbutton').eq(5).css('display', 'none'); //關閉
                 break;
             }
             case "open": {
-                $text.animate({'height': '65%'}, 300);
-                $toolbox.animate({'height': '65%'}, 300);
-                $piano.animate({'height': '35%'}, 300);
+                $text.stop().animate({'height': '65%'}, 300);
+                $toolbox.stop().animate({'height': '65%'}, 300);
+                $piano.stop().animate({'height': '35%'}, 300);
                 $piano.animate({'scrollLeft': cur_piano_x_scroll}, 500); //移動卷軸至上次位置
+                $('.toolbutton').eq(4).css('display', 'none'); //開啟
+                $('.toolbutton').eq(5).css('display', 'block'); //關閉
                 break;
             }
         }
