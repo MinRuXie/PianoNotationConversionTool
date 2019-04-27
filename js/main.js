@@ -12,7 +12,7 @@ $(function(){
     $toolbox = $('.toolbox');
     var cur_piano_x_scroll = 0;//卷軸位置
 
-    $('.toolbutton').eq(4).css('display', 'none'); //開啟
+    $('.toolbutton').eq(3).css('display', 'none'); //開啟
 
     //設定卷軸(人為觸發才生效)
     $piano.animate({'scrollLeft': '2000vw'}, 500);
@@ -313,21 +313,13 @@ $(function(){
     //-------------------
     // 新增一行簡譜軌道
     //-------------------
-    function addNoteLine(color){      
-        var colorClass = '';
-		switch(color){
-			case 'black': {colorClass='line_color_black';break;}
-			case 'white': {colorClass='line_color_white';break;}
-		}
-		
+    function addNoteLine(){      	
 		if($text.find('.line').length>=1){
             if($text.find('.line').last().children().length!==0){
                 $text.append("<div class='line'></div>");
-				$text.find('.line').last().addClass(colorClass); //改變背景顏色
             }
         }else{
             $text.append("<div class='line'></div>");
-			$text.find('.line').last().addClass(colorClass); //改變背景顏色
         }
     }
 
@@ -364,17 +356,17 @@ $(function(){
                 $toolbox.stop().animate({'height': '100%'}, 300);
                 $piano.stop().animate({'height': '0%'}, 300);
                 recordScrollX(); //紀錄卷軸位置
-                $('.toolbutton').eq(4).css('display', 'block'); //開啟
-                $('.toolbutton').eq(5).css('display', 'none'); //關閉
+                $('.toolbutton').eq(3).css('display', 'block'); //開啟
+                $('.toolbutton').eq(4).css('display', 'none'); //關閉
                 break;
             }
             case "open": {
                 $text.stop().animate({'height': '65%'}, 300);
                 $toolbox.stop().animate({'height': '65%'}, 300);
                 $piano.stop().animate({'height': '35%'}, 300);
-                $piano.animate({'scrollLeft': cur_piano_x_scroll}, 500); //移動卷軸至上次位置
-                $('.toolbutton').eq(4).css('display', 'none'); //開啟
-                $('.toolbutton').eq(5).css('display', 'block'); //關閉
+                $piano.animate({'scrollLeft': cur_piano_x_scroll}, 200); //移動卷軸至上次位置
+                $('.toolbutton').eq(3).css('display', 'none'); //開啟
+                $('.toolbutton').eq(4).css('display', 'block'); //關閉
                 break;
             }
         }
@@ -439,19 +431,15 @@ $(function(){
                         note('0', 'rgba(255, 255, 255, 0.2)'); //紀錄簡譜
                         break;
                     }
-                    case 2: { //換行(黑)
-                        addNoteLine('black'); //新增簡譜軌道
+                    case 2: { //換行
+                        addNoteLine(); //新增簡譜軌道
                         break;
                     }
-                    case 3: {
-                        addNoteLine('white'); //新增簡譜軌道
-                        break;
-                    }
-                    case 4: { //開啟鋼琴
+                    case 3: { //開啟鋼琴
                         controlPianoLayout('open');
                         break;
                     }
-                    case 5: { //關閉鋼琴
+                    case 4: { //關閉鋼琴
                         controlPianoLayout('close');
                         break;
                     }
@@ -508,19 +496,15 @@ $(function(){
                         note('0', 'rgba(255, 255, 255, 0.2)'); //紀錄簡譜
                         break;
                     }
-                    case 2: { //換行(黑)
-                        addNoteLine('black'); //新增簡譜軌道
+                    case 2: { //換行
+                        addNoteLine(); //新增簡譜軌道
                         break;
                     }
-                    case 3: {
-                        addNoteLine('white'); //新增簡譜軌道
-                        break;
-                    }
-                    case 4: { //開啟鋼琴
+                    case 3: { //開啟鋼琴
                         controlPianoLayout('open');
                         break;
                     }
-                    case 5: { //關閉鋼琴
+                    case 4: { //關閉鋼琴
                         controlPianoLayout('close');
                         break;
                     }
@@ -540,13 +524,8 @@ $(function(){
 					break;
 				}
 				case 13: { //Enter
-					if(event.ctrlKey){
-						//新增簡譜軌道
-						addNoteLine('white');
-					}else{
-						//新增簡譜軌道
-						addNoteLine('black');
-					}
+					//新增簡譜軌道
+                    addNoteLine();
 					break;
 				}
 				case 32: { //Space

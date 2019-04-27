@@ -201,14 +201,7 @@ html, body{
     display: inline-block; /* 吃自己的現在的長寬 */
     padding: 5px;
 	background-color: #353535;
-}
 
-.line_color_black {
-	background-color: #353535;
-}
-
-.line_color_white {
-	background-color: #616060;
 }
 
 .note {
