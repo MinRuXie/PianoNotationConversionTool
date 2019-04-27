@@ -2,13 +2,16 @@
 $(function(){
 
     //等資源載入完成後才顯示畫面
-    /*window.onload = function(){
+    window.onload = function(){
         $('.loading').hide();
-    };*/
+    };
 
     //變數準備
     $piano = $('.piano');
     $text = $('.text');
+
+    //設定卷軸(人為觸發才生效)
+    $piano.animate({'scrollLeft': '2000vw'}, 500);
     
     //建立琴鍵
     function buildPiano(){
