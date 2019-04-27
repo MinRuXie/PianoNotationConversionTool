@@ -219,41 +219,41 @@ $(function(){
             $(this).find('.ebony_1').each(function(index2){
                 $(this).find('.ebony_child').each(function(index3){
                     //新增 key
-                    $(this).append('<div class="key">' + key_ebony_b[1+(5*index)+index2] + '</div>'); //第一個黑鍵+(一組5個黑鍵)+現在是第幾個黑鍵
+                    $(this).append('<div class="key">' + key_ebony_b[1+(5*index)+0] + '</div>'); //第一個黑鍵+(一組5個黑鍵)+現在是第幾個黑鍵
                     //新增音訊
-                    $(this).append('<audio id="'+ key_ebony_b[1+(5*index)+index2] +'"><source src="./audio/'+ audio_ebony[1+(5*index)+index2] +'" type="audio/mpeg"></audio>');
+                    $(this).append('<audio id="'+ key_ebony_b[1+(5*index)+0] +'"><source src="./audio/'+ audio_ebony[1+(5*index)+0] +'" type="audio/mpeg"></audio>');
                 });
             });
             $(this).find('.ebony_2').each(function(index2){
                 $(this).find('.ebony_child').each(function(index3){
                     //新增 key
-                    $(this).append('<div class="key">' + key_ebony_b[1+(5*index)+index2] + '</div>'); //第一個黑鍵+(一組5個黑鍵)+現在是第幾個黑鍵
+                    $(this).append('<div class="key">' + key_ebony_b[1+(5*index)+1] + '</div>'); //第一個黑鍵+(一組5個黑鍵)+現在是第幾個黑鍵
                     //新增音訊
-                    $(this).append('<audio id="'+ key_ebony_b[1+(5*index)+index2] +'"><source src="./audio/'+ audio_ebony[1+(5*index)+index2] +'" type="audio/mpeg"></audio>');
+                    $(this).append('<audio id="'+ key_ebony_b[1+(5*index)+1] +'"><source src="./audio/'+ audio_ebony[1+(5*index)+1] +'" type="audio/mpeg"></audio>');
                 });
             });
             $(this).find('.ebony_3').each(function(index2){
                 $(this).find('.ebony_child').each(function(index3){
                     //新增 key
-                    $(this).append('<div class="key">' + key_ebony_b[1+(5*index)+index2] + '</div>'); //第一個黑鍵+(一組5個黑鍵)+現在是第幾個黑鍵
+                    $(this).append('<div class="key">' + key_ebony_b[1+(5*index)+2] + '</div>'); //第一個黑鍵+(一組5個黑鍵)+現在是第幾個黑鍵
                     //新增音訊
-                    $(this).append('<audio id="'+ key_ebony_b[1+(5*index)+index2] +'"><source src="./audio/'+ audio_ebony[1+(5*index)+index2] +'" type="audio/mpeg"></audio>');
+                    $(this).append('<audio id="'+ key_ebony_b[1+(5*index)+2] +'"><source src="./audio/'+ audio_ebony[1+(5*index)+2] +'" type="audio/mpeg"></audio>');
                 });
             });
             $(this).find('.ebony_4').each(function(index2){
                 $(this).find('.ebony_child').each(function(index3){
                     //新增 key
-                    $(this).append('<div class="key">' + key_ebony_b[1+(5*index)+index2] + '</div>'); //第一個黑鍵+(一組5個黑鍵)+現在是第幾個黑鍵
+                    $(this).append('<div class="key">' + key_ebony_b[1+(5*index)+3] + '</div>'); //第一個黑鍵+(一組5個黑鍵)+現在是第幾個黑鍵
                     //新增音訊
-                    $(this).append('<audio id="'+ key_ebony_b[1+(5*index)+index2] +'"><source src="./audio/'+ audio_ebony[1+(5*index)+index2] +'" type="audio/mpeg"></audio>');
+                    $(this).append('<audio id="'+ key_ebony_b[1+(5*index)+3] +'"><source src="./audio/'+ audio_ebony[1+(5*index)+3] +'" type="audio/mpeg"></audio>');
                 });
             });
             $(this).find('.ebony_5').each(function(index2){
                 $(this).find('.ebony_child').each(function(index3){
                     //新增 key
-                    $(this).append('<div class="key">' + key_ebony_b[1+(5*index)+index2] + '</div>'); //第一個黑鍵+(一組5個黑鍵)+現在是第幾個黑鍵
+                    $(this).append('<div class="key">' + key_ebony_b[1+(5*index)+4] + '</div>'); //第一個黑鍵+(一組5個黑鍵)+現在是第幾個黑鍵
                     //新增音訊
-                    $(this).append('<audio id="'+ key_ebony_b[1+(5*index)+index2] +'"><source src="./audio/'+ audio_ebony[1+(5*index)+index2] +'" type="audio/mpeg"></audio>');
+                    $(this).append('<audio id="'+ key_ebony_b[1+(5*index)+4] +'"><source src="./audio/'+ audio_ebony[1+(5*index)+4] +'" type="audio/mpeg"></audio>');
                 });
             });
         });
