@@ -10,9 +10,11 @@ $(function(){
     $piano = $('.piano');
     $text = $('.text');
     $toolbox = $('.toolbox');
+    var cur_piano_x_scroll = 0;//卷軸位置
 
     //設定卷軸(人為觸發才生效)
     $piano.animate({'scrollLeft': '2000vw'}, 500);
+    recordScrollX(); //紀錄卷軸位置
     
     //建立琴鍵
     function buildPiano(){
@@ -56,20 +58,6 @@ $(function(){
         ebony_usol = '<div class="ebony_child usol"><span>#5</span></div>';
         ebony_ula = '<div class="ebony_child ula"><span>#6</span></div>';
 		
-		//黑鍵(降)不顯示(配合調性)
-        // ebony_bre_2 = '<div class="ebony_child bre_2"><span>2</span></div>';
-        // ebony_bmi_2 = '<div class="ebony_child bmi_2"><span>3</span></div>';
-        // ebony_bsol_2 = '<div class="ebony_child bsol_2"><span>5</span></div>';
-        // ebony_bla_2 = '<div class="ebony_child bla_2"><span>6</span></div>';
-        // ebony_bsi_2 = '<div class="ebony_child bsi_2"><span>7</span></div>';
-		
-		//黑鍵(升)不顯示(配合調性)
-        // ebony_udo_2 = '<div class="ebony_child udo_2"><span>1</span></div>';
-        // ebony_ure_2 = '<div class="ebony_child ure_2"><span>2</span></div>';
-        // ebony_ufa_2 = '<div class="ebony_child ufa_2"><span>4</span></div>';
-        // ebony_usol_2 = '<div class="ebony_child usol_2"><span>5</span></div>';
-        // ebony_ula_2 = '<div class="ebony_child ula_2"><span>6</span></div>';
-		
 
         //-------------------
         // 左邊 3 鍵
@@ -99,12 +87,6 @@ $(function(){
 		
 		//新增黑鍵(降)
         $ebony.append(ebony_bsi);
-
-        //新增黑鍵(升)不顯示(配合調性)
-        // $ebony.append(ebony_ula_2);
-        
-		//新增黑鍵(降)不顯示(配合調性)
-        // $ebony.append(ebony_bsi_2);
   
         //上色
         $group_left.find('.ebony_child').find('span').css({
@@ -190,20 +172,6 @@ $(function(){
             $ebony_3.append(ebony_bsol);
             $ebony_4.append(ebony_bla);
             $ebony_5.append(ebony_bsi);
-
-            //黑鍵(升)不顯示(配合調性)
-            // $ebony_1.append(ebony_udo_2);
-            // $ebony_2.append(ebony_ure_2);
-            // $ebony_3.append(ebony_ufa_2);
-            // $ebony_4.append(ebony_usol_2);
-            // $ebony_5.append(ebony_ula_2);
-			
-			//黑鍵(降)不顯示(配合調性)------------
-            // $ebony_1.append(ebony_bre_2);
-            // $ebony_2.append(ebony_bmi_2);
-            // $ebony_3.append(ebony_bsol_2);
-            // $ebony_4.append(ebony_bla_2);
-            // $ebony_5.append(ebony_bsi_2);
 			
             //上色
             $(this).find('.ebony_child').find('span').css({
@@ -378,6 +346,13 @@ $(function(){
     }
 
     //-------------------
+    // 紀錄卷軸位置
+    //-------------------
+    function recordScrollX(){
+        cur_piano_x_scroll = $piano.scrollLeft();
+    }
+
+    //-------------------
     // 鋼琴面板控制
     //-------------------
     function controlPianoLayout(kind){
@@ -386,12 +361,14 @@ $(function(){
                 $text.animate({'height': '100%'}, 300);
                 $toolbox.animate({'height': '100%'}, 300);
                 $piano.animate({'height': '0%'}, 300);
+                recordScrollX(); //紀錄卷軸位置
                 break;
             }
             case "open": {
                 $text.animate({'height': '65%'}, 300);
                 $toolbox.animate({'height': '65%'}, 300);
                 $piano.animate({'height': '35%'}, 300);
+                $piano.animate({'scrollLeft': cur_piano_x_scroll}, 500); //移動卷軸至上次位置
                 break;
             }
         }
