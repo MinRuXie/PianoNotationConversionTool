@@ -380,6 +380,18 @@ $(function(){
         }
     }
 
+    //-------------------
+    // 修改歌名
+    //-------------------
+    $('.title').on('dblclick', function(event){
+        var pre_name = $('.title').html(); // 預設值為上次輸入的歌名
+        var song_name = prompt('請輸入歌名：', pre_name);
+        if(song_name==null){
+            song_name = pre_name;
+        }
+        $('.title').text(song_name); // 顯示新歌名
+    });
+
 	//-------------------
     // 行動裝置
     //-------------------
