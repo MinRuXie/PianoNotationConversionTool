@@ -281,6 +281,8 @@ $(function(){
             //新增音符
             $noteLine.append('<div class="note selected" style="background-color: '+ color +';">' + key + '</div>');
         }
+
+        moveScrollY(); //移動文字區塊卷軸置最下方
     }
 
     //-------------------
@@ -308,6 +310,8 @@ $(function(){
 
         //將焦點移至下一個音符
         $nextfocuseNote.addClass("selected");
+
+        moveScrollY(); //移動文字區塊卷軸置最下方
     }
 
     //-------------------
@@ -321,6 +325,8 @@ $(function(){
         }else{
             $text.append("<div class='line'></div>");
         }
+
+        moveScrollY(); //移動文字區塊卷軸置最下方
     }
 
     //-------------------
@@ -340,7 +346,15 @@ $(function(){
     }
 
     //-------------------
-    // 紀錄卷軸位置
+    // 移動文字區塊卷軸位置
+    //-------------------
+    function moveScrollY(){
+        var text_height = $text.height(); //取得元素高度
+        $text.animate({'scrollTop': text_height}, 200); //移動卷軸至文字區塊最下方
+    }
+
+    //-------------------
+    // 紀錄鋼琴卷軸位置
     //-------------------
     function recordScrollX(){
         cur_piano_x_scroll = $piano.scrollLeft();
