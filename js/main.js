@@ -392,9 +392,10 @@ $(function(){
     //-------------------
     $('.title').on('dblclick', function(event){
         var pre_name = $('.title').html(); // 預設值為上次輸入的歌名
-        var song_name = prompt('請輸入歌名：', pre_name);
+        var decodeHtml = htmlDecode(pre_name); //用浏览器内部转换器实现html解码
+        var song_name = prompt('請輸入歌名：', decodeHtml);
         if(song_name==null){
-            song_name = pre_name;
+            song_name = decodeHtml;
         }
         $('.title').text(song_name); // 顯示新歌名
     });
@@ -550,5 +551,19 @@ $(function(){
 				}
 			}
 		});
+    }
+
+
+    /* 來源: https://www.cnblogs.com/xdp-gacl/p/3722642.html */
+    /*2.用浏览器内部转换器实现html解码*/
+    function htmlDecode(text){
+        //1.首先动态创建一个容器标签元素，如DIV
+        var temp = document.createElement("div");
+        //2.然后将要转换的字符串设置为这个元素的innerHTML(ie，火狐，google都支持)
+        temp.innerHTML = text;
+        //3.最后返回这个元素的innerText(ie支持)或者textContent(火狐，google支持)，即得到经过HTML解码的字符串了。
+        var output = temp.innerText || temp.textContent;
+        temp = null;
+        return output;
     }
 });
