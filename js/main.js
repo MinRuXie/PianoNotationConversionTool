@@ -321,11 +321,17 @@ $(function(){
     function addNoteLine(){      	
 		if($text.find('.line').length>=1){
             if($text.find('.line').last().children().length!==0){
-                $text.append("<div class='line'></div>");
+                $text.append("<div class='line' title='雙擊修改區塊顏色'></div>");
             }
         }else{
-            $text.append("<div class='line'></div>");
+            $text.append("<div class='line' title='雙擊修改區塊顏色'></div>");
         }
+
+        // 裝上改變顏色事件
+        var $element = $text.find('.line').last();
+        $element.on('dblclick', function(event){
+            changeAreaColor($(this)); //修改區塊顏色
+        });
 
         moveScrollY(); //移動文字區塊卷軸置最下方
     }
@@ -399,6 +405,24 @@ $(function(){
         }
         $('.title').text(song_name); // 顯示新歌名
     });
+
+    //-------------------
+    // 修改區塊顏色
+    //-------------------
+    function changeAreaColor($element){
+        var rgbString = $element.css('border-left-color'); // 取得左邊框顏色 rgb(red, green ,blue)
+
+        // 取得 rgb 色碼
+        var red = parseInt(getRGB(rgbString).red);
+        var green = parseInt(getRGB(rgbString).green);
+        var blue = parseInt(getRGB(rgbString).blue);
+        var hexString = rgbToHex(red, green, blue);
+        var colorCode = prompt('請輸入色碼：', hexString);
+        if(colorCode==null){
+            colorCode = hexString;
+        }
+        $element.css('border-left-color', colorCode);
+    }
 
 	//-------------------
     // 行動裝置
@@ -554,8 +578,10 @@ $(function(){
     }
 
 
-    /* 來源: https://www.cnblogs.com/xdp-gacl/p/3722642.html */
-    /*2.用浏览器内部转换器实现html解码*/
+    //---------------------------------------------
+    // 用浏览器内部转换器实现html解码
+    // 來源: https://www.cnblogs.com/xdp-gacl/p/3722642.html
+    //---------------------------------------------
     function htmlDecode(text){
         //1.首先动态创建一个容器标签元素，如DIV
         var temp = document.createElement("div");
@@ -565,5 +591,35 @@ $(function(){
         var output = temp.innerText || temp.textContent;
         temp = null;
         return output;
+    }
+
+    //---------------------------------------------
+    // 將 rgb(red, green ,blue) 字串 轉換為 JSON物件
+    // 來源: https://stackoverflow.com/questions/34980574/how-to-extract-color-values-from-rgb-string-in-javascript
+    //---------------------------------------------
+    function getRGB(str){
+      var match = str.match(/rgba?\((\d{1,3}), ?(\d{1,3}), ?(\d{1,3})\)?(?:, ?(\d(?:\.\d?))\))?/);
+      return match ? {
+        red: match[1],
+        green: match[2],
+        blue: match[3]
+      } : {};
+    }
+
+    //-----------------------
+    // 將 0~255 轉換為 16進位
+    // 來源: https://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb
+    //-----------------------
+    function componentToHex(c) {
+        var hex = c.toString(16);
+        return hex.length == 1 ? "0" + hex : hex;
+    }
+    
+    //-----------------------
+    // 將 rgb 轉換為 hex
+    // 來源: https://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb
+    //-----------------------
+    function rgbToHex(r, g, b) {
+        return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
     }
 });
