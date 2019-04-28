@@ -298,12 +298,13 @@ $(function(){
         if($focuseNote.parent('.line').children().length==1 && $text.find('.line').length!==1){
             $focuseNote.parent('.line').remove();
         }else{
-            //移除目前焦點音符
-            $focuseNote.remove();
-
             //先按換行再按刪除的人
-            if($text.find('.line').length!==1 && $text.find('.line').last().children().length==0){
+            if($text.find('.line').length!=1 && $text.find('.line').last().children().length==0){
+                //移除空的一行
                 $text.find('.line').last().remove();
+            }else{
+                //移除目前焦點音符
+                $focuseNote.remove();
             }
         }
 
