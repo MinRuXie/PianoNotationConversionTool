@@ -294,18 +294,13 @@ $(function(){
         //目前焦點音符
         $focuseNote = $text.find(".selected");
 
-        //如果軌道刪完是空的就移除
-        if($focuseNote.parent('.line').children().length==1 && $text.find('.line').length!==1){
-            $focuseNote.parent('.line').remove();
+        //如果有空的 line 先刪除, 否則只移除 note
+        if($text.find('.line').length!=1 && $text.find('.line').last().children().length==0){
+            //移除空的一行
+            $text.find('.line').last().remove();
         }else{
-            //先按換行再按刪除的人
-            if($text.find('.line').length!=1 && $text.find('.line').last().children().length==0){
-                //移除空的一行
-                $text.find('.line').last().remove();
-            }else{
-                //移除目前焦點音符
-                $focuseNote.remove();
-            }
+            //移除目前焦點音符
+            $focuseNote.remove();
         }
 
         //將焦點移至最後一個音符
