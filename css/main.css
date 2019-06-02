@@ -199,8 +199,15 @@ html, body{
     width: 100%;
     display: inline-block; /* 吃自己的現在的長寬 */
     padding: 5px 5px 5px 10px;
-	background-color: #353535;
     border-left: 8px solid #FFF;
+}
+
+.line:nth-child(odd) {
+    background-color: #353535;
+}
+
+.line:nth-child(even) {
+    background-color: #6B6B6B;
 }
 
 .note {
