@@ -325,7 +325,8 @@ $(function(){
         // 裝上改變顏色事件
         var $element = $text.find('.line').last();
         $element.on('dblclick', function(event){
-            changeAreaColor($(this)); //修改區塊顏色
+            //changeAreaColor($(this)); //修改區塊顏色
+            openColorArea($(this)); //開啟選擇顏色區塊
         });
 
         moveScrollY(); //移動文字區塊卷軸置最下方
@@ -402,22 +403,83 @@ $(function(){
     });
 
     //-------------------
-    // 修改區塊顏色
+    // 開啟選擇顏色區塊
     //-------------------
-    function changeAreaColor($element){
-        var rgbString = $element.css('border-left-color'); // 取得左邊框顏色 rgb(red, green ,blue)
+    function openColorArea($element){
+        $(".colorarea").show(); //顯示選擇區塊
 
+        // line 的顏色
+        var rgbString = $element.css('border-left-color'); // 取得左邊框顏色 rgb(red, green ,blue)
         // 取得 rgb 色碼
         var red = parseInt(getRGB(rgbString).red);
         var green = parseInt(getRGB(rgbString).green);
         var blue = parseInt(getRGB(rgbString).blue);
-        var hexString = rgbToHex(red, green, blue);
-        var colorCode = prompt('請輸入色碼：', hexString);
-        if(colorCode==null){
-            colorCode = hexString;
-        }
-        $element.css('border-left-color', colorCode);
+        var line_hexString = rgbToHex(red, green, blue);
+        
+        // 在按鈕上顯示目前選取的顏色
+        $(".colorbtn").css('border-width', '1');
+        $('.colorbtn').each(function(index){
+            var rgbString = $(this).css('backgroundColor'); // 取得背景色 rgb(red, green ,blue)
+            // 取得 rgb 色碼
+            var red = parseInt(getRGB(rgbString).red);
+            var green = parseInt(getRGB(rgbString).green);
+            var blue = parseInt(getRGB(rgbString).blue);
+            btn_hexString = rgbToHex(red, green, blue);
+
+            if(line_hexString == btn_hexString){
+                $(this).css('border-width', '5');
+            }
+        });
+        
+        var select_hexString = line_hexString; //預設為 line 目前選擇
+        $(".colorbtn").on('click', function(){
+            var rgbString = $(this).css('backgroundColor'); // 取得背景色 rgb(red, green ,blue)
+            // 取得 rgb 色碼
+            var red = parseInt(getRGB(rgbString).red);
+            var green = parseInt(getRGB(rgbString).green);
+            var blue = parseInt(getRGB(rgbString).blue);
+            select_hexString = rgbToHex(red, green, blue);
+
+            $(".colorbtn").css('border-width', '1');
+            $(this).css('border-width', '5');
+        });
+
+        // 新增確定按鈕
+        $(".colorbox").append('<div class="checkbtn">確定</div>');
+        // 按下確定
+        $(".checkbtn").on('click', function(){
+            // 修改顏色
+            $element.css('border-left-color', select_hexString);
+
+            $(".colorarea").hide(); //隱藏選擇區塊
+            $(this).remove(); // 移除確定按鈕元素 (為了清除前次的事件綁定)
+        });
     }
+
+    //-------------------
+    // 關閉選擇顏色區塊
+    //-------------------
+    $(".cancelbtn").on('click', function(event){
+        $(".colorarea").hide();
+    });
+    
+    //-------------------
+    // 修改區塊顏色 (輸入色碼)
+    //-------------------
+    // function changeAreaColor($element){
+    //     var rgbString = $element.css('border-left-color'); // 取得左邊框顏色 rgb(red, green ,blue)
+
+    //     // 取得 rgb 色碼
+    //     var red = parseInt(getRGB(rgbString).red);
+    //     var green = parseInt(getRGB(rgbString).green);
+    //     var blue = parseInt(getRGB(rgbString).blue);
+    //     var hexString = rgbToHex(red, green, blue);
+    //     var colorCode = prompt('請輸入色碼：', hexString);
+    //     if(colorCode==null){
+    //         colorCode = hexString;
+    //     }
+    //     $element.css('border-left-color', colorCode);
+    // }
 
 	//-------------------
     // 行動裝置
