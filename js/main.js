@@ -2,9 +2,9 @@
 $(function(){
 
     //等資源載入完成後才顯示畫面
-    window.onload = function(){
-        $('.loading').hide();
-    };
+    // window.onload = function(){
+    //     $('.loading').hide();
+    // };
 
     //變數準備
     $piano = $('.piano');
