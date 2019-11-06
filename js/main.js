@@ -5,10 +5,12 @@ $(function(){
     // window.onload = function(){
     //     $('.loading').hide();
     // };
-
+    
     //變數準備
     $piano = $('.piano');
     $text = $('.text');
+    $text_number = $text.find('.number-panel');
+    $text_tabs = $text.find('.tabs-panel');
     $toolbox = $('.toolbox');
     var cur_piano_x_scroll = 0;//卷軸位置
 
@@ -33,6 +35,8 @@ $(function(){
         
         key_ivory = ['A0', 'B0', 'C1', 'D1', 'E1', 'F1', 'G1', 'A1', 'B1', 'C2', 'D2', 'E2', 'F2', 'G2', 'A2', 'B2', 'C3', 'D3', 'E3', 'F3', 'G3', 'A3', 'B3', 'C4', 'D4', 'E4', 'F4', 'G4', 'A4', 'B4', 'C5', 'D5', 'E5', 'F5', 'G5', 'A5', 'B5', 'C6', 'D6', 'E6', 'F6', 'G6', 'A6', 'B6', 'C7', 'D7', 'E7', 'F7', 'G7', 'A7', 'B7', 'C8'];
         key_ebony_b = ['Bb0', 'Db1', 'Eb1', 'Gb1', 'Ab1', 'Bb1', 'Db2', 'Eb2', 'Gb2', 'Ab2', 'Bb2', 'Db3', 'Eb3', 'Gb3', 'Ab3', 'Bb3', 'Db4', 'Eb4', 'Gb4', 'Ab4', 'Bb4', 'Db5', 'Eb5', 'Gb5', 'Ab5', 'Bb5', 'Db6', 'Eb6', 'Gb6', 'Ab6', 'Bb6', 'Db7', 'Eb7', 'Gb7', 'Ab7', 'Bb7'];
+
+        key_ebony_h = ['Ah0', 'Ch1', 'Dh1', 'Fh1', 'Gh1', 'Ah1', 'Ch2', 'Dh2', 'Fh2', 'Gh2', 'Ah2', 'Ch3', 'Dh3', 'Fh3', 'Gh3', 'Ah3', 'Ch4', 'Dh4', 'Fh4', 'Gh4', 'Ah4', 'Ch5', 'Dh5', 'Fh5', 'Gh5', 'Ah5', 'Ch6', 'Dh6', 'Fh6', 'Gh6', 'Ah6', 'Ch7', 'Dh7', 'Fh7', 'Gh7', 'Ah7'];
         
         // audio = ['Piano.ff.A0.mp3', 'Piano.ff.Bb0.mp3', 'Piano.ff.B0.mp3', 'Piano.ff.C1.mp3', 'Piano.ff.Db1.mp3', 'Piano.ff.D1.mp3', 'Piano.ff.Eb1.mp3', 'Piano.ff.E1.mp3', 'Piano.ff.F1.mp3', 'Piano.ff.Gb1.mp3', 'Piano.ff.G1.mp3', 'Piano.ff.Ab1.mp3', 'Piano.ff.A1.mp3', 'Piano.ff.Bb1.mp3', 'Piano.ff.B1.mp3', 'Piano.ff.C2.mp3', 'Piano.ff.Db2.mp3', 'Piano.ff.D2.mp3', 'Piano.ff.Eb2.mp3', 'Piano.ff.E2.mp3', 'Piano.ff.F2.mp3', 'Piano.ff.Gb2.mp3', 'Piano.ff.G2.mp3', 'Piano.ff.Ab2.mp3', 'Piano.ff.A2.mp3', 'Piano.ff.Bb2.mp3', 'Piano.ff.B2.mp3', 'Piano.ff.C3.mp3', 'Piano.ff.Db3.mp3', 'Piano.ff.D3.mp3', 'Piano.ff.Eb3.mp3', 'Piano.ff.E3.mp3', 'Piano.ff.F3.mp3', 'Piano.ff.Gb3.mp3', 'Piano.ff.G3.mp3', 'Piano.ff.Ab3.mp3', 'Piano.ff.A3.mp3', 'Piano.ff.Bb3.mp3', 'Piano.ff.B3.mp3', 'Piano.ff.C4.mp3', 'Piano.ff.Db4.mp3', 'Piano.ff.D4.mp3', 'Piano.ff.Eb4.mp3', 'Piano.ff.E4.mp3', 'Piano.ff.F4.mp3', 'Piano.ff.Gb4.mp3', 'Piano.ff.G4.mp3', 'Piano.ff.Ab4.mp3', 'Piano.ff.A4.mp3', 'Piano.ff.Bb4.mp3', 'Piano.ff.B4.mp3', 'Piano.ff.C5.mp3', 'Piano.ff.Db5.mp3', 'Piano.ff.D5.mp3', 'Piano.ff.Eb5.mp3', 'Piano.ff.E5.mp3', 'Piano.ff.F5.mp3', 'Piano.ff.Gb5.mp3', 'Piano.ff.G5.mp3', 'Piano.ff.Ab5.mp3', 'Piano.ff.A5.mp3', 'Piano.ff.Bb5.mp3', 'Piano.ff.B5.mp3', 'Piano.ff.C6.mp3', 'Piano.ff.Db6.mp3', 'Piano.ff.D6.mp3', 'Piano.ff.Eb6.mp3', 'Piano.ff.E6.mp3', 'Piano.ff.F6.mp3', 'Piano.ff.Gb6.mp3', 'Piano.ff.G6.mp3', 'Piano.ff.Ab6.mp3', 'Piano.ff.A6.mp3', 'Piano.ff.Bb6.mp3', 'Piano.ff.B6.mp3', 'Piano.ff.C7.mp3', 'Piano.ff.Db7.mp3', 'Piano.ff.D7.mp3', 'Piano.ff.Eb7.mp3', 'Piano.ff.E7.mp3', 'Piano.ff.F7.mp3', 'Piano.ff.Gb7.mp3', 'Piano.ff.G7.mp3', 'Piano.ff.Ab7.mp3', 'Piano.ff.A7.mp3', 'Piano.ff.Bb7.mp3', 'Piano.ff.B7.mp3', 'Piano.ff.C8.mp3'];
         audio_ivory = ['Piano.ff.A0.mp3', 'Piano.ff.B0.mp3', 'Piano.ff.C1.mp3', 'Piano.ff.D1.mp3', 'Piano.ff.E1.mp3', 'Piano.ff.F1.mp3', 'Piano.ff.G1.mp3', 'Piano.ff.A1.mp3', 'Piano.ff.B1.mp3', 'Piano.ff.C2.mp3', 'Piano.ff.D2.mp3', 'Piano.ff.E2.mp3', 'Piano.ff.F2.mp3', 'Piano.ff.G2.mp3', 'Piano.ff.A2.mp3', 'Piano.ff.B2.mp3', 'Piano.ff.C3.mp3', 'Piano.ff.D3.mp3', 'Piano.ff.E3.mp3', 'Piano.ff.F3.mp3', 'Piano.ff.G3.mp3', 'Piano.ff.A3.mp3', 'Piano.ff.B3.mp3', 'Piano.ff.C4.mp3', 'Piano.ff.D4.mp3', 'Piano.ff.E4.mp3', 'Piano.ff.F4.mp3', 'Piano.ff.G4.mp3', 'Piano.ff.A4.mp3', 'Piano.ff.B4.mp3', 'Piano.ff.C5.mp3', 'Piano.ff.D5.mp3', 'Piano.ff.E5.mp3', 'Piano.ff.F5.mp3', 'Piano.ff.G5.mp3', 'Piano.ff.A5.mp3', 'Piano.ff.B5.mp3', 'Piano.ff.C6.mp3', 'Piano.ff.D6.mp3', 'Piano.ff.E6.mp3', 'Piano.ff.F6.mp3', 'Piano.ff.G6.mp3', 'Piano.ff.A6.mp3', 'Piano.ff.B6.mp3', 'Piano.ff.C7.mp3', 'Piano.ff.D7.mp3', 'Piano.ff.E7.mp3', 'Piano.ff.F7.mp3', 'Piano.ff.G7.mp3', 'Piano.ff.A7.mp3', 'Piano.ff.B7.mp3', 'Piano.ff.C8.mp3'];
@@ -107,8 +111,14 @@ $(function(){
         //新增黑鍵內容
         $group_left.find('.ebony').each(function(index){
             $ebony.find('.ebony_child').each(function(index2){
-                //新增 key
-                $(this).append('<div class="key">' + key_ebony_b[index] + '</div>');
+                if(index2 < 1){ // 0
+                    //新增 key
+                    $(this).append('<div data-name="' + key_ebony_h[index] + '" class="key">' + key_ebony_b[index] + '</div>');
+                }else{ // 1
+                    //新增 key
+                    $(this).append('<div data-name="' + key_ebony_b[index] + '" class="key">' + key_ebony_b[index] + '</div>');
+                }
+                
                 //新增音訊
                 $(this).append('<audio id="'+ key_ebony_b[index] +'"><source src="./audio/'+ audio_ebony[index] +'" type="audio/mpeg"></audio>');
             });        
@@ -192,40 +202,70 @@ $(function(){
             //新增黑鍵內容
             $(this).find('.ebony_1').each(function(index2){
                 $(this).find('.ebony_child').each(function(index3){
-                    //新增 key
-                    $(this).append('<div class="key">' + key_ebony_b[1+(5*index)+0] + '</div>'); //第一個黑鍵+(一組5個黑鍵)+現在是第幾個黑鍵
+                    if(index3 < 1){ // 0
+                        //新增 key
+                        $(this).append('<div data-name="' + key_ebony_h[1+(5*index)+0] + '" class="key">' + key_ebony_b[1+(5*index)+0] + '</div>'); //第一個黑鍵+(一組5個黑鍵)+現在是第幾個黑鍵
+                    }else{ // 1
+                        //新增 key
+                        $(this).append('<div data-name="' + key_ebony_b[1+(5*index)+0] + '"  class="key">' + key_ebony_b[1+(5*index)+0] + '</div>'); //第一個黑鍵+(一組5個黑鍵)+現在是第幾個黑鍵
+                    }
+
                     //新增音訊
                     $(this).append('<audio id="'+ key_ebony_b[1+(5*index)+0] +'"><source src="./audio/'+ audio_ebony[1+(5*index)+0] +'" type="audio/mpeg"></audio>');
                 });
             });
             $(this).find('.ebony_2').each(function(index2){
                 $(this).find('.ebony_child').each(function(index3){
-                    //新增 key
-                    $(this).append('<div class="key">' + key_ebony_b[1+(5*index)+1] + '</div>'); //第一個黑鍵+(一組5個黑鍵)+現在是第幾個黑鍵
+                    if(index3 < 1){ // 0
+                        //新增 key
+                        $(this).append('<div data-name="' + key_ebony_h[1+(5*index)+1] + '" class="key">' + key_ebony_b[1+(5*index)+1] + '</div>'); //第一個黑鍵+(一組5個黑鍵)+現在是第幾個黑鍵
+                    }else{ // 1
+                        //新增 key
+                        $(this).append('<div data-name="' + key_ebony_b[1+(5*index)+1] + '"  class="key">' + key_ebony_b[1+(5*index)+1] + '</div>'); //第一個黑鍵+(一組5個黑鍵)+現在是第幾個黑鍵
+                    }
+
                     //新增音訊
                     $(this).append('<audio id="'+ key_ebony_b[1+(5*index)+1] +'"><source src="./audio/'+ audio_ebony[1+(5*index)+1] +'" type="audio/mpeg"></audio>');
                 });
             });
             $(this).find('.ebony_3').each(function(index2){
                 $(this).find('.ebony_child').each(function(index3){
-                    //新增 key
-                    $(this).append('<div class="key">' + key_ebony_b[1+(5*index)+2] + '</div>'); //第一個黑鍵+(一組5個黑鍵)+現在是第幾個黑鍵
+                    if(index3 < 1){ // 0
+                        //新增 key
+                        $(this).append('<div data-name="' + key_ebony_h[1+(5*index)+2] + '" class="key">' + key_ebony_b[1+(5*index)+2] + '</div>'); //第一個黑鍵+(一組5個黑鍵)+現在是第幾個黑鍵
+                    }else{ // 1
+                        //新增 key
+                        $(this).append('<div data-name="' + key_ebony_b[1+(5*index)+2] + '" class="key">' + key_ebony_b[1+(5*index)+2] + '</div>'); //第一個黑鍵+(一組5個黑鍵)+現在是第幾個黑鍵
+                    }
+
                     //新增音訊
                     $(this).append('<audio id="'+ key_ebony_b[1+(5*index)+2] +'"><source src="./audio/'+ audio_ebony[1+(5*index)+2] +'" type="audio/mpeg"></audio>');
                 });
             });
             $(this).find('.ebony_4').each(function(index2){
                 $(this).find('.ebony_child').each(function(index3){
-                    //新增 key
-                    $(this).append('<div class="key">' + key_ebony_b[1+(5*index)+3] + '</div>'); //第一個黑鍵+(一組5個黑鍵)+現在是第幾個黑鍵
+                    if(index3 < 1){ // 0
+                        //新增 key
+                        $(this).append('<div data-name="' + key_ebony_h[1+(5*index)+3] + '" class="key">' + key_ebony_b[1+(5*index)+3] + '</div>'); //第一個黑鍵+(一組5個黑鍵)+現在是第幾個黑鍵
+                    }else{ // 1
+                        //新增 key
+                        $(this).append('<div data-name="' + key_ebony_b[1+(5*index)+3] + '" class="key">' + key_ebony_b[1+(5*index)+3] + '</div>'); //第一個黑鍵+(一組5個黑鍵)+現在是第幾個黑鍵
+                    }
+
                     //新增音訊
                     $(this).append('<audio id="'+ key_ebony_b[1+(5*index)+3] +'"><source src="./audio/'+ audio_ebony[1+(5*index)+3] +'" type="audio/mpeg"></audio>');
                 });
             });
             $(this).find('.ebony_5').each(function(index2){
                 $(this).find('.ebony_child').each(function(index3){
-                    //新增 key
-                    $(this).append('<div class="key">' + key_ebony_b[1+(5*index)+4] + '</div>'); //第一個黑鍵+(一組5個黑鍵)+現在是第幾個黑鍵
+                    if(index3 < 1){ // 0
+                        //新增 key
+                        $(this).append('<div data-name="' + key_ebony_h[1+(5*index)+4] + '" class="key">' + key_ebony_b[1+(5*index)+4] + '</div>'); //第一個黑鍵+(一組5個黑鍵)+現在是第幾個黑鍵
+                    }else{ // 1
+                        //新增 key
+                        $(this).append('<div data-name="' + key_ebony_b[1+(5*index)+4] + '" class="key">' + key_ebony_b[1+(5*index)+4] + '</div>'); //第一個黑鍵+(一組5個黑鍵)+現在是第幾個黑鍵
+                    }
+
                     //新增音訊
                     $(this).append('<audio id="'+ key_ebony_b[1+(5*index)+4] +'"><source src="./audio/'+ audio_ebony[1+(5*index)+4] +'" type="audio/mpeg"></audio>');
                 });
@@ -262,49 +302,54 @@ $(function(){
     buildPiano();
 
     //新增簡譜軌道
-    addNoteLine();
+    addNoteLine($text_number);
+    addNoteLine($text_tabs);
 
     //-------------------
     // 紀錄簡譜
     //-------------------
-    function note(key, color){
-        moveScrollY(); //移動文字區塊卷軸置最下方
+    function note(panel, number, key, color){
+        //取代 key 中的升記號
+        console.log(key);
+        
+        //移動文字區塊卷軸置最下方
+        moveScrollY();
 
         //移除前一個焦點
-        $text.find(".note").removeClass('selected');
+        panel.find(".note").removeClass('selected');
 
         //取得目前軌道
-        $noteLine = $text.find('.line').last();
+        $noteLine = panel.find('.line').last();
 
-        if(key=='0'){
+        if(number=='0'){
             //新增空格
-            $noteLine.append('<div class="note selected" style="background-color: '+ color +'; color: transparent">' + key + '</div>');
+            $noteLine.append('<div class="note selected ' + key + '" style="background-color: '+ color +'; color: transparent">' + number + '</div>');
         }else{
             //新增音符
-            $noteLine.append('<div class="note selected" style="background-color: '+ color +';">' + key + '</div>');
+            $noteLine.append('<div class="note selected ' + key + '" style="background-color: '+ color +';">' + number + '</div>');
         }
     }
 
     //-------------------
     // 刪除簡譜
     //-------------------
-    function delNote(){    
+    function delNote(panel){    
         moveScrollY(); //移動文字區塊卷軸置最下方
 
         //目前焦點音符
-        $focuseNote = $text.find(".selected");
+        $focuseNote = panel.find(".selected");
 
         //如果有空的 line 先刪除, 否則只移除 note
-        if($text.find('.line').length!=1 && $text.find('.line').last().children().length==0){
+        if(panel.find('.line').length!=1 && panel.find('.line').last().children().length==0){
             //移除空的一行
-            $text.find('.line').last().remove();
+            panel.find('.line').last().remove();
         }else{
             //移除目前焦點音符
             $focuseNote.remove();
         }
 
         //將焦點移至最後一個音符
-        $nextfocuseNote = $text.find(".note").last();
+        $nextfocuseNote = panel.find(".note").last();
 
         //將焦點移至下一個音符
         $nextfocuseNote.addClass("selected");
@@ -313,17 +358,23 @@ $(function(){
     //-------------------
     // 新增一行簡譜軌道
     //-------------------
-    function addNoteLine(){      	
-		if($text.find('.line').length>=1){
-            if($text.find('.line').last().children().length!==0){
-                $text.append("<div class='line' title='雙擊修改區塊顏色'></div>");
+    function addNoteLine(panel){
+        let line_html = "<div class='line' title='雙擊修改區塊顏色'></div>";
+
+        if(panel==$text_tabs){
+            line_html = "<div class='line' title='雙擊修改區塊顏色'><div class='line-bg'><span></span><span></span><span></span><span></span><span></span></div></div>";
+        }
+
+		if(panel.find('.line').length>=1){
+            if(panel.find('.line').last().children().length!==0){
+                panel.append(line_html);
             }
         }else{
-            $text.append("<div class='line' title='雙擊修改區塊顏色'></div>");
+            panel.append(line_html);
         }
 
         // 裝上改變顏色事件
-        var $element = $text.find('.line').last();
+        var $element = panel.find('.line').last();
         $element.on('dblclick', function(event){
             //changeAreaColor($(this)); //修改區塊顏色
             openColorArea($(this)); //開啟選擇顏色區塊
@@ -491,7 +542,8 @@ $(function(){
             $(this).on('touchstart', function(event){
                 $(this).css({'background': '#f2f2f2'});
                 //紀錄簡譜
-                note($(this).find('span').text(), $(this).find('span').css('background-color'));
+                note($text_number, $(this).find('span').text(), $(this).find('.key').text(), $(this).find('span').css('background-color'));
+                note($text_tabs, $(this).find('span').text(), $(this).find('.key').text(), $(this).find('span').css('background-color'));
                 //播放音訊
                 playaudio($(this).find('.key').text());
             })
@@ -505,7 +557,8 @@ $(function(){
                 $(this).on('touchstart', function(event){
                     $(this).css({'background': '#444'});
                     //紀錄簡譜
-                    note($(this).find('span').text(), $(this).find('span').css('background-color'));
+                    note($text_number, $(this).find('span').text(), $(this).find('.key').attr('data-name'), $(this).find('span').css('background-color'));
+                    note($text_tabs, $(this).find('span').text(), $(this).find('.key').attr('data-name'), $(this).find('span').css('background-color'));
                     //播放音訊
                     playaudio($(this).find('.key').text());
                 })
@@ -521,15 +574,21 @@ $(function(){
 
                 switch(index){
                     case 0: { //刪除
-                        delNote(); //刪除簡譜
+                        //刪除簡譜
+                        delNote($text_number);
+                        delNote($text_tabs);
                         break;
                     }
                     case 1: { //空格
-                        note('0', 'rgba(255, 255, 255, 0.2)'); //紀錄簡譜
+                        //紀錄簡譜
+                        note($text_number, '0', '0', 'rgba(255, 255, 255, 0.2)');
+                        note($text_tabs, '0', '0', 'rgba(255, 255, 255, 0.2)'); 
                         break;
                     }
                     case 2: { //換行
-                        addNoteLine(); //新增簡譜軌道
+                        //新增簡譜軌道
+                        addNoteLine($text_number);
+                        addNoteLine($text_tabs);
                         break;
                     }
                     case 3: { //開啟鋼琴
@@ -538,6 +597,11 @@ $(function(){
                     }
                     case 4: { //關閉鋼琴
                         controlPianoLayout('close');
+                        break;
+                    }
+                    case 5: { //切換五線譜<=>簡譜
+                        $text_number.toggleClass('open');
+                        $text_tabs.toggleClass('open');
                         break;
                     }
                 }
@@ -556,7 +620,8 @@ $(function(){
             $(this).on('mousedown', function(event){
                 $(this).css({'background': '#f2f2f2'});
                 //紀錄簡譜
-                note($(this).find('span').text(), $(this).find("span").css('background-color'));
+                note($text_number, $(this).find('span').text(), $(this).find('.key').text(), $(this).find("span").css('background-color'));
+                note($text_tabs, $(this).find('span').text(), $(this).find('.key').text(), $(this).find("span").css('background-color'));
                 //播放音訊
                 playaudio($(this).find('.key').text());
             })
@@ -570,7 +635,8 @@ $(function(){
                 $(this).on('mousedown', function(event){
                     $(this).css({'background': '#444'});
                     //紀錄簡譜
-                    note($(this).find('span').text(), $(this).find('span').css('background-color'));
+                    note($text_number, $(this).find('span').text(), $(this).find('.key').attr('data-name'), $(this).find('span').css('background-color'));
+                    note($text_tabs, $(this).find('span').text(), $(this).find('.key').attr('data-name'), $(this).find('span').css('background-color'));
                     //播放音訊
                     playaudio($(this).find('.key').text());
                 })
@@ -586,15 +652,20 @@ $(function(){
 
                 switch(index){
                     case 0: { //刪除
-                        delNote(); //刪除簡譜
+                        //刪除簡譜
+                        delNote($text_number);
+                        delNote($text_tabs);
                         break;
                     }
                     case 1: { //空格
-                        note('0', 'rgba(255, 255, 255, 0.2)'); //紀錄簡譜
+                        note($text_number, '0', '0', 'rgba(255, 255, 255, 0.2)'); //紀錄簡譜
+                        note($text_tabs, '0', '0', 'rgba(255, 255, 255, 0)'); //紀錄簡譜
                         break;
                     }
                     case 2: { //換行
-                        addNoteLine(); //新增簡譜軌道
+                        //新增簡譜軌道
+                        addNoteLine($text_number);
+                        addNoteLine($text_tabs);
                         break;
                     }
                     case 3: { //開啟鋼琴
@@ -603,6 +674,11 @@ $(function(){
                     }
                     case 4: { //關閉鋼琴
                         controlPianoLayout('close');
+                        break;
+                    }
+                    case 5: { //切換五線譜<=>簡譜
+                        $text_number.toggleClass('open');
+                        $text_tabs.toggleClass('open');
                         break;
                     }
                 }
@@ -617,17 +693,20 @@ $(function(){
 			switch(event.keyCode){
 				case 8: { //Backspace
 					//刪除簡譜
-                    delNote();
+                    delNote($text_number);
+                    delNote($text_tabs);
 					break;
 				}
 				case 13: { //Enter
 					//新增簡譜軌道
-                    addNoteLine();
+                    addNoteLine($text_number);
+                    addNoteLine($text_tabs);
 					break;
 				}
 				case 32: { //Space
 					//紀錄簡譜
-					note('0', 'rgba(255, 255, 255, 0.2)');
+                    note($text_number, '0', '0', 'rgba(255, 255, 255, 0.2)');
+                    note($text_tabs, '0', '0', 'rgba(255, 255, 255, 0)');
 					break;
 				}
 			}
