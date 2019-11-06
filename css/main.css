@@ -1,17 +1,16 @@
-html, body{
+html, body {
     margin: 0;
     height: 100%;
     overflow-y: hidden;
 }
 
-.container-fluid{
+.container-fluid {
     padding: 0;
     height: 100%;
 }
 
-.text{
+.text {
     background: rgb(41, 41, 41);
-    /* position: relative; */
     height: 57%;
     overflow-y: auto;
     overflow-x: hidden;
@@ -23,13 +22,12 @@ html, body{
 
 .toolbox {
     background-color: rgb(50, 50, 50);
-    /* position: relative; */
     height: 57%;
     width: 10%;
     float: left;
 }
 
-.piano{
+.piano {
     position: relative;
     width: 100%;
     height: 43%;
@@ -46,25 +44,25 @@ html, body{
     pointer-events: none; /* 失去作用能力 */
 }
 
-.piano .fas{
+.piano .fas {
     font-size: 200%;
 }
 
-.slide .fa-angle-left{
+.slide .fa-angle-left {
     position: absolute;
     left: 5%;
     top: 51%; /* 距離上面 50% */
     transform: translateY(-49%); /* 扣掉自己的 50% 高度 */
 }
 
-.slide .fa-angle-right{
+.slide .fa-angle-right {
     position: absolute;
     left: 95%;
     top: 51%; /* 距離上面 50% */
     transform: translateY(-49%); /* 扣掉自己的 50% 高度 */
 }
 
-.group{
+.group {
     position: absolute;
     bottom: 0;
     width: 50%;
@@ -72,7 +70,7 @@ html, body{
     float: left;
 }
 
-.group_left{
+.group_left {
     position: absolute;
     bottom: 0;
     width: 14.28%;
@@ -80,7 +78,7 @@ html, body{
     float: left;
 }
 
-.group_right{
+.group_right {
     position: absolute;
     bottom: 0;
     width: 7.14%;
@@ -89,7 +87,7 @@ html, body{
     left: 364.28%
 }
 
-.ivory{
+.ivory {
     position: relative;
     background: #fff;
     width: 14.28%;
@@ -107,19 +105,19 @@ html, body{
     opacity: 0.7;
 }
 
-.ivory .key{
+.ivory .key {
     display: none;
 }
 
-.group_left .ivory{
+.group_left .ivory {
     width: 50%;
 }
 
-.group_right .ivory{
+.group_right .ivory {
     width: 100%;
 }
 
-.ivory span{
+.ivory span {
     position: absolute;
     bottom: 3px;
     left: 30%;
@@ -141,7 +139,12 @@ html, body{
     left: -25%;
 }*/
 
-.ebony, .ebony_1, .ebony_2, .ebony_3, .ebony_4, .ebony_5{
+.ebony, 
+.ebony_1, 
+.ebony_2, 
+.ebony_3, 
+.ebony_4, 
+.ebony_5 {
     position: absolute;
     background: #000;
     width: 8%;
@@ -165,7 +168,12 @@ html, body{
     opacity: 0.8;
 }
 
-.ebony span, .ebony_1 span, .ebony_2 span, .ebony_3 span, .ebony_4 span, .ebony_5 span{
+.ebony span,
+.ebony_1 span,
+.ebony_2 span, 
+.ebony_3 span, 
+.ebony_4 span, 
+.ebony_5 span {
     color: #fff;
     height: 100%;
     display: flex; /*flex: 彈性盒子*/
@@ -179,15 +187,15 @@ html, body{
 .ebony_2 .key,
 .ebony_3 .key,
 .ebony_4 .key,
-.ebony_5 .key{
+.ebony_5 .key {
     display:none;
 }
 
-.group_left .ebony{
+.group_left .ebony {
     width: 28%;
 }
 
-.title {
+.text .title {
     width: 100%;
     display: inline-block; /* 吃自己的現在的長寬 */
     padding: 5px;
@@ -195,7 +203,7 @@ html, body{
     color: #FFF;
 }
 
-.line {
+.text .line {
     width: 100%;
     display: inline-block; /* 吃自己的現在的長寬 */
     padding: 5px 5px 5px 10px;
@@ -246,7 +254,7 @@ html, body{
     opacity: 0.6;
 }
 
-.warn_size{
+.warn_size {
     display: none;
     position: fixed;
     top: 0;
@@ -255,10 +263,9 @@ html, body{
     width: 100%;
     height: 100%;
     color: #fff;
-    /*text-align: center;*/
 }
 
-.warn_size span{
+.warn_size span {
     position: absolute;
     top: 50%;
     left:20%;
@@ -266,7 +273,7 @@ html, body{
     transform: translateX(25%); /* 扣掉自己的 50% 高度 */
 }
 
-.warn_size img{
+.warn_size img {
     position: absolute;
     width: 30%;
     top: 30%;
@@ -275,8 +282,8 @@ html, body{
     transform: translateX(-50%); /* 扣掉自己的 50% 高度 */
 }
 
-@media screen and (max-width: 480px){
-    .warn_size{
+@media screen and (max-width: 480px) {
+    .warn_size {
         display: block;
     }
 }
@@ -380,11 +387,12 @@ html, body{
 
 /* 螢幕寬度大於1024px */
 @media screen and (min-width: 1024px) {
-    .piano{
+    .piano {
         height: 35%;
     }
 
-    .text, .toolbox {
+    .text,
+    .toolbox {
         height: 65%;
     }
 
@@ -392,7 +400,9 @@ html, body{
         display: none;
     }
 
-    .group_left, .group, .group_right {
+    .group_left,
+    .group,
+    .group_right {
         height: 100%;
     }
 }
