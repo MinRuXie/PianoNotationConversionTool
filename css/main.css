@@ -33,7 +33,7 @@ html, body {
     position: relative;
     top: 10px;
     left: 0;
-    width: 90%;
+    width: 100%;
     min-height: 60%;
     background-color: rgb(41, 41, 41);
     display: none;
@@ -82,6 +82,7 @@ html, body {
     display: flex;
     align-items: flex-start;
     position: relative;
+    padding-left: 60px;
 }
 
 .text .tabs-panel .line .line-bg {
@@ -94,6 +95,19 @@ html, body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+.text .tabs-panel .line .line-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10px;
+    display: block;
+    width: 50px;
+    height: 70px;
+    z-index: 8;
+    background-image: url('../image/music.png');
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 .text .tabs-panel .line .line-bg span {
     background-color: #FFF;
@@ -108,10 +122,25 @@ html, body {
     border-radius: 12px / 9px; /* 水平 / 垂直 */
     color: #FFF;
     text-align: center;
-    line-height: 20px;
+    line-height: 18px;
     position: relative;
     z-index: 1;
+    margin: 0 3px;
+    border: 2px solid #FFF;
 }
+.text .tabs-panel .line .note::after {
+    content: '';
+    background-color: #FFF;
+    width: 2px;
+    height: 35px;
+    border-radius: 20px;
+    position: absolute;
+    top: -25px;
+    right: -2px;
+}
+
+.text .tabs-panel .line .note.whitespace {border: 2px solid rgba(255, 255, 255, 0.5);}
+.text .tabs-panel .line .note.whitespace::after {background-color: transparent;}
 
 .text .tabs-panel .line .note.A0 {transform: translateY(calc(9px * 51));}
 .text .tabs-panel .line .note.Ah0 {transform: translateY(calc(9px * 51));}

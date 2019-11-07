@@ -308,10 +308,7 @@ $(function(){
     //-------------------
     // 紀錄簡譜
     //-------------------
-    function note(panel, number, key, color){
-        //取代 key 中的升記號
-        console.log(key);
-        
+    function note(panel, number, key, color){        
         //移動文字區塊卷軸置最下方
         moveScrollY();
 
@@ -323,7 +320,8 @@ $(function(){
 
         if(number=='0'){
             //新增空格
-            $noteLine.append('<div class="note selected ' + key + '" style="background-color: '+ color +'; color: transparent">' + number + '</div>');
+            // $noteLine.append('<div class="note selected ' + key + '" style="background-color: '+ color +'; color: transparent">' + number + '</div>');
+            $noteLine.append('<div class="note selected whitespace" style="background-color: '+ color +'; color: transparent">' + number + '</div>');
         }else{
             //新增音符
             $noteLine.append('<div class="note selected ' + key + '" style="background-color: '+ color +';">' + number + '</div>');
