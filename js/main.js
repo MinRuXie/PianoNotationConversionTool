@@ -320,7 +320,6 @@ $(function(){
 
         if(number=='0'){
             //新增空格
-            // $noteLine.append('<div class="note selected ' + key + '" style="background-color: '+ color +'; color: transparent">' + number + '</div>');
             $noteLine.append('<div class="note selected whitespace" style="background-color: '+ color +'; color: transparent">' + number + '</div>');
         }else{
             //新增音符

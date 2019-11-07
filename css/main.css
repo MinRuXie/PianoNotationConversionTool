@@ -26,6 +26,7 @@ html, body {
     padding: 5px;
     font-size: 15px;
     color: #FFF;
+    letter-spacing: 2px;
 }
 
 .text .number-panel,
@@ -280,6 +281,26 @@ html, body {
     height: 57%;
     width: 10%;
     float: left;
+    padding: 5px;
+}
+
+.toolbox .toolbutton {
+    background-color: rgb(189, 189, 190);
+    width: 100%;
+    border: 2px solid rgb(121, 121, 121);
+    color: rgb(121, 121, 121);
+    font-weight: 700;
+    text-align: center;
+    padding: 3px 0;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    letter-spacing: 2px;
+    transition: 0.3s;
+}
+.toolbox .toolbutton:hover {
+    opacity: 0.8;
 }
 
 .piano {
@@ -354,6 +375,7 @@ html, body {
     cursor:pointer;
     line-height: 1.5;
     font-weight: 900;
+    transition: 0.3s;
 }
 
 .ivory:hover {
@@ -417,6 +439,7 @@ html, body {
     cursor: pointer;
     text-align: center;
     float: left;
+    transition: 0.3s;
 }
 
 .ebony_child:hover {
@@ -448,18 +471,6 @@ html, body {
 
 .group_left .ebony {
     width: 28%;
-}
-
-.toolbutton {
-    background-color: rgb(189, 189, 190);
-    width: 100%;
-    border: 2px solid rgb(121, 121, 121);
-    color: rgb(121, 121, 121);
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 5px;
-    border-radius: 5px;
-    font-size: 15px;
 }
 
 .selected {
