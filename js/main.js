@@ -5,6 +5,11 @@ $(function(){
     // window.onload = function(){
     //     $('.loading').hide();
     // };
+
+    // 載入動畫 1 秒
+    setTimeout(function(){
+        $('.loading').fadeOut();
+    }, 1000);
     
     //變數準備
     $piano = $('.piano');
