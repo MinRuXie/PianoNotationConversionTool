@@ -526,6 +526,7 @@ html, body {
     float: left;
     margin-right: 15px;
     margin-bottom: 10px;
+    cursor: pointer;
     transition: 0.3s;
 }
 .colorarea .colorbox .colorbtn:hover {
