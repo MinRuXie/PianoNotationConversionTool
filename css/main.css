@@ -126,21 +126,22 @@ html, body {
     line-height: 18px;
     position: relative;
     z-index: 1;
-    margin: 0 3px;
-    border: 2px solid #FFF;
+    margin: 0 10px;
+    border: 1px solid #FFF;
+    font-size: 12px;
 }
 .text .tabs-panel .line .note::after {
     content: '';
     background-color: #FFF;
-    width: 2px;
+    width: 1px;
     height: 35px;
     border-radius: 20px;
     position: absolute;
     top: -25px;
-    right: -2px;
+    right: -1px;
 }
 
-.text .tabs-panel .line .note.whitespace {border: 2px solid rgba(255, 255, 255, 0.5);}
+.text .tabs-panel .line .note.whitespace {border: 2px solid rgba(255, 255, 255, 0.1);}
 .text .tabs-panel .line .note.whitespace::after {background-color: transparent;}
 
 .text .tabs-panel .line .note.A0 {transform: translateY(calc(9px * 51));}
@@ -574,7 +575,6 @@ html, body {
     transform: translateY(-50%); /* 扣掉自己的 50% 高度 */
     transform: translateX(-50%); /* 扣掉自己的 50% 高度 */
 }
-
 
 * {
     /* 不能反白 */
