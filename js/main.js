@@ -400,7 +400,7 @@ $(function(){
     //-------------------
     function moveScrollY(panel){
         text_height = panel.find('.line').height() * panel.find('.line').length;
-        $text.animate({'scrollTop': text_height}, 200); //移動卷軸至文字區塊最下方
+        $text.animate({'scrollTop': text_height}, 0); // 移動卷軸至文字區塊最下方
     }
 
     //-------------------
