@@ -13,6 +13,7 @@ $(function(){
     
     // 變數準備
     $piano = $('.piano');
+    $slide = $('.slide');
     $text = $('.text');
     $text_number = $text.find('.number-panel');
     $text_tabs = $text.find('.tabs-panel');
@@ -421,18 +422,20 @@ $(function(){
                 $text.stop().animate({'height': '100%'}, 300);
                 $toolbox.stop().animate({'height': '100%'}, 300);
                 $piano.stop().animate({'height': '0%'}, 300);
-                recordScrollX(); //紀錄卷軸位置
-                $('.toolbutton').eq(3).css('display', 'block'); //開啟
-                $('.toolbutton').eq(4).css('display', 'none'); //關閉
+                $slide.hide();
+                recordScrollX(); // 紀錄卷軸位置
+                $('.toolbutton').eq(3).css('display', 'block'); // 開啟鋼琴按鈕
+                $('.toolbutton').eq(4).css('display', 'none'); // 關閉鋼琴按鈕
                 break;
             }
             case "open": {
                 $text.stop().animate({'height': '65%'}, 300);
                 $toolbox.stop().animate({'height': '65%'}, 300);
                 $piano.stop().animate({'height': '35%'}, 300);
-                $piano.animate({'scrollLeft': cur_piano_x_scroll}, 0); //移動卷軸至上次位置
-                $('.toolbutton').eq(3).css('display', 'none'); //開啟
-                $('.toolbutton').eq(4).css('display', 'block'); //關閉
+                $slide.show();
+                $piano.animate({'scrollLeft': cur_piano_x_scroll}, 0); // 移動卷軸至上次位置
+                $('.toolbutton').eq(3).css('display', 'none'); // 開啟鋼琴按鈕
+                $('.toolbutton').eq(4).css('display', 'block'); // 關閉鋼琴按鈕
                 break;
             }
         }
