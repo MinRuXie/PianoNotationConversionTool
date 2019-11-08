@@ -492,6 +492,8 @@ $(function(){
             $(this).css('border-width', '5');
         });
 
+        // 移除確定按鈕
+        $(".colorbox").find('.checkbtn').remove();
         // 新增確定按鈕
         $(".colorbox").append('<div class="checkbtn">確定</div>');
         // 按下確定
