@@ -313,7 +313,7 @@ $(function(){
     //-------------------
     function note(panel, number, key, color){        
         // 移動文字區塊卷軸置最下方
-        moveScrollY();
+        moveScrollY(panel);
 
         // 移除前一個焦點
         panel.find(".note").removeClass('selected');
@@ -331,10 +331,11 @@ $(function(){
     }
 
     //-------------------
-    // 刪除簡譜
+    // 刪除 簡譜 / 軌道
     //-------------------
     function delNote(panel){    
-        moveScrollY(); // 移動文字區塊卷軸置最下方
+        // 移動文字區塊捲軸置最下方
+        moveScrollY(panel);
 
         // 目前焦點音符
         $focuseNote = panel.find(".selected");
@@ -366,6 +367,7 @@ $(function(){
         }
 
 		if(panel.find('.line').length >= 1){
+            // 檢查最後一行軌道有無音符
             if(panel.find('.line').last().children().not('.line-bg').length !== 0){
                 panel.append(line_html);
             }
@@ -380,7 +382,7 @@ $(function(){
             openColorArea($(this)); // 開啟選擇顏色區塊
         });
 
-        moveScrollY(); // 移動文字區塊卷軸置最下方
+        moveScrollY(panel); // 移動文字區塊卷軸置最下方
     }
 
     //-------------------
@@ -396,8 +398,8 @@ $(function(){
     //-------------------
     // 移動文字區塊卷軸位置
     //-------------------
-    function moveScrollY(){
-        text_height = $text.find('.line').height()*$text.find('.line').length;
+    function moveScrollY(panel){
+        text_height = panel.find('.line').height() * panel.find('.line').length;
         $text.animate({'scrollTop': text_height}, 200); //移動卷軸至文字區塊最下方
     }
 
