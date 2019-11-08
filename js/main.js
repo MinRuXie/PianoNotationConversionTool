@@ -112,9 +112,9 @@ $(function(){
         // 新增白鍵內容
         $group_left.find('.ivory').each(function(index){
             // 新增 key
-            $(this).append('<div class="key">' + key_ivory[index] + '</div>');
+            $(this).append(`<div class="key">${key_ivory[index]}</div>`);
             // 新增音訊
-            $(this).append('<audio id="'+ key_ivory[index] +'"><source src="./audio/'+ audio_ivory[index] +'" type="audio/mpeg"></audio>');
+            $(this).append(`<audio id="${key_ivory[index]}"><source src="./audio/${ audio_ivory[index]}" type="audio/mpeg"></audio>`);
         });
 
         // 新增黑鍵內容
@@ -122,13 +122,12 @@ $(function(){
             $ebony.find('.ebony_child').each(function(index2){
                 // 新增 key
                 if(index2 < 1){ // 第 0 個 (升記號)
-                    $(this).append('<div data-name="' + key_ebony_h[index] + '" class="key">' + key_ebony_b[index] + '</div>');
+                    $(this).append(`<div data-name="${key_ebony_h[index]}" class="key">${key_ebony_b[index]}</div>`);
                 }else{ // 第 1 個 (降記號)
-                    $(this).append('<div data-name="' + key_ebony_b[index] + '" class="key">' + key_ebony_b[index] + '</div>');
+                    $(this).append(`<div data-name="${key_ebony_b[index]}" class="key">${key_ebony_b[index]}</div>`);
                 }
-                
                 // 新增音訊
-                $(this).append('<audio id="'+ key_ebony_b[index] +'"><source src="./audio/'+ audio_ebony[index] +'" type="audio/mpeg"></audio>');
+                $(this).append(`<audio id="${key_ebony_b[index]}"><source src="./audio/${audio_ebony[index]}" type="audio/mpeg"></audio>`);
             });        
         });
 
@@ -202,9 +201,9 @@ $(function(){
             // 新增白鍵內容
             $(this).find('.ivory').each(function(index2){
                 // 新增 key
-                $(this).append('<div class="key">' + key_ivory[2+(7*index)+index2] + '</div>');
+                $(this).append(`<div class="key">${key_ivory[2+(7*index)+index2]}</div>`);
                 // 新增音訊
-                $(this).append('<audio id="'+ key_ivory[2+(7*index)+index2] +'"><source src="./audio/'+ audio_ivory[2+(7*index)+index2] +'" type="audio/mpeg"></audio>');
+                $(this).append(`<audio id="${key_ivory[2+(7*index)+index2]}"><source src="./audio/${audio_ivory[2+(7*index)+index2]}" type="audio/mpeg"></audio>`);
             });
 
             // 新增黑鍵內容
@@ -212,50 +211,46 @@ $(function(){
                 $(this).find('.ebony_child').each(function(index3){
                     // 新增 key (第一個黑鍵 + [一組5個黑鍵] + 現在是第幾個黑鍵)
                     if(index3 < 1){ // 第 0 個 (升記號)
-                        $(this).append('<div data-name="' + key_ebony_h[1+(5*index)+0] + '" class="key">' + key_ebony_b[1+(5*index)+0] + '</div>');
+                        $(this).append(`<div data-name="${key_ebony_h[1+(5*index)+0]}" class="key">${key_ebony_b[1+(5*index)+0]}</div>`);
                     }else{ // 第 1 個 (降記號)
-                        $(this).append('<div data-name="' + key_ebony_b[1+(5*index)+0] + '"  class="key">' + key_ebony_b[1+(5*index)+0] + '</div>');
+                        $(this).append(`<div data-name="${key_ebony_b[1+(5*index)+0]}"  class="key">${key_ebony_b[1+(5*index)+0]}</div>`);
                     }
-
                     // 新增音訊
-                    $(this).append('<audio id="'+ key_ebony_b[1+(5*index)+0] +'"><source src="./audio/'+ audio_ebony[1+(5*index)+0] +'" type="audio/mpeg"></audio>');
+                    $(this).append(`<audio id="${key_ebony_b[1+(5*index)+0]}"><source src="./audio/${audio_ebony[1+(5*index)+0]}" type="audio/mpeg"></audio>`);
                 });
             });
             $(this).find('.ebony_2').each(function(index2){
                 $(this).find('.ebony_child').each(function(index3){
                     // 新增 key (第一個黑鍵 + [一組5個黑鍵] + 現在是第幾個黑鍵)
                     if(index3 < 1){ // 第 0 個 (升記號)
-                        $(this).append('<div data-name="' + key_ebony_h[1+(5*index)+1] + '" class="key">' + key_ebony_b[1+(5*index)+1] + '</div>');
+                        $(this).append(`<div data-name="${key_ebony_h[1+(5*index)+1]}" class="key">${key_ebony_b[1+(5*index)+1]}</div>`);
                     }else{ // 第 1 個 (降記號)
-                        $(this).append('<div data-name="' + key_ebony_b[1+(5*index)+1] + '"  class="key">' + key_ebony_b[1+(5*index)+1] + '</div>');
+                        $(this).append(`<div data-name="${key_ebony_b[1+(5*index)+1]}"  class="key">${key_ebony_b[1+(5*index)+1]}</div>`);
                     }
-
                     // 新增音訊
-                    $(this).append('<audio id="'+ key_ebony_b[1+(5*index)+1] +'"><source src="./audio/'+ audio_ebony[1+(5*index)+1] +'" type="audio/mpeg"></audio>');
+                    $(this).append(`<audio id="${key_ebony_b[1+(5*index)+1]}"><source src="./audio/${audio_ebony[1+(5*index)+1]}" type="audio/mpeg"></audio>`);
                 });
             });
             $(this).find('.ebony_3').each(function(index2){
                 $(this).find('.ebony_child').each(function(index3){
                     // 新增 key (第一個黑鍵 + [一組5個黑鍵] + 現在是第幾個黑鍵)
                     if(index3 < 1){ // 第 0 個 (升記號)
-                        $(this).append('<div data-name="' + key_ebony_h[1+(5*index)+2] + '" class="key">' + key_ebony_b[1+(5*index)+2] + '</div>');
+                        $(this).append(`<div data-name="${key_ebony_h[1+(5*index)+2]}" class="key">${key_ebony_b[1+(5*index)+2]}</div>`);
                     }else{ // 第 1 個 (降記號)
-                        $(this).append('<div data-name="' + key_ebony_b[1+(5*index)+2] + '" class="key">' + key_ebony_b[1+(5*index)+2] + '</div>');
+                        $(this).append(`<div data-name="${key_ebony_b[1+(5*index)+2]}" class="key">${key_ebony_b[1+(5*index)+2]}</div>`);
                     }
-
                     // 新增音訊
-                    $(this).append('<audio id="'+ key_ebony_b[1+(5*index)+2] +'"><source src="./audio/'+ audio_ebony[1+(5*index)+2] +'" type="audio/mpeg"></audio>');
+                    $(this).append(`<audio id="${key_ebony_b[1+(5*index)+2]}"><source src="./audio/${audio_ebony[1+(5*index)+2]}" type="audio/mpeg"></audio>`);
                 });
             });
             $(this).find('.ebony_4').each(function(index2){
                 $(this).find('.ebony_child').each(function(index3){
                     // 新增 key (第一個黑鍵 + [一組5個黑鍵] + 現在是第幾個黑鍵)
                     if(index3 < 1){ // 第 0 個 (升記號)
-                        $(this).append('<div data-name="' + key_ebony_h[1+(5*index)+3] + '" class="key">' + key_ebony_b[1+(5*index)+3] + '</div>');
+                        $(this).append(`<div data-name="${key_ebony_h[1+(5*index)+3]}" class="key">${key_ebony_b[1+(5*index)+3]}</div>`);
                     }else{ // 第 1 個 (降記號)
-                        $(this).append('<div data-name="' + key_ebony_b[1+(5*index)+3] + '" class="key">' + key_ebony_b[1+(5*index)+3] + '</div>');
+                        $(this).append(`<div data-name="${key_ebony_b[1+(5*index)+3]}" class="key">${key_ebony_b[1+(5*index)+3]}</div>`);
                     }
-
                     // 新增音訊
                     $(this).append('<audio id="'+ key_ebony_b[1+(5*index)+3] +'"><source src="./audio/'+ audio_ebony[1+(5*index)+3] +'" type="audio/mpeg"></audio>');
                 });
@@ -264,13 +259,12 @@ $(function(){
                 $(this).find('.ebony_child').each(function(index3){
                     // 新增 key (第一個黑鍵 + [一組5個黑鍵] + 現在是第幾個黑鍵)
                     if(index3 < 1){ // 第 0 個 (升記號)
-                        $(this).append('<div data-name="' + key_ebony_h[1+(5*index)+4] + '" class="key">' + key_ebony_b[1+(5*index)+4] + '</div>');
+                        $(this).append(`<div data-name="${key_ebony_h[1+(5*index)+4]}" class="key">${key_ebony_b[1+(5*index)+4]}</div>`);
                     }else{ // 第 1 個 (降記號)
-                        $(this).append('<div data-name="' + key_ebony_b[1+(5*index)+4] + '" class="key">' + key_ebony_b[1+(5*index)+4] + '</div>');
+                        $(this).append(`<div data-name="${key_ebony_b[1+(5*index)+4]}" class="key">${key_ebony_b[1+(5*index)+4]}</div>`);
                     }
-
                     // 新增音訊
-                    $(this).append('<audio id="'+ key_ebony_b[1+(5*index)+4] +'"><source src="./audio/'+ audio_ebony[1+(5*index)+4] +'" type="audio/mpeg"></audio>');
+                    $(this).append(`<audio id="${key_ebony_b[1+(5*index)+4]}"><source src="./audio/${audio_ebony[1+(5*index)+4]}" type="audio/mpeg"></audio>`);
                 });
             });
         });
@@ -295,9 +289,9 @@ $(function(){
         // 新增白鍵內容
         $group_right.find('.ivory').each(function(){
             // 新增 key
-            $(this).append('<div class="key">' + key_ivory[key_ivory.length-1] + '</div>');
+            $(this).append(`<div class="key">${key_ivory[key_ivory.length-1]}</div>`);
             // 新增音訊
-            $(this).append('<audio id="'+ key_ivory[key_ivory.length-1] +'"><source src="./audio/'+ audio_ivory[audio_ivory.length-1] +'" type="audio/mpeg"></audio>');
+            $(this).append(`<audio id="${key_ivory[key_ivory.length-1]}"><source src="./audio/${audio_ivory[audio_ivory.length-1]}" type="audio/mpeg"></audio>`);
         });
     }
 
@@ -323,10 +317,10 @@ $(function(){
 
         if(number == '0'){
             // 新增空格
-            $noteLine.append('<div class="note selected whitespace" style="background-color: '+ color +'; color: transparent">' + number + '</div>');
+            $noteLine.append(`<div class="note selected whitespace" style="background-color: ${color}; color: transparent">${number}</div>`);
         }else{
             // 新增音符
-            $noteLine.append('<div class="note selected ' + key + '" style="background-color: '+ color +';">' + number + '</div>');
+            $noteLine.append(`<div class="note selected ${key}" style="background-color: ${color};">${number}</div>`);
         }
     }
 
@@ -445,6 +439,7 @@ $(function(){
         var pre_name = $('.title').html(); // 預設值為上次輸入的歌名
         var decodeHtml = htmlDecode(pre_name); //用浏览器内部转换器实现html解码
         var song_name = prompt('請輸入歌名：', decodeHtml);
+        
         if(song_name == null){
             song_name = decodeHtml;
         }
