@@ -1,4 +1,4 @@
-// 等HTML載入完成
+// 等 HTML 載入完成
 $(function(){
 
     // 等資源載入完成後才顯示畫面
@@ -12,19 +12,20 @@ $(function(){
     }, 1000);
     
     // 變數準備
-    $piano = $('.piano');
-    $slide = $('.slide');
-    $text = $('.text');
-    $text_number = $text.find('.number-panel');
-    $text_tabs = $text.find('.tabs-panel');
-    $toolbox = $('.toolbox');
-    var cur_piano_x_scroll = 0; // 卷軸位置
+    let $piano = $('.piano');
+    let $slide = $('.slide');
+    let $text = $('.text');
+    let $text_number = $text.find('.number-panel');
+    let $text_tabs = $text.find('.tabs-panel');
+    let $toolbox = $('.toolbox');
+    let cur_piano_x_scroll = 0; // 卷軸位置
 
     $('.toolbutton').eq(3).css('display', 'none'); // 開啟
 
-    // 設定卷軸(人為觸發才生效)
+    // 設定卷軸 (人為觸發才生效)
     $piano.animate({'scrollLeft': '2000vw'}, 500);
-    recordScrollX(); // 紀錄卷軸位置
+    // 紀錄卷軸位置
+    recordScrollX();
     
     //-------------------
     // 建立琴鍵
@@ -339,7 +340,7 @@ $(function(){
         $focuseNote = panel.find(".selected");
 
         // 如果有空的 line 先刪除, 否則只移除 note
-        if(panel.find('.line').length!=1 && panel.find('.line').last().children().length==0){
+        if(panel.find('.line').length !=1 && panel.find('.line').last().children().length == 0){
             // 移除空的一行
             panel.find('.line').last().remove();
         }else{
@@ -360,12 +361,12 @@ $(function(){
     function addNoteLine(panel){
         let line_html = "<div class='line' title='雙擊修改區塊顏色'></div>";
 
-        if(panel==$text_tabs){
+        if(panel == $text_tabs){
             line_html = "<div class='line' title='雙擊修改區塊顏色'><div class='line-bg'><span></span><span></span><span></span><span></span><span></span></div></div>";
         }
 
-		if(panel.find('.line').length>=1){
-            if(panel.find('.line').last().children().length!==0){
+		if(panel.find('.line').length >= 1){
+            if(panel.find('.line').last().children().length !== 0){
                 panel.append(line_html);
             }
         }else{
@@ -387,15 +388,9 @@ $(function(){
     //-------------------
     function playaudio(key){
         notekey = document.getElementById(key);
-
-        // 暫停
-        notekey.pause();
-
-        // 讓音訊進度回歸 0 
-        notekey.currentTime = 0;
-
-        // 播放
-        notekey.play();
+        notekey.pause(); // 暫停
+        notekey.currentTime = 0; // 讓音訊進度回歸 0 
+        notekey.play(); // 播放
     }
 
     //-------------------
@@ -448,7 +443,7 @@ $(function(){
         var pre_name = $('.title').html(); // 預設值為上次輸入的歌名
         var decodeHtml = htmlDecode(pre_name); //用浏览器内部转换器实现html解码
         var song_name = prompt('請輸入歌名：', decodeHtml);
-        if(song_name==null){
+        if(song_name == null){
             song_name = decodeHtml;
         }
         $('.title').text(song_name); // 顯示新歌名
@@ -460,8 +455,8 @@ $(function(){
     function openColorArea($element){
         $(".colorarea").show(); // 顯示選擇區塊
 
-        // line 的顏色
-        var rgbString = $element.css('border-left-color'); // 取得左邊框顏色 rgb(red, green ,blue)
+        // line 的顏色: 取得左邊框顏色 rgb(red, green ,blue)
+        var rgbString = $element.css('border-left-color');
         // 取得 rgb 色碼
         var red = parseInt(getRGB(rgbString).red);
         var green = parseInt(getRGB(rgbString).green);
@@ -471,7 +466,8 @@ $(function(){
         // 在按鈕上顯示目前選取的顏色
         $(".colorbtn").css('border-width', '1');
         $('.colorbtn').each(function(index){
-            var rgbString = $(this).css('backgroundColor'); // 取得背景色 rgb(red, green ,blue)
+            // 取得背景色 rgb(red, green ,blue)
+            var rgbString = $(this).css('backgroundColor');
             // 取得 rgb 色碼
             var red = parseInt(getRGB(rgbString).red);
             var green = parseInt(getRGB(rgbString).green);
