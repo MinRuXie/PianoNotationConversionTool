@@ -321,7 +321,7 @@ $(function(){
         // 取得目前軌道
         $noteLine = panel.find('.line').last();
 
-        if(number=='0'){
+        if(number == '0'){
             // 新增空格
             $noteLine.append('<div class="note selected whitespace" style="background-color: '+ color +'; color: transparent">' + number + '</div>');
         }else{
@@ -366,7 +366,7 @@ $(function(){
         }
 
 		if(panel.find('.line').length >= 1){
-            if(panel.find('.line').last().children().length !== 0){
+            if(panel.find('.line').last().children().not('.line-bg').length !== 0){
                 panel.append(line_html);
             }
         }else{
