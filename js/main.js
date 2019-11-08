@@ -341,7 +341,7 @@ $(function(){
         $focuseNote = panel.find(".selected");
 
         // 如果有空的 line 先刪除, 否則只移除 note
-        if(panel.find('.line').length !=1 && panel.find('.line').last().children().length == 0){
+        if(panel.find('.line').length !=1 && panel.find('.line').last().children().not('.line-bg').length == 0){
             // 移除空的一行
             panel.find('.line').last().remove();
         }else{
