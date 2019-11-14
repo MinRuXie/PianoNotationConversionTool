@@ -18,6 +18,7 @@ $(function(){
     let $text_number = $text.find('.number-panel');
     let $text_tabs = $text.find('.tabs-panel');
     let $toolbox = $('.toolbox');
+    let $toolbox_btn = $('#toolbox-btn');
     let cur_piano_x_scroll = 0; // 卷軸位置
 
     $('.toolbutton').eq(3).css('display', 'none'); // 開啟
@@ -412,7 +413,7 @@ $(function(){
             case "close": {
                 $text.stop().animate({'height': '100%'}, 300);
                 $toolbox.stop().animate({'height': '100%'}, 300);
-                $piano.stop().animate({'height': '0%'}, 300);
+                $piano.stop().animate({'bottom': '-35%'}, 300)
                 $slide.hide();
                 recordScrollX(); // 紀錄卷軸位置
                 $('.toolbutton').eq(3).css('display', 'block'); // 開啟鋼琴按鈕
@@ -422,7 +423,7 @@ $(function(){
             case "open": {
                 $text.stop().animate({'height': '65%'}, 300);
                 $toolbox.stop().animate({'height': '65%'}, 300);
-                $piano.stop().animate({'height': '35%'}, 300);
+                $piano.stop().animate({'bottom': '0'}, 300);
                 $slide.show();
                 $piano.animate({'scrollLeft': cur_piano_x_scroll}, 0); // 移動卷軸至上次位置
                 $('.toolbutton').eq(3).css('display', 'none'); // 開啟鋼琴按鈕
@@ -444,6 +445,14 @@ $(function(){
             song_name = decodeHtml;
         }
         $('.title').text(song_name); // 顯示新歌名
+    });
+
+    //-------------------
+    // 工具箱收合控制
+    //-------------------
+    $toolbox_btn.on('click', function(event){
+        $toolbox.toggleClass('closed');
+        $text.toggleClass('full');
     });
 
     //-------------------
@@ -707,7 +716,7 @@ $(function(){
 					break;
 				}
 			}
-		});
+        });
     }
 
 
