@@ -1,6 +1,23 @@
 // 等 HTML 載入完成
 $(function(){
 
+    /* 預先載入圖片 */
+    function preloadImg(image) {
+        let img = new Image();
+        img.src = image;
+    }
+
+    let pics = [
+        '../PianoNotationConversionTool/image/music.png',
+        '../PianoNotationConversionTool/image/lg.rainy-preloader.gif',
+        '../PianoNotationConversionTool/image/lg.rotating-squares-preloader-gif.gif',
+    ];
+
+    for(let i=0;i<pics.length;i++){
+        preloadImg(pics[i]);
+    }
+    
+    
     // 等資源載入完成後才顯示畫面
     // window.onload = function(){
     //     $('.loading').hide();
