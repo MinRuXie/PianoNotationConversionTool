@@ -1,7 +1,7 @@
 ﻿# 鋼琴簡譜工具
 <img src="https://i.imgur.com/AXnU5WV.png" width="600" style="padding-bottom: 20px;">
 
-<img src="https://i.imgur.com/0SGk4fg.png" width="600">
+<img src="https://i.imgur.com/9kKutZL.png" width="600">
 
 ## 需求
 * 讓懶得手寫簡譜的人可以用點擊完成簡譜
