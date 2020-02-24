@@ -563,13 +563,13 @@ html, body {
     z-index: 10;
     width: 50%;
     height: 50%;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(0, 0, 0, 0.6);
     top: 20%;
     left:50%;
     transform: translateY(-50%); /* 扣掉自己的 50% 高度 */
     transform: translateX(-50%); /* 扣掉自己的 50% 高度 */
     border-radius: 5px;
-    box-shadow: 1px 1px 5px rgb(61, 61, 61);
+    box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.3);
     padding: 20px 30px;
 }
 
@@ -577,13 +577,15 @@ html, body {
     display: block;
     text-align: center;
     padding: 10px 0 30px;
+    color: #FFF;
+    letter-spacing: 2px;
 }
 
 .colorarea .colorbox .colorbtn {
     width: 80px;
-    height: 70px;
-    border-radius: 5px;
-    border: 0px solid rgba(0, 0, 0, 0.5);
+    height: 80px;
+    border-radius: 100px;
+    border: 0px solid #999;
     float: left;
     margin-right: 15px;
     margin-bottom: 10px;
@@ -591,7 +593,7 @@ html, body {
     transition: 0.3s;
 }
 .colorarea .colorbox .colorbtn:hover {
-    opacity: 0.7;
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.8) !important;
 }
 
 .colorarea .colorbox .checkbtn,
@@ -600,7 +602,7 @@ html, body {
     height: 30px;
     position: absolute;
     bottom: 20px;
-    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.6);
     color: #FFF;
     line-height: 30px;
     text-align: center;
@@ -616,7 +618,7 @@ html, body {
 }
 .colorarea .colorbox .checkbtn:hover,
 .colorarea .colorbox .cancelbtn:hover {
-    background: rgba(0, 0, 0, 0.8);
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .loading {
