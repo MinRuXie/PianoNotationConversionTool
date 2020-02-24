@@ -488,7 +488,6 @@ $(function(){
         
         // 在按鈕上顯示目前選取的顏色
         $(".colorbtn").removeClass('selected');
-        // $(".colorbtn").css('box-shadow', '0px 0px 0px rgba(255, 255, 255, 0.9)');
         $('.colorbtn').each(function(index){
             // 取得背景色 rgb(red, green ,blue)
             var rgbString = $(this).css('backgroundColor');
@@ -499,7 +498,6 @@ $(function(){
             btn_hexString = rgbToHex(red, green, blue);
 
             if(line_hexString == btn_hexString){
-                // $(this).css('box-shadow', '0px 0px 20px rgba(255, 255, 255, 0.9)');
                 $(this).addClass('selected');
             }
         });
@@ -513,8 +511,6 @@ $(function(){
             var blue = parseInt(getRGB(rgbString).blue);
             select_hexString = rgbToHex(red, green, blue);
 
-            // $(".colorbtn").css('box-shadow', '0px 0px 0px rgba(255, 255, 255, 0.9)');
-            // $(this).css('box-shadow', '0px 0px 20px rgba(255, 255, 255, 0.9)');
             $(".colorbtn").removeClass('selected');
             $(this).addClass('selected');
         });
