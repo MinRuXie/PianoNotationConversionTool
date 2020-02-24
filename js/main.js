@@ -592,7 +592,7 @@ $(function(){
 
         $('.toolbutton').each(function(index){
             $(this).on('touchstart', function(event){
-                $(this).css({'background': '#999'});
+                $(this).css({'background': 'rgba(255, 255, 255, 0.1)'});
 
                 switch(index){
                     case 0: { // 刪除
@@ -629,7 +629,7 @@ $(function(){
                 }
             })
             .on('touchend', function(event){
-                $(this).css({'background': '#BDBDBE'});
+                $(this).css({'background': 'rgba(50, 50, 50)'});
             });
         });
 	//-------------------
@@ -670,7 +670,7 @@ $(function(){
 
         $('.toolbutton').each(function(index){
             $(this).on('mousedown', function(event){
-                $(this).css({'background': '#999'});
+                $(this).css({'background': 'rgba(255, 255, 255, 0.1)'});
 
                 switch(index){
                     case 0: { // 刪除
@@ -707,7 +707,7 @@ $(function(){
                 }
             })
             .on('mouseup', function(event){
-                $(this).css({'background': '#BDBDBE'});
+                $(this).css({'background': 'rgba(50, 50, 50)'});
             });
         });
 		
