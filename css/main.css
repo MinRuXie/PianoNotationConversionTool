@@ -323,9 +323,10 @@ html, body {
     height: 100%;
     transform: translateY(-50%);
     cursor: pointer;
+    transition: 0.3s;
 }
 .toolbox #toolbox-btn:hover {
-    opacity: 0.8;
+    opacity: 0.6;
 }
 .toolbox #toolbox-btn::before {
     content: '▶';
