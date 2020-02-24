@@ -344,7 +344,8 @@ html, body {
     transform: translateX(calc(100% - 18px));
 }
 .toolbox.closed #toolbox-btn::before {
-    transform: rotate(540deg);
+    transform: rotate(180deg);
+    transition-delay: 0.2s
 }
 .toolbox .toolbutton {
     width: 100%;
