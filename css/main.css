@@ -33,7 +33,9 @@ html, body {
     color: #FFF;
     letter-spacing: 2px;
 }
-
+.text .selected {
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.7);
+}
 .text .number-panel,
 .text .tabs-panel {
     position: relative;
@@ -364,6 +366,9 @@ html, body {
 .toolbox .toolbutton:hover {
     background-color: rgba(255, 255, 255, 0.2);
 }
+.toolbox .toolbutton.selected {
+    background: rgba(255, 255, 255, 0.1);
+}
 
 .piano {
     position: absolute;
@@ -513,10 +518,6 @@ html, body {
     width: 28%;
 }
 
-.selected {
-    opacity: 0.6;
-}
-
 .warn_size {
     display: none;
     position: fixed;
@@ -593,7 +594,10 @@ html, body {
     transition: 0.3s;
 }
 .colorarea .colorbox .colorbtn:hover {
-    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.8) !important;
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.8);
+}
+.colorarea .colorbox .colorbtn.selected {
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.9);
 }
 
 .colorarea .colorbox .checkbtn,
