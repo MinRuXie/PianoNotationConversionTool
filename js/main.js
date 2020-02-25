@@ -364,29 +364,29 @@ $(function(){
     }
 
     //-------------------
-    // 刪除 簡譜 / 軌道
+    // 刪除 簡譜
     //-------------------
     function delNote(panel) {    
         // 移動文字區塊捲軸置最下方
         moveScrollY(panel);
 
         // 目前焦點音符
-        $focuseNote = panel.find(".selected");
+        let $focuseNote = panel.find(".selected");
 
-        // 如果有空的 line 先刪除, 否則只移除 note
-        if(panel.find('.line').length !=1 && panel.find('.line').last().children().not('.line-bg').length == 0){
-            // 移除空的一行 (音符焦點不變)
-            panel.find('.line').last().remove();
-        }else{
-            // 移除目前焦點音符
-            $focuseNote.remove();
+        // 將焦點移置前一個或後一個音符 (如果有)
+        let $prevNote = $focuseNote.prev('.note');
+        let $nextNote = $focuseNote.next('.note');
+        
+        if ($prevNote.length != 0) {
+            $prevNote.addClass('selected');
+            console.log("prev");
+        } else if ($nextNote.length != 0) {
+            $nextNote.addClass('selected');
+            console.log("next");
         }
 
-        // 將焦點移至最後一個音符
-        $nextfocuseNote = panel.find(".note").last();
-
-        // 將焦點移至下一個音符
-        $nextfocuseNote.addClass("selected");
+        // 移除目前焦點音符
+        $focuseNote.remove();
     }
 
     //-------------------
@@ -395,9 +395,23 @@ $(function(){
     function delNoteLine(panel, element) {
         // 檢查軌道數量
         if(panel.find('.line').length > 1) {
+            // 檢查軌道中是否有焦點
+            if (element.find('.selected').length != 0) {
+                let $prevLine = element.prev('.line');
+                let $nextLine = element.next('.line');
+                
+                // 移動焦點置上或下一軌道的最後一個音符
+                if ($prevLine.length != 0) {
+                    $prevLine.find('.note').last().addClass('selected');
+                } else if ($nextLine.length != 0) {
+                    $nextLine.find('.note').last().addClass('selected');
+                }
+            }
+
             element.remove(); // 移除
         }else{
-            alert("不能刪除唯一的軌道哦！");
+            // 刪除該軌道的音符
+            element.children().not('.del').remove();
         }
     }
 
