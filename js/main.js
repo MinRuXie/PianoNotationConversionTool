@@ -938,22 +938,22 @@ $(function(){
                     note($text_tabs, '0', '0', 'rgba(255, 255, 255, 0)');
 					break;
                 }
-                case 37: { // 左
+                case 65: { // 左 A
                     // 移動焦點
                     moveFocuse('note', 'left');
 					break;
                 }
-                case 38: { // 上
+                case 87: { // 上 W
                     // 移動焦點
                     moveFocuse('line', 'up');
 					break;
                 }
-                case 39: { // 右
+                case 68: { // 右 D
                     // 移動焦點
                     moveFocuse('note', 'right');
 					break;
                 }
-                case 40: { // 下
+                case 83: { // 下 S
                     // 移動焦點
                     moveFocuse('line', 'down');
 					break;
