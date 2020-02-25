@@ -324,7 +324,7 @@ $(function(){
     // 移動 & 紀錄音符焦點
     //-------------------
     function recordNoteSelected(panel, note) {
-        note.on('mousedown', function(event){
+        note.on('click', function(event){
             // 移除所有焦點
             panel.find('.line').removeClass('selected');
             panel.find('.note').removeClass('selected');
@@ -353,7 +353,7 @@ $(function(){
         // 移除所有焦點
         panel.find(".note").removeClass('selected');
 
-
+        // 音符
         let note_html = `<div class="note selected ${key}" style="background-color: ${color};">${number}</div>`
         // 空格
         if (number == '0') {
@@ -390,10 +390,8 @@ $(function(){
         
         if ($prevNote.length != 0) {
             $prevNote.addClass('selected');
-            console.log("prev");
         } else if ($nextNote.length != 0) {
             $nextNote.addClass('selected');
-            console.log("next");
         }
 
         // 移除目前焦點音符
@@ -404,7 +402,7 @@ $(function(){
     // 移動 & 紀錄軌道焦點
     //-------------------
     function recordLineSelected(panel, line) {
-        line.on('mousedown', function(event){
+        line.on('click', function(event){
             // 檢查是否已為焦點
             if (line.find('.note.selected').length == 0) {
                 // 移除所有焦點
@@ -435,7 +433,7 @@ $(function(){
                 panel.find('.line').removeClass('selected');
                 panel.find('.note').removeClass('selected'); 
                 
-                // 移動焦點置上或下一軌道的最後一個音符
+                // 移動焦點置上或下一軌道的最後一個音符 (如果有)
                 if ($prevLine.length != 0) {
                     $prevLine.find('.note').last().addClass('selected');
                     $prevLine.addClass('selected');
@@ -445,7 +443,8 @@ $(function(){
                 }
             }
 
-            line.remove(); // 移除
+            // 移除軌道
+            line.remove();
         }else{
             // 移除所有焦點
             panel.find('.line').removeClass('selected');
