@@ -321,31 +321,52 @@ $(function(){
     addNoteLine($text_tabs);
 
     //-------------------
+    // 移動 & 紀錄焦點
+    //-------------------
+    function recordNoteSelected(panel, element) {
+        element.on('mousedown', function(event){
+            // 移除所有焦點
+            panel.find(".note").removeClass('selected');
+            
+            // 移動焦點至該音符
+            element.addClass('selected');
+        });
+    }
+
+    //-------------------
     // 紀錄簡譜
     //-------------------
-    function note(panel, number, key, color){        
+    function note(panel, number, key, color) {        
         // 移動文字區塊卷軸置最下方
         moveScrollY(panel);
 
-        // 移除前一個焦點
+        // 移除所有焦點
         panel.find(".note").removeClass('selected');
 
         // 取得目前軌道
         $noteLine = panel.find('.line').last();
 
         if(number == '0'){
-            // 新增空格
+            // 新增空格 (給定焦點)
             $noteLine.append(`<div class="note selected whitespace" style="background-color: ${color}; color: transparent">${number}</div>`);
+            
+            // 安裝焦點事件
+            let lastest_note = $('.note.selected'); // 最新新增的音符
+            recordNoteSelected(panel, lastest_note);
         }else{
-            // 新增音符
+            // 新增音符 (給定焦點)
             $noteLine.append(`<div class="note selected ${key}" style="background-color: ${color};">${number}</div>`);
+            
+            // 安裝焦點事件
+            let lastest_note = $('.note.selected'); // 最新新增的音符
+            recordNoteSelected(panel, lastest_note);
         }
     }
 
     //-------------------
     // 刪除 簡譜 / 軌道
     //-------------------
-    function delNote(panel){    
+    function delNote(panel) {    
         // 移動文字區塊捲軸置最下方
         moveScrollY(panel);
 
@@ -354,7 +375,7 @@ $(function(){
 
         // 如果有空的 line 先刪除, 否則只移除 note
         if(panel.find('.line').length !=1 && panel.find('.line').last().children().not('.line-bg').length == 0){
-            // 移除空的一行
+            // 移除空的一行 (音符焦點不變)
             panel.find('.line').last().remove();
         }else{
             // 移除目前焦點音符
@@ -369,13 +390,30 @@ $(function(){
     }
 
     //-------------------
+    // 刪除一行簡譜軌道
+    //-------------------
+    function delNoteLine(panel, element) {
+        // 檢查軌道數量
+        if(panel.find('.line').length > 1) {
+            element.remove(); // 移除
+        }else{
+            alert("不能刪除唯一的軌道哦！");
+        }
+    }
+
+    //-------------------
     // 新增一行簡譜軌道
     //-------------------
-    function addNoteLine(panel){
-        let line_html = "<div class='line' title='雙擊修改區塊顏色'></div>";
+    function addNoteLine(panel) {
+        let line_html = `<div class='line' title='雙擊修改區塊顏色'><div class="del">X</div></div>`; // 簡譜
 
+        // 五線譜
         if(panel == $text_tabs){
-            line_html = "<div class='line' title='雙擊修改區塊顏色'><div class='line-bg'><span></span><span></span><span></span><span></span><span></span></div></div>";
+            line_html = `
+                <div class='line' title='雙擊修改區塊顏色'>
+                    <div class='line-bg'><span></span><span></span><span></span><span></span><span></span></div>
+                    <div class="del">X</div>
+                </div>`;
         }
 
 		if(panel.find('.line').length >= 1){
@@ -388,10 +426,16 @@ $(function(){
         }
 
         // 裝上改變顏色事件
-        var $element = panel.find('.line').last();
+        let $element = panel.find('.line').last();
         $element.on('dblclick', function(event){
             //changeAreaColor($(this)); // 修改區塊顏色
             openColorArea($(this)); // 開啟選擇顏色區塊
+        });
+
+        // 裝上刪除軌道事件
+        let $element_del_btn = $element.find('.del');
+        $element_del_btn.on('click', function(event){
+            delNoteLine(panel, $element); // 刪除一行簡譜軌道
         });
 
         moveScrollY(panel); // 移動文字區塊卷軸置最下方
@@ -400,7 +444,7 @@ $(function(){
     //-------------------
     // 播放音訊
     //-------------------
-    function playaudio(key){
+    function playaudio(key) {
         notekey = document.getElementById(key);
         notekey.pause(); // 暫停
         notekey.currentTime = 0; // 讓音訊進度回歸 0 
@@ -410,7 +454,7 @@ $(function(){
     //-------------------
     // 移動文字區塊卷軸位置
     //-------------------
-    function moveScrollY(panel){
+    function moveScrollY(panel) {
         text_height = panel.find('.line').height() * panel.find('.line').length;
         $text.animate({'scrollTop': text_height}, 0); // 移動卷軸至文字區塊最下方
     }
@@ -418,14 +462,14 @@ $(function(){
     //-------------------
     // 紀錄鋼琴卷軸位置
     //-------------------
-    function recordScrollX(){
+    function recordScrollX() {
         cur_piano_x_scroll = $piano.scrollLeft();
     }
 
     //-------------------
     // 鋼琴面板控制
     //-------------------
-    function controlPianoLayout(kind){
+    function controlPianoLayout(kind) {
         switch(kind){
             case "close": {
                 $text.stop().animate({'height': '100%'}, 300);
@@ -453,7 +497,7 @@ $(function(){
     //-------------------
     // 修改歌名
     //-------------------
-    $('.title').on('dblclick', function(event){
+    $('.title').on('dblclick', function(event) {
         var pre_name = $('.title').html(); // 預設值為上次輸入的歌名
         var decodeHtml = htmlDecode(pre_name); //用浏览器内部转换器实现html解码
         var song_name = prompt('請輸入歌名：', decodeHtml);
@@ -467,7 +511,7 @@ $(function(){
     //-------------------
     // 工具箱收合控制
     //-------------------
-    $toolbox_btn.on('click', function(event){
+    $toolbox_btn.on('click', function(event) {
         $toolbox.toggleClass('closed');
         $text.toggleClass('full');
     });
@@ -475,7 +519,7 @@ $(function(){
     //-------------------
     // 開啟選擇顏色區塊
     //-------------------
-    function openColorArea($element){
+    function openColorArea($element) {
         $(".colorarea").show(); // 顯示選擇區塊
 
         // line 的顏色: 取得左邊框顏色 rgb(red, green ,blue)
@@ -503,7 +547,7 @@ $(function(){
         });
         
         var select_hexString = line_hexString; // 預設為 line 目前選擇
-        $(".colorbtn").on('click', function(){
+        $(".colorbtn").on('click', function() {
             var rgbString = $(this).css('backgroundColor'); // 取得背景色 rgb(red, green ,blue)
             // 取得 rgb 色碼
             var red = parseInt(getRGB(rgbString).red);
@@ -532,7 +576,7 @@ $(function(){
     //-------------------
     // 關閉選擇顏色區塊
     //-------------------
-    $(".cancelbtn").on('click', function(event){
+    $(".cancelbtn").on('click', function(event) {
         $(".colorarea").hide();
     });
     

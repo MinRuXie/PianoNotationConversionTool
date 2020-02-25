@@ -56,13 +56,34 @@ html, body {
 } */
 
 .text .line {
+    min-height: 36px;
     border-left: 8px solid #FFF;
+    position: relative;
+    overflow: hidden;
 }
 .text .line:nth-child(odd) {
     background-color: rgba(255, 255, 255, 0.05);
 }
 .text .line:nth-child(even) {
     background-color: rgba(255, 255, 255, 0.1);
+}
+
+.text .line .del {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 15px;
+    height: 15px;
+    border-bottom-left-radius: 5px;
+    line-height: 15px;
+    font-size: 12px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #FFF;
+    transition: 0.3s;
+}
+.text .line .del:hover {
+    opacity: 0.6;
 }
 
 .text .number-panel.open,
