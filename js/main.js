@@ -519,8 +519,10 @@ $(function(){
         // 移除音符焦點 (讓焦點只保持在新軌道上)
         panel.find('.note.selected').removeClass('selected');
 
+        
+        let $line = panel.find('.line.selected');
+
         // 裝上 改變顏色事件
-        let $line = panel.find('.line').last();
         $line.on('dblclick', function(event){
             //changeAreaColor($(this)); // 修改區塊顏色
             openColorArea($(this)); // 開啟選擇顏色區塊
