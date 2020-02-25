@@ -38,6 +38,9 @@ $(function(){
     let $toolbox_btn = $('#toolbox-btn');
     let cur_piano_x_scroll = 0; // 卷軸位置
 
+    let cur_selected_note = $('.note.selected'); // 當前焦點音符們 (兩個面板都有)
+    let cur_selected_line = $('.line.selected'); // 當前焦點軌道們 (兩個面板都有)
+
     $('.toolbutton').eq(3).css('display', 'none'); // 開啟
 
     // 設定卷軸 (人為觸發才生效)
@@ -313,12 +316,21 @@ $(function(){
         });
     }
 
+
     // 建立琴鍵
     buildPiano();
 
     // 新增簡譜軌道
     addNoteLine($text_number);
     addNoteLine($text_tabs);
+
+    //-------------------
+    // 更新軌道及音符的焦點
+    //-------------------
+    function updateFocuse() {
+        cur_selected_note = $('.note.selected'); // 當前焦點音符
+        cur_selected_line = $('.line.selected'); // 當前焦點軌道
+    }
 
     //-------------------
     // 移動 & 紀錄音符焦點
@@ -334,6 +346,9 @@ $(function(){
 
             // 移動焦點至該音符所在軌道
             note.parent('.line').addClass('selected');
+
+            // 更新軌道及音符的焦點
+            updateFocuse();
         });
     }
 
@@ -372,6 +387,9 @@ $(function(){
         // 安裝焦點事件
         let $lastest_note = $('.note.selected'); // 最新新增的音符
         recordNoteSelected(panel, $lastest_note);
+
+        // 更新軌道及音符的焦點
+        updateFocuse();
     }
 
     //-------------------
@@ -396,6 +414,9 @@ $(function(){
 
         // 移除目前焦點音符
         $focuseNote.remove();
+
+        // 更新軌道及音符的焦點
+        updateFocuse();
     }
 
     //-------------------
@@ -414,6 +435,9 @@ $(function(){
 
                 // 移動焦點置該軌道最後一個音符
                 line.find('.note').last().addClass('selected');
+
+                // 更新軌道及音符的焦點
+                updateFocuse();
             }
         });
     }
@@ -456,6 +480,9 @@ $(function(){
             // 增加軌道焦點
             line.addClass('selected');
         }
+
+        // 更新軌道及音符的焦點
+        updateFocuse();
     }
 
     //-------------------
@@ -498,10 +525,81 @@ $(function(){
         // 裝上 刪除軌道事件
         let $line_del_btn = $line.find('.del');
         $line_del_btn.on('click', function(event){
-            delNoteLine(panel, $line); // 刪除一行簡譜軌道
+            // 刪除一行簡譜軌道
+            delNoteLine(panel, $line);
         });
 
         moveScrollY(panel); // 移動文字區塊卷軸置最下方
+
+        // 更新軌道及音符的焦點
+        updateFocuse();
+    }
+
+    //-------------------
+    // 使用方向鍵移動焦點
+    //-------------------
+    function moveFocuse(type, direction) {
+        switch (type) {
+            case 'line':
+                switch (direction) {
+                    case 'up':
+                        let cur_selected_line_prev = cur_selected_line.prev('.line');
+                        if(cur_selected_line_prev.length != 0){
+                            // 移除軌道焦點
+                            $('.line').removeClass('selected');
+                            // 將焦點移至上一行軌道
+                            cur_selected_line_prev.addClass('selected');
+
+                            // 移除音符焦點
+                            $('.note').removeClass('selected');
+                            // 將音符焦點移至該軌道最後一個音符
+                            $text_number.find('.line.selected .note').last().addClass('selected');
+                            $text_tabs.find('.line.selected .note').last().addClass('selected');
+                        }
+                        break;
+                    case 'down':
+                        let cur_selected_line_next = cur_selected_line.next('.line');
+                        if(cur_selected_line_next.length != 0){
+                            // 移除軌道焦點
+                            $('.line').removeClass('selected');
+                            // 將焦點移至下一行軌道
+                            cur_selected_line_next.addClass('selected');
+
+                            // 移除音符焦點
+                            $('.note').removeClass('selected');
+                            // 將音符焦點移至該軌道最後一個音符
+                            $text_number.find('.line.selected .note').last().addClass('selected');
+                            $text_tabs.find('.line.selected .note').last().addClass('selected');
+                        }
+                        break;
+                }
+                break;
+            case 'note':
+                switch (direction) {
+                    case 'left':
+                        let cur_selected_note_prev = cur_selected_note.prev('.note');
+                        if(cur_selected_note_prev.length != 0){
+                            // 移除音符焦點
+                            $('.note').removeClass('selected');
+                            // 將焦點移至上一個音符
+                            cur_selected_note_prev.addClass('selected');
+                        }
+                        break;
+                    case 'right':
+                        let cur_selected_note_next = cur_selected_note.next('.note');
+                        if(cur_selected_note_next.length != 0){
+                            // 移除音符焦點
+                            $('.note').removeClass('selected');
+                            // 將焦點移至下一個音符
+                            cur_selected_note_next.addClass('selected');
+                        }
+                        break;
+                }
+                break;
+        }
+
+        // 更新軌道及音符的焦點
+        updateFocuse();
     }
 
     //-------------------
@@ -817,7 +915,8 @@ $(function(){
                 $(this).removeClass('selected');
             });
         });
-		
+        
+        /* 鍵盤事件 */
 		$(window).on('keydown', function(event){
 			//alert(event.keyCode);
 			switch(event.keyCode){
@@ -837,6 +936,26 @@ $(function(){
 					// 紀錄簡譜
                     note($text_number, '0', '0', 'rgba(255, 255, 255, 0.2)');
                     note($text_tabs, '0', '0', 'rgba(255, 255, 255, 0)');
+					break;
+                }
+                case 37: { // 左
+                    // 移動焦點
+                    moveFocuse('note', 'left');
+					break;
+                }
+                case 38: { // 上
+                    // 移動焦點
+                    moveFocuse('line', 'up');
+					break;
+                }
+                case 39: { // 右
+                    // 移動焦點
+                    moveFocuse('note', 'right');
+					break;
+                }
+                case 40: { // 下
+                    // 移動焦點
+                    moveFocuse('line', 'down');
 					break;
 				}
 			}
