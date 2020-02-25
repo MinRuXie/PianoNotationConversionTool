@@ -501,11 +501,20 @@ $(function(){
                 </div>`;
         }
 
+        // 目前有焦點的軌道
+        let selected_line = panel.find('.line.selected');
+        
         // 刪除所有軌道焦點
         panel.find('.line.selected').removeClass('selected');
 
-        // 新增軌道
-        panel.append(line_html);
+        // 檢查是否有焦點軌道 (五線譜有bug)
+        if (selected_line.length != 0) {
+            // 新增軌道於焦點軌道之後
+            selected_line.after(line_html);
+        } else {
+            // 新增軌道至元素末端
+            panel.append(line_html);
+        }
 
         // 移除音符焦點 (讓焦點只保持在新軌道上)
         panel.find('.note.selected').removeClass('selected');
