@@ -321,15 +321,19 @@ $(function(){
     addNoteLine($text_tabs);
 
     //-------------------
-    // 移動 & 紀錄焦點
+    // 移動 & 紀錄音符焦點
     //-------------------
-    function recordNoteSelected(panel, element) {
-        element.on('mousedown', function(event){
+    function recordNoteSelected(panel, note) {
+        note.on('mousedown', function(event){
             // 移除所有焦點
-            panel.find(".note").removeClass('selected');
+            panel.find('.line').removeClass('selected');
+            panel.find('.note').removeClass('selected');
             
             // 移動焦點至該音符
-            element.addClass('selected');
+            note.addClass('selected');
+
+            // 移動焦點至該音符所在軌道
+            note.parent('.line').addClass('selected');
         });
     }
 
@@ -340,27 +344,34 @@ $(function(){
         // 移動文字區塊卷軸置最下方
         moveScrollY(panel);
 
+        // 取得目前焦點軌道
+        let $selectLine = panel.find(".line.selected");
+
+        // 取得目前焦點的音符
+        let $selectedNote = panel.find(".note.selected");
+
         // 移除所有焦點
         panel.find(".note").removeClass('selected');
 
-        // 取得目前軌道
-        $noteLine = panel.find('.line').last();
 
-        if(number == '0'){
-            // 新增空格 (給定焦點)
-            $noteLine.append(`<div class="note selected whitespace" style="background-color: ${color}; color: transparent">${number}</div>`);
-            
-            // 安裝焦點事件
-            let lastest_note = $('.note.selected'); // 最新新增的音符
-            recordNoteSelected(panel, lastest_note);
-        }else{
-            // 新增音符 (給定焦點)
-            $noteLine.append(`<div class="note selected ${key}" style="background-color: ${color};">${number}</div>`);
-            
-            // 安裝焦點事件
-            let lastest_note = $('.note.selected'); // 最新新增的音符
-            recordNoteSelected(panel, lastest_note);
+        let note_html = `<div class="note selected ${key}" style="background-color: ${color};">${number}</div>`
+        // 空格
+        if (number == '0') {
+            note_html = `<div class="note selected whitespace" style="background-color: ${color}; color: transparent">${number}</div>`;
         }
+
+        // 檢查是否存在焦點元素
+        if ($selectedNote.length != 0) {
+            // 新增音符 至 焦點元素 後方
+            $selectedNote.after(note_html);
+        } else {
+            // 新增音符 至 空白軌道 中
+            $selectLine.append(note_html);
+        }
+
+        // 安裝焦點事件
+        let $lastest_note = $('.note.selected'); // 最新新增的音符
+        recordNoteSelected(panel, $lastest_note);
     }
 
     //-------------------
@@ -371,7 +382,7 @@ $(function(){
         moveScrollY(panel);
 
         // 目前焦點音符
-        let $focuseNote = panel.find(".selected");
+        let $focuseNote = panel.find(".note.selected");
 
         // 將焦點移置前一個或後一個音符 (如果有)
         let $prevNote = $focuseNote.prev('.note');
@@ -390,28 +401,61 @@ $(function(){
     }
 
     //-------------------
+    // 移動 & 紀錄軌道焦點
+    //-------------------
+    function recordLineSelected(panel, line) {
+        line.on('mousedown', function(event){
+            // 檢查是否已為焦點
+            if (line.find('.note.selected').length == 0) {
+                // 移除所有焦點
+                panel.find('.line').removeClass('selected');
+                panel.find('.note').removeClass('selected');
+                
+                // 移動焦點至該軌道
+                line.addClass('selected');
+
+                // 移動焦點置該軌道最後一個音符
+                line.find('.note').last().addClass('selected');
+            }
+        });
+    }
+
+    //-------------------
     // 刪除一行簡譜軌道
     //-------------------
-    function delNoteLine(panel, element) {
+    function delNoteLine(panel, line) {
         // 檢查軌道數量
         if(panel.find('.line').length > 1) {
             // 檢查軌道中是否有焦點
-            if (element.find('.selected').length != 0) {
-                let $prevLine = element.prev('.line');
-                let $nextLine = element.next('.line');
+            if (line.find('.selected').length != 0) {
+                let $prevLine = line.prev('.line');
+                let $nextLine = line.next('.line');
+
+                // 移除所有焦點
+                panel.find('.line').removeClass('selected');
+                panel.find('.note').removeClass('selected'); 
                 
                 // 移動焦點置上或下一軌道的最後一個音符
                 if ($prevLine.length != 0) {
                     $prevLine.find('.note').last().addClass('selected');
+                    $prevLine.addClass('selected');
                 } else if ($nextLine.length != 0) {
                     $nextLine.find('.note').last().addClass('selected');
+                    $nextLine.addClass('selected');
                 }
             }
 
-            element.remove(); // 移除
+            line.remove(); // 移除
         }else{
+            // 移除所有焦點
+            panel.find('.line').removeClass('selected');
+            panel.find('.note').removeClass('selected'); 
+            
             // 刪除該軌道的音符
-            element.children().not('.del').remove();
+            line.children().not('.del').not('.line-bg').remove();
+            
+            // 增加軌道焦點
+            line.addClass('selected');
         }
     }
 
@@ -419,37 +463,43 @@ $(function(){
     // 新增一行簡譜軌道
     //-------------------
     function addNoteLine(panel) {
-        let line_html = `<div class='line' title='雙擊修改區塊顏色'><div class="del">X</div></div>`; // 簡譜
+        // 簡譜
+        let line_html = `<div class='line selected' title='雙擊修改區塊顏色'><div class="del">X</div></div>`;
 
         // 五線譜
         if(panel == $text_tabs){
             line_html = `
-                <div class='line' title='雙擊修改區塊顏色'>
+                <div class='line selected' title='雙擊修改區塊顏色'>
                     <div class='line-bg'><span></span><span></span><span></span><span></span><span></span></div>
                     <div class="del">X</div>
                 </div>`;
         }
 
-		if(panel.find('.line').length >= 1){
-            // 檢查最後一行軌道有無音符
-            if(panel.find('.line').last().children().not('.line-bg').length !== 0){
-                panel.append(line_html);
-            }
-        }else{
-            panel.append(line_html);
-        }
+        // 刪除所有軌道焦點
+        panel.find('.line.selected').removeClass('selected');
 
-        // 裝上改變顏色事件
-        let $element = panel.find('.line').last();
-        $element.on('dblclick', function(event){
+        // 新增軌道
+        panel.append(line_html);
+
+        // 移除音符焦點 (讓焦點只保持在新軌道上)
+        panel.find('.note.selected').removeClass('selected');
+
+        // 裝上 改變顏色事件
+        let $line = panel.find('.line').last();
+        $line.on('dblclick', function(event){
             //changeAreaColor($(this)); // 修改區塊顏色
             openColorArea($(this)); // 開啟選擇顏色區塊
         });
 
-        // 裝上刪除軌道事件
-        let $element_del_btn = $element.find('.del');
-        $element_del_btn.on('click', function(event){
-            delNoteLine(panel, $element); // 刪除一行簡譜軌道
+        // 裝上 移動焦點事件
+        $line.on('click', function(event){
+            recordLineSelected(panel, $line);
+        });
+
+        // 裝上 刪除軌道事件
+        let $line_del_btn = $line.find('.del');
+        $line_del_btn.on('click', function(event){
+            delNoteLine(panel, $line); // 刪除一行簡譜軌道
         });
 
         moveScrollY(panel); // 移動文字區塊卷軸置最下方
