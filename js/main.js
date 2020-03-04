@@ -36,6 +36,8 @@ $(function(){
     let $text_tabs = $text.find('.tabs-panel');
     let $toolbox = $('.toolbox');
     let $toolbox_btn = $('#toolbox-btn');
+    let $intro = $('.intro-wrap');
+    let $intro_closed_btn = $('.intro-wrap .ctr-btn');
     let cur_piano_x_scroll = 0; // 卷軸位置
 
     let cur_selected_note = $('.note.selected'); // 當前焦點音符們 (兩個面板都有)
@@ -751,6 +753,14 @@ $(function(){
     $(".cancelbtn").on('click', function(event) {
         $(".colorarea").hide();
     });
+
+    //-------------------
+    // 關閉功能說明
+    //-------------------
+    $intro_closed_btn.on('click', function(event) {
+        $intro.removeClass('active');
+        $('.toolbutton').eq(6).removeClass('selected');
+    });
     
     //-------------------
     // 修改區塊顏色 (輸入色碼)
@@ -842,6 +852,10 @@ $(function(){
                         $text_tabs.toggleClass('open');
                         break;
                     }
+                    case 6: { // 開啟 功能說明
+                        $intro.addClass('active');
+                        break;
+                    }
                 }
             })
             .on('touchend', function(event){
@@ -918,6 +932,10 @@ $(function(){
                     case 5: { // 切換 五線譜 <=> 簡譜
                         $text_number.toggleClass('open');
                         $text_tabs.toggleClass('open');
+                        break;
+                    }
+                    case 6: { // 開啟 功能說明
+                        $intro.addClass('active');
                         break;
                     }
                 }
