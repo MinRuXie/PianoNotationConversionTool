@@ -1,8 +1,13 @@
+$color-black: rgb(41, 41, 41);
+$color-dark-black: rgb(50, 50, 50);
+$color-pure-black: #000;
+$color-white: #FFF;
+
 html, body {
     margin: 0;
     height: 100%;
     overflow: hidden;
-    background-color: rgb(41, 41, 41);
+    background-color: $color-black;
 }
 
 .container-fluid {
@@ -11,7 +16,7 @@ html, body {
 }
 
 .text {
-    background: rgb(41, 41, 41);
+    background: $color-black;
     height: 65%;
     overflow-y: auto;
     overflow-x: hidden;
@@ -43,7 +48,7 @@ html, body {
         left: 0;
         width: 100%;
         min-height: 60%;
-        background-color: rgb(41, 41, 41);
+        background-color: $color-black;
         display: none;
 
         &.open {
@@ -58,10 +63,10 @@ html, body {
             overflow: hidden;
 
             &:nth-child(odd) {
-                background-color: rgba(255, 255, 255, 0.05);
+                background-color: rgba($color-white, 0.05);
             }
             &:nth-child(even) {
-                background-color: rgba(255, 255, 255, 0.1);
+                background-color: rgba($color-white, 0.1);
             }
 
             /* 刪除按鈕 */
@@ -91,18 +96,18 @@ html, body {
         /* 軌道 */
         .line {
             width: 100%;
-            display: inline-block; /* 吃自己的現在的長寬 */
+            display: inline-block;
             padding: 5px 5px 5px 10px;
 
             .note {
-                border: 1px solid transparent; /* 透明框 */
+                border: 1px solid transparent;
                 min-width: 3%;
                 text-align: center;
                 border-radius: 5px;
                 margin-right: 2px;
                 margin-bottom: 2px;
                 float: left;
-                color: rgb(255, 255, 255);
+                color: $color-white;
                 font-weight: 500;
                 font-size: 20px;
                 height: 24px;
@@ -185,148 +190,80 @@ html, body {
                 }
 
                 /* 空格 */
-                &.whitespace {border: 2px solid rgba(255, 255, 255, 0.1);}
-                &.whitespace::after {background-color: transparent;}
+                &.whitespace {
+                    border: 2px solid rgba($color-white, 0.1);
+
+                    &::after {
+                        background-color: transparent;
+                    }
+                }
 
                 /* 灰 */
-                &.A0 {transform: translateY(calc(9px * 51));}
-                &.Ah0 {transform: translateY(calc(9px * 51));}
-                &.Bb0 {transform: translateY(calc(9px * 50));}
-                &.B0 {transform: translateY(calc(9px * 50));}
+                &.A0, &.Ah0 {transform: translateY(calc(9px * 51));}
+                &.Bb0, &.B0 {transform: translateY(calc(9px * 50));}
 
                 /* 咖 */
-                &.C1 {transform: translateY(calc(9px * 49));}
-                &.Ch1 {transform: translateY(calc(9px * 49));}
-                &.Db1 {transform: translateY(calc(9px * 48));}
-                &.D1 {transform: translateY(calc(9px * 48));}
-                &.Dh1 {transform: translateY(calc(9px * 48));}
-                &.Eb1 {transform: translateY(calc(9px * 47));}
-                &.E1 {transform: translateY(calc(9px * 47));}
-                &.F1 {transform: translateY(calc(9px * 46));}
-                &.Fh1 {transform: translateY(calc(9px * 46));}
-                &.Gb1 {transform: translateY(calc(9px * 45));}
-                &.G1 {transform: translateY(calc(9px * 45));}
-                &.Gh1 {transform: translateY(calc(9px * 45));}
-                &.Ab1 {transform: translateY(calc(9px * 44));}
-                &.A1 {transform: translateY(calc(9px * 44));}
-                &.Ah1 {transform: translateY(calc(9px * 44));}
-                &.Bb1 {transform: translateY(calc(9px * 43));}
-                &.B1 {transform: translateY(calc(9px * 43));}
+                &.C1, &.Ch1 {transform: translateY(calc(9px * 49));}
+                &.Db1, &.D1, &.Dh1 {transform: translateY(calc(9px * 48));}
+                &.Eb1, &.E1 {transform: translateY(calc(9px * 47));}
+                &.F1, &.Fh1 {transform: translateY(calc(9px * 46));}
+                &.Gb1, &.G1, &.Gh1 {transform: translateY(calc(9px * 45));}
+                &.Ab1, &.A1, &.Ah1 {transform: translateY(calc(9px * 44));}
+                &.Bb1, &.B1 {transform: translateY(calc(9px * 43));}
 
                 /* 紅 */
-                &.C2 {transform: translateY(calc(9px * 42));}
-                &.Ch2 {transform: translateY(calc(9px * 42));}
-                &.Db2 {transform: translateY(calc(9px * 41));}
-                &.D2 {transform: translateY(calc(9px * 41));}
-                &.Dh2 {transform: translateY(calc(9px * 41));}
-                &.Eb2 {transform: translateY(calc(9px * 40));}
-                &.E2 {transform: translateY(calc(9px * 40));}
-                &.F2 {transform: translateY(calc(9px * 39));}
-                &.Fh2 {transform: translateY(calc(9px * 39));}
-                &.Gb2 {transform: translateY(calc(9px * 38));}
-                &.G2 {transform: translateY(calc(9px * 38));}
-                &.Gh2 {transform: translateY(calc(9px * 38));}
-                &.Ab2 {transform: translateY(calc(9px * 37));}
-                &.A2 {transform: translateY(calc(9px * 37));}
-                &.Ah2 {transform: translateY(calc(9px * 37));}
-                &.Bb2 {transform: translateY(calc(9px * 36));}
-                &.B2 {transform: translateY(calc(9px * 36));}
+                &.C2, &.Ch2 {transform: translateY(calc(9px * 42));}
+                &.Db2, &.D2, &.Dh2 {transform: translateY(calc(9px * 41));}
+                &.Eb2, &.E2 {transform: translateY(calc(9px * 40));}
+                &.F2, &.Fh2 {transform: translateY(calc(9px * 39));}
+                &.Gb2, &.G2, &.Gh2 {transform: translateY(calc(9px * 38));}
+                &.Ab2, &.A2, &.Ah2 {transform: translateY(calc(9px * 37));}
+                &.Bb2, &.B2 {transform: translateY(calc(9px * 36));}
 
                 /* 黃 */
-                &.C3 {transform: translateY(calc(9px * 35));}
-                &.Ch3 {transform: translateY(calc(9px * 35));}
-                &.Db3 {transform: translateY(calc(9px * 34));}
-                &.D3 {transform: translateY(calc(9px * 34));}
-                &.Dh3 {transform: translateY(calc(9px * 34));}
-                &.Eb3 {transform: translateY(calc(9px * 33));}
-                &.E3 {transform: translateY(calc(9px * 33));}
-                &.F3 {transform: translateY(calc(9px * 32));}
-                &.Fh3 {transform: translateY(calc(9px * 32));}
-                &.Gb3 {transform: translateY(calc(9px * 31));}
-                &.G3 {transform: translateY(calc(9px * 31));}
-                &.Gh3 {transform: translateY(calc(9px * 31));}
-                &.Ab3 {transform: translateY(calc(9px * 30));}
-                &.A3 {transform: translateY(calc(9px * 30));}
-                &.Ah3 {transform: translateY(calc(9px * 30));}
-                &.Bb3 {transform: translateY(calc(9px * 29));}
-                &.B3 {transform: translateY(calc(9px * 29));}
+                &.C3, &.Ch3 {transform: translateY(calc(9px * 35));}
+                &.Db3, &.D3, &.Dh3 {transform: translateY(calc(9px * 34));}
+                &.Eb3, &.E3 {transform: translateY(calc(9px * 33));}
+                &.F3, &.Fh3 {transform: translateY(calc(9px * 32));}
+                &.Gb3, &.G3, &.Gh3 {transform: translateY(calc(9px * 31));}
+                &.Ab3, &.A3, &.Ah3 {transform: translateY(calc(9px * 30));}
+                &.Bb3, &.B3 {transform: translateY(calc(9px * 29));}
 
                 /* 綠 */
-                &.C4 {transform: translateY(calc(9px * 28));}
-                &.Ch4 {transform: translateY(calc(9px * 28));}
-                &.Db4 {transform: translateY(calc(9px * 27));}
-                &.D4 {transform: translateY(calc(9px * 27));}
-                &.Dh4 {transform: translateY(calc(9px * 27));}
-                &.Eb4 {transform: translateY(calc(9px * 26));}
-                &.E4 {transform: translateY(calc(9px * 26));}
-                &.F4 {transform: translateY(calc(9px * 25));}
-                &.Fh4 {transform: translateY(calc(9px * 25));}
-                &.Gb4 {transform: translateY(calc(9px * 24));}
-                &.G4 {transform: translateY(calc(9px * 24));}
-                &.Gh4 {transform: translateY(calc(9px * 24));}
-                &.Ab4 {transform: translateY(calc(9px * 23));}
-                &.A4 {transform: translateY(calc(9px * 23));}
-                &.Ah4 {transform: translateY(calc(9px * 23));}
-                &.Bb4 {transform: translateY(calc(9px * 22));}
-                &.B4 {transform: translateY(calc(9px * 22));}
-
+                &.C4, &.Ch4 {transform: translateY(calc(9px * 28));}
+                &.Db4, &.D4, &.Dh4 {transform: translateY(calc(9px * 27));}
+                &.Eb4, &.E4 {transform: translateY(calc(9px * 26));}
+                &.F4, &.Fh4 {transform: translateY(calc(9px * 25));}
+                &.Gb4, &.G4, &.Gh4 {transform: translateY(calc(9px * 24));}
+                &.Ab4, &.A4, &.Ah4 {transform: translateY(calc(9px * 23));}
+                &.Bb4, &.B4 {transform: translateY(calc(9px * 22));}
 
                 /* 淺藍 */
-                &.C5 {transform: translateY(calc(9px * 21));}
-                &.Ch5 {transform: translateY(calc(9px * 21));}
-                &.Db5 {transform: translateY(calc(9px * 20));}
-                &.D5 {transform: translateY(calc(9px * 20));}
-                &.Dh5 {transform: translateY(calc(9px * 20));}
-                &.Eb5 {transform: translateY(calc(9px * 19));}
-                &.E5 {transform: translateY(calc(9px * 19));}
-                &.F5 {transform: translateY(calc(9px * 18));}
-                &.Fh5 {transform: translateY(calc(9px * 18));}
-                &.Gb5 {transform: translateY(calc(9px * 17));}
-                &.G5 {transform: translateY(calc(9px * 17));}
-                &.Gh5 {transform: translateY(calc(9px * 17));}
-                &.Ab5 {transform: translateY(calc(9px * 16));}
-                &.A5 {transform: translateY(calc(9px * 16));}
-                &.Ah5 {transform: translateY(calc(9px * 16));}
-                &.Bb5 {transform: translateY(calc(9px * 15));}
-                &.B5 {transform: translateY(calc(9px * 15));}
+                &.C5, &.Ch5 {transform: translateY(calc(9px * 21));}
+                &.Db5, &.D5, &.Dh5 {transform: translateY(calc(9px * 20));}
+                &.Eb5, &.E5 {transform: translateY(calc(9px * 19));}
+                &.F5, &.Fh5 {transform: translateY(calc(9px * 18));}
+                &.Gb5, &.G5, &.Gh5 {transform: translateY(calc(9px * 17));}
+                &.Ab5, &.A5, &.Ah5 {transform: translateY(calc(9px * 16));}
+                &.Bb5, &.B5 {transform: translateY(calc(9px * 15));}
 
                 /* 深藍 */
-                &.C6 {transform: translateY(calc(9px * 14));}
-                &.Ch6 {transform: translateY(calc(9px * 14));}
-                &.Db6 {transform: translateY(calc(9px * 13));}
-                &.D6 {transform: translateY(calc(9px * 13));}
-                &.Dh6 {transform: translateY(calc(9px * 13));}
-                &.Eb6 {transform: translateY(calc(9px * 12));}
-                &.E6 {transform: translateY(calc(9px * 12));}
-                &.F6 {transform: translateY(calc(9px * 11));}
-                &.Fh6 {transform: translateY(calc(9px * 11));}
-                &.Gb6 {transform: translateY(calc(9px * 10));}
-                &.G6 {transform: translateY(calc(9px * 10));}
-                &.Gh6 {transform: translateY(calc(9px * 10));}
-                &.Ab6 {transform: translateY(calc(9px * 9));}
-                &.A6 {transform: translateY(calc(9px * 9));}
-                &.Ah6 {transform: translateY(calc(9px * 9));}
-                &.Bb6 {transform: translateY(calc(9px * 8));}
-                &.B6 {transform: translateY(calc(9px * 8));}
+                &.C6, &.Ch6 {transform: translateY(calc(9px * 14));}
+                &.Db6, &.D6, &.Dh6 {transform: translateY(calc(9px * 13));}
+                &.Eb6, &.E6 {transform: translateY(calc(9px * 12));}
+                &.F6, &.Fh6 {transform: translateY(calc(9px * 11));}
+                &.Gb6, &.G6, &.Gh6 {transform: translateY(calc(9px * 10));}
+                &.Ab6, &.A6, &.Ah6 {transform: translateY(calc(9px * 9));}
+                &.Bb6, &.B6 {transform: translateY(calc(9px * 8));}
 
                 /* 紫 */
-                &.C7 {transform: translateY(calc(9px * 7));}
-                &.Ch7 {transform: translateY(calc(9px * 7));}
-                &.Db7 {transform: translateY(calc(9px * 6));}
-                &.D7 {transform: translateY(calc(9px * 6));}
-                &.Dh7 {transform: translateY(calc(9px * 6));}
-                &.Eb7 {transform: translateY(calc(9px * 5));}
-                &.E7 {transform: translateY(calc(9px * 5));}
-                &.F7 {transform: translateY(calc(9px * 4));}
-                &.Fh7 {transform: translateY(calc(9px * 4));}
-                &.Gb7 {transform: translateY(calc(9px * 3));}
-                &.G7 {transform: translateY(calc(9px * 3));}
-                &.Gh7 {transform: translateY(calc(9px * 3));}
-                &.Ab7 {transform: translateY(calc(9px * 2));}
-                &.A7 {transform: translateY(calc(9px * 2));}
-                &.Ah7 {transform: translateY(calc(9px * 2));}
-                &.Bb7 {transform: translateY(calc(9px * 1));}
-                &.B7 {transform: translateY(calc(9px * 1));}
+                &.C7, &.Ch7 {transform: translateY(calc(9px * 7));}
+                &.Db7, &.D7, &.Dh7 {transform: translateY(calc(9px * 6));}
+                &.Eb7, &.E7 {transform: translateY(calc(9px * 5));}
+                &.F7, &.Fh7 {transform: translateY(calc(9px * 4));}
+                &.Gb7, &.G7, &.Gh7 {transform: translateY(calc(9px * 3));}
+                &.Ab7, &.A7, &.Ah7 {transform: translateY(calc(9px * 2));}
+                &.Bb7, &.B7 {transform: translateY(calc(9px * 1));}
 
                 /* 粉 */
                 &.C8 {transform: translateY(calc(9px * 0));}
@@ -336,13 +273,13 @@ html, body {
 
     /* 焦點 */
     .selected {
-        box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.7);
+        box-shadow: 0px 0px 10px rgba($color-white, 0.7);
     }
 }
 
 /* 工具箱 */
 .toolbox {
-    background-color: rgb(50, 50, 50);
+    background-color: $color-dark-black;
     height: 65%;
     width: 10%;
     float: left;
@@ -356,8 +293,8 @@ html, body {
         position: absolute;
         top: 50%;
         left: 0;
-        color: rgba(255, 255, 255, 0.8);
-        background-color: rgba(50, 50, 50);
+        color: rgba($color-white, 0.8);
+        background-color: $color-dark-black;
         width: 18px;
         height: 100%;
         transform: translateY(-50%);
@@ -396,7 +333,7 @@ html, body {
     /* 功能按鈕 */
     .toolbutton {
         width: 100%;
-        border: 1px solid rgba(255, 255, 255, 0.6);
+        border: 1px solid rgba($color-white, 0.6);
         color: #FFF;
         text-align: center;
         padding: 7px 5px;
@@ -413,11 +350,11 @@ html, body {
         }
 
         &:hover {
-            background-color: rgba(255, 255, 255, 0.2);
+            background-color: rgba($color-white, 0.2);
         }
 
         &.selected {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba($color-white, 0.1);
         }
     }
 }
@@ -631,7 +568,7 @@ html, body {
     position: absolute;
     top: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba($color-pure-black, 0.6);
     width: 100%;
     height: 100%;
     z-index: 10;
@@ -641,13 +578,13 @@ html, body {
         z-index: 10;
         width: 50%;
         height: 50%;
-        background: rgba(0, 0, 0, 0.6);
+        background: rgba($color-pure-black, 0.6);
         top: 20%;
         left:50%;
         transform: translateY(-50%); /* 扣掉自己的 50% 高度 */
         transform: translateX(-50%); /* 扣掉自己的 50% 高度 */
         border-radius: 5px;
-        box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.3);
+        box-shadow: 1px 1px 5px rgba($color-white, 0.3);
         padding: 20px 30px;
 
         .colortitle {
@@ -670,11 +607,11 @@ html, body {
             transition: 0.3s;
 
             &:hover {
-                box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.8);
+                box-shadow: 0px 0px 15px rgba($color-white, 0.8);
             }
 
             &.selected {
-                box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.9);
+                box-shadow: 0px 0px 20px rgba($color-white, 0.9);
             }
         }
 
@@ -684,7 +621,7 @@ html, body {
             height: 30px;
             position: absolute;
             bottom: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba($color-white, 0.6);
             color: #FFF;
             line-height: 30px;
             text-align: center;
@@ -693,7 +630,7 @@ html, body {
             transition: 0.3s;
 
             &:hover {
-                background-color: rgba(255, 255, 255, 0.2);
+                background-color: rgba($color-white, 0.2);
             }
         }
 
@@ -712,7 +649,7 @@ html, body {
     display: none;
 
     &.active {
-        background-color: rgba(0, 0, 0, 0.8);
+        background-color: rgba($color-pure-black, 0.8);
         width: 100%;
         height: 100%;
         display: flex;
@@ -737,7 +674,7 @@ html, body {
         transition: 0.3s;
 
         &:hover {
-            background-color: rgba(255, 255, 255, 0.3);
+            background-color: rgba($color-white, 0.3);
         }
     }
 
