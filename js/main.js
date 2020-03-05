@@ -538,6 +538,11 @@ $(function(){
         // 裝上 刪除軌道事件
         let $line_del_btn = $line.find('.del');
         $line_del_btn.on('click', function(event){
+            // 此軌道在此面板位於第幾個位置
+            let line_index = $line.index();
+            // 移除另一個面板的軌道
+            delNoteLine(panel.siblings('.panel'), panel.siblings('.panel').find('.line').eq(line_index));
+            
             // 刪除一行簡譜軌道
             delNoteLine(panel, $line);
         });
