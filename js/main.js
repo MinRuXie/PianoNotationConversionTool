@@ -108,12 +108,7 @@ $(function(){
         $group_left.append(ivory_si);
 
         // 上色
-        $group_left.find('span').css({
-            'background': colors[0],
-            'color': '#fff',
-            'padding': '1px',
-            'border-radius': '5px'
-        });
+        $group_left.find('span').css({'background': colors[0]});
 
         // 新增黑鍵容器
         $group_left.append(ebony);
@@ -127,10 +122,7 @@ $(function(){
         $ebony.append(ebony_bsi);
   
         // 上色
-        $group_left.find('.ebony_child').find('span').css({
-            'background': colors[0],
-            'color': '#fff',
-        });
+        $group_left.find('.ebony_child').find('span').css({'background': colors[0]});
 
         // 新增白鍵內容
         $group_left.find('.ivory').each(function(index){
@@ -172,12 +164,7 @@ $(function(){
             $(this).append(ivory_si);
 
             // 上色
-            $(this).find('span').css({
-                'background': colors[index+1],
-                'color': '#fff',
-                'padding': '1px',
-                'border-radius': '5px'
-            });
+            $(this).find('span').css({'background': colors[index+1]});
 
             // 新增黑鍵容器 1
             $(this).append(ebony_1);
@@ -216,10 +203,7 @@ $(function(){
             $ebony_5.append(ebony_bsi);
 			
             // 上色
-            $(this).find('.ebony_child').find('span').css({
-                'background': colors[index+1],
-                'color': '#fff',
-            });
+            $(this).find('.ebony_child').find('span').css({'background': colors[index+1]});
 
             // 新增白鍵內容
             $(this).find('.ivory').each(function(index2){
@@ -302,12 +286,7 @@ $(function(){
         $group_right.append(ivory_do);
         
         // 上色
-        $group_right.find('span').css({
-            'background': colors[8],
-            'color': '#fff',
-            'padding': '1px',
-            'border-radius': '5px'
-        });
+        $group_right.find('span').css({'background': colors[8]});
 
         // 新增白鍵內容
         $group_right.find('.ivory').each(function(){

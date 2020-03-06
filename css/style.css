@@ -3,7 +3,7 @@ html, body {
   margin: 0;
   height: 100%;
   overflow: hidden;
-  background-color: #292929;
+  background-color: #242424;
 }
 
 .container-fluid {
@@ -12,7 +12,7 @@ html, body {
 }
 
 .text {
-  background: #292929;
+  background: #242424;
   height: 65%;
   overflow-y: auto;
   overflow-x: hidden;
@@ -33,7 +33,6 @@ html, body {
 .text .title {
   width: 100%;
   display: inline-block;
-  /* 吃自己的現在的長寬 */
   padding: 5px;
   font-size: 15px;
   color: #FFF;
@@ -46,7 +45,7 @@ html, body {
   left: 0;
   width: 100%;
   min-height: 60%;
-  background-color: #292929;
+  background-color: #242424;
   display: none;
   /* 軌道 */
 }
@@ -538,7 +537,7 @@ html, body {
 /* 白鍵 */
 .ivory {
   position: relative;
-  background: #fff;
+  background: #FFF;
   width: 14.28%;
   height: 100%;
   border-left: 1px solid #666;
@@ -562,6 +561,9 @@ html, body {
   left: 30%;
   right: 30%;
   font-size: 70%;
+  color: #FFF;
+  padding: 1px;
+  border-radius: 5px;
 }
 
 .ebony,
@@ -584,7 +586,7 @@ html, body {
 .ebony_3 span,
 .ebony_4 span,
 .ebony_5 span {
-  color: #fff;
+  color: #FFF;
   height: 100%;
   display: flex;
   /*flex: 彈性盒子*/
@@ -623,10 +625,10 @@ html, body {
   position: fixed;
   top: 0;
   left: 0;
-  background: #000;
+  background-color: #000;
   width: 100%;
   height: 100%;
-  color: #fff;
+  color: #FFF;
   z-index: 99;
 }
 @media screen and (orientation: portrait) {

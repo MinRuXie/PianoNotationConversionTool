@@ -1,7 +1,9 @@
-$color-black: rgb(41, 41, 41);
+$color-black: #242424;
 $color-dark-black: rgb(50, 50, 50);
 $color-pure-black: #000;
 $color-white: #FFF;
+$color-gary: #666;
+$color-light-gary: #999;
 
 html, body {
     margin: 0;
@@ -33,10 +35,10 @@ html, body {
     /* 歌名 */
     .title {
         width: 100%;
-        display: inline-block; /* 吃自己的現在的長寬 */
+        display: inline-block;
         padding: 5px;
         font-size: 15px;
-        color: #FFF;
+        color: $color-white;
         letter-spacing: 2px;
     }
 
@@ -58,7 +60,7 @@ html, body {
         /* 軌道 */
         .line {
             min-height: 36px;
-            border-left: 8px solid #FFF;
+            border-left: 8px solid $color-white;
             position: relative;
             overflow: hidden;
 
@@ -81,7 +83,7 @@ html, body {
                 font-size: 12px;
                 text-align: center;
                 cursor: pointer;
-                background-color: #FFF;
+                background-color: $color-white;
                 transition: 0.3s;
 
                 &:hover {
@@ -156,7 +158,7 @@ html, body {
 
                 /* 線 */
                 span {
-                    background-color: #FFF;
+                    background-color: $color-white;
                     width: 100%;
                     height: 1px;
                     display: inline-block;
@@ -168,7 +170,7 @@ html, body {
                 width: 24px;
                 height: 18px;  /* 1 row = 18px*4 = 72px */
                 border-radius: 12px / 9px; /* 水平 / 垂直 */
-                color: #FFF;
+                color: $color-white;
                 text-align: center;
                 line-height: 18px;
                 position: relative;
@@ -180,7 +182,7 @@ html, body {
                 /* 尾巴 */
                 &::after {
                     content: '';
-                    background-color: #FFF;
+                    background-color: $color-white;
                     width: 1px;
                     height: 35px;
                     border-radius: 20px;
@@ -338,7 +340,7 @@ html, body {
     .toolbutton {
         width: 100%;
         border: 1px solid rgba($color-white, 0.6);
-        color: #FFF;
+        color: $color-white;
         text-align: center;
         padding: 7px 5px;
         margin-bottom: 10px;
@@ -375,7 +377,7 @@ html, body {
     height: 35%;
     overflow-y: hidden;
     overflow-x: scroll;
-    background: #999;
+    background: $color-light-gary;
 
     .fas { /* conflict with bootstrap */
         font-size: 200%;
@@ -469,14 +471,14 @@ html, body {
 /* 白鍵 */
 .ivory {
     position: relative;
-    background: #fff;
+    background: $color-white;
     width: 14.28%;
     height: 100%;
-    border-left: 1px solid #666;
+    border-left: 1px solid $color-gary;
     float: left;
     text-align: center;
     box-sizing: border-box;
-    cursor:pointer;
+    cursor: pointer;
     line-height: 1.5;
     font-weight: 900;
     transition: 0.3s;
@@ -495,6 +497,9 @@ html, body {
         left: 30%;
         right: 30%;
         font-size: 70%;
+        color: $color-white;
+        padding: 1px;
+        border-radius: 5px;
     }
 }
 
@@ -505,7 +510,7 @@ html, body {
 .ebony_4, 
 .ebony_5 {
     position: absolute;
-    background: #000;
+    background: $color-pure-black;
     width: 8%;
     height: 65%;
     border-bottom-left-radius: 5px;
@@ -513,7 +518,7 @@ html, body {
     overflow: hidden;
 
     span {
-        color: #fff;
+        color: $color-white;
         height: 100%;
         display: flex; /*flex: 彈性盒子*/
         align-items: center; /*flex: 垂直置中*/
@@ -522,13 +527,13 @@ html, body {
     }
 
     .key {
-        display:none;
+        display: none;
     }
 }
 
 .ebony_child {
     position: relative;
-    background: #000;
+    background: $color-pure-black;
     width: 50%;
     height: 100%;
     cursor: pointer;
@@ -547,10 +552,10 @@ html, body {
     position: fixed;
     top: 0;
     left: 0;
-    background: #000;
+    background-color: $color-pure-black;
     width: 100%;
     height: 100%;
-    color: #fff;
+    color: $color-white;
     z-index: 99;
 
     @media screen and (orientation: portrait) {
@@ -588,7 +593,7 @@ html, body {
         height: 50%;
         background: rgba($color-pure-black, 0.6);
         top: 20%;
-        left:50%;
+        left: 50%;
         transform: translateY(-50%); /* 扣掉自己的 50% 高度 */
         transform: translateX(-50%); /* 扣掉自己的 50% 高度 */
         border-radius: 5px;
@@ -599,7 +604,7 @@ html, body {
             display: block;
             text-align: center;
             padding: 10px 0 30px;
-            color: #FFF;
+            color: $color-white;
             letter-spacing: 2px;
         }
 
@@ -607,7 +612,7 @@ html, body {
             width: 80px;
             height: 80px;
             border-radius: 100px;
-            border: 0px solid #999;
+            border: 0px solid $color-light-gary;
             float: left;
             margin-right: 15px;
             margin-bottom: 10px;
@@ -630,7 +635,7 @@ html, body {
             position: absolute;
             bottom: 20px;
             border: 1px solid rgba($color-white, 0.6);
-            color: #FFF;
+            color: $color-white;
             line-height: 30px;
             text-align: center;
             border-radius: 5px;
@@ -674,8 +679,8 @@ html, body {
         position: absolute;
         right: 20px;
         top: 20px;
-        color: #FFF;
-        border: 1px solid #FFF;
+        color: $color-white;
+        border: 1px solid $color-white;
         border-radius: 5px;
         cursor: pointer;
         padding: 6px 10px;
@@ -690,8 +695,8 @@ html, body {
         max-width: 90vw;
         max-height: 90vh;
         overflow-y: scroll;
-        color: #FFF;
-        border: 1px solid #FFF;
+        color: $color-white;
+        border: 1px solid $color-white;
         border-radius: 10px;
         padding: 30px 50px;
         position: relative;
@@ -712,7 +717,7 @@ html, body {
     position: absolute;
     top: 0;
     left: 0;
-    background: #000;
+    background: $color-pure-black;
     width: 100%;
     height: 100%;
     z-index: 20;
