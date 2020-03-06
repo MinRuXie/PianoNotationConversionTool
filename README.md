@@ -31,10 +31,13 @@
     * 關閉/開啟鋼琴：可控制鋼琴面板的顯示（開啟；收合）。
     * 切換模式：可控制樂譜面板的顯示模式（簡譜；五線譜）。
 
-
 ## 外部資源
 ### University of Iowa Electronic Music Studios 鋼琴鍵音檔資源
 http://theremin.music.uiowa.edu/MISpiano.html
 
 ### 載入動畫
 https://loading.io/
+
+### 壓縮工具
+* [csscompressor](https://csscompressor.com/)
+* [javascript-minifier](https://javascript-minifier.com/)

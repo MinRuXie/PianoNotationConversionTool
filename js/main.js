@@ -10,7 +10,7 @@ $(function(){
     let pics = [
         '../PianoNotationConversionTool/image/music.png',
         '../PianoNotationConversionTool/image/lg.rainy-preloader.gif',
-        '../PianoNotationConversionTool/image/lg.rotating-squares-preloader-gif.gif',
+        '../PianoNotationConversionTool/image/Pulse-1s-200px.gif',
     ];
 
     for(let i=0;i<pics.length;i++){
