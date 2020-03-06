@@ -55,13 +55,15 @@ $(function(){
     //-------------------
     function buildPiano(){
         // 白鍵
-        let ivory_do = '<div class="ivory do"><span>1</span></div>';
-        let ivory_re = '<div class="ivory re"><span>2</span></div>';
-        let ivory_mi = '<div class="ivory mi"><span>3</span></div>';
-        let ivory_fa = '<div class="ivory fa"><span>4</span></div>';
-        let ivory_sol = '<div class="ivory sol"><span>5</span></div>';
-        let ivory_la = '<div class="ivory la"><span>6</span></div>';
-        let ivory_si = '<div class="ivory si"><span>7</span></div>';
+        let ivory_array = [
+            `<div class="ivory do"><span>1</span></div>`,
+            `<div class="ivory re"><span>2</span></div>`,
+            `<div class="ivory mi"><span>3</span></div>`,
+            `<div class="ivory fa"><span>4</span></div>`,
+            `<div class="ivory sol"><span>5</span></div>`,
+            `<div class="ivory la"><span>6</span></div>`,
+            `<div class="ivory si"><span>7</span></div>`
+        ]
         
         let colors = ['#828282', '#AD766A', '#D5404A', '#FFB11B', '#90B44B', '#58B2DC', '#005CAF',  '#A8497A', '#E87A90'];
         
@@ -78,12 +80,14 @@ $(function(){
         let audio_ebony = ['Piano.ff.Bb0.mp3', 'Piano.ff.Db1.mp3', 'Piano.ff.Eb1.mp3', 'Piano.ff.Gb1.mp3', 'Piano.ff.Ab1.mp3', 'Piano.ff.Bb1.mp3', 'Piano.ff.Db2.mp3', 'Piano.ff.Eb2.mp3', 'Piano.ff.Gb2.mp3', 'Piano.ff.Ab2.mp3', 'Piano.ff.Bb2.mp3', 'Piano.ff.Db3.mp3', 'Piano.ff.Eb3.mp3', 'Piano.ff.Gb3.mp3', 'Piano.ff.Ab3.mp3', 'Piano.ff.Bb3.mp3', 'Piano.ff.Db4.mp3', 'Piano.ff.Eb4.mp3', 'Piano.ff.Gb4.mp3', 'Piano.ff.Ab4.mp3', 'Piano.ff.Bb4.mp3', 'Piano.ff.Db5.mp3', 'Piano.ff.Eb5.mp3', 'Piano.ff.Gb5.mp3', 'Piano.ff.Ab5.mp3', 'Piano.ff.Bb5.mp3', 'Piano.ff.Db6.mp3', 'Piano.ff.Eb6.mp3', 'Piano.ff.Gb6.mp3', 'Piano.ff.Ab6.mp3', 'Piano.ff.Bb6.mp3', 'Piano.ff.Db7.mp3', 'Piano.ff.Eb7.mp3', 'Piano.ff.Gb7.mp3', 'Piano.ff.Ab7.mp3', 'Piano.ff.Bb7.mp3'];
 
         // 黑鍵 (容器)
-        let ebony = '<div class="ebony-wrap ebony"></div>';
-        let ebony_1 = '<div class="ebony-wrap ebony_1"></div>';
-        let ebony_2 = '<div class="ebony-wrap ebony_2"></div>';
-        let ebony_3 = '<div class="ebony-wrap ebony_3"></div>';
-        let ebony_4 = '<div class="ebony-wrap ebony_4"></div>';
-        let ebony_5 = '<div class="ebony-wrap ebony_5"></div>';
+        let ebony_array = [
+            `<div class="ebony-wrap ebony_0"></div>`,
+            `<div class="ebony-wrap ebony_1"></div>`,
+            `<div class="ebony-wrap ebony_2"></div>`,
+            `<div class="ebony-wrap ebony_3"></div>`,
+            `<div class="ebony-wrap ebony_4"></div>`,
+            `<div class="ebony-wrap ebony_5"></div>`
+        ]
 
         // 黑鍵 (降)
         let ebony_bre = '<div class="ebony_child bre"><span>b2</span></div>';
@@ -107,15 +111,15 @@ $(function(){
         let $group_left = $('.group_left');
         
         // 新增白鍵
-        $group_left.append(ivory_la);
-        $group_left.append(ivory_si);
+        $group_left.append(ivory_array[5]);
+        $group_left.append(ivory_array[6]);
 
         // 上色
         $group_left.find('span').css({'background': colors[0]});
 
         // 新增黑鍵容器
-        $group_left.append(ebony);
-        let $ebony = $group_left.find('.ebony');
+        $group_left.append(ebony_array[0]);
+        let $ebony = $group_left.find('.ebony_0');
         
 		// 新增黑鍵 (升)
         $ebony.append(ebony_ula);
@@ -135,7 +139,7 @@ $(function(){
         });
 
         // 新增黑鍵內容
-        $group_left.find('.ebony').each(function(index){
+        $group_left.find('.ebony_0').each(function(index){
             $ebony.find('.ebony_child').each(function(index2){
                 // 新增 key
                 if(index2 < 1){ // 第 0 個 (升記號)
@@ -157,34 +161,24 @@ $(function(){
         $('.group').each(function(index){
             // 新增白鍵
             $(this).css({left: 14.28 + (50*index) + '%'});
-            $(this).append(ivory_do);
-            $(this).append(ivory_re);
-            $(this).append(ivory_mi);
-            $(this).append(ivory_fa);
-            $(this).append(ivory_sol);
-            $(this).append(ivory_la);
-            $(this).append(ivory_si);
+            for (let i=0 ; i <= ivory_array.length ; i++) {
+                $(this).append(ivory_array[i]);
+            }
 
             // 上色
             $(this).find('span').css({'background': colors[index+1]});
 
-            // 新增黑鍵容器 1
-            $(this).append(ebony_1);
-            $ebony_1 = $(this).find('.ebony_1');
-            // 新增黑鍵容器 2
-            $(this).append(ebony_2);
-            $ebony_2 = $(this).find('.ebony_2');
-            // 新增黑鍵容器 3
-            $(this).append(ebony_3);
-            $ebony_3 = $(this).find('.ebony_3');
-            // 新增黑鍵容器 4
-            $(this).append(ebony_4);
-            $ebony_4 = $(this).find('.ebony_4');
-            // 新增黑鍵容器 5
-            $(this).append(ebony_5);
-            $ebony_5 = $(this).find('.ebony_5');
+            // 新增黑鍵容器
+            for (let i=1; i <= ebony_array.length ; i++) {
+                $(this).append(ebony_array[i]);
+            }
 
-			
+            let $ebony_1 = $(this).find('.ebony_1');
+            let $ebony_2 = $(this).find('.ebony_2');
+            let $ebony_3 = $(this).find('.ebony_3');
+            let $ebony_4 = $(this).find('.ebony_4');
+            let $ebony_5 = $(this).find('.ebony_5');
+
 			// 新增黑鍵 (升)------------
             $ebony_1.append(ebony_udo);
             $ebony_2.append(ebony_ure);
@@ -280,7 +274,7 @@ $(function(){
         let $group_right = $('.group_right');
         
         // 新增白鍵
-        $group_right.append(ivory_do);
+        $group_right.append(ivory_array[0]);
         
         // 上色
         $group_right.find('span').css({'background': colors[8]});
@@ -349,14 +343,8 @@ $(function(){
         // 音符
         let note_html = `<div class="note selected ${key}" style="background-color: ${color};">${number}</div>`;
 
-        // 檢查是否存在焦點元素
-        if ($selectedNote.length != 0) {
-            // 新增音符 至 焦點元素 後方
-            $selectedNote.after(note_html);
-        } else {
-            // 新增音符 至 空白軌道 中
-            $selectLine.append(note_html);
-        }
+        // 檢查是否存在焦點元素 ? 新增音符 至 焦點元素 後方 : 新增音符 至 空白軌道 中
+        $selectedNote.length != 0 ? $selectedNote.after(note_html) : $selectLine.append(note_html);
 
         // 安裝焦點事件
         let $lastest_note = $('.note.selected'); // 最新新增的音符
@@ -777,7 +765,7 @@ $(function(){
             });
         });
 
-        $('.ebony').each(function(index){
+        $('.ebony_0').each(function(index){
             $('.ebony_child').each(function(index){
                 $(this).on('touchstart', function(event){
                     $(this).css({'background': '#444'});
@@ -859,7 +847,7 @@ $(function(){
             });
         });
 
-        $('.ebony').each(function(index){
+        $('.ebony_0').each(function(index){
             $('.ebony_child').each(function(index){
                 $(this).on('mousedown', function(event){
                     $(this).css({'background': '#444'});

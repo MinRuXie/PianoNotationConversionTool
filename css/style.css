@@ -521,7 +521,7 @@ html, body {
 .piano .group_left .ivory {
   width: 50%;
 }
-.piano .group_left .ebony {
+.piano .group_left .ebony_0 {
   width: 28%;
 }
 .piano .group_right {
@@ -598,10 +598,10 @@ html, body {
 .ebony-wrap .key {
   display: none;
 }
-.ebony-wrap.ebony, .ebony-wrap.ebony_1, .ebony-wrap.ebony_2, .ebony-wrap.ebony_3, .ebony-wrap.ebony_4, .ebony-wrap.ebony_5 {
+.ebony-wrap.ebony_0, .ebony-wrap.ebony_1, .ebony-wrap.ebony_2, .ebony-wrap.ebony_3, .ebony-wrap.ebony_4, .ebony-wrap.ebony_5 {
   top: 0;
 }
-.ebony-wrap.ebony {
+.ebony-wrap.ebony_0 {
   left: 35%;
 }
 .ebony-wrap.ebony_1 {
