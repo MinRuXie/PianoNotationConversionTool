@@ -138,7 +138,7 @@ $(function(){
             // 新增 key
             $(this).append(`<div class="key">${key_ivory[index]}</div>`);
             // 新增音訊
-            $(this).append(`<audio id="${key_ivory[index]}"><source src="./audio/${ audio_ivory[index]}" type="audio/mpeg"></audio>`);
+            $(this).append(`<audio id="${key_ivory[index]}"><source src="./audio/${audio_ivory[index]}" type="audio/mpeg"></audio>`);
         });
 
         // 新增黑鍵內容
@@ -201,7 +201,7 @@ $(function(){
                     if(index3 < 1){ // 第 0 個 (升記號)
                         $(this).append(`<div data-name="${key_ebony_h[1+(5*index)+0]}" class="key">${key_ebony_b[1+(5*index)+0]}</div>`);
                     }else{ // 第 1 個 (降記號)
-                        $(this).append(`<div data-name="${key_ebony_b[1+(5*index)+0]}"  class="key">${key_ebony_b[1+(5*index)+0]}</div>`);
+                        $(this).append(`<div data-name="${key_ebony_b[1+(5*index)+0]}" class="key">${key_ebony_b[1+(5*index)+0]}</div>`);
                     }
                     // 新增音訊
                     $(this).append(`<audio id="${key_ebony_b[1+(5*index)+0]}"><source src="./audio/${audio_ebony[1+(5*index)+0]}" type="audio/mpeg"></audio>`);
@@ -213,7 +213,7 @@ $(function(){
                     if(index3 < 1){ // 第 0 個 (升記號)
                         $(this).append(`<div data-name="${key_ebony_h[1+(5*index)+1]}" class="key">${key_ebony_b[1+(5*index)+1]}</div>`);
                     }else{ // 第 1 個 (降記號)
-                        $(this).append(`<div data-name="${key_ebony_b[1+(5*index)+1]}"  class="key">${key_ebony_b[1+(5*index)+1]}</div>`);
+                        $(this).append(`<div data-name="${key_ebony_b[1+(5*index)+1]}" class="key">${key_ebony_b[1+(5*index)+1]}</div>`);
                     }
                     // 新增音訊
                     $(this).append(`<audio id="${key_ebony_b[1+(5*index)+1]}"><source src="./audio/${audio_ebony[1+(5*index)+1]}" type="audio/mpeg"></audio>`);
@@ -375,23 +375,21 @@ $(function(){
     // 移動 & 紀錄軌道焦點
     //-------------------
     function recordLineSelected(panel, line) {
-        line.on('click', function(event){
-            // 檢查是否已為焦點
-            if (line.find('.note.selected').length == 0) {
-                // 移除所有焦點
-                panel.find('.line').removeClass('selected');
-                panel.find('.note').removeClass('selected');
-                
-                // 移動焦點至該軌道
-                line.addClass('selected');
+        // 檢查是否已為焦點
+        if (line.find('.note.selected').length == 0) {
+            // 移除所有焦點
+            panel.find('.line').removeClass('selected');
+            panel.find('.note').removeClass('selected');
+            
+            // 移動焦點至該軌道
+            line.addClass('selected');
 
-                // 移動焦點置該軌道最後一個音符
-                line.find('.note').last().addClass('selected');
+            // 移動焦點置該軌道最後一個音符
+            line.find('.note').last().addClass('selected');
 
-                // 更新軌道及音符的焦點
-                updateFocuse();
-            }
-        });
+            // 更新軌道及音符的焦點
+            updateFocuse();
+        }
     }
 
     //-------------------
@@ -459,7 +457,7 @@ $(function(){
         // 刪除所有軌道焦點
         panel.find('.line.selected').removeClass('selected');
 
-        // 檢查是否有焦點軌道 (五線譜有bug)
+        // 檢查是否有焦點軌道
         if (selected_line.length != 0) {
             // 新增軌道於焦點軌道之後
             selected_line.after(line_html);
@@ -481,6 +479,12 @@ $(function(){
 
         // 裝上 移動焦點事件
         $line.on('click', function(event){
+            // 此軌道在此面板位於第幾個位置
+            let line_index = $line.index();
+            // 更新另一個面板的軌道焦點
+            recordLineSelected(panel.siblings('.panel'), panel.siblings('.panel').find('.line').eq(line_index));
+            
+            // 更新軌道焦點
             recordLineSelected(panel, $line);
         });
 
