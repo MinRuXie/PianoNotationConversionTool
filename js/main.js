@@ -2,20 +2,18 @@
 $(function(){
 
     /* 預先載入圖片 */
-    function preloadImg(image) {
-        let img = new Image();
-        img.src = image;
-    }
+    // function preloadImg(image) {
+    //     let img = new Image();
+    //     img.src = image;
+    // }
 
-    let pics = [
-        '../PianoNotationConversionTool/image/music.png',
-        '../PianoNotationConversionTool/image/lg.rainy-preloader.gif',
-        '../PianoNotationConversionTool/image/Pulse-1s-200px.gif',
-    ];
+    // let pics = [
+    //     '../PianoNotationConversionTool/image/music.png'
+    // ];
 
-    for(let i=0;i<pics.length;i++){
-        preloadImg(pics[i]);
-    }
+    // for(let i=0;i<pics.length;i++){
+    //     preloadImg(pics[i]);
+    // }
     
     // 等資源載入完成後才顯示畫面
     // window.onload = function(){
