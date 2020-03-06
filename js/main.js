@@ -63,7 +63,7 @@ $(function(){
             `<div class="ivory sol"><span>5</span></div>`,
             `<div class="ivory la"><span>6</span></div>`,
             `<div class="ivory si"><span>7</span></div>`
-        ]
+        ];
         
         let colors = ['#828282', '#AD766A', '#D5404A', '#FFB11B', '#90B44B', '#58B2DC', '#005CAF',  '#A8497A', '#E87A90'];
         
@@ -87,23 +87,26 @@ $(function(){
             `<div class="ebony-wrap ebony_3"></div>`,
             `<div class="ebony-wrap ebony_4"></div>`,
             `<div class="ebony-wrap ebony_5"></div>`
-        ]
+        ];
 
         // 黑鍵 (降)
-        let ebony_bre = '<div class="ebony_child bre"><span>b2</span></div>';
-        let ebony_bmi = '<div class="ebony_child bmi"><span>b3</span></div>';
-        let ebony_bsol = '<div class="ebony_child bsol"><span>b5</span></div>';
-        let ebony_bla = '<div class="ebony_child bla"><span>b6</span></div>';
-        let ebony_bsi = '<div class="ebony_child bsi"><span>b7</span></div>';
+        let ebony_down_array =[
+            `<div class="ebony_child bre"><span>b2</span></div>`,
+            `<div class="ebony_child bmi"><span>b3</span></div>`,
+            `<div class="ebony_child bsol"><span>b5</span></div>`,
+            `<div class="ebony_child bla"><span>b6</span></div>`,
+            `<div class="ebony_child bsi"><span>b7</span></div>`
+        ];
 		
-		// 黑鍵 (升)
-        let ebony_udo = '<div class="ebony_child udo"><span>#1</span></div>';
-        let ebony_ure = '<div class="ebony_child ure"><span>#2</span></div>';
-        let ebony_ufa = '<div class="ebony_child ufa"><span>#4</span></div>';
-        let ebony_usol = '<div class="ebony_child usol"><span>#5</span></div>';
-        let ebony_ula = '<div class="ebony_child ula"><span>#6</span></div>';
+        // 黑鍵 (升)
+        let ebony_up_array = [
+            `<div class="ebony_child udo"><span>#1</span></div>`,
+            `<div class="ebony_child ure"><span>#2</span></div>`,
+            `<div class="ebony_child ufa"><span>#4</span></div>`,
+            `<div class="ebony_child usol"><span>#5</span></div>`,
+            `<div class="ebony_child ula"><span>#6</span></div>`
+        ];
 		
-
         //-------------------
         // 左邊 3 鍵
         //-------------------
@@ -122,10 +125,10 @@ $(function(){
         let $ebony = $group_left.find('.ebony_0');
         
 		// 新增黑鍵 (升)
-        $ebony.append(ebony_ula);
+        $ebony.append(ebony_up_array[4]);
 		
 		// 新增黑鍵 (降)
-        $ebony.append(ebony_bsi);
+        $ebony.append(ebony_down_array[4]);
   
         // 上色
         $group_left.find('.ebony_child').find('span').css({'background': colors[0]});
@@ -155,7 +158,7 @@ $(function(){
         //---------------------
         // 中間 84 鍵
         //---------------------
-        for(var i=0;i<7;i++){
+        for(var i=0 ; i<7 ; i++){
             $piano.append('<div class="group"></div>');
         }
         $('.group').each(function(index){
@@ -173,25 +176,12 @@ $(function(){
                 $(this).append(ebony_array[i]);
             }
 
-            let $ebony_1 = $(this).find('.ebony_1');
-            let $ebony_2 = $(this).find('.ebony_2');
-            let $ebony_3 = $(this).find('.ebony_3');
-            let $ebony_4 = $(this).find('.ebony_4');
-            let $ebony_5 = $(this).find('.ebony_5');
-
-			// 新增黑鍵 (升)------------
-            $ebony_1.append(ebony_udo);
-            $ebony_2.append(ebony_ure);
-            $ebony_3.append(ebony_ufa);
-            $ebony_4.append(ebony_usol);
-            $ebony_5.append(ebony_ula);
-			
-			// 新增黑鍵 (降)------------
-            $ebony_1.append(ebony_bre);
-            $ebony_2.append(ebony_bmi);
-            $ebony_3.append(ebony_bsol);
-            $ebony_4.append(ebony_bla);
-            $ebony_5.append(ebony_bsi);
+            // 新增黑鍵內容
+            for (let i=0 ; i<5 ; i++) {
+                let $cur_ebony = $(this).find(`.ebony_${i+1}`);
+                $cur_ebony.append(ebony_up_array[i]); // 新增黑鍵 (升) 左
+                $cur_ebony.append(ebony_down_array[i]); // 新增黑鍵 (降) 右
+            }
 			
             // 上色
             $(this).find('.ebony_child').find('span').css({'background': colors[index+1]});
@@ -481,7 +471,6 @@ $(function(){
         // 移除音符焦點 (讓焦點只保持在新軌道上)
         panel.find('.note.selected').removeClass('selected');
 
-        
         let $line = panel.find('.line.selected');
 
         // 裝上 改變顏色事件
@@ -507,7 +496,8 @@ $(function(){
             delNoteLine(panel, $line);
         });
 
-        moveScrollY(panel); // 移動文字區塊卷軸置最下方
+        // 移動文字區塊卷軸置最下方
+        moveScrollY(panel); 
 
         // 更新軌道及音符的焦點
         updateFocuse();
