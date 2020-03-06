@@ -711,9 +711,6 @@ html, body {
     }
 
     .intro-content {
-        max-width: 90vw;
-        max-height: 90vh;
-        overflow-y: scroll;
         color: $color-white;
         border: 1px solid $color-white;
         border-radius: 10px;
@@ -723,6 +720,9 @@ html, body {
         @media screen and (max-width: 1024px) {
             border: none;
             padding: 10px 20px;
+            max-width: 90vw;
+            max-height: 90vh;
+            overflow-y: scroll;
         }
 
         h4, li {

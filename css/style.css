@@ -770,9 +770,6 @@ html, body {
   background-color: rgba(255, 255, 255, 0.3);
 }
 .intro-wrap .intro-content {
-  max-width: 90vw;
-  max-height: 90vh;
-  overflow-y: scroll;
   color: #FFF;
   border: 1px solid #FFF;
   border-radius: 10px;
@@ -783,6 +780,9 @@ html, body {
   .intro-wrap .intro-content {
     border: none;
     padding: 10px 20px;
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow-y: scroll;
   }
 }
 .intro-wrap .intro-content h4, .intro-wrap .intro-content li {
