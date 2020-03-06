@@ -406,26 +406,23 @@ html, body {
             pointer-events: none; /* 失去作用能力 */
         }
 
-        .fa-angle-left,
-        .fa-angle-right {
-            @media screen and (max-width: 1024px) {
-                position: fixed;
-                bottom: 27%;
-                transform: translateY(-31%);
-                font-size: 20px;
-            }
+        &::before,
+        &::after {
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 6px;
         }
 
-        .fa-angle-left {
-            @media screen and (max-width: 1024px) {
-                left: 3vw;
-            }
+        &::before { 
+            content: '＜';
+            left: 10px;
         }
 
-        .fa-angle-right {
-            @media screen and (max-width: 1024px) {
-                right: 3vw;
-            }
+        &::after {
+            content: '＞';
+            right: 10px;
         }
     }
 
@@ -759,5 +756,6 @@ html, body {
     -ms-user-select:none; 
     user-select:none;
     -o-user-select:none;
-	font-family: 'Galindo', 'Noto Sans TC', cursive;
+    font-family: 'Galindo', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+    -webkit-font-smoothing: antialiased;
 }

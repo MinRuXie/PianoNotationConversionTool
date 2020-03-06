@@ -485,24 +485,20 @@ html, body {
     /* 失去作用能力 */
   }
 }
-@media screen and (max-width: 1024px) {
-  .piano .slide .fa-angle-left,
-.piano .slide .fa-angle-right {
-    position: fixed;
-    bottom: 27%;
-    transform: translateY(-31%);
-    font-size: 20px;
-  }
+.piano .slide::before, .piano .slide::after {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 6px;
 }
-@media screen and (max-width: 1024px) {
-  .piano .slide .fa-angle-left {
-    left: 3vw;
-  }
+.piano .slide::before {
+  content: "＜";
+  left: 10px;
 }
-@media screen and (max-width: 1024px) {
-  .piano .slide .fa-angle-right {
-    right: 3vw;
-  }
+.piano .slide::after {
+  content: "＞";
+  right: 10px;
 }
 .piano .group {
   position: absolute;
@@ -817,7 +813,8 @@ html, body {
   -ms-user-select: none;
   user-select: none;
   -o-user-select: none;
-  font-family: "Galindo", "Noto Sans TC", cursive;
+  font-family: "Galindo", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 /*# sourceMappingURL=style.css.map */
