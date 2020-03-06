@@ -375,6 +375,11 @@ html, body {
   /* 關閉狀態 */
   /* 功能按鈕 */
 }
+@media screen and (max-width: 1024px) {
+  .toolbox {
+    overflow-y: scroll;
+  }
+}
 .toolbox #toolbox-btn {
   position: absolute;
   top: 50%;
@@ -426,7 +431,11 @@ html, body {
 @media screen and (max-width: 1024px) {
   .toolbox .toolbutton {
     font-size: 12px;
-    letter-spacing: 0px;
+    letter-spacing: 0;
+    padding: 3px;
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
   }
 }
 .toolbox .toolbutton:hover {
@@ -487,13 +496,6 @@ html, body {
     right: 3vw;
   }
 }
-@media screen and (max-width: 1024px) {
-  .piano .piano .group,
-.piano .piano .group_left,
-.piano .piano .group_right {
-    height: 80%;
-  }
-}
 .piano .group {
   position: absolute;
   bottom: 0;
@@ -524,6 +526,13 @@ html, body {
 }
 .piano .group_right .ivory {
   width: 100%;
+}
+@media screen and (max-width: 1024px) {
+  .piano .group,
+.piano .group_left,
+.piano .group_right {
+    height: 80%;
+  }
 }
 
 /* 白鍵 */
@@ -744,14 +753,22 @@ html, body {
   background-color: rgba(255, 255, 255, 0.3);
 }
 .intro-wrap .intro-content {
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: scroll;
   color: #FFF;
   border: 1px solid #FFF;
   border-radius: 10px;
   padding: 30px 50px;
   position: relative;
 }
-.intro-wrap .intro-content h4,
-.intro-wrap .intro-content li {
+@media screen and (max-width: 1024px) {
+  .intro-wrap .intro-content {
+    border: none;
+    padding: 10px 20px;
+  }
+}
+.intro-wrap .intro-content h4, .intro-wrap .intro-content li {
   line-height: 2;
 }
 

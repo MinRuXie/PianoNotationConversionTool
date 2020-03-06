@@ -288,6 +288,10 @@ html, body {
     right: 0;
     transition: transform 0.3s;
 
+    @media screen and (max-width: 1024px) {
+        overflow-y: scroll;
+    }
+
     /* 收合按鈕 */
     #toolbox-btn {
         position: absolute;
@@ -346,7 +350,11 @@ html, body {
 
         @media screen and (max-width: 1024px) {
             font-size: 12px;
-            letter-spacing: 0px;
+            letter-spacing: 0;
+            padding: 3px;
+            border-radius: 0;
+            border: none;
+            border-bottom: 1px solid rgba($color-white, 0.6);
         }
 
         &:hover {
@@ -411,15 +419,6 @@ html, body {
         }
     }
 
-    /* piano height */
-    .piano .group,
-    .piano .group_left,
-    .piano .group_right {
-        @media screen and (max-width: 1024px) {
-            height: 80%;
-        }
-    }
-
     .group {
         position: absolute;
         bottom: 0;
@@ -454,6 +453,15 @@ html, body {
 
         .ivory {
             width: 100%;
+        }
+    }
+
+    /* piano height */
+    .group,
+    .group_left,
+    .group_right {
+        @media screen and (max-width: 1024px) {
+            height: 80%;
         }
     }
 }
@@ -679,14 +687,21 @@ html, body {
     }
 
     .intro-content {
+        max-width: 90vw;
+        max-height: 90vh;
+        overflow-y: scroll;
         color: #FFF;
         border: 1px solid #FFF;
         border-radius: 10px;
         padding: 30px 50px;
         position: relative;
 
-        h4,
-        li {
+        @media screen and (max-width: 1024px) {
+            border: none;
+            padding: 10px 20px;
+        }
+
+        h4, li {
             line-height: 2;
         }
     }
