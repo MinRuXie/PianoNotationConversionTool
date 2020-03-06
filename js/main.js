@@ -55,53 +55,56 @@ $(function(){
     //-------------------
     function buildPiano(){
         // 白鍵
-        ivory_do = '<div class="ivory do"><span>1</span></div>';
-        ivory_re = '<div class="ivory re"><span>2</span></div>';
-        ivory_mi = '<div class="ivory mi"><span>3</span></div>';
-        ivory_fa = '<div class="ivory fa"><span>4</span></div>';
-        ivory_sol = '<div class="ivory sol"><span>5</span></div>';
-        ivory_la = '<div class="ivory la"><span>6</span></div>';
-        ivory_si = '<div class="ivory si"><span>7</span></div>';
+        let ivory_do = '<div class="ivory do"><span>1</span></div>';
+        let ivory_re = '<div class="ivory re"><span>2</span></div>';
+        let ivory_mi = '<div class="ivory mi"><span>3</span></div>';
+        let ivory_fa = '<div class="ivory fa"><span>4</span></div>';
+        let ivory_sol = '<div class="ivory sol"><span>5</span></div>';
+        let ivory_la = '<div class="ivory la"><span>6</span></div>';
+        let ivory_si = '<div class="ivory si"><span>7</span></div>';
         
-        colors = ['#828282', '#AD766A', '#D5404A', '#FFB11B', '#90B44B', '#58B2DC', '#005CAF',  '#A8497A', '#E87A90'];
+        let colors = ['#828282', '#AD766A', '#D5404A', '#FFB11B', '#90B44B', '#58B2DC', '#005CAF',  '#A8497A', '#E87A90'];
         
-        key_ivory = ['A0', 'B0', 'C1', 'D1', 'E1', 'F1', 'G1', 'A1', 'B1', 'C2', 'D2', 'E2', 'F2', 'G2', 'A2', 'B2', 'C3', 'D3', 'E3', 'F3', 'G3', 'A3', 'B3', 'C4', 'D4', 'E4', 'F4', 'G4', 'A4', 'B4', 'C5', 'D5', 'E5', 'F5', 'G5', 'A5', 'B5', 'C6', 'D6', 'E6', 'F6', 'G6', 'A6', 'B6', 'C7', 'D7', 'E7', 'F7', 'G7', 'A7', 'B7', 'C8'];
-        key_ebony_b = ['Bb0', 'Db1', 'Eb1', 'Gb1', 'Ab1', 'Bb1', 'Db2', 'Eb2', 'Gb2', 'Ab2', 'Bb2', 'Db3', 'Eb3', 'Gb3', 'Ab3', 'Bb3', 'Db4', 'Eb4', 'Gb4', 'Ab4', 'Bb4', 'Db5', 'Eb5', 'Gb5', 'Ab5', 'Bb5', 'Db6', 'Eb6', 'Gb6', 'Ab6', 'Bb6', 'Db7', 'Eb7', 'Gb7', 'Ab7', 'Bb7'];
+        let key_ivory = ['A0', 'B0', 'C1', 'D1', 'E1', 'F1', 'G1', 'A1', 'B1', 'C2', 'D2', 'E2', 'F2', 'G2', 'A2', 'B2', 'C3', 'D3', 'E3', 'F3', 'G3', 'A3', 'B3', 'C4', 'D4', 'E4', 'F4', 'G4', 'A4', 'B4', 'C5', 'D5', 'E5', 'F5', 'G5', 'A5', 'B5', 'C6', 'D6', 'E6', 'F6', 'G6', 'A6', 'B6', 'C7', 'D7', 'E7', 'F7', 'G7', 'A7', 'B7', 'C8'];
+        
+        let key_ebony_b = ['Bb0', 'Db1', 'Eb1', 'Gb1', 'Ab1', 'Bb1', 'Db2', 'Eb2', 'Gb2', 'Ab2', 'Bb2', 'Db3', 'Eb3', 'Gb3', 'Ab3', 'Bb3', 'Db4', 'Eb4', 'Gb4', 'Ab4', 'Bb4', 'Db5', 'Eb5', 'Gb5', 'Ab5', 'Bb5', 'Db6', 'Eb6', 'Gb6', 'Ab6', 'Bb6', 'Db7', 'Eb7', 'Gb7', 'Ab7', 'Bb7'];
 
-        key_ebony_h = ['Ah0', 'Ch1', 'Dh1', 'Fh1', 'Gh1', 'Ah1', 'Ch2', 'Dh2', 'Fh2', 'Gh2', 'Ah2', 'Ch3', 'Dh3', 'Fh3', 'Gh3', 'Ah3', 'Ch4', 'Dh4', 'Fh4', 'Gh4', 'Ah4', 'Ch5', 'Dh5', 'Fh5', 'Gh5', 'Ah5', 'Ch6', 'Dh6', 'Fh6', 'Gh6', 'Ah6', 'Ch7', 'Dh7', 'Fh7', 'Gh7', 'Ah7'];
+        let key_ebony_h = ['Ah0', 'Ch1', 'Dh1', 'Fh1', 'Gh1', 'Ah1', 'Ch2', 'Dh2', 'Fh2', 'Gh2', 'Ah2', 'Ch3', 'Dh3', 'Fh3', 'Gh3', 'Ah3', 'Ch4', 'Dh4', 'Fh4', 'Gh4', 'Ah4', 'Ch5', 'Dh5', 'Fh5', 'Gh5', 'Ah5', 'Ch6', 'Dh6', 'Fh6', 'Gh6', 'Ah6', 'Ch7', 'Dh7', 'Fh7', 'Gh7', 'Ah7'];
         
         // audio = ['Piano.ff.A0.mp3', 'Piano.ff.Bb0.mp3', 'Piano.ff.B0.mp3', 'Piano.ff.C1.mp3', 'Piano.ff.Db1.mp3', 'Piano.ff.D1.mp3', 'Piano.ff.Eb1.mp3', 'Piano.ff.E1.mp3', 'Piano.ff.F1.mp3', 'Piano.ff.Gb1.mp3', 'Piano.ff.G1.mp3', 'Piano.ff.Ab1.mp3', 'Piano.ff.A1.mp3', 'Piano.ff.Bb1.mp3', 'Piano.ff.B1.mp3', 'Piano.ff.C2.mp3', 'Piano.ff.Db2.mp3', 'Piano.ff.D2.mp3', 'Piano.ff.Eb2.mp3', 'Piano.ff.E2.mp3', 'Piano.ff.F2.mp3', 'Piano.ff.Gb2.mp3', 'Piano.ff.G2.mp3', 'Piano.ff.Ab2.mp3', 'Piano.ff.A2.mp3', 'Piano.ff.Bb2.mp3', 'Piano.ff.B2.mp3', 'Piano.ff.C3.mp3', 'Piano.ff.Db3.mp3', 'Piano.ff.D3.mp3', 'Piano.ff.Eb3.mp3', 'Piano.ff.E3.mp3', 'Piano.ff.F3.mp3', 'Piano.ff.Gb3.mp3', 'Piano.ff.G3.mp3', 'Piano.ff.Ab3.mp3', 'Piano.ff.A3.mp3', 'Piano.ff.Bb3.mp3', 'Piano.ff.B3.mp3', 'Piano.ff.C4.mp3', 'Piano.ff.Db4.mp3', 'Piano.ff.D4.mp3', 'Piano.ff.Eb4.mp3', 'Piano.ff.E4.mp3', 'Piano.ff.F4.mp3', 'Piano.ff.Gb4.mp3', 'Piano.ff.G4.mp3', 'Piano.ff.Ab4.mp3', 'Piano.ff.A4.mp3', 'Piano.ff.Bb4.mp3', 'Piano.ff.B4.mp3', 'Piano.ff.C5.mp3', 'Piano.ff.Db5.mp3', 'Piano.ff.D5.mp3', 'Piano.ff.Eb5.mp3', 'Piano.ff.E5.mp3', 'Piano.ff.F5.mp3', 'Piano.ff.Gb5.mp3', 'Piano.ff.G5.mp3', 'Piano.ff.Ab5.mp3', 'Piano.ff.A5.mp3', 'Piano.ff.Bb5.mp3', 'Piano.ff.B5.mp3', 'Piano.ff.C6.mp3', 'Piano.ff.Db6.mp3', 'Piano.ff.D6.mp3', 'Piano.ff.Eb6.mp3', 'Piano.ff.E6.mp3', 'Piano.ff.F6.mp3', 'Piano.ff.Gb6.mp3', 'Piano.ff.G6.mp3', 'Piano.ff.Ab6.mp3', 'Piano.ff.A6.mp3', 'Piano.ff.Bb6.mp3', 'Piano.ff.B6.mp3', 'Piano.ff.C7.mp3', 'Piano.ff.Db7.mp3', 'Piano.ff.D7.mp3', 'Piano.ff.Eb7.mp3', 'Piano.ff.E7.mp3', 'Piano.ff.F7.mp3', 'Piano.ff.Gb7.mp3', 'Piano.ff.G7.mp3', 'Piano.ff.Ab7.mp3', 'Piano.ff.A7.mp3', 'Piano.ff.Bb7.mp3', 'Piano.ff.B7.mp3', 'Piano.ff.C8.mp3'];
-        audio_ivory = ['Piano.ff.A0.mp3', 'Piano.ff.B0.mp3', 'Piano.ff.C1.mp3', 'Piano.ff.D1.mp3', 'Piano.ff.E1.mp3', 'Piano.ff.F1.mp3', 'Piano.ff.G1.mp3', 'Piano.ff.A1.mp3', 'Piano.ff.B1.mp3', 'Piano.ff.C2.mp3', 'Piano.ff.D2.mp3', 'Piano.ff.E2.mp3', 'Piano.ff.F2.mp3', 'Piano.ff.G2.mp3', 'Piano.ff.A2.mp3', 'Piano.ff.B2.mp3', 'Piano.ff.C3.mp3', 'Piano.ff.D3.mp3', 'Piano.ff.E3.mp3', 'Piano.ff.F3.mp3', 'Piano.ff.G3.mp3', 'Piano.ff.A3.mp3', 'Piano.ff.B3.mp3', 'Piano.ff.C4.mp3', 'Piano.ff.D4.mp3', 'Piano.ff.E4.mp3', 'Piano.ff.F4.mp3', 'Piano.ff.G4.mp3', 'Piano.ff.A4.mp3', 'Piano.ff.B4.mp3', 'Piano.ff.C5.mp3', 'Piano.ff.D5.mp3', 'Piano.ff.E5.mp3', 'Piano.ff.F5.mp3', 'Piano.ff.G5.mp3', 'Piano.ff.A5.mp3', 'Piano.ff.B5.mp3', 'Piano.ff.C6.mp3', 'Piano.ff.D6.mp3', 'Piano.ff.E6.mp3', 'Piano.ff.F6.mp3', 'Piano.ff.G6.mp3', 'Piano.ff.A6.mp3', 'Piano.ff.B6.mp3', 'Piano.ff.C7.mp3', 'Piano.ff.D7.mp3', 'Piano.ff.E7.mp3', 'Piano.ff.F7.mp3', 'Piano.ff.G7.mp3', 'Piano.ff.A7.mp3', 'Piano.ff.B7.mp3', 'Piano.ff.C8.mp3'];
-        audio_ebony = ['Piano.ff.Bb0.mp3', 'Piano.ff.Db1.mp3', 'Piano.ff.Eb1.mp3', 'Piano.ff.Gb1.mp3', 'Piano.ff.Ab1.mp3', 'Piano.ff.Bb1.mp3', 'Piano.ff.Db2.mp3', 'Piano.ff.Eb2.mp3', 'Piano.ff.Gb2.mp3', 'Piano.ff.Ab2.mp3', 'Piano.ff.Bb2.mp3', 'Piano.ff.Db3.mp3', 'Piano.ff.Eb3.mp3', 'Piano.ff.Gb3.mp3', 'Piano.ff.Ab3.mp3', 'Piano.ff.Bb3.mp3', 'Piano.ff.Db4.mp3', 'Piano.ff.Eb4.mp3', 'Piano.ff.Gb4.mp3', 'Piano.ff.Ab4.mp3', 'Piano.ff.Bb4.mp3', 'Piano.ff.Db5.mp3', 'Piano.ff.Eb5.mp3', 'Piano.ff.Gb5.mp3', 'Piano.ff.Ab5.mp3', 'Piano.ff.Bb5.mp3', 'Piano.ff.Db6.mp3', 'Piano.ff.Eb6.mp3', 'Piano.ff.Gb6.mp3', 'Piano.ff.Ab6.mp3', 'Piano.ff.Bb6.mp3', 'Piano.ff.Db7.mp3', 'Piano.ff.Eb7.mp3', 'Piano.ff.Gb7.mp3', 'Piano.ff.Ab7.mp3', 'Piano.ff.Bb7.mp3'];
+        
+        let audio_ivory = ['Piano.ff.A0.mp3', 'Piano.ff.B0.mp3', 'Piano.ff.C1.mp3', 'Piano.ff.D1.mp3', 'Piano.ff.E1.mp3', 'Piano.ff.F1.mp3', 'Piano.ff.G1.mp3', 'Piano.ff.A1.mp3', 'Piano.ff.B1.mp3', 'Piano.ff.C2.mp3', 'Piano.ff.D2.mp3', 'Piano.ff.E2.mp3', 'Piano.ff.F2.mp3', 'Piano.ff.G2.mp3', 'Piano.ff.A2.mp3', 'Piano.ff.B2.mp3', 'Piano.ff.C3.mp3', 'Piano.ff.D3.mp3', 'Piano.ff.E3.mp3', 'Piano.ff.F3.mp3', 'Piano.ff.G3.mp3', 'Piano.ff.A3.mp3', 'Piano.ff.B3.mp3', 'Piano.ff.C4.mp3', 'Piano.ff.D4.mp3', 'Piano.ff.E4.mp3', 'Piano.ff.F4.mp3', 'Piano.ff.G4.mp3', 'Piano.ff.A4.mp3', 'Piano.ff.B4.mp3', 'Piano.ff.C5.mp3', 'Piano.ff.D5.mp3', 'Piano.ff.E5.mp3', 'Piano.ff.F5.mp3', 'Piano.ff.G5.mp3', 'Piano.ff.A5.mp3', 'Piano.ff.B5.mp3', 'Piano.ff.C6.mp3', 'Piano.ff.D6.mp3', 'Piano.ff.E6.mp3', 'Piano.ff.F6.mp3', 'Piano.ff.G6.mp3', 'Piano.ff.A6.mp3', 'Piano.ff.B6.mp3', 'Piano.ff.C7.mp3', 'Piano.ff.D7.mp3', 'Piano.ff.E7.mp3', 'Piano.ff.F7.mp3', 'Piano.ff.G7.mp3', 'Piano.ff.A7.mp3', 'Piano.ff.B7.mp3', 'Piano.ff.C8.mp3'];
+        
+        let audio_ebony = ['Piano.ff.Bb0.mp3', 'Piano.ff.Db1.mp3', 'Piano.ff.Eb1.mp3', 'Piano.ff.Gb1.mp3', 'Piano.ff.Ab1.mp3', 'Piano.ff.Bb1.mp3', 'Piano.ff.Db2.mp3', 'Piano.ff.Eb2.mp3', 'Piano.ff.Gb2.mp3', 'Piano.ff.Ab2.mp3', 'Piano.ff.Bb2.mp3', 'Piano.ff.Db3.mp3', 'Piano.ff.Eb3.mp3', 'Piano.ff.Gb3.mp3', 'Piano.ff.Ab3.mp3', 'Piano.ff.Bb3.mp3', 'Piano.ff.Db4.mp3', 'Piano.ff.Eb4.mp3', 'Piano.ff.Gb4.mp3', 'Piano.ff.Ab4.mp3', 'Piano.ff.Bb4.mp3', 'Piano.ff.Db5.mp3', 'Piano.ff.Eb5.mp3', 'Piano.ff.Gb5.mp3', 'Piano.ff.Ab5.mp3', 'Piano.ff.Bb5.mp3', 'Piano.ff.Db6.mp3', 'Piano.ff.Eb6.mp3', 'Piano.ff.Gb6.mp3', 'Piano.ff.Ab6.mp3', 'Piano.ff.Bb6.mp3', 'Piano.ff.Db7.mp3', 'Piano.ff.Eb7.mp3', 'Piano.ff.Gb7.mp3', 'Piano.ff.Ab7.mp3', 'Piano.ff.Bb7.mp3'];
 
         // 黑鍵 (容器)
-        ebony = '<div class="ebony"></div>';
-        ebony_1 = '<div class="ebony_1"></div>';
-        ebony_2 = '<div class="ebony_2"></div>';
-        ebony_3 = '<div class="ebony_3"></div>';
-        ebony_4 = '<div class="ebony_4"></div>';
-        ebony_5 = '<div class="ebony_5"></div>';
+        let ebony = '<div class="ebony-wrap ebony"></div>';
+        let ebony_1 = '<div class="ebony-wrap ebony_1"></div>';
+        let ebony_2 = '<div class="ebony-wrap ebony_2"></div>';
+        let ebony_3 = '<div class="ebony-wrap ebony_3"></div>';
+        let ebony_4 = '<div class="ebony-wrap ebony_4"></div>';
+        let ebony_5 = '<div class="ebony-wrap ebony_5"></div>';
 
         // 黑鍵 (降)
-        ebony_bre = '<div class="ebony_child bre"><span>b2</span></div>';
-        ebony_bmi = '<div class="ebony_child bmi"><span>b3</span></div>';
-        ebony_bsol = '<div class="ebony_child bsol"><span>b5</span></div>';
-        ebony_bla = '<div class="ebony_child bla"><span>b6</span></div>';
-        ebony_bsi = '<div class="ebony_child bsi"><span>b7</span></div>';
+        let ebony_bre = '<div class="ebony_child bre"><span>b2</span></div>';
+        let ebony_bmi = '<div class="ebony_child bmi"><span>b3</span></div>';
+        let ebony_bsol = '<div class="ebony_child bsol"><span>b5</span></div>';
+        let ebony_bla = '<div class="ebony_child bla"><span>b6</span></div>';
+        let ebony_bsi = '<div class="ebony_child bsi"><span>b7</span></div>';
 		
 		// 黑鍵 (升)
-        ebony_udo = '<div class="ebony_child udo"><span>#1</span></div>';
-        ebony_ure = '<div class="ebony_child ure"><span>#2</span></div>';
-        ebony_ufa = '<div class="ebony_child ufa"><span>#4</span></div>';
-        ebony_usol = '<div class="ebony_child usol"><span>#5</span></div>';
-        ebony_ula = '<div class="ebony_child ula"><span>#6</span></div>';
+        let ebony_udo = '<div class="ebony_child udo"><span>#1</span></div>';
+        let ebony_ure = '<div class="ebony_child ure"><span>#2</span></div>';
+        let ebony_ufa = '<div class="ebony_child ufa"><span>#4</span></div>';
+        let ebony_usol = '<div class="ebony_child usol"><span>#5</span></div>';
+        let ebony_ula = '<div class="ebony_child ula"><span>#6</span></div>';
 		
 
         //-------------------
         // 左邊 3 鍵
         //-------------------
         $piano.append('<div class="group_left"></div>');
-        $group_left = $('.group_left');
+        let $group_left = $('.group_left');
         
         // 新增白鍵
         $group_left.append(ivory_la);
@@ -112,8 +115,7 @@ $(function(){
 
         // 新增黑鍵容器
         $group_left.append(ebony);
-        $ebony = $group_left.find('.ebony');
-        $ebony.css({left: '35%', top: '0'});
+        let $ebony = $group_left.find('.ebony');
         
 		// 新增黑鍵 (升)
         $ebony.append(ebony_ula);
@@ -169,23 +171,18 @@ $(function(){
             // 新增黑鍵容器 1
             $(this).append(ebony_1);
             $ebony_1 = $(this).find('.ebony_1');
-            $ebony_1.css({left: '10%', top: '0'});
             // 新增黑鍵容器 2
             $(this).append(ebony_2);
             $ebony_2 = $(this).find('.ebony_2');
-            $ebony_2.css({left: '25%', top: '0'});
             // 新增黑鍵容器 3
             $(this).append(ebony_3);
             $ebony_3 = $(this).find('.ebony_3');
-            $ebony_3.css({left: '53%', top: '0'});
             // 新增黑鍵容器 4
             $(this).append(ebony_4);
             $ebony_4 = $(this).find('.ebony_4');
-            $ebony_4.css({left: '67%', top: '0'});
             // 新增黑鍵容器 5
             $(this).append(ebony_5);
             $ebony_5 = $(this).find('.ebony_5');
-            $ebony_5.css({left: '82%', top: '0'});
 
 			
 			// 新增黑鍵 (升)------------
@@ -280,7 +277,7 @@ $(function(){
         // 右邊 1 鍵
         //----------------------
         $piano.append('<div class="group_right"></div>');
-        $group_right = $('.group_right');
+        let $group_right = $('.group_right');
         
         // 新增白鍵
         $group_right.append(ivory_do);
@@ -350,11 +347,7 @@ $(function(){
         panel.find(".note").removeClass('selected');
 
         // 音符
-        let note_html = `<div class="note selected ${key}" style="background-color: ${color};">${number}</div>`
-        // 空格
-        if (number == '0') {
-            note_html = `<div class="note selected whitespace" style="background-color: ${color}; color: transparent">${number}</div>`;
-        }
+        let note_html = `<div class="note selected ${key}" style="background-color: ${color};">${number}</div>`;
 
         // 檢查是否存在焦點元素
         if ($selectedNote.length != 0) {
@@ -813,8 +806,8 @@ $(function(){
                     }
                     case 1: { // 空格
                         // 紀錄簡譜
-                        note($text_number, '0', '0', 'rgba(255, 255, 255, 0.2)');
-                        note($text_tabs, '0', '0', 'rgba(255, 255, 255, 0.2)'); 
+                        note($text_number, '0', 'whitespace', 'rgba(255, 255, 255, 0.2)');
+                        note($text_tabs, '0', 'whitespace', 'rgba(255, 255, 255, 0.2)'); 
                         break;
                     }
                     case 2: { // 換行
@@ -895,8 +888,8 @@ $(function(){
                     }
                     case 1: { // 空格
                         // 紀錄簡譜
-                        note($text_number, '0', '0', 'rgba(255, 255, 255, 0.2)');
-                        note($text_tabs, '0', '0', 'rgba(255, 255, 255, 0)');
+                        note($text_number, '0', 'whitespace', 'rgba(255, 255, 255, 0.2)');
+                        note($text_tabs, '0', 'whitespace', 'rgba(255, 255, 255, 0)');
                         break;
                     }
                     case 2: { // 換行

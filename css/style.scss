@@ -71,6 +71,14 @@ html, body {
                 background-color: rgba($color-white, 0.1);
             }
 
+            /* 音符 */
+            .note {
+                /* 空格 */
+                &.whitespace {
+                    color: transparent;
+                }
+            }
+
             /* 刪除按鈕 */
             .del {
                 position: absolute;
@@ -503,12 +511,7 @@ html, body {
     }
 }
 
-.ebony, 
-.ebony_1, 
-.ebony_2, 
-.ebony_3, 
-.ebony_4, 
-.ebony_5 {
+.ebony-wrap {
     position: absolute;
     background: $color-pure-black;
     width: 8%;
@@ -529,6 +532,22 @@ html, body {
     .key {
         display: none;
     }
+
+    &.ebony,
+    &.ebony_1, 
+    &.ebony_2, 
+    &.ebony_3, 
+    &.ebony_4, 
+    &.ebony_5 {
+        top: 0;
+    }
+
+    &.ebony { left: 35%; }
+    &.ebony_1 { left: 10%; }
+    &.ebony_2 { left: 25%; }
+    &.ebony_3 { left: 53%; }
+    &.ebony_4 { left: 67%; }
+    &.ebony_5 { left: 82%; }
 }
 
 .ebony_child {

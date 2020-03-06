@@ -59,6 +59,7 @@ html, body {
   border-left: 8px solid #FFF;
   position: relative;
   overflow: hidden;
+  /* 音符 */
   /* 刪除按鈕 */
 }
 .text .number-panel .line:nth-child(odd),
@@ -68,6 +69,14 @@ html, body {
 .text .number-panel .line:nth-child(even),
 .text .tabs-panel .line:nth-child(even) {
   background-color: rgba(255, 255, 255, 0.1);
+}
+.text .number-panel .line .note,
+.text .tabs-panel .line .note {
+  /* 空格 */
+}
+.text .number-panel .line .note.whitespace,
+.text .tabs-panel .line .note.whitespace {
+  color: transparent;
 }
 .text .number-panel .line .del,
 .text .tabs-panel .line .del {
@@ -566,12 +575,7 @@ html, body {
   border-radius: 5px;
 }
 
-.ebony,
-.ebony_1,
-.ebony_2,
-.ebony_3,
-.ebony_4,
-.ebony_5 {
+.ebony-wrap {
   position: absolute;
   background: #000;
   width: 8%;
@@ -580,12 +584,7 @@ html, body {
   border-bottom-right-radius: 5px;
   overflow: hidden;
 }
-.ebony span,
-.ebony_1 span,
-.ebony_2 span,
-.ebony_3 span,
-.ebony_4 span,
-.ebony_5 span {
+.ebony-wrap span {
   color: #FFF;
   height: 100%;
   display: flex;
@@ -596,13 +595,29 @@ html, body {
   /*flex: 水平置中*/
   font-size: 0.8vw;
 }
-.ebony .key,
-.ebony_1 .key,
-.ebony_2 .key,
-.ebony_3 .key,
-.ebony_4 .key,
-.ebony_5 .key {
+.ebony-wrap .key {
   display: none;
+}
+.ebony-wrap.ebony, .ebony-wrap.ebony_1, .ebony-wrap.ebony_2, .ebony-wrap.ebony_3, .ebony-wrap.ebony_4, .ebony-wrap.ebony_5 {
+  top: 0;
+}
+.ebony-wrap.ebony {
+  left: 35%;
+}
+.ebony-wrap.ebony_1 {
+  left: 10%;
+}
+.ebony-wrap.ebony_2 {
+  left: 25%;
+}
+.ebony-wrap.ebony_3 {
+  left: 53%;
+}
+.ebony-wrap.ebony_4 {
+  left: 67%;
+}
+.ebony-wrap.ebony_5 {
+  left: 82%;
 }
 
 .ebony_child {
