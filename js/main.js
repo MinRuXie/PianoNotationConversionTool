@@ -779,8 +779,8 @@ $(function(){
                     }
                     case 1: { // 空格
                         // 紀錄簡譜
-                        note($text_number, '0', 'whitespace', 'rgba(255, 255, 255, 0.2)');
-                        note($text_tabs, '0', 'whitespace', 'rgba(255, 255, 255, 0.2)'); 
+                        note($text_number, '', 'whitespace', 'rgba(255, 255, 255, 0.2)');
+                        note($text_tabs, '', 'whitespace', 'rgba(255, 255, 255, 0.2)'); 
                         break;
                     }
                     case 2: { // 換行
@@ -861,8 +861,8 @@ $(function(){
                     }
                     case 1: { // 空格
                         // 紀錄簡譜
-                        note($text_number, '0', 'whitespace', 'rgba(255, 255, 255, 0.2)');
-                        note($text_tabs, '0', 'whitespace', 'rgba(255, 255, 255, 0)');
+                        note($text_number, '', 'whitespace', 'rgba(255, 255, 255, 0.2)');
+                        note($text_tabs, '', 'whitespace', 'rgba(255, 255, 255, 0)');
                         break;
                     }
                     case 2: { // 換行
@@ -913,8 +913,8 @@ $(function(){
 				}
 				case 32: { // Space
 					// 紀錄簡譜
-                    note($text_number, '0', '0', 'rgba(255, 255, 255, 0.2)');
-                    note($text_tabs, '0', '0', 'rgba(255, 255, 255, 0)');
+                    note($text_number, '', 'whitespace', 'rgba(255, 255, 255, 0.2)');
+                    note($text_tabs, '', 'whitespace', 'rgba(255, 255, 255, 0)');
 					break;
                 }
                 case 65: { // 左 A
