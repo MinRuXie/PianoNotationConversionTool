@@ -129,7 +129,6 @@ $(function(){
             // 新增 key
             $(this).append(`<div class="key">${key_ivory[index]}</div>`);
             // 新增音訊
-            // $(this).append(`<audio id="${key_ivory[index]}"><source src="./audio/${audio_ivory[index]}" type="audio/mpeg"></audio>`);
             $(this).append(`<audio id="${key_ivory[index]}"><source src="./audio/Piano.ff.${key_ivory[index]}.mp3" type="audio/mpeg"></audio>`);
         });
 
@@ -143,7 +142,6 @@ $(function(){
                     $(this).append(`<div data-name="${key_ebony_b[index]}" class="key">${key_ebony_b[index]}</div>`);
                 }
                 // 新增音訊
-                // $(this).append(`<audio id="${key_ebony_b[index]}"><source src="./audio/${audio_ebony[index]}" type="audio/mpeg"></audio>`);
                 $(this).append(`<audio id="${key_ebony_b[index]}"><source src="./audio/Piano.ff.${key_ebony_b[index]}.mp3" type="audio/mpeg"></audio>`);
             });        
         });
@@ -184,7 +182,6 @@ $(function(){
                 // 新增 key
                 $(this).append(`<div class="key">${key_ivory[2+(7*index)+index2]}</div>`);
                 // 新增音訊
-                // $(this).append(`<audio id="${key_ivory[2+(7*index)+index2]}"><source src="./audio/${audio_ivory[2+(7*index)+index2]}" type="audio/mpeg"></audio>`);
                 $(this).append(`<audio id="${key_ivory[2+(7*index)+index2]}"><source src="./audio/Piano.ff.${key_ivory[2+(7*index)+index2]}.mp3" type="audio/mpeg"></audio>`);
             });
 
@@ -198,7 +195,6 @@ $(function(){
                         $(this).append(`<div data-name="${key_ebony_b[1+(5*index)+0]}" class="key">${key_ebony_b[1+(5*index)+0]}</div>`);
                     }
                     // 新增音訊
-                    // $(this).append(`<audio id="${key_ebony_b[1+(5*index)+0]}"><source src="./audio/${audio_ebony[1+(5*index)+0]}" type="audio/mpeg"></audio>`);
                     $(this).append(`<audio id="${key_ebony_b[1+(5*index)+0]}"><source src="./audio/Piano.ff.${key_ebony_b[1+(5*index)+0]}.mp3" type="audio/mpeg"></audio>`);
                 });
             });
@@ -211,7 +207,6 @@ $(function(){
                         $(this).append(`<div data-name="${key_ebony_b[1+(5*index)+1]}" class="key">${key_ebony_b[1+(5*index)+1]}</div>`);
                     }
                     // 新增音訊
-                    // $(this).append(`<audio id="${key_ebony_b[1+(5*index)+1]}"><source src="./audio/${audio_ebony[1+(5*index)+1]}" type="audio/mpeg"></audio>`);
                     $(this).append(`<audio id="${key_ebony_b[1+(5*index)+1]}"><source src="./audio/Piano.ff.${key_ebony_b[1+(5*index)+1]}.mp3" type="audio/mpeg"></audio>`);
                 });
             });
@@ -224,7 +219,6 @@ $(function(){
                         $(this).append(`<div data-name="${key_ebony_b[1+(5*index)+2]}" class="key">${key_ebony_b[1+(5*index)+2]}</div>`);
                     }
                     // 新增音訊
-                    // $(this).append(`<audio id="${key_ebony_b[1+(5*index)+2]}"><source src="./audio/${audio_ebony[1+(5*index)+2]}" type="audio/mpeg"></audio>`);
                     $(this).append(`<audio id="${key_ebony_b[1+(5*index)+2]}"><source src="./audio/Piano.ff.${key_ebony_b[1+(5*index)+2]}.mp3" type="audio/mpeg"></audio>`);
                 });
             });
@@ -237,7 +231,6 @@ $(function(){
                         $(this).append(`<div data-name="${key_ebony_b[1+(5*index)+3]}" class="key">${key_ebony_b[1+(5*index)+3]}</div>`);
                     }
                     // 新增音訊
-                    // $(this).append(`<audio id="${key_ebony_b[1+(5*index)+3]}"><source src="./audio/${audio_ebony[1+(5*index)+3]}" type="audio/mpeg"></audio>`);
                     $(this).append(`<audio id="${key_ebony_b[1+(5*index)+3]}"><source src="./audio/Piano.ff.${key_ebony_b[1+(5*index)+3]}.mp3" type="audio/mpeg"></audio>`);
                 });
             });
@@ -250,7 +243,6 @@ $(function(){
                         $(this).append(`<div data-name="${key_ebony_b[1+(5*index)+4]}" class="key">${key_ebony_b[1+(5*index)+4]}</div>`);
                     }
                     // 新增音訊
-                    // $(this).append(`<audio id="${key_ebony_b[1+(5*index)+4]}"><source src="./audio/${audio_ebony[1+(5*index)+4]}" type="audio/mpeg"></audio>`);
                     $(this).append(`<audio id="${key_ebony_b[1+(5*index)+4]}"><source src="./audio/Piano.ff.${key_ebony_b[1+(5*index)+4]}.mp3" type="audio/mpeg"></audio>`);
                 });
             });
@@ -273,7 +265,6 @@ $(function(){
             // 新增 key
             $(this).append(`<div class="key">${key_ivory[key_ivory.length-1]}</div>`);
             // 新增音訊
-            // $(this).append(`<audio id="${key_ivory[key_ivory.length-1]}"><source src="./audio/${audio_ivory[audio_ivory.length-1]}" type="audio/mpeg"></audio>`);
             $(this).append(`<audio id="${key_ivory[key_ivory.length-1]}"><source src="./audio/Piano.ff.${key_ivory[key_ivory.length-1]}.mp3" type="audio/mpeg"></audio>`);
         });
     }
