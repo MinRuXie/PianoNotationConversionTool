@@ -1,19 +1,5 @@
 // 等 HTML 載入完成
 $(function(){
-
-    /* 預先載入圖片 */
-    // function preloadImg(image) {
-    //     let img = new Image();
-    //     img.src = image;
-    // }
-
-    // let pics = [
-    //     '../PianoNotationConversionTool/image/music.png'
-    // ];
-
-    // for(let i=0;i<pics.length;i++){
-    //     preloadImg(pics[i]);
-    // }
     
     // 等資源載入完成後才顯示畫面
     // window.onload = function(){
@@ -148,10 +134,10 @@ $(function(){
             });        
         });
 
-        //---------------------
-        // 中間 84 鍵
-        //---------------------
-        for(var i=0 ; i<7 ; i++){
+        //-------------------------------
+        // 中間 84 鍵 = (7+5)*7 (7組音階)
+        //-------------------------------
+        for(let j=0 ; j<7 ; j++){
             $piano.append('<div class="group"></div>');
         }
         $('.group').each(function(index){
@@ -179,7 +165,7 @@ $(function(){
             // 上色
             $(this).find('.ebony_child').find('span').css({'background': colors[index+1]});
 
-            // 新增白鍵內容
+            // 新增白鍵內容 (7組容器)
             $(this).find('.ivory').each(function(index2){
                 // 新增 key
                 $(this).append(`<div class="key">${key_ivory[2+(7*index)+index2]}</div>`);
@@ -187,67 +173,21 @@ $(function(){
                 $(this).append(`<audio id="${key_ivory[2+(7*index)+index2]}"><source src="./audio/Piano.ff.${key_ivory[2+(7*index)+index2]}.mp3" type="audio/mpeg"></audio>`);
             });
 
-            // 新增黑鍵內容
-            $(this).find('.ebony_1').each(function(index2){
-                $(this).find('.ebony_child').each(function(index3){
-                    // 新增 key (第一個黑鍵 + [一組5個黑鍵] + 現在是第幾個黑鍵)
-                    if(index3 < 1){ // 第 0 個 (升記號)
-                        $(this).append(`<div data-name="${key_ebony_h[1+(5*index)+0]}" class="key">${key_ebony_b[1+(5*index)+0]}</div>`);
-                    }else{ // 第 1 個 (降記號)
-                        $(this).append(`<div data-name="${key_ebony_b[1+(5*index)+0]}" class="key">${key_ebony_b[1+(5*index)+0]}</div>`);
-                    }
-                    // 新增音訊
-                    $(this).append(`<audio id="${key_ebony_b[1+(5*index)+0]}"><source src="./audio/Piano.ff.${key_ebony_b[1+(5*index)+0]}.mp3" type="audio/mpeg"></audio>`);
+            // 新增黑鍵內容 (5組容器)
+            for (let i=0 ; i<5 ; i++) { 
+                $(this).find(`.ebony_${i+1}`).each(function(index2){
+                    $(this).find('.ebony_child').each(function(index3){
+                        // 新增 key (第一個黑鍵 + [一組5個黑鍵] + 現在是第幾個黑鍵)
+                        if(index3 < 1){ // 第 0 個 (升記號)
+                            $(this).append(`<div data-name="${key_ebony_h[1+(5*index)+i]}" class="key">${key_ebony_b[1+(5*index)+i]}</div>`);
+                        }else{ // 第 1 個 (降記號)
+                            $(this).append(`<div data-name="${key_ebony_b[1+(5*index)+i]}" class="key">${key_ebony_b[1+(5*index)+i]}</div>`);
+                        }
+                        // 新增音訊
+                        $(this).append(`<audio id="${key_ebony_b[1+(5*index)+i]}"><source src="./audio/Piano.ff.${key_ebony_b[1+(5*index)+i]}.mp3" type="audio/mpeg"></audio>`);
+                    });
                 });
-            });
-            $(this).find('.ebony_2').each(function(index2){
-                $(this).find('.ebony_child').each(function(index3){
-                    // 新增 key (第一個黑鍵 + [一組5個黑鍵] + 現在是第幾個黑鍵)
-                    if(index3 < 1){ // 第 0 個 (升記號)
-                        $(this).append(`<div data-name="${key_ebony_h[1+(5*index)+1]}" class="key">${key_ebony_b[1+(5*index)+1]}</div>`);
-                    }else{ // 第 1 個 (降記號)
-                        $(this).append(`<div data-name="${key_ebony_b[1+(5*index)+1]}" class="key">${key_ebony_b[1+(5*index)+1]}</div>`);
-                    }
-                    // 新增音訊
-                    $(this).append(`<audio id="${key_ebony_b[1+(5*index)+1]}"><source src="./audio/Piano.ff.${key_ebony_b[1+(5*index)+1]}.mp3" type="audio/mpeg"></audio>`);
-                });
-            });
-            $(this).find('.ebony_3').each(function(index2){
-                $(this).find('.ebony_child').each(function(index3){
-                    // 新增 key (第一個黑鍵 + [一組5個黑鍵] + 現在是第幾個黑鍵)
-                    if(index3 < 1){ // 第 0 個 (升記號)
-                        $(this).append(`<div data-name="${key_ebony_h[1+(5*index)+2]}" class="key">${key_ebony_b[1+(5*index)+2]}</div>`);
-                    }else{ // 第 1 個 (降記號)
-                        $(this).append(`<div data-name="${key_ebony_b[1+(5*index)+2]}" class="key">${key_ebony_b[1+(5*index)+2]}</div>`);
-                    }
-                    // 新增音訊
-                    $(this).append(`<audio id="${key_ebony_b[1+(5*index)+2]}"><source src="./audio/Piano.ff.${key_ebony_b[1+(5*index)+2]}.mp3" type="audio/mpeg"></audio>`);
-                });
-            });
-            $(this).find('.ebony_4').each(function(index2){
-                $(this).find('.ebony_child').each(function(index3){
-                    // 新增 key (第一個黑鍵 + [一組5個黑鍵] + 現在是第幾個黑鍵)
-                    if(index3 < 1){ // 第 0 個 (升記號)
-                        $(this).append(`<div data-name="${key_ebony_h[1+(5*index)+3]}" class="key">${key_ebony_b[1+(5*index)+3]}</div>`);
-                    }else{ // 第 1 個 (降記號)
-                        $(this).append(`<div data-name="${key_ebony_b[1+(5*index)+3]}" class="key">${key_ebony_b[1+(5*index)+3]}</div>`);
-                    }
-                    // 新增音訊
-                    $(this).append(`<audio id="${key_ebony_b[1+(5*index)+3]}"><source src="./audio/Piano.ff.${key_ebony_b[1+(5*index)+3]}.mp3" type="audio/mpeg"></audio>`);
-                });
-            });
-            $(this).find('.ebony_5').each(function(index2){
-                $(this).find('.ebony_child').each(function(index3){
-                    // 新增 key (第一個黑鍵 + [一組5個黑鍵] + 現在是第幾個黑鍵)
-                    if(index3 < 1){ // 第 0 個 (升記號)
-                        $(this).append(`<div data-name="${key_ebony_h[1+(5*index)+4]}" class="key">${key_ebony_b[1+(5*index)+4]}</div>`);
-                    }else{ // 第 1 個 (降記號)
-                        $(this).append(`<div data-name="${key_ebony_b[1+(5*index)+4]}" class="key">${key_ebony_b[1+(5*index)+4]}</div>`);
-                    }
-                    // 新增音訊
-                    $(this).append(`<audio id="${key_ebony_b[1+(5*index)+4]}"><source src="./audio/Piano.ff.${key_ebony_b[1+(5*index)+4]}.mp3" type="audio/mpeg"></audio>`);
-                });
-            });
+            }
         });
 
         //----------------------
