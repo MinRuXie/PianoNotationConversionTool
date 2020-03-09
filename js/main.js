@@ -52,14 +52,12 @@ $(function(){
     //-------------------
     function buildPiano(){
         let colors = ['#828282', '#AD766A', '#D5404A', '#FFB11B', '#90B44B', '#58B2DC', '#005CAF',  '#A8497A', '#E87A90'];
+        
         let key_ivory = ['A0', 'B0', 'C1', 'D1', 'E1', 'F1', 'G1', 'A1', 'B1', 'C2', 'D2', 'E2', 'F2', 'G2', 'A2', 'B2', 'C3', 'D3', 'E3', 'F3', 'G3', 'A3', 'B3', 'C4', 'D4', 'E4', 'F4', 'G4', 'A4', 'B4', 'C5', 'D5', 'E5', 'F5', 'G5', 'A5', 'B5', 'C6', 'D6', 'E6', 'F6', 'G6', 'A6', 'B6', 'C7', 'D7', 'E7', 'F7', 'G7', 'A7', 'B7', 'C8'];
+        
         let key_ebony_b = ['Bb0', 'Db1', 'Eb1', 'Gb1', 'Ab1', 'Bb1', 'Db2', 'Eb2', 'Gb2', 'Ab2', 'Bb2', 'Db3', 'Eb3', 'Gb3', 'Ab3', 'Bb3', 'Db4', 'Eb4', 'Gb4', 'Ab4', 'Bb4', 'Db5', 'Eb5', 'Gb5', 'Ab5', 'Bb5', 'Db6', 'Eb6', 'Gb6', 'Ab6', 'Bb6', 'Db7', 'Eb7', 'Gb7', 'Ab7', 'Bb7'];
+        
         let key_ebony_h = ['Ah0', 'Ch1', 'Dh1', 'Fh1', 'Gh1', 'Ah1', 'Ch2', 'Dh2', 'Fh2', 'Gh2', 'Ah2', 'Ch3', 'Dh3', 'Fh3', 'Gh3', 'Ah3', 'Ch4', 'Dh4', 'Fh4', 'Gh4', 'Ah4', 'Ch5', 'Dh5', 'Fh5', 'Gh5', 'Ah5', 'Ch6', 'Dh6', 'Fh6', 'Gh6', 'Ah6', 'Ch7', 'Dh7', 'Fh7', 'Gh7', 'Ah7'];
-        
-        // audio = ['Piano.ff.A0.mp3', 'Piano.ff.Bb0.mp3', 'Piano.ff.B0.mp3', 'Piano.ff.C1.mp3', 'Piano.ff.Db1.mp3', 'Piano.ff.D1.mp3', 'Piano.ff.Eb1.mp3', 'Piano.ff.E1.mp3', 'Piano.ff.F1.mp3', 'Piano.ff.Gb1.mp3', 'Piano.ff.G1.mp3', 'Piano.ff.Ab1.mp3', 'Piano.ff.A1.mp3', 'Piano.ff.Bb1.mp3', 'Piano.ff.B1.mp3', 'Piano.ff.C2.mp3', 'Piano.ff.Db2.mp3', 'Piano.ff.D2.mp3', 'Piano.ff.Eb2.mp3', 'Piano.ff.E2.mp3', 'Piano.ff.F2.mp3', 'Piano.ff.Gb2.mp3', 'Piano.ff.G2.mp3', 'Piano.ff.Ab2.mp3', 'Piano.ff.A2.mp3', 'Piano.ff.Bb2.mp3', 'Piano.ff.B2.mp3', 'Piano.ff.C3.mp3', 'Piano.ff.Db3.mp3', 'Piano.ff.D3.mp3', 'Piano.ff.Eb3.mp3', 'Piano.ff.E3.mp3', 'Piano.ff.F3.mp3', 'Piano.ff.Gb3.mp3', 'Piano.ff.G3.mp3', 'Piano.ff.Ab3.mp3', 'Piano.ff.A3.mp3', 'Piano.ff.Bb3.mp3', 'Piano.ff.B3.mp3', 'Piano.ff.C4.mp3', 'Piano.ff.Db4.mp3', 'Piano.ff.D4.mp3', 'Piano.ff.Eb4.mp3', 'Piano.ff.E4.mp3', 'Piano.ff.F4.mp3', 'Piano.ff.Gb4.mp3', 'Piano.ff.G4.mp3', 'Piano.ff.Ab4.mp3', 'Piano.ff.A4.mp3', 'Piano.ff.Bb4.mp3', 'Piano.ff.B4.mp3', 'Piano.ff.C5.mp3', 'Piano.ff.Db5.mp3', 'Piano.ff.D5.mp3', 'Piano.ff.Eb5.mp3', 'Piano.ff.E5.mp3', 'Piano.ff.F5.mp3', 'Piano.ff.Gb5.mp3', 'Piano.ff.G5.mp3', 'Piano.ff.Ab5.mp3', 'Piano.ff.A5.mp3', 'Piano.ff.Bb5.mp3', 'Piano.ff.B5.mp3', 'Piano.ff.C6.mp3', 'Piano.ff.Db6.mp3', 'Piano.ff.D6.mp3', 'Piano.ff.Eb6.mp3', 'Piano.ff.E6.mp3', 'Piano.ff.F6.mp3', 'Piano.ff.Gb6.mp3', 'Piano.ff.G6.mp3', 'Piano.ff.Ab6.mp3', 'Piano.ff.A6.mp3', 'Piano.ff.Bb6.mp3', 'Piano.ff.B6.mp3', 'Piano.ff.C7.mp3', 'Piano.ff.Db7.mp3', 'Piano.ff.D7.mp3', 'Piano.ff.Eb7.mp3', 'Piano.ff.E7.mp3', 'Piano.ff.F7.mp3', 'Piano.ff.Gb7.mp3', 'Piano.ff.G7.mp3', 'Piano.ff.Ab7.mp3', 'Piano.ff.A7.mp3', 'Piano.ff.Bb7.mp3', 'Piano.ff.B7.mp3', 'Piano.ff.C8.mp3'];
-        
-        let audio_ivory = ['Piano.ff.A0.mp3', 'Piano.ff.B0.mp3', 'Piano.ff.C1.mp3', 'Piano.ff.D1.mp3', 'Piano.ff.E1.mp3', 'Piano.ff.F1.mp3', 'Piano.ff.G1.mp3', 'Piano.ff.A1.mp3', 'Piano.ff.B1.mp3', 'Piano.ff.C2.mp3', 'Piano.ff.D2.mp3', 'Piano.ff.E2.mp3', 'Piano.ff.F2.mp3', 'Piano.ff.G2.mp3', 'Piano.ff.A2.mp3', 'Piano.ff.B2.mp3', 'Piano.ff.C3.mp3', 'Piano.ff.D3.mp3', 'Piano.ff.E3.mp3', 'Piano.ff.F3.mp3', 'Piano.ff.G3.mp3', 'Piano.ff.A3.mp3', 'Piano.ff.B3.mp3', 'Piano.ff.C4.mp3', 'Piano.ff.D4.mp3', 'Piano.ff.E4.mp3', 'Piano.ff.F4.mp3', 'Piano.ff.G4.mp3', 'Piano.ff.A4.mp3', 'Piano.ff.B4.mp3', 'Piano.ff.C5.mp3', 'Piano.ff.D5.mp3', 'Piano.ff.E5.mp3', 'Piano.ff.F5.mp3', 'Piano.ff.G5.mp3', 'Piano.ff.A5.mp3', 'Piano.ff.B5.mp3', 'Piano.ff.C6.mp3', 'Piano.ff.D6.mp3', 'Piano.ff.E6.mp3', 'Piano.ff.F6.mp3', 'Piano.ff.G6.mp3', 'Piano.ff.A6.mp3', 'Piano.ff.B6.mp3', 'Piano.ff.C7.mp3', 'Piano.ff.D7.mp3', 'Piano.ff.E7.mp3', 'Piano.ff.F7.mp3', 'Piano.ff.G7.mp3', 'Piano.ff.A7.mp3', 'Piano.ff.B7.mp3', 'Piano.ff.C8.mp3'];
-        let audio_ebony = ['Piano.ff.Bb0.mp3', 'Piano.ff.Db1.mp3', 'Piano.ff.Eb1.mp3', 'Piano.ff.Gb1.mp3', 'Piano.ff.Ab1.mp3', 'Piano.ff.Bb1.mp3', 'Piano.ff.Db2.mp3', 'Piano.ff.Eb2.mp3', 'Piano.ff.Gb2.mp3', 'Piano.ff.Ab2.mp3', 'Piano.ff.Bb2.mp3', 'Piano.ff.Db3.mp3', 'Piano.ff.Eb3.mp3', 'Piano.ff.Gb3.mp3', 'Piano.ff.Ab3.mp3', 'Piano.ff.Bb3.mp3', 'Piano.ff.Db4.mp3', 'Piano.ff.Eb4.mp3', 'Piano.ff.Gb4.mp3', 'Piano.ff.Ab4.mp3', 'Piano.ff.Bb4.mp3', 'Piano.ff.Db5.mp3', 'Piano.ff.Eb5.mp3', 'Piano.ff.Gb5.mp3', 'Piano.ff.Ab5.mp3', 'Piano.ff.Bb5.mp3', 'Piano.ff.Db6.mp3', 'Piano.ff.Eb6.mp3', 'Piano.ff.Gb6.mp3', 'Piano.ff.Ab6.mp3', 'Piano.ff.Bb6.mp3', 'Piano.ff.Db7.mp3', 'Piano.ff.Eb7.mp3', 'Piano.ff.Gb7.mp3', 'Piano.ff.Ab7.mp3', 'Piano.ff.Bb7.mp3'];
 
         // 白鍵
         let ivory_array = [
@@ -131,7 +129,8 @@ $(function(){
             // 新增 key
             $(this).append(`<div class="key">${key_ivory[index]}</div>`);
             // 新增音訊
-            $(this).append(`<audio id="${key_ivory[index]}"><source src="./audio/${audio_ivory[index]}" type="audio/mpeg"></audio>`);
+            // $(this).append(`<audio id="${key_ivory[index]}"><source src="./audio/${audio_ivory[index]}" type="audio/mpeg"></audio>`);
+            $(this).append(`<audio id="${key_ivory[index]}"><source src="./audio/Piano.ff.${key_ivory[index]}.mp3" type="audio/mpeg"></audio>`);
         });
 
         // 新增黑鍵內容
@@ -144,7 +143,8 @@ $(function(){
                     $(this).append(`<div data-name="${key_ebony_b[index]}" class="key">${key_ebony_b[index]}</div>`);
                 }
                 // 新增音訊
-                $(this).append(`<audio id="${key_ebony_b[index]}"><source src="./audio/${audio_ebony[index]}" type="audio/mpeg"></audio>`);
+                // $(this).append(`<audio id="${key_ebony_b[index]}"><source src="./audio/${audio_ebony[index]}" type="audio/mpeg"></audio>`);
+                $(this).append(`<audio id="${key_ebony_b[index]}"><source src="./audio/Piano.ff.${key_ebony_b[index]}.mp3" type="audio/mpeg"></audio>`);
             });        
         });
 
@@ -184,7 +184,8 @@ $(function(){
                 // 新增 key
                 $(this).append(`<div class="key">${key_ivory[2+(7*index)+index2]}</div>`);
                 // 新增音訊
-                $(this).append(`<audio id="${key_ivory[2+(7*index)+index2]}"><source src="./audio/${audio_ivory[2+(7*index)+index2]}" type="audio/mpeg"></audio>`);
+                // $(this).append(`<audio id="${key_ivory[2+(7*index)+index2]}"><source src="./audio/${audio_ivory[2+(7*index)+index2]}" type="audio/mpeg"></audio>`);
+                $(this).append(`<audio id="${key_ivory[2+(7*index)+index2]}"><source src="./audio/Piano.ff.${key_ivory[2+(7*index)+index2]}.mp3" type="audio/mpeg"></audio>`);
             });
 
             // 新增黑鍵內容
@@ -197,7 +198,8 @@ $(function(){
                         $(this).append(`<div data-name="${key_ebony_b[1+(5*index)+0]}" class="key">${key_ebony_b[1+(5*index)+0]}</div>`);
                     }
                     // 新增音訊
-                    $(this).append(`<audio id="${key_ebony_b[1+(5*index)+0]}"><source src="./audio/${audio_ebony[1+(5*index)+0]}" type="audio/mpeg"></audio>`);
+                    // $(this).append(`<audio id="${key_ebony_b[1+(5*index)+0]}"><source src="./audio/${audio_ebony[1+(5*index)+0]}" type="audio/mpeg"></audio>`);
+                    $(this).append(`<audio id="${key_ebony_b[1+(5*index)+0]}"><source src="./audio/Piano.ff.${key_ebony_b[1+(5*index)+0]}.mp3" type="audio/mpeg"></audio>`);
                 });
             });
             $(this).find('.ebony_2').each(function(index2){
@@ -209,7 +211,8 @@ $(function(){
                         $(this).append(`<div data-name="${key_ebony_b[1+(5*index)+1]}" class="key">${key_ebony_b[1+(5*index)+1]}</div>`);
                     }
                     // 新增音訊
-                    $(this).append(`<audio id="${key_ebony_b[1+(5*index)+1]}"><source src="./audio/${audio_ebony[1+(5*index)+1]}" type="audio/mpeg"></audio>`);
+                    // $(this).append(`<audio id="${key_ebony_b[1+(5*index)+1]}"><source src="./audio/${audio_ebony[1+(5*index)+1]}" type="audio/mpeg"></audio>`);
+                    $(this).append(`<audio id="${key_ebony_b[1+(5*index)+1]}"><source src="./audio/Piano.ff.${key_ebony_b[1+(5*index)+1]}.mp3" type="audio/mpeg"></audio>`);
                 });
             });
             $(this).find('.ebony_3').each(function(index2){
@@ -221,7 +224,8 @@ $(function(){
                         $(this).append(`<div data-name="${key_ebony_b[1+(5*index)+2]}" class="key">${key_ebony_b[1+(5*index)+2]}</div>`);
                     }
                     // 新增音訊
-                    $(this).append(`<audio id="${key_ebony_b[1+(5*index)+2]}"><source src="./audio/${audio_ebony[1+(5*index)+2]}" type="audio/mpeg"></audio>`);
+                    // $(this).append(`<audio id="${key_ebony_b[1+(5*index)+2]}"><source src="./audio/${audio_ebony[1+(5*index)+2]}" type="audio/mpeg"></audio>`);
+                    $(this).append(`<audio id="${key_ebony_b[1+(5*index)+2]}"><source src="./audio/Piano.ff.${key_ebony_b[1+(5*index)+2]}.mp3" type="audio/mpeg"></audio>`);
                 });
             });
             $(this).find('.ebony_4').each(function(index2){
@@ -233,7 +237,8 @@ $(function(){
                         $(this).append(`<div data-name="${key_ebony_b[1+(5*index)+3]}" class="key">${key_ebony_b[1+(5*index)+3]}</div>`);
                     }
                     // 新增音訊
-                    $(this).append('<audio id="'+ key_ebony_b[1+(5*index)+3] +'"><source src="./audio/'+ audio_ebony[1+(5*index)+3] +'" type="audio/mpeg"></audio>');
+                    // $(this).append(`<audio id="${key_ebony_b[1+(5*index)+3]}"><source src="./audio/${audio_ebony[1+(5*index)+3]}" type="audio/mpeg"></audio>`);
+                    $(this).append(`<audio id="${key_ebony_b[1+(5*index)+3]}"><source src="./audio/Piano.ff.${key_ebony_b[1+(5*index)+3]}.mp3" type="audio/mpeg"></audio>`);
                 });
             });
             $(this).find('.ebony_5').each(function(index2){
@@ -245,7 +250,8 @@ $(function(){
                         $(this).append(`<div data-name="${key_ebony_b[1+(5*index)+4]}" class="key">${key_ebony_b[1+(5*index)+4]}</div>`);
                     }
                     // 新增音訊
-                    $(this).append(`<audio id="${key_ebony_b[1+(5*index)+4]}"><source src="./audio/${audio_ebony[1+(5*index)+4]}" type="audio/mpeg"></audio>`);
+                    // $(this).append(`<audio id="${key_ebony_b[1+(5*index)+4]}"><source src="./audio/${audio_ebony[1+(5*index)+4]}" type="audio/mpeg"></audio>`);
+                    $(this).append(`<audio id="${key_ebony_b[1+(5*index)+4]}"><source src="./audio/Piano.ff.${key_ebony_b[1+(5*index)+4]}.mp3" type="audio/mpeg"></audio>`);
                 });
             });
         });
@@ -267,7 +273,8 @@ $(function(){
             // 新增 key
             $(this).append(`<div class="key">${key_ivory[key_ivory.length-1]}</div>`);
             // 新增音訊
-            $(this).append(`<audio id="${key_ivory[key_ivory.length-1]}"><source src="./audio/${audio_ivory[audio_ivory.length-1]}" type="audio/mpeg"></audio>`);
+            // $(this).append(`<audio id="${key_ivory[key_ivory.length-1]}"><source src="./audio/${audio_ivory[audio_ivory.length-1]}" type="audio/mpeg"></audio>`);
+            $(this).append(`<audio id="${key_ivory[key_ivory.length-1]}"><source src="./audio/Piano.ff.${key_ivory[key_ivory.length-1]}.mp3" type="audio/mpeg"></audio>`);
         });
     }
 
