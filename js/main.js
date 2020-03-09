@@ -407,25 +407,22 @@ $(function(){
     function moveFocuse(type, direction) {
         switch (type) {
             case 'line':
+                let moveToLine = '';
+            
                 switch (direction) {
                     case 'up':
-                        let cur_selected_line_prev = cur_selected_line.prev('.line');
-                        if(cur_selected_line_prev.length != 0){
-                            // 移除軌道焦點
-                            $('.line').removeClass('selected');
-                            // 將焦點移至上一行軌道
-                            cur_selected_line_prev.addClass('selected');
-                        }
+                        moveToLine = cur_selected_line.prev('.line');
                         break;
                     case 'down':
-                        let cur_selected_line_next = cur_selected_line.next('.line');
-                        if(cur_selected_line_next.length != 0){
-                            // 移除軌道焦點
-                            $('.line').removeClass('selected');
-                            // 將焦點移至下一行軌道
-                            cur_selected_line_next.addClass('selected');
-                        }
+                        moveToLine = cur_selected_line.next('.line');
                         break;
+                }
+                
+                if(moveToLine.length != 0){
+                    // 移除軌道焦點
+                    $('.line').removeClass('selected');
+                    // 將焦點移至上一行軌道
+                    moveToLine.addClass('selected');
                 }
                 // 移除音符焦點
                 $('.note').removeClass('selected');
@@ -434,25 +431,22 @@ $(function(){
                 $text_tabs.find('.line.selected .note').last().addClass('selected');
                 break;
             case 'note':
+                let moveToNote = '';
+                
                 switch (direction) {
                     case 'left':
-                        let cur_selected_note_prev = cur_selected_note.prev('.note');
-                        if(cur_selected_note_prev.length != 0){
-                            // 移除音符焦點
-                            $('.note').removeClass('selected');
-                            // 將焦點移至上一個音符
-                            cur_selected_note_prev.addClass('selected');
-                        }
+                        moveToNote = cur_selected_note.prev('.note');
                         break;
                     case 'right':
-                        let cur_selected_note_next = cur_selected_note.next('.note');
-                        if(cur_selected_note_next.length != 0){
-                            // 移除音符焦點
-                            $('.note').removeClass('selected');
-                            // 將焦點移至下一個音符
-                            cur_selected_note_next.addClass('selected');
-                        }
+                        moveToNote = cur_selected_note.next('.note');
                         break;
+                }
+
+                if(moveToNote.length != 0){
+                    // 移除音符焦點
+                    $('.note').removeClass('selected');
+                    // 將焦點移至下一個音符
+                    moveToNote.addClass('selected');
                 }
                 break;
         }
