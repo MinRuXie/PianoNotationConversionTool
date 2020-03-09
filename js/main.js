@@ -47,44 +47,9 @@ $(function(){
         
         let key_ebony_h = ['Ah0', 'Ch1', 'Dh1', 'Fh1', 'Gh1', 'Ah1', 'Ch2', 'Dh2', 'Fh2', 'Gh2', 'Ah2', 'Ch3', 'Dh3', 'Fh3', 'Gh3', 'Ah3', 'Ch4', 'Dh4', 'Fh4', 'Gh4', 'Ah4', 'Ch5', 'Dh5', 'Fh5', 'Gh5', 'Ah5', 'Ch6', 'Dh6', 'Fh6', 'Gh6', 'Ah6', 'Ch7', 'Dh7', 'Fh7', 'Gh7', 'Ah7'];
 
-        // 白鍵
-        let ivory_array = [
-            `<div class="ivory do"><span>1</span></div>`,
-            `<div class="ivory re"><span>2</span></div>`,
-            `<div class="ivory mi"><span>3</span></div>`,
-            `<div class="ivory fa"><span>4</span></div>`,
-            `<div class="ivory sol"><span>5</span></div>`,
-            `<div class="ivory la"><span>6</span></div>`,
-            `<div class="ivory si"><span>7</span></div>`
-        ];
-
-        // 黑鍵 (容器)
-        let ebony_array = [
-            `<div class="ebony-wrap ebony_0"></div>`,
-            `<div class="ebony-wrap ebony_1"></div>`,
-            `<div class="ebony-wrap ebony_2"></div>`,
-            `<div class="ebony-wrap ebony_3"></div>`,
-            `<div class="ebony-wrap ebony_4"></div>`,
-            `<div class="ebony-wrap ebony_5"></div>`
-        ];
-
-        // 黑鍵 (降)
-        let ebony_down_array =[
-            `<div class="ebony_child bre"><span>b2</span></div>`,
-            `<div class="ebony_child bmi"><span>b3</span></div>`,
-            `<div class="ebony_child bsol"><span>b5</span></div>`,
-            `<div class="ebony_child bla"><span>b6</span></div>`,
-            `<div class="ebony_child bsi"><span>b7</span></div>`
-        ];
-		
-        // 黑鍵 (升)
-        let ebony_up_array = [
-            `<div class="ebony_child udo"><span>#1</span></div>`,
-            `<div class="ebony_child ure"><span>#2</span></div>`,
-            `<div class="ebony_child ufa"><span>#4</span></div>`,
-            `<div class="ebony_child usol"><span>#5</span></div>`,
-            `<div class="ebony_child ula"><span>#6</span></div>`
-        ];
+        let simple_ivory = ['1', '2', '3', '4', '5', '6', '7'];
+        let simple_ebony_b = ['b2', 'b3', 'b5', 'b6', 'b7'];
+        let simple_ebony_h = ['#1', '#2', '#4', '#5', '#6'];
 		
         //-------------------
         // 左邊 3 鍵
@@ -93,21 +58,21 @@ $(function(){
         let $group_left = $('.group_left');
         
         // 新增白鍵
-        $group_left.append(ivory_array[5]);
-        $group_left.append(ivory_array[6]);
+        $group_left.append(`<div class="ivory"><span>${simple_ivory[5]}</span></div>`);
+        $group_left.append(`<div class="ivory"><span>${simple_ivory[6]}</span></div>`);
 
         // 上色
         $group_left.find('span').css({'background': colors[0]});
 
         // 新增黑鍵容器
-        $group_left.append(ebony_array[0]);
+        $group_left.append(`<div class="ebony-wrap ebony_0"></div>`);
         let $ebony = $group_left.find('.ebony_0');
         
 		// 新增黑鍵 (升)
-        $ebony.append(ebony_up_array[4]);
+        $ebony.append(`<div class="ebony_child"><span>${simple_ebony_h[4]}</span></div>`);
 		
 		// 新增黑鍵 (降)
-        $ebony.append(ebony_down_array[4]);
+        $ebony.append(`<div class="ebony_child"><span>${simple_ebony_b[4]}</span></div>`);
   
         // 上色
         $group_left.find('.ebony_child').find('span').css({'background': colors[0]});
@@ -143,23 +108,23 @@ $(function(){
         $('.group').each(function(index){
             // 新增白鍵
             $(this).css({left: 14.28 + (50*index) + '%'});
-            for (let i=0 ; i <= ivory_array.length ; i++) {
-                $(this).append(ivory_array[i]);
+            for (let i=0 ; i <= 6 ; i++) {
+                $(this).append(`<div class="ivory"><span>${simple_ivory[i]}</span></div>`);
             }
 
             // 上色
             $(this).find('span').css({'background': colors[index+1]});
 
             // 新增黑鍵容器
-            for (let i=1; i <= ebony_array.length ; i++) {
-                $(this).append(ebony_array[i]);
+            for (let i=1; i <= 5 ; i++) {
+                $(this).append(`<div class="ebony-wrap ebony_${i}"></div>`);
             }
 
             // 新增黑鍵內容
             for (let i=0 ; i<5 ; i++) {
                 let $cur_ebony = $(this).find(`.ebony_${i+1}`);
-                $cur_ebony.append(ebony_up_array[i]); // 新增黑鍵 (升) 左
-                $cur_ebony.append(ebony_down_array[i]); // 新增黑鍵 (降) 右
+                $cur_ebony.append(`<div class="ebony_child"><span>${simple_ebony_h[i]}</span></div>`); // 新增黑鍵 (升) 左
+                $cur_ebony.append(`<div class="ebony_child"><span>${simple_ebony_b[i]}</span></div>`); // 新增黑鍵 (降) 右
             }
 			
             // 上色
@@ -197,7 +162,7 @@ $(function(){
         let $group_right = $('.group_right');
         
         // 新增白鍵
-        $group_right.append(ivory_array[0]);
+        $group_right.append(`<div class="ivory"><span>${simple_ivory[0]}</span></div>`);
         
         // 上色
         $group_right.find('span').css({'background': colors[8]});
