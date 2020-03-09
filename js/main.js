@@ -33,15 +33,17 @@ $(function(){
     let $text_tabs = $text.find('.tabs-panel');
     let $toolbox = $('.toolbox');
     let $toolbox_btn = $('#toolbox-btn');
+    let $colorarea = $(".colorarea");
+    let $colorbox = $(".colorbox");
     let $intro = $('.intro-wrap');
     let $intro_closed_btn = $('.intro-wrap .ctr-btn');
-    let cur_piano_x_scroll = 0; // 卷軸位置
 
+    let cur_piano_x_scroll = 0; // 目前鋼琴的水平捲軸位置
     let cur_selected_note = $('.note.selected'); // 當前焦點音符們 (兩個面板都有)
     let cur_selected_line = $('.line.selected'); // 當前焦點軌道們 (兩個面板都有)
 
-    $('.toolbutton').eq(3).css('display', 'none'); // 開啟
-
+    // 設定開啟鋼琴按鈕為消失狀態
+    $('.toolbutton').eq(3).css('display', 'none');
     // 設定卷軸 (人為觸發才生效)
     $piano.animate({'scrollLeft': '2000vw'}, 500);
     // 紀錄卷軸位置
@@ -448,24 +450,19 @@ $(function(){
         // 刪除所有軌道焦點
         panel.find('.line.selected').removeClass('selected');
 
-        // 檢查是否有焦點軌道
-        if (selected_line.length != 0) {
-            // 新增軌道於焦點軌道之後
-            selected_line.after(line_html);
-        } else {
-            // 新增軌道至元素末端
-            panel.append(line_html);
-        }
+        // 檢查是否有焦點軌道 ? 新增軌道於焦點軌道之後 : 新增軌道至元素末端
+        selected_line.length != 0 ? selected_line.after(line_html) : panel.append(line_html);
 
         // 移除音符焦點 (讓焦點只保持在新軌道上)
         panel.find('.note.selected').removeClass('selected');
 
+        // 目前焦點的軌道
         let $line = panel.find('.line.selected');
 
         // 裝上 改變顏色事件
         $line.on('dblclick', function(event){
             //changeAreaColor($(this)); // 修改區塊顏色
-            openColorArea($(this)); // 開啟選擇顏色區塊
+            openColorArea(panel, $(this)); // 開啟選擇顏色區塊
         });
 
         // 裝上 移動焦點事件
@@ -643,11 +640,11 @@ $(function(){
     //-------------------
     // 開啟選擇顏色區塊
     //-------------------
-    function openColorArea($element) {
-        $(".colorarea").show(); // 顯示選擇區塊
+    function openColorArea(panel, $line) {
+        $colorarea.show(); // 顯示選擇區塊
 
         // line 的顏色: 取得左邊框顏色 rgb(red, green ,blue)
-        var rgbString = $element.css('border-left-color');
+        var rgbString = $line.css('border-left-color');
         // 取得 rgb 色碼
         var red = parseInt(getRGB(rgbString).red);
         var green = parseInt(getRGB(rgbString).green);
@@ -684,16 +681,21 @@ $(function(){
         });
 
         // 移除確定按鈕
-        $(".colorbox").find('.checkbtn').remove();
+        $colorbox.find('.checkbtn').remove();
         // 新增確定按鈕
-        $(".colorbox").append('<div class="checkbtn">確定</div>');
+        $colorbox.append(`<div class="checkbtn">確定</div>`);
         // 按下確定
         $(".checkbtn").on('click', function(){
-            // 修改顏色
-            $element.css('border-left-color', select_hexString);
+            // 修改此軌道的左邊線顏色
+            $line.css('border-left-color', select_hexString);
 
-            $(".colorarea").hide(); // 隱藏選擇區塊
+            $colorarea.hide(); // 隱藏選擇區塊
             $(this).remove(); // 移除確定按鈕元素 (為了清除前次的事件綁定)
+
+            // 此軌道在此面板位於第幾個位置
+            let line_index = $line.index();
+            // 修改另一個面板的軌道左邊線顏色
+            panel.siblings('.panel').find('.line').eq(line_index).css('border-left-color', select_hexString);
         });
     }
 
@@ -701,7 +703,7 @@ $(function(){
     // 關閉選擇顏色區塊
     //-------------------
     $(".cancelbtn").on('click', function(event) {
-        $(".colorarea").hide();
+        $colorarea.hide();
     });
 
     //-------------------
