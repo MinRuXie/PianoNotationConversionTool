@@ -415,12 +415,6 @@ $(function(){
                             $('.line').removeClass('selected');
                             // 將焦點移至上一行軌道
                             cur_selected_line_prev.addClass('selected');
-
-                            // 移除音符焦點
-                            $('.note').removeClass('selected');
-                            // 將音符焦點移至該軌道最後一個音符
-                            $text_number.find('.line.selected .note').last().addClass('selected');
-                            $text_tabs.find('.line.selected .note').last().addClass('selected');
                         }
                         break;
                     case 'down':
@@ -430,15 +424,14 @@ $(function(){
                             $('.line').removeClass('selected');
                             // 將焦點移至下一行軌道
                             cur_selected_line_next.addClass('selected');
-
-                            // 移除音符焦點
-                            $('.note').removeClass('selected');
-                            // 將音符焦點移至該軌道最後一個音符
-                            $text_number.find('.line.selected .note').last().addClass('selected');
-                            $text_tabs.find('.line.selected .note').last().addClass('selected');
                         }
                         break;
                 }
+                // 移除音符焦點
+                $('.note').removeClass('selected');
+                // 將音符焦點移至該軌道最後一個音符
+                $text_number.find('.line.selected .note').last().addClass('selected');
+                $text_tabs.find('.line.selected .note').last().addClass('selected');
                 break;
             case 'note':
                 switch (direction) {
