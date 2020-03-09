@@ -90,7 +90,7 @@ $(function(){
             $ebony.find('.ebony_child').each(function(index2){
                 // 新增 key
                 if(index2 < 1){ // 第 0 個 (升記號)
-                    $(this).append(`<div data-name="${key_ebony_h[index]}" class="key">${key_ebony_b[index]}</div>`);
+                    $(this).append(`<div data-name="${key_ebony_h[index]}" class="key">${key_ebony_h[index]}</div>`);
                 }else{ // 第 1 個 (降記號)
                     $(this).append(`<div data-name="${key_ebony_b[index]}" class="key">${key_ebony_b[index]}</div>`);
                 }
@@ -144,7 +144,7 @@ $(function(){
                     $(this).find('.ebony_child').each(function(index3){
                         // 新增 key (第一個黑鍵 + [一組5個黑鍵] + 現在是第幾個黑鍵)
                         if(index3 < 1){ // 第 0 個 (升記號)
-                            $(this).append(`<div data-name="${key_ebony_h[1+(5*index)+i]}" class="key">${key_ebony_b[1+(5*index)+i]}</div>`);
+                            $(this).append(`<div data-name="${key_ebony_h[1+(5*index)+i]}" class="key">${key_ebony_h[1+(5*index)+i]}</div>`);
                         }else{ // 第 1 個 (降記號)
                             $(this).append(`<div data-name="${key_ebony_b[1+(5*index)+i]}" class="key">${key_ebony_b[1+(5*index)+i]}</div>`);
                         }
