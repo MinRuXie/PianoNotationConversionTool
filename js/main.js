@@ -29,7 +29,7 @@ $(function(){
     let cur_selected_line = $('.line.selected'); // 當前焦點軌道們 (兩個面板都有)
 
     // 設定開啟鋼琴按鈕為消失狀態
-    $('.toolbutton').eq(3).css('display', 'none');
+    $('.toolbutton').eq(4).css('display', 'none');
     // 設定卷軸 (人為觸發才生效)
     $piano.animate({'scrollLeft': '2000vw'}, 500);
     // 紀錄卷軸位置
@@ -195,21 +195,19 @@ $(function(){
     //-------------------
     // 移動 & 紀錄音符焦點
     //-------------------
-    function recordNoteSelected(panel, note) {
-        note.on('click', function(event){
-            // 移除所有焦點
-            panel.find('.line').removeClass('selected');
-            panel.find('.note').removeClass('selected');
-            
-            // 移動焦點至該音符
-            note.addClass('selected');
+    function recordNoteSelected(panel, curnote) {
+        // 移除所有焦點
+        panel.find('.line').removeClass('selected');
+        panel.find('.note').removeClass('selected');
+        
+        // 移動焦點至該音符
+        curnote.addClass('selected');
 
-            // 移動焦點至該音符所在軌道
-            note.parent('.line').addClass('selected');
+        // 移動焦點至該音符所在軌道
+        curnote.parent('.line').addClass('selected');
 
-            // 更新軌道及音符的焦點
-            updateFocuse();
-        });
+        // 更新軌道及音符的焦點
+        updateFocuse();
     }
 
     //-------------------
@@ -230,14 +228,27 @@ $(function(){
 
         // 音符
         let title = key.replace(/h/,"#");
-        let note_html = `<div title="${title}" class="note selected ${key}" style="background-color: ${color};">${number}</div>`;
+        let note_html = `<div data-key="${key}" title="${title}" class="note selected ${key}" style="background-color: ${color};">${number}</div>`;
 
         // 檢查是否存在焦點元素 ? 新增音符 至 焦點元素 後方 : 新增音符 至 空白軌道 中
         $selectedNote.length != 0 ? $selectedNote.after(note_html) : $selectLine.append(note_html);
 
         // 安裝焦點事件
         let $lastest_note = $('.note.selected'); // 最新新增的音符
-        recordNoteSelected(panel, $lastest_note);
+        $lastest_note.on('click', function(event){
+            // // 此軌道在此面板位於第幾個位置
+            // let line_index = $selectLine.index();
+
+            // // // 此音符在此面板位於第幾個位置
+            // let note_index = $(this).not('.del').not('.line-bg').index();
+            // console.log('line_index', line_index , 'note_index', note_index);
+
+            // // 更新另一個面板的音符焦點
+            // recordNoteSelected(panel.siblings('.panel'), panel.siblings('.panel').find('.line').eq(line_index).find('.note').eq(note_index));
+            
+            // 更新音符焦點
+            recordNoteSelected(panel, $lastest_note);
+        });
 
         // 更新軌道及音符的焦點
         updateFocuse();
@@ -402,6 +413,31 @@ $(function(){
     }
 
     //-------------------
+    // 複製一行簡譜軌道
+    //-------------------
+    function copyNoteLine() {
+        // 取得目前焦點軌道
+        let $selectLine = cur_selected_line.eq(0);
+
+        // 複製該軌道的其子元素
+        let $cloneNotes = $selectLine.contents().not('.del').not('.line-bg').clone();
+
+        // 新增一行簡譜軌道
+        addNoteLine($text_number);
+        addNoteLine($text_tabs);
+
+        // 紀錄簡譜
+        for (let i=0; i < $cloneNotes.length ; i++) {
+            let $curNote = $cloneNotes.eq(i);
+            note($text_number, $curNote.text(), $curNote.attr('data-key'), $curNote.css('background-color'));
+            note($text_tabs, $curNote.text(), $curNote.attr('data-key'), $curNote.css('background-color'));
+        }
+
+        // 更新軌道及音符的焦點
+        updateFocuse();
+    }
+
+    //-------------------
     // 使用方向鍵移動焦點
     //-------------------
     function moveFocuse(type, direction) {
@@ -491,8 +527,8 @@ $(function(){
                 $piano.stop().animate({'bottom': '-35%'}, 300)
                 $slide.hide();
                 recordScrollX(); // 紀錄卷軸位置
-                $('.toolbutton').eq(3).css('display', 'block'); // 開啟鋼琴按鈕
-                $('.toolbutton').eq(4).css('display', 'none'); // 關閉鋼琴按鈕
+                $('.toolbutton').eq(4).css('display', 'block'); // 開啟鋼琴按鈕
+                $('.toolbutton').eq(5).css('display', 'none'); // 關閉鋼琴按鈕
                 break;
             }
             case "open": {
@@ -501,8 +537,8 @@ $(function(){
                 $piano.stop().animate({'bottom': '0'}, 300);
                 $slide.show();
                 $piano.animate({'scrollLeft': cur_piano_x_scroll}, 0); // 移動卷軸至上次位置
-                $('.toolbutton').eq(3).css('display', 'none'); // 開啟鋼琴按鈕
-                $('.toolbutton').eq(4).css('display', 'block'); // 關閉鋼琴按鈕
+                $('.toolbutton').eq(4).css('display', 'none'); // 開啟鋼琴按鈕
+                $('.toolbutton').eq(5).css('display', 'block'); // 關閉鋼琴按鈕
                 break;
             }
         }
@@ -604,7 +640,7 @@ $(function(){
     //-------------------
     $intro_closed_btn.on('click', function(event) {
         $intro.removeClass('active');
-        $('.toolbutton').eq(6).removeClass('selected');
+        $('.toolbutton').eq(7).removeClass('selected');
     });
     
     //-------------------
@@ -684,20 +720,24 @@ $(function(){
                         addNoteLine($text_tabs);
                         break;
                     }
-                    case 3: { // 開啟鋼琴
+                    case 3: { // 複製一行
+                        copyNoteLine();
+                        break;
+                    }
+                    case 4: { // 開啟鋼琴
                         controlPianoLayout('open');
                         break;
                     }
-                    case 4: { // 關閉鋼琴
+                    case 5: { // 關閉鋼琴
                         controlPianoLayout('close');
                         break;
                     }
-                    case 5: { // 切換 五線譜 <=> 簡譜
+                    case 6: { // 切換 五線譜 <=> 簡譜
                         $text_number.toggleClass('open');
                         $text_tabs.toggleClass('open');
                         break;
                     }
-                    case 6: { // 開啟 功能說明
+                    case 7: { // 開啟 功能說明
                         $intro.addClass('active');
                         break;
                     }
@@ -766,20 +806,24 @@ $(function(){
                         addNoteLine($text_tabs);
                         break;
                     }
-                    case 3: { // 開啟鋼琴
+                    case 3: { // 複製一行
+                        copyNoteLine();
+                        break;
+                    }
+                    case 4: { // 開啟鋼琴
                         controlPianoLayout('open');
                         break;
                     }
-                    case 4: { // 關閉鋼琴
+                    case 5: { // 關閉鋼琴
                         controlPianoLayout('close');
                         break;
                     }
-                    case 5: { // 切換 五線譜 <=> 簡譜
+                    case 6: { // 切換 五線譜 <=> 簡譜
                         $text_number.toggleClass('open');
                         $text_tabs.toggleClass('open');
                         break;
                     }
-                    case 6: { // 開啟 功能說明
+                    case 7: { // 開啟 功能說明
                         $intro.addClass('active');
                         break;
                     }
