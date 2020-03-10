@@ -239,15 +239,23 @@ $(function(){
             // // 此軌道在此面板位於第幾個位置
             // let line_index = $selectLine.index();
 
-            // // // 此音符在此面板位於第幾個位置
-            // let note_index = $(this).not('.del').not('.line-bg').index();
+            // // let prevCount = 0;
+            // // for (let j=0; j < line_index ; j++) {
+            // //     // console.log('line_index', line_index, $('.line').eq(j).children('.note').length);
+            // //     prevCount+=$('.line').eq(j).children('.note').length;
+            // // }
+
+            // // 此音符在此軌道位於第幾個位置
+            // let note_index = panel.find('.line.selected .note.selected').index(panel.find('.line'));
+            // // note_index-=prevCount;
             // console.log('line_index', line_index , 'note_index', note_index);
+
 
             // // 更新另一個面板的音符焦點
             // recordNoteSelected(panel.siblings('.panel'), panel.siblings('.panel').find('.line').eq(line_index).find('.note').eq(note_index));
             
             // 更新音符焦點
-            recordNoteSelected(panel, $lastest_note);
+            recordNoteSelected(panel, $(this));
         });
 
         // 更新軌道及音符的焦點
@@ -286,7 +294,7 @@ $(function(){
     //-------------------
     function recordLineSelected(panel, line) {
         // 檢查是否已為焦點
-        if (line.find('.note.selected').length == 0) {
+        if (!line.hasClass('selected')) {
             // 移除所有焦點
             panel.find('.line').removeClass('selected');
             panel.find('.note').removeClass('selected');

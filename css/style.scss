@@ -5,6 +5,11 @@ $color-white: #FFF;
 $color-gary: #666;
 $color-light-gary: #999;
 
+/* debug */
+.selected {
+    // border: 3px solid red !important;
+}
+
 html, body {
     margin: 0;
     height: 100%;
