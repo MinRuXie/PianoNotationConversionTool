@@ -505,8 +505,11 @@ $(function(){
     // 移動文字區塊卷軸位置
     //-------------------
     function moveScrollY(panel) {
-        text_height = panel.find('.line').height() * panel.find('.line').length;
-        $text.animate({'scrollTop': text_height}, 0); // 移動卷軸至文字區塊最下方
+        // 目前焦點軌道的索引
+        let curLineIndex = panel.find('.line.selected').index();
+
+        text_height = panel.find('.line').height() * curLineIndex;
+        $text.animate({'scrollTop': text_height}, 0); // 移動捲軸至焦點軌道
     }
 
     //-------------------
