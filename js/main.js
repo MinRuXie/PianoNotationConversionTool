@@ -453,9 +453,6 @@ $(function(){
             note($text_tabs, $curNote.text(), $curNote.attr('data-key'), $curNote.css('background-color'));
         }
 
-        // 移動文字區塊卷軸置焦點軌道
-        moveScrollY(panel);
-
         // 更新軌道及音符的焦點
         updateFocuse();
     }
