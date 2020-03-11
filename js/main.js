@@ -14,13 +14,21 @@ $(function(){
     // 變數準備
     let $piano = $('.piano');
     let $slide = $('.slide');
+    
     let $text = $('.text');
     let $text_number = $text.find('.number-panel');
     let $text_tabs = $text.find('.tabs-panel');
+    
     let $toolbox = $('.toolbox');
-    let $toolbox_btn = $('#toolbox-btn');
+    let $toolbox_btn = $('#toolbox-btn'); // 工具箱收合按鈕
+    let $toolbtns = $('.toolbutton');
+    let $toolbtn_open_piano = $toolbtns.eq(6); // 開啟鋼琴按鈕
+    let $toolbtn_closed_piano = $toolbtns.eq(7); // 關閉鋼琴按鈕
+    let $toolbtn_intro = $toolbtns.eq(9); // 功能說明按鈕
+
     let $colorarea = $(".colorarea");
     let $colorbox = $(".colorbox");
+    
     let $intro = $('.intro-wrap');
     let $intro_closed_btn = $('.intro-wrap .ctr-btn');
 
@@ -29,7 +37,7 @@ $(function(){
     let cur_selected_line = $('.line.selected'); // 當前焦點軌道們 (兩個面板都有)
 
     // 設定開啟鋼琴按鈕為消失狀態
-    $('.toolbutton').eq(4).css('display', 'none');
+    $toolbtn_open_piano.css('display', 'none');
     // 設定卷軸 (人為觸發才生效)
     $piano.animate({'scrollLeft': '2000vw'}, 500);
     // 紀錄卷軸位置
@@ -61,20 +69,20 @@ $(function(){
         $group_left.append(`<div class="ivory"><span>${simple_ivory[5]}</span></div>`);
         $group_left.append(`<div class="ivory"><span>${simple_ivory[6]}</span></div>`);
 
-        // 上色
+        // 上色白鍵
         $group_left.find('span').css({'background': colors[0]});
 
         // 新增黑鍵容器
         $group_left.append(`<div class="ebony-wrap ebony_0"></div>`);
         let $ebony = $group_left.find('.ebony_0');
         
-		// 新增黑鍵 (升)
+		// 新增黑鍵內容 (升)
         $ebony.append(`<div class="ebony_child"><span>${simple_ebony_h[4]}</span></div>`);
 		
-		// 新增黑鍵 (降)
+		// 新增黑鍵內容 (降)
         $ebony.append(`<div class="ebony_child"><span>${simple_ebony_b[4]}</span></div>`);
   
-        // 上色
+        // 上色黑鍵
         $group_left.find('.ebony_child').find('span').css({'background': colors[0]});
 
         // 新增白鍵內容
@@ -106,13 +114,13 @@ $(function(){
             $piano.append('<div class="group"></div>');
         }
         $('.group').each(function(index){
-            // 新增白鍵
+            // 新增白鍵容器
             $(this).css({left: 14.28 + (50*index) + '%'});
             for (let i=0 ; i <= 6 ; i++) {
                 $(this).append(`<div class="ivory"><span>${simple_ivory[i]}</span></div>`);
             }
 
-            // 上色
+            // 上色白鍵
             $(this).find('span').css({'background': colors[index+1]});
 
             // 新增黑鍵容器
@@ -127,7 +135,7 @@ $(function(){
                 $cur_ebony.append(`<div class="ebony_child"><span>${simple_ebony_b[i]}</span></div>`); // 新增黑鍵 (降) 右
             }
 			
-            // 上色
+            // 上色黑鍵
             $(this).find('.ebony_child').find('span').css({'background': colors[index+1]});
 
             // 新增白鍵內容 (7組容器)
@@ -161,10 +169,10 @@ $(function(){
         $piano.append('<div class="group_right"></div>');
         let $group_right = $('.group_right');
         
-        // 新增白鍵
+        // 新增白鍵容器
         $group_right.append(`<div class="ivory"><span>${simple_ivory[0]}</span></div>`);
         
-        // 上色
+        // 上色白鍵
         $group_right.find('span').css({'background': colors[8]});
 
         // 新增白鍵內容
@@ -214,7 +222,7 @@ $(function(){
     // 紀錄簡譜
     //-------------------
     function note(panel, number, key, color) {        
-        // 移動文字區塊卷軸置最下方
+        // 移動文字區塊卷軸置焦點軌道
         moveScrollY(panel);
 
         // 取得目前焦點軌道
@@ -267,7 +275,7 @@ $(function(){
     // 刪除 簡譜
     //-------------------
     function delNote(panel) {    
-        // 移動文字區塊捲軸置最下方
+        // 移動文字區塊捲軸置焦點軌道
         moveScrollY(panel);
 
         // 目前焦點音符
@@ -350,6 +358,9 @@ $(function(){
             line.addClass('selected');
         }
 
+        // 移動文字區塊卷軸置焦點軌道
+        moveScrollY(panel);
+
         // 更新軌道及音符的焦點
         updateFocuse();
     }
@@ -414,7 +425,7 @@ $(function(){
             delNoteLine(panel, $line);
         });
 
-        // 移動文字區塊卷軸置最下方
+        // 移動文字區塊卷軸置焦點軌道
         moveScrollY(panel); 
 
         // 更新軌道及音符的焦點
@@ -442,8 +453,42 @@ $(function(){
             note($text_tabs, $curNote.text(), $curNote.attr('data-key'), $curNote.css('background-color'));
         }
 
+        // 移動文字區塊卷軸置焦點軌道
+        moveScrollY(panel);
+
         // 更新軌道及音符的焦點
         updateFocuse();
+    }
+
+    //-------------------
+    // 上移/下移簡譜軌道
+    //-------------------
+    function moveNoteLine(panel, direction) {
+        // 取得目前焦點軌道
+        let selectedLine = panel.find('.line.selected');
+        
+        // 目標軌道
+        let goalLine = '';
+
+        switch(direction) {
+            case 'up':
+                // 取得焦點軌道的前一個軌道
+                goalLine = panel.find('.line.selected').prev('.line');
+                
+                // 在目標軌道的前方插入焦點軌道
+                selectedLine.insertBefore(goalLine);
+                break;
+            case 'down':
+                // 取得焦點軌道的後一個軌道
+                goalLine = panel.find('.line.selected').next('.line');
+
+                // 在目標軌道的後方插入焦點軌道
+                selectedLine.insertAfter(goalLine);
+                break;
+        }
+
+        // 移動文字區塊卷軸置焦點軌道
+        moveScrollY(panel);
     }
 
     //-------------------
@@ -453,14 +498,11 @@ $(function(){
         switch (type) {
             case 'line':
                 let moveToLine = '';
-            
-                switch (direction) {
-                    case 'up':
-                        moveToLine = cur_selected_line.prev('.line');
-                        break;
-                    case 'down':
-                        moveToLine = cur_selected_line.next('.line');
-                        break;
+
+                if (direction == 'up') {
+                    moveToLine = cur_selected_line.prev('.line');
+                } else if (direction == 'down') {
+                    moveToLine = cur_selected_line.next('.line');
                 }
                 
                 if(moveToLine.length != 0){
@@ -478,13 +520,10 @@ $(function(){
             case 'note':
                 let moveToNote = '';
                 
-                switch (direction) {
-                    case 'left':
-                        moveToNote = cur_selected_note.prev('.note');
-                        break;
-                    case 'right':
-                        moveToNote = cur_selected_note.next('.note');
-                        break;
+                if (direction == 'left') {
+                    moveToNote = cur_selected_note.prev('.note');
+                } else if (direction == 'right') {
+                    moveToNote = cur_selected_note.next('.note');
                 }
 
                 if(moveToNote.length != 0){
@@ -495,6 +534,9 @@ $(function(){
                 }
                 break;
         }
+
+        // 移動文字區塊卷軸置焦點軌道
+        moveScrollY(panel);
 
         // 更新軌道及音符的焦點
         updateFocuse();
@@ -539,8 +581,8 @@ $(function(){
                 $piano.stop().animate({'bottom': '-35%'}, 300)
                 $slide.hide();
                 recordScrollX(); // 紀錄卷軸位置
-                $('.toolbutton').eq(4).css('display', 'block'); // 開啟鋼琴按鈕
-                $('.toolbutton').eq(5).css('display', 'none'); // 關閉鋼琴按鈕
+                $toolbtn_open_piano.css('display', 'block'); // 開啟鋼琴按鈕
+                $toolbtn_closed_piano.css('display', 'none'); // 關閉鋼琴按鈕
                 break;
             }
             case "open": {
@@ -549,8 +591,8 @@ $(function(){
                 $piano.stop().animate({'bottom': '0'}, 300);
                 $slide.show();
                 $piano.animate({'scrollLeft': cur_piano_x_scroll}, 0); // 移動卷軸至上次位置
-                $('.toolbutton').eq(4).css('display', 'none'); // 開啟鋼琴按鈕
-                $('.toolbutton').eq(5).css('display', 'block'); // 關閉鋼琴按鈕
+                $toolbtn_open_piano.css('display', 'none'); // 開啟鋼琴按鈕
+                $toolbtn_closed_piano.css('display', 'block'); // 關閉鋼琴按鈕
                 break;
             }
         }
@@ -560,14 +602,14 @@ $(function(){
     // 修改歌名
     //-------------------
     $('.title').on('dblclick', function(event) {
-        var pre_name = $('.title').html(); // 預設值為上次輸入的歌名
+        var pre_name = $(this).html(); // 預設值為上次輸入的歌名
         var decodeHtml = htmlDecode(pre_name); //用浏览器内部转换器实现html解码
         var song_name = prompt('請輸入歌名：', decodeHtml);
         
         if(song_name == null){
             song_name = decodeHtml;
         }
-        $('.title').text(song_name); // 顯示新歌名
+        $(this).text(song_name); // 顯示新歌名
     });
 
     //-------------------
@@ -652,7 +694,7 @@ $(function(){
     //-------------------
     $intro_closed_btn.on('click', function(event) {
         $intro.removeClass('active');
-        $('.toolbutton').eq(7).removeClass('selected');
+        $toolbtn_intro.removeClass('selected');
     });
     
     //-------------------
@@ -693,23 +735,21 @@ $(function(){
             });
         });
 
-        $('.ebony_0').each(function(index){
-            $('.ebony_child').each(function(index){
-                $(this).on('touchstart', function(event){
-                    $(this).css({'background': '#444'});
-                    // 紀錄簡譜
-                    note($text_number, $(this).find('span').text(), $(this).find('.key').attr('data-name'), $(this).find('span').css('background-color'));
-                    note($text_tabs, $(this).find('span').text(), $(this).find('.key').attr('data-name'), $(this).find('span').css('background-color'));
-                    // 播放音訊
-                    playaudio($(this).find('.key').text());
-                })
-                .on('touchend', function(event){
-                    $(this).css({'background': '#000'});
-                });
+        $('.ebony_child').each(function(index){
+            $(this).on('touchstart', function(event){
+                $(this).css({'background': '#444'});
+                // 紀錄簡譜
+                note($text_number, $(this).find('span').text(), $(this).find('.key').attr('data-name'), $(this).find('span').css('background-color'));
+                note($text_tabs, $(this).find('span').text(), $(this).find('.key').attr('data-name'), $(this).find('span').css('background-color'));
+                // 播放音訊
+                playaudio($(this).find('.key').text());
+            })
+            .on('touchend', function(event){
+                $(this).css({'background': '#000'});
             });
         });
 
-        $('.toolbutton').each(function(index){
+        $toolbtns.each(function(index){
             $(this).on('touchstart', function(event){
                 $(this).addClass('selected');
 
@@ -736,20 +776,33 @@ $(function(){
                         copyNoteLine();
                         break;
                     }
-                    case 4: { // 開啟鋼琴
+                    case 4: { // 上移一行
+                        moveNoteLine($text_number, 'up');
+                        moveNoteLine($text_tabs, 'up');
+                        break;
+                    }
+                    case 5: { // 下移一行
+                        moveNoteLine($text_number, 'down');
+                        moveNoteLine($text_tabs, 'down');
+                        break;
+                    }
+                    case 6: { // 開啟鋼琴
                         controlPianoLayout('open');
                         break;
                     }
-                    case 5: { // 關閉鋼琴
+                    case 7: { // 關閉鋼琴
                         controlPianoLayout('close');
                         break;
                     }
-                    case 6: { // 切換 五線譜 <=> 簡譜
+                    case 8: { // 切換 五線譜 <=> 簡譜
                         $text_number.toggleClass('open');
                         $text_tabs.toggleClass('open');
+
+                        // 移動文字區塊卷軸置焦點軌道
+                        $text_number.hasClass('open') ? moveScrollY($text_number) : moveScrollY($text_tabs);
                         break;
                     }
-                    case 7: { // 開啟 功能說明
+                    case 9: { // 開啟 功能說明
                         $intro.addClass('active');
                         break;
                     }
@@ -779,23 +832,21 @@ $(function(){
             });
         });
 
-        $('.ebony_0').each(function(index){
-            $('.ebony_child').each(function(index){
-                $(this).on('mousedown', function(event){
-                    $(this).css({'background': '#444'});
-                    // 紀錄簡譜
-                    note($text_number, $(this).find('span').text(), $(this).find('.key').attr('data-name'), $(this).find('span').css('background-color'));
-                    note($text_tabs, $(this).find('span').text(), $(this).find('.key').attr('data-name'), $(this).find('span').css('background-color'));
-                    // 播放音訊
-                    playaudio($(this).find('.key').text());
-                })
-                .on('mouseup', function(event){
-                    $(this).css({'background': '#000'});
-                });
+        $('.ebony_child').each(function(index){
+            $(this).on('mousedown', function(event){
+                $(this).css({'background': '#444'});
+                // 紀錄簡譜
+                note($text_number, $(this).find('span').text(), $(this).find('.key').attr('data-name'), $(this).find('span').css('background-color'));
+                note($text_tabs, $(this).find('span').text(), $(this).find('.key').attr('data-name'), $(this).find('span').css('background-color'));
+                // 播放音訊
+                playaudio($(this).find('.key').text());
+            })
+            .on('mouseup', function(event){
+                $(this).css({'background': '#000'});
             });
         });
 
-        $('.toolbutton').each(function(index){
+        $toolbtns.each(function(index){
             $(this).on('mousedown', function(event){
                 $(this).addClass('selected');
 
@@ -822,20 +873,33 @@ $(function(){
                         copyNoteLine();
                         break;
                     }
-                    case 4: { // 開啟鋼琴
+                    case 4: { // 上移一行
+                        moveNoteLine($text_number, 'up');
+                        moveNoteLine($text_tabs, 'up');
+                        break;
+                    }
+                    case 5: { // 下移一行
+                        moveNoteLine($text_number, 'down');
+                        moveNoteLine($text_tabs, 'down');
+                        break;
+                    }
+                    case 6: { // 開啟鋼琴
                         controlPianoLayout('open');
                         break;
                     }
-                    case 5: { // 關閉鋼琴
+                    case 7: { // 關閉鋼琴
                         controlPianoLayout('close');
                         break;
                     }
-                    case 6: { // 切換 五線譜 <=> 簡譜
+                    case 8: { // 切換 五線譜 <=> 簡譜
                         $text_number.toggleClass('open');
                         $text_tabs.toggleClass('open');
+
+                        // 移動文字區塊卷軸置焦點軌道
+                        $text_number.hasClass('open') ? moveScrollY($text_number) : moveScrollY($text_tabs);
                         break;
                     }
-                    case 7: { // 開啟 功能說明
+                    case 9: { // 開啟 功能說明
                         $intro.addClass('active');
                         break;
                     }
