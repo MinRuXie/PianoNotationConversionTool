@@ -1,5 +1,9 @@
 @charset "UTF-8";
 /* debug */
+.selected {
+  border: 3px solid red !important;
+}
+
 html, body {
   margin: 0;
   height: 100%;

@@ -234,25 +234,26 @@ $(function(){
         $selectedNote.length != 0 ? $selectedNote.after(note_html) : $selectLine.append(note_html);
 
         // 安裝焦點事件
-        let $lastest_note = $('.note.selected'); // 最新新增的音符
+        let $lastest_note = panel.find(".note.selected"); // 最新新增的音符
         $lastest_note.on('click', function(event){
-            // // 此軌道在此面板位於第幾個位置
-            // let line_index = $selectLine.index();
+            // 此軌道在此面板位於第幾個位置
+            let line_index = $selectLine.index();
 
-            // // let prevCount = 0;
-            // // for (let j=0; j < line_index ; j++) {
-            // //     // console.log('line_index', line_index, $('.line').eq(j).children('.note').length);
-            // //     prevCount+=$('.line').eq(j).children('.note').length;
-            // // }
+            // 此音符在此軌道位於第幾個位置
+            let note_index = $(this).index();
 
-            // // 此音符在此軌道位於第幾個位置
-            // let note_index = panel.find('.line.selected .note.selected').index(panel.find('.line'));
-            // // note_index-=prevCount;
-            // console.log('line_index', line_index , 'note_index', note_index);
+            // 更新另一個面板的音符焦點
+            switch(panel) {
+                case $text_number: // 是簡譜面板的音符
+                    note_index++; // 調整為五線譜面板的索引
+                    break;
+                case $text_tabs: // 是五線譜面板的音符
+                    note_index--; // 調整為簡譜面版的索引
+                    break;
+            }
 
-
-            // // 更新另一個面板的音符焦點
-            // recordNoteSelected(panel.siblings('.panel'), panel.siblings('.panel').find('.line').eq(line_index).find('.note').eq(note_index));
+            // 更新另一個面板的音符焦點
+            recordNoteSelected(panel.siblings('.panel'), panel.siblings('.panel').find('.line').eq(line_index).children().eq(note_index));
             
             // 更新音符焦點
             recordNoteSelected(panel, $(this));
