@@ -533,7 +533,7 @@ $(function(){
         }
 
         // 移動文字區塊卷軸置焦點軌道
-        moveScrollY(panel);
+        $text_number.hasClass('open') ? moveScrollY($text_number) : moveScrollY($text_tabs);
 
         // 更新軌道及音符的焦點
         updateFocuse();
