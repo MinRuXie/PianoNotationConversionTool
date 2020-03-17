@@ -235,7 +235,7 @@ $(function(){
         panel.find(".note").removeClass('selected');
 
         // 音符
-        let title = key.replace(/h/,"#");
+        let title = key != 'whitespace' ? key.replace(/h/,"#") : key;
         let note_html = `<div data-key="${key}" title="${title}" class="note selected ${key}" style="background-color: ${color};">${number}</div>`;
 
         // 檢查是否存在焦點元素 ? 新增音符 至 焦點元素 後方 : 新增音符 至 空白軌道 中
