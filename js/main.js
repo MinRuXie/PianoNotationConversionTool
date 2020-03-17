@@ -76,10 +76,10 @@ $(function(){
         $group_left.append(`<div class="ebony-wrap ebony_0"></div>`);
         let $ebony = $group_left.find('.ebony_0');
         
-		// 新增黑鍵內容 (升)
+        // 新增黑鍵內容 (升)
         $ebony.append(`<div class="ebony_child"><span>${simple_ebony_h[4]}</span></div>`);
 		
-		// 新增黑鍵內容 (降)
+        // 新增黑鍵內容 (降)
         $ebony.append(`<div class="ebony_child"><span>${simple_ebony_b[4]}</span></div>`);
   
         // 上色黑鍵
@@ -97,9 +97,9 @@ $(function(){
         $group_left.find('.ebony_0').each(function(index){
             $ebony.find('.ebony_child').each(function(index2){
                 // 新增 key
-                if(index2 < 1){ // 第 0 個 (升記號)
+                if (index2 < 1) { // 第 0 個 (升記號)
                     $(this).append(`<div data-name="${key_ebony_h[index]}" class="key">${key_ebony_h[index]}</div>`);
-                }else{ // 第 1 個 (降記號)
+                } else { // 第 1 個 (降記號)
                     $(this).append(`<div data-name="${key_ebony_b[index]}" class="key">${key_ebony_b[index]}</div>`);
                 }
                 // 新增音訊
@@ -110,7 +110,7 @@ $(function(){
         //-------------------------------
         // 中間 84 鍵 = (7+5)*7 (7組音階)
         //-------------------------------
-        for(let j=0 ; j<7 ; j++){
+        for(let j=0 ; j < 7 ; j++){
             $piano.append('<div class="group"></div>');
         }
         $('.group').each(function(index){
@@ -129,7 +129,7 @@ $(function(){
             }
 
             // 新增黑鍵內容
-            for (let i=0 ; i<5 ; i++) {
+            for (let i=0 ; i < 5 ; i++) {
                 let $cur_ebony = $(this).find(`.ebony_${i+1}`);
                 $cur_ebony.append(`<div class="ebony_child"><span>${simple_ebony_h[i]}</span></div>`); // 新增黑鍵 (升) 左
                 $cur_ebony.append(`<div class="ebony_child"><span>${simple_ebony_b[i]}</span></div>`); // 新增黑鍵 (降) 右
@@ -147,13 +147,13 @@ $(function(){
             });
 
             // 新增黑鍵內容 (5組容器)
-            for (let i=0 ; i<5 ; i++) { 
+            for (let i=0 ; i < 5 ; i++) { 
                 $(this).find(`.ebony_${i+1}`).each(function(index2){
                     $(this).find('.ebony_child').each(function(index3){
                         // 新增 key (第一個黑鍵 + [一組5個黑鍵] + 現在是第幾個黑鍵)
-                        if(index3 < 1){ // 第 0 個 (升記號)
+                        if (index3 < 1) { // 第 0 個 (升記號)
                             $(this).append(`<div data-name="${key_ebony_h[1+(5*index)+i]}" class="key">${key_ebony_h[1+(5*index)+i]}</div>`);
-                        }else{ // 第 1 個 (降記號)
+                        } else { // 第 1 個 (降記號)
                             $(this).append(`<div data-name="${key_ebony_b[1+(5*index)+i]}" class="key">${key_ebony_b[1+(5*index)+i]}</div>`);
                         }
                         // 新增音訊
@@ -324,7 +324,7 @@ $(function(){
     //-------------------
     function delNoteLine(panel, line) {
         // 檢查軌道數量
-        if(panel.find('.line').length > 1) {
+        if (panel.find('.line').length > 1) {
             // 檢查軌道中是否有焦點
             if (line.find('.selected').length != 0) {
                 let $prevLine = line.prev('.line');
@@ -346,7 +346,7 @@ $(function(){
 
             // 移除軌道
             line.remove();
-        }else{
+        } else {
             // 移除所有焦點
             panel.find('.line').removeClass('selected');
             panel.find('.note').removeClass('selected'); 
@@ -373,7 +373,7 @@ $(function(){
         let line_html = `<div class='line selected' title='雙擊修改區塊顏色'><div class="del">X</div></div>`;
 
         // 五線譜
-        if(panel == $text_tabs){
+        if (panel == $text_tabs) {
             line_html = `
                 <div class='line selected' title='雙擊修改區塊顏色'>
                     <div class='line-bg'><span></span><span></span><span></span><span></span><span></span></div>
@@ -502,7 +502,7 @@ $(function(){
                     moveToLine = cur_selected_line.next('.line');
                 }
                 
-                if(moveToLine.length != 0){
+                if (moveToLine.length != 0) {
                     // 移除軌道焦點
                     $('.line').removeClass('selected');
                     // 將焦點移至上一行軌道
@@ -523,7 +523,7 @@ $(function(){
                     moveToNote = cur_selected_note.next('.note');
                 }
 
-                if(moveToNote.length != 0){
+                if (moveToNote.length != 0) {
                     // 移除音符焦點
                     $('.note').removeClass('selected');
                     // 將焦點移至下一個音符
@@ -571,7 +571,7 @@ $(function(){
     // 鋼琴面板控制
     //-------------------
     function controlPianoLayout(kind) {
-        switch(kind){
+        switch(kind) {
             case "close": {
                 $text.stop().animate({'height': '100%'}, 300);
                 $toolbox.stop().animate({'height': '100%'}, 300);
@@ -603,7 +603,7 @@ $(function(){
         var decodeHtml = htmlDecode(pre_name); //用浏览器内部转换器实现html解码
         var song_name = prompt('請輸入歌名：', decodeHtml);
         
-        if(song_name == null){
+        if (song_name == null) {
             song_name = decodeHtml;
         }
         $(this).text(song_name); // 顯示新歌名
@@ -642,7 +642,7 @@ $(function(){
             var blue = parseInt(getRGB(rgbString).blue);
             btn_hexString = rgbToHex(red, green, blue);
 
-            if(line_hexString == btn_hexString){
+            if (line_hexString == btn_hexString) {
                 $(this).addClass('selected');
             }
         });
@@ -715,7 +715,7 @@ $(function(){
 	//-------------------
     // 行動裝置
     //-------------------
-    if(isMobile.phone){
+    if (isMobile.phone) {
         //alert(isMobile.phone);
         // 註冊點擊事件
         $('.ivory').each(function(index){
@@ -750,7 +750,7 @@ $(function(){
             $(this).on('touchstart', function(event){
                 $(this).addClass('selected');
 
-                switch(index){
+                switch(index) {
                     case 0: { // 刪除
                         // 刪除簡譜
                         delNote($text_number);
@@ -812,7 +812,7 @@ $(function(){
 	//-------------------
     // 電腦
     //-------------------
-    }else{
+    } else {
         //alert(isMobile.phone);
         // 註冊點擊事件
         $('.ivory').each(function(index){
@@ -847,7 +847,7 @@ $(function(){
             $(this).on('mousedown', function(event){
                 $(this).addClass('selected');
 
-                switch(index){
+                switch(index) {
                     case 0: { // 刪除
                         // 刪除簡譜
                         delNote($text_number);
@@ -908,48 +908,48 @@ $(function(){
         });
         
         /* 鍵盤事件 */
-		$(window).on('keydown', function(event){
-			//alert(event.keyCode);
-			switch(event.keyCode){
-				case 8: { // Backspace
-					// 刪除簡譜
+        $(window).on('keydown', function(event){
+            //alert(event.keyCode);
+            switch(event.keyCode) {
+                case 8: { // Backspace
+                    // 刪除簡譜
                     delNote($text_number);
                     delNote($text_tabs);
-					break;
-				}
-				case 13: { // Enter
-					// 新增簡譜軌道
+                    break;
+                }
+                case 13: { // Enter
+                    // 新增簡譜軌道
                     addNoteLine($text_number);
                     addNoteLine($text_tabs);
-					break;
-				}
-				case 32: { // Space
-					// 紀錄簡譜
+                    break;
+                }
+                case 32: { // Space
+                    // 紀錄簡譜
                     note($text_number, '', 'whitespace', 'rgba(255, 255, 255, 0.2)');
                     note($text_tabs, '', 'whitespace', 'rgba(255, 255, 255, 0)');
-					break;
+                    break;
                 }
                 case 65: { // 左 A
                     // 移動焦點
                     moveFocuse('note', 'left');
-					break;
+                    break;
                 }
                 case 87: { // 上 W
                     // 移動焦點
-                    moveFocuse('line', 'up');
-					break;
+                     moveFocuse('line', 'up');
+                    break;
                 }
                 case 68: { // 右 D
                     // 移動焦點
                     moveFocuse('note', 'right');
-					break;
+                    break;
                 }
                 case 83: { // 下 S
                     // 移動焦點
                     moveFocuse('line', 'down');
-					break;
-				}
-			}
+                    break;
+                }
+            }
         });
     }
 
@@ -958,7 +958,7 @@ $(function(){
     // 用浏览器内部转换器实现html解码
     // 來源: https://www.cnblogs.com/xdp-gacl/p/3722642.html
     //---------------------------------------------
-    function htmlDecode(text){
+    function htmlDecode(text) {
         //1.首先动态创建一个容器标签元素，如DIV
         var temp = document.createElement("div");
         //2.然后将要转换的字符串设置为这个元素的innerHTML(ie，火狐，google都支持)
@@ -973,7 +973,7 @@ $(function(){
     // 將 rgb(red, green ,blue) 字串 轉換為 JSON物件
     // 來源: https://stackoverflow.com/questions/34980574/how-to-extract-color-values-from-rgb-string-in-javascript
     //---------------------------------------------
-    function getRGB(str){
+    function getRGB(str) {
       var match = str.match(/rgba?\((\d{1,3}), ?(\d{1,3}), ?(\d{1,3})\)?(?:, ?(\d(?:\.\d?))\))?/);
       return match ? {
         red: match[1],
