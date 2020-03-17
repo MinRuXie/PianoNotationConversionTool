@@ -790,13 +790,13 @@ html, body {
   padding: 30px 50px;
   position: relative;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1280px) {
   .intro-wrap .intro-content {
     border: none;
     padding: 10px 20px;
     max-width: 90vw;
     max-height: 90vh;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 }
 .intro-wrap .intro-content h4, .intro-wrap .intro-content li {
