@@ -370,14 +370,14 @@ $(function(){
     //-------------------
     function addNoteLine(panel) {
         // 簡譜
-        let line_html = `<div class='line selected' title='雙擊修改區塊顏色'><div class="del">X</div></div>`;
+        let line_html = `<div class='line selected' title='雙擊修改區塊顏色'><div class="del" title="刪除">X</div></div>`;
 
         // 五線譜
         if (panel == $text_tabs) {
             line_html = `
                 <div class='line selected' title='雙擊修改區塊顏色'>
                     <div class='line-bg'><span></span><span></span><span></span><span></span><span></span></div>
-                    <div class="del">X</div>
+                    <div class="del" title="刪除">X</div>
                 </div>`;
         }
 
