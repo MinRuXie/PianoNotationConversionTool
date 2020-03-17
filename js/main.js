@@ -334,11 +334,9 @@ $(function(){
             
             // 移動焦點至上或下一軌道的最後一個音符 (如果有)
             if ($prevLine.length != 0) {
-                console.log('prev');
                 $prevLine.find('.note').last().addClass('selected');
                 $prevLine.addClass('selected');
             } else if ($nextLine.length != 0) {
-                console.log('next');
                 $nextLine.find('.note').last().addClass('selected');
                 $nextLine.addClass('selected');
             }
