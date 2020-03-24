@@ -572,7 +572,7 @@ $(function(){
             case "close": {
                 $text.stop().animate({'height': '100%'}, 300);
                 $toolbox.stop().animate({'height': '100%'}, 300);
-                $piano.stop().animate({'bottom': '-35%'}, 300)
+                $piano.stop().animate({'bottom': '-35%'}, 300);
                 $slide.hide();
                 recordScrollX(); // 紀錄卷軸位置
                 $toolbtn_open_piano.css('display', 'block'); // 開啟鋼琴按鈕
