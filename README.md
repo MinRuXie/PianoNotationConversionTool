@@ -3,16 +3,17 @@
 
 <img src="https://i.imgur.com/9kKutZL.png" width="600">
 
-## 需求
-* 讓懶得手寫簡譜的人可以用點擊完成簡譜
-* 讓沒有音樂知識的人也可以透過顏色看得懂譜（就是我）
-* ~~基本上是為了使用完美鋼琴APP而客製化的工具~~
+## DEMO 網址
+* https://minruxie.github.io/PianoNotationConversionTool/
+
+## 開發動機
+因為我想要得到我想要的音樂的簡譜，但是自己無法聽音扒譜，所以要去求助能夠聽音扒譜的人類。但是能夠聽音扒譜的人類覺得手寫或打字都太麻煩了，為了讓他只要用滑鼠按一按就能輕鬆產生簡譜，而製造的懶人專屬工具。
 
 ## 開發工具
 * jQuery
 * Javascript
 * HTML
-* CSS
+* SCSS
 
 ## 功能介紹
 * 樂譜面板：顯示音符的地方。
