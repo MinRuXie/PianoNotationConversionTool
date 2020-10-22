@@ -44,5 +44,6 @@ http://theremin.music.uiowa.edu/MISpiano.html
 https://loading.io/
 
 ### 壓縮工具
+為了讓網頁載入變快所以壓縮檔案。
 * [csscompressor](https://csscompressor.com/)
 * [javascript-minifier](https://javascript-minifier.com/)
