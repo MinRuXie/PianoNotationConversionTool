@@ -9,7 +9,10 @@ const paths = {
         dest: 'dist/assets/css'
     },
     scrips: {
-        src: 'src/assets/js/main.js',
+        src: [
+            'src/assets/js/main.js',
+            'src/assets/js/piano-note.js',
+        ],
         dest: 'dist/assets/js'
     },
 }

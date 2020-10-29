@@ -1,3 +1,5 @@
+import { colors, key_ivory, key_ebony_b, key_ebony_h, simple_ivory, simple_ebony_b, simple_ebony_h } from './piano-note.js';
+
 // 等 HTML 載入完成
 $(function(){
     
@@ -47,18 +49,6 @@ $(function(){
     // 建立琴鍵
     //-------------------
     function buildPiano(){
-        let colors = ['#828282', '#AD766A', '#D5404A', '#FFB11B', '#90B44B', '#58B2DC', '#005CAF',  '#A8497A', '#E87A90'];
-        
-        let key_ivory = ['A0', 'B0', 'C1', 'D1', 'E1', 'F1', 'G1', 'A1', 'B1', 'C2', 'D2', 'E2', 'F2', 'G2', 'A2', 'B2', 'C3', 'D3', 'E3', 'F3', 'G3', 'A3', 'B3', 'C4', 'D4', 'E4', 'F4', 'G4', 'A4', 'B4', 'C5', 'D5', 'E5', 'F5', 'G5', 'A5', 'B5', 'C6', 'D6', 'E6', 'F6', 'G6', 'A6', 'B6', 'C7', 'D7', 'E7', 'F7', 'G7', 'A7', 'B7', 'C8'];
-        
-        let key_ebony_b = ['Bb0', 'Db1', 'Eb1', 'Gb1', 'Ab1', 'Bb1', 'Db2', 'Eb2', 'Gb2', 'Ab2', 'Bb2', 'Db3', 'Eb3', 'Gb3', 'Ab3', 'Bb3', 'Db4', 'Eb4', 'Gb4', 'Ab4', 'Bb4', 'Db5', 'Eb5', 'Gb5', 'Ab5', 'Bb5', 'Db6', 'Eb6', 'Gb6', 'Ab6', 'Bb6', 'Db7', 'Eb7', 'Gb7', 'Ab7', 'Bb7'];
-        
-        let key_ebony_h = ['Ah0', 'Ch1', 'Dh1', 'Fh1', 'Gh1', 'Ah1', 'Ch2', 'Dh2', 'Fh2', 'Gh2', 'Ah2', 'Ch3', 'Dh3', 'Fh3', 'Gh3', 'Ah3', 'Ch4', 'Dh4', 'Fh4', 'Gh4', 'Ah4', 'Ch5', 'Dh5', 'Fh5', 'Gh5', 'Ah5', 'Ch6', 'Dh6', 'Fh6', 'Gh6', 'Ah6', 'Ch7', 'Dh7', 'Fh7', 'Gh7', 'Ah7'];
-
-        let simple_ivory = ['1', '2', '3', '4', '5', '6', '7'];
-        let simple_ebony_b = ['b2', 'b3', 'b5', 'b6', 'b7'];
-        let simple_ebony_h = ['#1', '#2', '#4', '#5', '#6'];
-		
         //-------------------
         // 左邊 3 鍵
         //-------------------
@@ -540,10 +530,13 @@ $(function(){
     // 播放音訊
     //-------------------
     function playaudio(key) {
-        notekey = document.getElementById(key);
-        notekey.pause(); // 暫停
-        notekey.currentTime = 0; // 讓音訊進度回歸 0 
-        notekey.play(); // 播放
+        let notekey = document.getElementById(key);
+        
+        if (notekey != null) {
+            notekey.pause(); // 暫停
+            notekey.currentTime = 0; // 讓音訊進度回歸 0 
+            notekey.play(); // 播放
+        }
     }
 
     //-------------------
@@ -553,7 +546,7 @@ $(function(){
         // 目前焦點軌道的索引
         let curLineIndex = panel.find('.line.selected').index();
 
-        text_height = panel.find('.line').height() * curLineIndex;
+        let text_height = panel.find('.line').height() * curLineIndex;
         $text.animate({'scrollTop': text_height}, 0); // 移動捲軸至焦點軌道
     }
 
