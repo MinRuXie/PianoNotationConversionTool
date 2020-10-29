@@ -38,10 +38,11 @@
 * SCSS
 
 ### 使用 gulp 管理專案
-* 編譯 SCSS 成 CSS
-* 壓縮 CSS
-* 壓縮 ES6 JS
+* `gulp-sass`：編譯 SCSS 成 CSS
+* `gulp-clean-css`：壓縮 CSS 
+* `gulp-terser`：壓縮 ES6 JS
 
+#### 自動化
 ```
 gulp build
 ```
