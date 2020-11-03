@@ -43,6 +43,7 @@
 * `gulp-terser`：壓縮 ES6 JS
 
 #### 自動化
+將 `src` 資料夾下的檔案處理到 `dist` 資料夾中。
 ```
 gulp build
 ```
