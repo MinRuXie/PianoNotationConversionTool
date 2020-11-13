@@ -532,11 +532,11 @@ $(function(){
     function playaudio(key) {
         let notekey = document.getElementById(key);
         
-        if (notekey != null) {
+        // if (notekey != null) {
             notekey.pause(); // 暫停
             notekey.currentTime = 0; // 讓音訊進度回歸 0 
             notekey.play(); // 播放
-        }
+        // }
     }
 
     //-------------------

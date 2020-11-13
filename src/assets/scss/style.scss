@@ -733,6 +733,8 @@ html, body {
         border-radius: 10px;
         padding: 30px 50px;
         position: relative;
+        max-height: calc(100% - 100px);
+        overflow: auto;
 
         @media screen and (max-width: 1280px) {
             border: none;
