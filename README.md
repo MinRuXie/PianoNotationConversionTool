@@ -1,8 +1,5 @@
 ﻿# 鋼琴簡譜工具
-<img src="https://i.imgur.com/AXnU5WV.png" width="600" style="padding-bottom: 20px;">
-
-<img src="https://i.imgur.com/9kKutZL.png" width="600">
-
+ 
 ## DEMO 網址
 * https://minruxie.github.io/PianoNotationConversionTool/
 
