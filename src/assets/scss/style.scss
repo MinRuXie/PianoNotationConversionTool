@@ -91,6 +91,10 @@ html, body {
                 background-color: rgba($color-white, 0.1);
             }
 
+            &:hover {
+                background-color: rgba($color-white, 0.2);
+            }
+
             /* 音符 */
             .note {
                 /* 空格 */
