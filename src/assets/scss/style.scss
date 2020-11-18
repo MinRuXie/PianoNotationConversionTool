@@ -380,15 +380,6 @@ html, body {
         letter-spacing: 2px;
         transition: 0.3s;
 
-        @media screen and (max-width: 1024px) {
-            font-size: 12px;
-            letter-spacing: 0;
-            padding: 3px;
-            border-radius: 0;
-            border: none;
-            border-bottom: 1px solid rgba($color-white, 0.6);
-        }
-
         &:hover {
             background-color: rgba($color-white, 0.2);
         }
