@@ -27,12 +27,16 @@
     * 下移此行：將「焦點軌道」往下移動。
     * 關閉/開啟鋼琴：可控制鋼琴面板的顯示（預設開啟；可收合）。
     * 切換模式：可控制樂譜面板的顯示模式（預設簡譜；可切換為五線譜）。
+    * 輸出圖片：可將完成的作品輸出成一張圖片。
 
 ## 開發工具
 * jQuery
 * Javascript
 * HTML
 * SCSS
+
+### plugin
+* [html2canvas](https://www.geeksforgeeks.org/how-to-take-screenshot-of-a-div-using-javascript/)
 
 ### 使用 gulp 管理專案
 * `gulp-sass`：編譯 SCSS 成 CSS

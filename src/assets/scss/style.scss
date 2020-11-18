@@ -27,7 +27,7 @@ html, body {
     height: 65%;
     overflow-y: auto;
     overflow-x: hidden;
-    padding: 5px 10px;
+    padding: 5px 10px 15px;
     font-size: 80%;
     width: 90%;
     float: left;
@@ -35,6 +35,10 @@ html, body {
 
     &.full {
         width: calc(100% - 18px);
+    }
+
+    &.capturing {
+        height: auto;
     }
 
     /* 歌名 */
@@ -693,8 +697,8 @@ html, body {
     }
 }
 
-/* 功能說明區塊 */
-.intro-wrap {
+/* modal */
+.modal-wrap {
     display: none;
 
     &.active {
@@ -726,6 +730,10 @@ html, body {
             background-color: rgba($color-white, 0.3);
         }
     }
+}
+
+/* 功能說明區塊 */
+.intro-wrap {
 
     .intro-content {
         color: $color-white;
@@ -750,6 +758,16 @@ html, body {
     }
 }
 
+/* 功能說明區塊 */
+.screenshot-wrap {
+
+    .screenshot-content {
+        max-width: calc(100% - 100px);
+        max-height: calc(100% - 100px);
+        overflow: auto;
+    }
+}
+
 /* 載入畫面 */
 .loading {
     position: absolute;
@@ -765,8 +783,8 @@ html, body {
         width: 10%;
         top: 40%;
         left:50%;
-        transform: translateY(-50%); /* 扣掉自己的 50% 高度 */
-        transform: translateX(-50%); /* 扣掉自己的 50% 高度 */
+        transform: translateY(-50%);
+        transform: translateX(-50%);
     }
 }
 

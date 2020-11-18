@@ -34,6 +34,9 @@ $(function(){
     let $intro = $('.intro-wrap');
     let $intro_closed_btn = $('.intro-wrap .ctr-btn');
 
+    let $screenshot = $('.screenshot-wrap');
+    let $screenshot_closed_btn = $('.screenshot-wrap .ctr-btn');
+
     let cur_piano_x_scroll = 0; // 目前鋼琴的水平捲軸位置
     let cur_selected_note = $('.note.selected'); // 當前焦點音符們 (兩個面板都有)
     let cur_selected_line = $('.line.selected'); // 當前焦點軌道們 (兩個面板都有)
@@ -625,12 +628,12 @@ $(function(){
         $(".colorbtn").removeClass('selected');
         $('.colorbtn').each(function(index){
             // 取得背景色 rgb(red, green ,blue)
-            var rgbString = $(this).css('backgroundColor');
+            let rgbString = $(this).css('backgroundColor');
             // 取得 rgb 色碼
-            var red = parseInt(getRGB(rgbString).red);
-            var green = parseInt(getRGB(rgbString).green);
-            var blue = parseInt(getRGB(rgbString).blue);
-            btn_hexString = rgbToHex(red, green, blue);
+            let red = parseInt(getRGB(rgbString).red);
+            let green = parseInt(getRGB(rgbString).green);
+            let blue = parseInt(getRGB(rgbString).blue);
+            let btn_hexString = rgbToHex(red, green, blue);
 
             if (line_hexString == btn_hexString) {
                 $(this).addClass('selected');
@@ -682,6 +685,13 @@ $(function(){
     $intro_closed_btn.on('click', function(event) {
         $intro.removeClass('active');
         $toolbtn_intro.removeClass('selected');
+    });
+
+    //-------------------
+    // 關閉輸出圖片
+    //-------------------
+    $screenshot_closed_btn.on('click', function(event) {
+        $screenshot.removeClass('active');
     });
 
     //-------------------
@@ -793,6 +803,11 @@ $(function(){
                         $intro.addClass('active');
                         break;
                     }
+                    case 10: { // 輸出圖片
+                        $screenshot.addClass('active');
+                        getScreenshot();
+                        break;
+                    }
                 }
             })
             .on('touchend', function(event){
@@ -888,6 +903,11 @@ $(function(){
                     }
                     case 9: { // 開啟 功能說明
                         $intro.addClass('active');
+                        break;
+                    }
+                    case 10: { // 輸出圖片
+                        $screenshot.addClass('active');
+                        getScreenshot();
                         break;
                     }
                 }
@@ -987,5 +1007,30 @@ $(function(){
     //-----------------------
     function rgbToHex(r, g, b) {
         return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+    }
+
+    //-----------------------
+    // html2canvas
+    // 來源: https://html2canvas.hertzen.com/
+    // 來源: https://www.geeksforgeeks.org/how-to-take-screenshot-of-a-div-using-javascript/
+    //-----------------------
+    function getScreenshot() {
+        // 目標擷取容器
+        let $screenshot_wrap = $("#capture");
+        $screenshot_wrap.addClass('capturing');
+        $screenshot_wrap.scrollTop(0);
+
+        html2canvas(document.querySelector("#capture")).then(canvas => {
+            // document.body.appendChild(canvas);
+            // document.getElementById('output').appendChild(canvas); 
+
+            // 輸出容器
+            let $output_warp = $('#output');
+            $output_warp.empty();
+            $output_warp.append(canvas);
+
+            // 目標擷取容器
+            $screenshot_wrap.removeClass('capturing');
+        });
     }
 });

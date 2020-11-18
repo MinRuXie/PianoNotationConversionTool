@@ -34,7 +34,7 @@
     
     <body>
         <div class="container-fluid">
-            <div class="text">
+            <div id="capture" class="text">
                 <div class="title" title="雙擊修改歌名">請輸入歌名</div>
                 <div class="panel number-panel open"></div>
                 <div class="panel tabs-panel"></div>
@@ -51,6 +51,7 @@
                 <div class="toolbutton" title="none">關閉鋼琴</div>
                 <div class="toolbutton" title="none">切換模式</div>
                 <div class="toolbutton" title="none">功能說明</div>
+                <div class="toolbutton" title="none">輸出圖片</div>
             </div>
             <div class="piano">
                 <div class="slide"></div>
@@ -68,7 +69,7 @@
                 <div class="cancelbtn">取消</div>
             </div>
         </div>
-        <div class="intro-wrap active">
+        <div class="intro-wrap modal-wrap active">
             <div class="intro-content">
                 <div class="ctr-btn">X</div>
                 <h4>樂譜面板</h4>
@@ -101,9 +102,16 @@
                     <li>下移此行：將「焦點軌道」往下移動。</li>
                     <li>關閉/開啟鋼琴：可控制鋼琴面板的顯示（預設開啟；可收合）。</li>
                     <li>切換模式：可控制樂譜面板的顯示模式（預設簡譜；可切換為五線譜）。</li>
+                    <li>輸出圖片：可將完成的作品輸出成一張圖片。</li>
                 </ul>
             </div>
         </div>
+
+        <div class="screenshot-wrap modal-wrap">
+            <div class="ctr-btn">X</div>
+            <div id="output" class="screenshot-content"></div>
+        </div>
+
         <div class='warn_size'>
             <img src="dist/assets/image/Magnify-1s-200px.svg">
             <span>直式不可以看</span>
@@ -116,6 +124,7 @@
         <script src="dist/assets/js/plugins/jquery-3.3.1.min.js"></script>
         <script src="dist/assets/js/plugins/bootstrap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/ismobilejs@0.5.1/dist/isMobile.min.js"></script>
+        <script src="dist/assets/js/plugins/html2canvas.min.js"></script>
         
         <!-- custom -->
         <script type="module" src="dist/assets/js/main.js"></script>
