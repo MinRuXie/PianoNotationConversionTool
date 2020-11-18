@@ -44,7 +44,7 @@ $(function(){
     // 設定開啟鋼琴按鈕為消失狀態
     $toolbtn_open_piano.css('display', 'none');
     // 設定卷軸 (人為觸發才生效)
-    $piano.animate({'scrollLeft': '2000vw'}, 500);
+    $piano.animate({'scrollLeft': '3000vw'}, 500);
     // 紀錄卷軸位置
     recordScrollX();
     
@@ -1016,14 +1016,10 @@ $(function(){
     //-----------------------
     function getScreenshot() {
         // 目標擷取容器
-        let $screenshot_wrap = $("#capture");
-        $screenshot_wrap.addClass('capturing');
-        $screenshot_wrap.scrollTop(0);
+        $screenshot.addClass('capturing');
+        $screenshot.scrollTop(0);
 
         html2canvas(document.querySelector("#capture")).then(canvas => {
-            // document.body.appendChild(canvas);
-            // document.getElementById('output').appendChild(canvas); 
-
             // 輸出容器
             let $output_warp = $('#output');
             $output_warp.empty();
