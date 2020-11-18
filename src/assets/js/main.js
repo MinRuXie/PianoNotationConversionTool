@@ -439,8 +439,8 @@ $(function(){
         // 紀錄簡譜
         for (let i=0; i < $cloneNotes.length ; i++) {
             let $curNote = $cloneNotes.eq(i);
-            note($text_number, $curNote.text(), $curNote.attr('data-key'), $curNote.css('background-color'));
-            note($text_tabs, $curNote.text(), $curNote.attr('data-key'), $curNote.css('background-color'));
+            note($text_number, $curNote.text(), $curNote.data('key'), $curNote.css('background-color'));
+            note($text_tabs, $curNote.text(), $curNote.data('key'), $curNote.css('background-color'));
         }
 
         // 更新軌道及音符的焦點
@@ -736,8 +736,8 @@ $(function(){
             $(this).on('touchstart', function(event){
                 $(this).css({'background': '#444'});
                 // 紀錄簡譜
-                note($text_number, $(this).find('span').text(), $(this).find('.key').attr('data-name'), $(this).find('span').css('background-color'));
-                note($text_tabs, $(this).find('span').text(), $(this).find('.key').attr('data-name'), $(this).find('span').css('background-color'));
+                note($text_number, $(this).find('span').text(), $(this).find('.key').data('name'), $(this).find('span').css('background-color'));
+                note($text_tabs, $(this).find('span').text(), $(this).find('.key').data('name'), $(this).find('span').css('background-color'));
                 // 播放音訊
                 playaudio($(this).find('.key').text());
             })
@@ -838,8 +838,8 @@ $(function(){
             $(this).on('mousedown', function(event){
                 $(this).css({'background': '#444'});
                 // 紀錄簡譜
-                note($text_number, $(this).find('span').text(), $(this).find('.key').attr('data-name'), $(this).find('span').css('background-color'));
-                note($text_tabs, $(this).find('span').text(), $(this).find('.key').attr('data-name'), $(this).find('span').css('background-color'));
+                note($text_number, $(this).find('span').text(), $(this).find('.key').data('name'), $(this).find('span').css('background-color'));
+                note($text_tabs, $(this).find('span').text(), $(this).find('.key').data('name'), $(this).find('span').css('background-color'));
                 // 播放音訊
                 playaudio($(this).find('.key').text());
             })
