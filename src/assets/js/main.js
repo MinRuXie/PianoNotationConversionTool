@@ -1016,10 +1016,11 @@ $(function(){
     //-----------------------
     function getScreenshot() {
         // 目標擷取容器
-        $screenshot.addClass('capturing');
-        $screenshot.scrollTop(0);
+        let $screenshot_wrap = $('#capture');
+        $screenshot_wrap.addClass('capturing');
+        $screenshot_wrap.scrollTop(0);
 
-        html2canvas(document.querySelector("#capture")).then(canvas => {
+        html2canvas(document.querySelector('#capture')).then(canvas => {
             // 輸出容器
             let $output_warp = $('#output');
             $output_warp.empty();
