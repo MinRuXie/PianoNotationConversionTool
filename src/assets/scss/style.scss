@@ -10,6 +10,17 @@ $color-light-gary: #999;
 //     border: 3px solid red !important;
 // }
 
+* {
+    /* 不能反白 */
+    -moz-user-select: none; 
+    -webkit-user-select: none; 
+    -ms-user-select:none; 
+    user-select:none;
+    -o-user-select:none;
+    font-family: 'Galindo', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
 html, body {
     margin: 0;
     height: 100%;
@@ -305,10 +316,12 @@ html, body {
     padding: 15px 5px 5px 18px;
     position: absolute;
     right: 0;
+    overflow-y: scroll;
     transition: transform 0.3s;
 
-    @media screen and (max-width: 1024px) {
-        overflow-y: scroll;
+    hr {
+        background-color: #999;
+        margin: 15px 0;
     }
 
     /* 收合按鈕 */
@@ -786,16 +799,4 @@ html, body {
         transform: translateY(-50%);
         transform: translateX(-50%);
     }
-}
-
-
-* {
-    /* 不能反白 */
-    -moz-user-select: none; 
-    -webkit-user-select: none; 
-    -ms-user-select:none; 
-    user-select:none;
-    -o-user-select:none;
-    font-family: 'Galindo', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
-    -webkit-font-smoothing: antialiased;
 }

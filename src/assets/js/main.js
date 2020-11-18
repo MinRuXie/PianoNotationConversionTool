@@ -799,13 +799,13 @@ $(function(){
                         $text_number.hasClass('open') ? moveScrollY($text_number) : moveScrollY($text_tabs);
                         break;
                     }
-                    case 9: { // 開啟 功能說明
-                        $intro.addClass('active');
-                        break;
-                    }
-                    case 10: { // 輸出圖片
+                    case 9: { // 輸出圖片
                         $screenshot.addClass('active');
                         getScreenshot();
+                        break;
+                    }
+                    case 10: { // 開啟 功能說明
+                        $intro.addClass('active');
                         break;
                     }
                 }
@@ -901,13 +901,13 @@ $(function(){
                         $text_number.hasClass('open') ? moveScrollY($text_number) : moveScrollY($text_tabs);
                         break;
                     }
-                    case 9: { // 開啟 功能說明
-                        $intro.addClass('active');
-                        break;
-                    }
-                    case 10: { // 輸出圖片
+                    case 9: { // 輸出圖片
                         $screenshot.addClass('active');
                         getScreenshot();
+                        break;
+                    }
+                    case 10: { // 開啟 功能說明
+                        $intro.addClass('active');
                         break;
                     }
                 }
