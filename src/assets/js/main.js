@@ -216,7 +216,7 @@ $(function(){
     //-------------------
     function note(panel, number, key, color) {        
         // 移動文字區塊卷軸置焦點軌道
-        moveScrollY(panel);
+        // moveScrollY(panel);
 
         // 取得目前焦點軌道
         let $selectLine = panel.find(".line.selected");
@@ -269,7 +269,7 @@ $(function(){
     //-------------------
     function delNote(panel) {    
         // 移動文字區塊捲軸置焦點軌道
-        moveScrollY(panel);
+        // moveScrollY(panel);
 
         // 目前焦點音符
         let $focuseNote = panel.find(".note.selected");
@@ -349,7 +349,7 @@ $(function(){
         }
 
         // 移動文字區塊卷軸置焦點軌道
-        moveScrollY(panel);
+        // moveScrollY(panel);
 
         // 更新軌道及音符的焦點
         updateFocuse();
@@ -416,7 +416,7 @@ $(function(){
         });
 
         // 移動文字區塊卷軸置焦點軌道
-        moveScrollY(panel); 
+        // moveScrollY(panel); 
 
         // 更新軌道及音符的焦點
         updateFocuse();
@@ -475,7 +475,7 @@ $(function(){
         }
 
         // 移動文字區塊卷軸置焦點軌道
-        moveScrollY(panel);
+        // moveScrollY(panel);
     }
 
     //-------------------
@@ -523,7 +523,7 @@ $(function(){
         }
 
         // 移動文字區塊卷軸置焦點軌道
-        $text_number.hasClass('open') ? moveScrollY($text_number) : moveScrollY($text_tabs);
+        // $text_number.hasClass('open') ? moveScrollY($text_number) : moveScrollY($text_tabs);
 
         // 更新軌道及音符的焦點
         updateFocuse();
@@ -545,13 +545,15 @@ $(function(){
     //-------------------
     // 移動文字區塊卷軸位置
     //-------------------
-    function moveScrollY(panel) {
-        // 目前焦點軌道的索引
-        let curLineIndex = panel.find('.line.selected').index();
+    // function moveScrollY(panel) {
+    //     // 目前焦點軌道的索引
+    //     let curLineIndex = panel.find('.line.selected').index();
+    //     let text_height = panel.find('.line').height() * curLineIndex;
+        
+    //     $text.animate({'scrollTop': text_height}, 0); // 移動捲軸至焦點軌道
 
-        let text_height = panel.find('.line').height() * curLineIndex;
-        $text.animate({'scrollTop': text_height}, 0); // 移動捲軸至焦點軌道
-    }
+    //     // bug: 簡譜和五線譜的軌道高度不同, 所以Y軸焦點位置不同, 但是共用同個父容器 $text
+    // }
 
     //-------------------
     // 紀錄鋼琴卷軸位置
@@ -796,7 +798,7 @@ $(function(){
                         $text_tabs.toggleClass('open');
 
                         // 移動文字區塊卷軸置焦點軌道
-                        $text_number.hasClass('open') ? moveScrollY($text_number) : moveScrollY($text_tabs);
+                        // $text_number.hasClass('open') ? moveScrollY($text_number) : moveScrollY($text_tabs);
                         break;
                     }
                     case 9: { // 輸出圖片
@@ -898,7 +900,7 @@ $(function(){
                         $text_tabs.toggleClass('open');
 
                         // 移動文字區塊卷軸置焦點軌道
-                        $text_number.hasClass('open') ? moveScrollY($text_number) : moveScrollY($text_tabs);
+                        // $text_number.hasClass('open') ? moveScrollY($text_number) : moveScrollY($text_tabs);
                         break;
                     }
                     case 9: { // 輸出圖片
