@@ -1013,17 +1013,19 @@ $(function(){
     // html2canvas
     // 來源: https://html2canvas.hertzen.com/
     // 來源: https://www.geeksforgeeks.org/how-to-take-screenshot-of-a-div-using-javascript/
+    // 來源: https://stackoverflow.com/questions/36213275/html2canvas-does-not-render-full-div-only-what-is-visible-on-screen
     //-----------------------
     function getScreenshot() {
         // 目標擷取容器
         let $screenshot_wrap = $('#capture');
         $screenshot_wrap.addClass('capturing');
         $screenshot_wrap.scrollTop(0);
+        let $output_warp = $('#output');
+        $output_warp.empty();
 
         html2canvas(document.querySelector('#capture')).then(canvas => {
             // 輸出容器
-            let $output_warp = $('#output');
-            $output_warp.empty();
+            
             $output_warp.append(canvas);
 
             // 目標擷取容器
