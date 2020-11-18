@@ -1022,16 +1022,21 @@ $(function(){
         let $screenshot_wrap = $('#capture');
         $screenshot_wrap.addClass('capturing');
         $screenshot_wrap.scrollTop(0);
+
+        let $selected_note = $('.note.selected');
+        $selected_note.addClass('capturing');
+
+        // 輸出容器
         let $output_warp = $('#output');
         $output_warp.empty();
 
         html2canvas(document.querySelector('#capture')).then(canvas => {
             // 輸出容器
-            
             $output_warp.append(canvas);
 
             // 目標擷取容器
             $screenshot_wrap.removeClass('capturing');
+            $selected_note.removeClass('capturing');
         });
     }
 });

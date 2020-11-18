@@ -304,6 +304,10 @@ html, body {
     /* 焦點 */
     .selected {
         box-shadow: 0px 0px 10px rgba($color-white, 0.7);
+
+        &.capturing {
+            box-shadow: unset;
+        }
     }
 }
 
