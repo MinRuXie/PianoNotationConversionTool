@@ -155,7 +155,7 @@ html, body {
         /* 軌道 */
         .line {
             width: 100%;
-            height: 468px;  /* 26 row = 18px*26 = 468px */
+            height: 480px;
             display: flex;
             align-items: flex-start;
             position: relative;
@@ -207,7 +207,7 @@ html, body {
                 line-height: 18px;
                 position: relative;
                 z-index: 1;
-                margin: 0 10px;
+                margin: 0 4px;
                 border: 1px solid #FFF;
                 font-size: 12px;
 
@@ -321,10 +321,11 @@ html, body {
     height: 65%;
     width: 10%;
     float: left;
-    padding: 15px 5px 5px 18px;
+    padding: 15px 10px 15px 18px;
     position: absolute;
+    top: 0;
     right: 0;
-    overflow-y: scroll;
+    overflow-y: auto;
     transition: transform 0.3s;
 
     hr {
