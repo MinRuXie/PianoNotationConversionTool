@@ -210,7 +210,7 @@ html, body {
                 position: relative;
                 z-index: 1;
                 margin: 0 4px;
-                border: 1px solid #FFF;
+                border: 1px solid $color-white;
                 font-size: 12px;
 
                 /* 尾巴 */
@@ -331,7 +331,7 @@ html, body {
     transition: transform 0.3s;
 
     hr {
-        background-color: #999;
+        background-color: $color-light-gary;
         margin: 15px 0;
     }
 
@@ -753,7 +753,7 @@ html, body {
         left: 50%;
         transform: translate(-50%);
         z-index: 20;
-        color: #FFF;
+        color: $color-white;
         font-size: 30px;
     }
 
