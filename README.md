@@ -53,11 +53,8 @@ project
     |       |   |- style.scss
     |       |
     |       |- js
-    |       |   |- piano-note.js
-    |       |   |- main.js
-    |       | 
-    |       |- html
-    |       |   |- work.html (detail page html backup)
+    |           |- piano-note.js
+    |           |- main.js
     |
     |- dist (production)
     |   |- assets
