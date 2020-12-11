@@ -42,6 +42,33 @@
 ### plugin
 * [html2canvas](https://www.geeksforgeeks.org/how-to-take-screenshot-of-a-div-using-javascript/)
 
+## Project Structure
+```
+project
+    |- index.html (use /dist)
+    |
+    |- src (development)
+    |   |- assets
+    |       |- scss
+    |       |   |- style.scss
+    |       |
+    |       |- js
+    |       |   |- piano-note.js
+    |       |   |- main.js
+    |       | 
+    |       |- html
+    |       |   |- work.html (detail page html backup)
+    |
+    |- dist (production)
+    |   |- assets
+    |       |- css
+    |       |- js
+    |       |   |- plugins
+    |       |- audio
+    |       |- image
+    |
+```
+
 ### 使用 gulp 管理專案
 * `gulp-sass`：編譯 SCSS 成 CSS
 * `gulp-clean-css`：壓縮 CSS 
