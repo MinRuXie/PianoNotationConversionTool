@@ -59,8 +59,12 @@ project
     |- dist (production)
     |   |- assets
     |       |- css
+    |       |   |- style.css
+    |       |   
     |       |- js
     |       |   |- plugins
+    |       |   |- bundle.js
+    |       |
     |       |- audio
     |       |- image
     |
@@ -70,6 +74,7 @@ project
 * `gulp-sass`：編譯 SCSS 成 CSS
 * `gulp-clean-css`：壓縮 CSS 
 * `gulp-terser`：壓縮 ES6 JS
+* `webpack-stream`：打包 JS 檔案為 `bundle.js`
 
 #### 自動化
 將 `src` 資料夾下的檔案處理到 `dist` 資料夾中。

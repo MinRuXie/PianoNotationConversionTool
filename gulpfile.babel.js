@@ -2,6 +2,7 @@ import gulp from 'gulp';
 import sass from 'gulp-sass';
 import cleanCSS from 'gulp-clean-css';
 import terser from 'gulp-terser';
+import webpack from 'webpack-stream';
 
 const paths = {
     styles: {
@@ -26,6 +27,12 @@ export const styles = (done) => {
 
 export const scripts = () => {
     return gulp.src(paths.scrips.src)
+        .pipe(webpack({
+            mode: 'production',
+            output: {
+                filename: 'bundle.js'
+            }
+        }))
         .pipe(terser())
         .pipe(gulp.dest(paths.scrips.dest));
 }
