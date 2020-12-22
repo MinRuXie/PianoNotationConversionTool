@@ -2,7 +2,7 @@ import gulp from 'gulp';
 import sass from 'gulp-sass';
 import cleanCSS from 'gulp-clean-css';
 import terser from 'gulp-terser';
-import webpack from 'webpack-stream';
+import gulpWebpack from 'webpack-stream';
 
 const paths = {
     styles: {
@@ -27,7 +27,7 @@ export const styles = (done) => {
 
 export const scripts = () => {
     return gulp.src(paths.scrips.src)
-        .pipe(webpack({
+        .pipe(gulpWebpack({
             mode: 'production',
             output: {
                 filename: 'bundle.js'
