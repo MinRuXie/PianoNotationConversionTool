@@ -49,6 +49,7 @@ project
     |
     |- src (development)
     |   |- assets
+    |       |- illustrator
     |       |- scss
     |       |   |- style.scss
     |       |
