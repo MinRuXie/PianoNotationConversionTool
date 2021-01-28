@@ -83,7 +83,7 @@ $(function(){
             // 新增 key
             $(this).append(`<div class="key">${key_ivory[index]}</div>`);
             // 新增音訊
-            $(this).append(`<audio id="${key_ivory[index]}"><source src="./dist/assets/audio/Piano.ff.${key_ivory[index]}.mp3" type="audio/mpeg"></audio>`);
+            $(this).append(`<audio id="${key_ivory[index]}" preload="auto"><source src="./dist/assets/audio/Piano.ff.${key_ivory[index]}.mp3" type="audio/mpeg"></audio>`);
         });
 
         // 新增黑鍵內容
@@ -96,7 +96,7 @@ $(function(){
                     $(this).append(`<div data-name="${key_ebony_b[index]}" class="key">${key_ebony_b[index]}</div>`);
                 }
                 // 新增音訊
-                $(this).append(`<audio id="${key_ebony_b[index]}"><source src="./dist/assets/audio/Piano.ff.${key_ebony_b[index]}.mp3" type="audio/mpeg"></audio>`);
+                $(this).append(`<audio id="${key_ebony_b[index]}" preload="auto"><source src="./dist/assets/audio/Piano.ff.${key_ebony_b[index]}.mp3" type="audio/mpeg"></audio>`);
             });        
         });
 
@@ -360,7 +360,10 @@ $(function(){
     //-------------------
     function addNoteLine(panel) {
         // 簡譜
-        let line_html = `<div class='line selected' title='雙擊修改區塊顏色'><div class="del" title="刪除">X</div></div>`;
+        let line_html = `
+            <div class='line selected' title='雙擊修改區塊顏色'>
+                <div class="del" title="刪除">X</div>
+            </div>`;
 
         // 五線譜
         if (panel == $text_tabs) {
@@ -535,11 +538,9 @@ $(function(){
     function playaudio(key) {
         let notekey = document.getElementById(key);
         
-        // if (notekey != null) {
-            notekey.pause(); // 暫停
-            notekey.currentTime = 0; // 讓音訊進度回歸 0 
-            notekey.play(); // 播放
-        // }
+        notekey.pause(); // 暫停
+        notekey.currentTime = 0; // 讓音訊進度回歸 0 
+        notekey.play(); // 播放
     }
 
     //-------------------
