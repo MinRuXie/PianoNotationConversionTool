@@ -135,6 +135,10 @@ html, body {
             display: inline-block;
             padding: 5px 5px 5px 10px;
 
+            @media screen and (max-width: 991.98px) {
+                padding: 5px 5px 5px 5px;
+            }
+
             .note {
                 border-radius: 5px;
                 border: 1px solid transparent;
@@ -148,6 +152,11 @@ html, body {
                 font-weight: 500;
                 font-size: 20px;
                 float: left;
+
+                @media screen and (max-width: 991.98px) {
+                    min-width: 40px;
+                    font-size: 16px;
+                }
             }
         }
     }
@@ -390,6 +399,14 @@ html, body {
         cursor: pointer;
         letter-spacing: 2px;
         transition: 0.3s;
+
+        @media screen and (max-width: 991.98px) {
+            padding: 2px 0;
+            border: none;
+            border-radius: unset;
+            font-size: 12px;
+            letter-spacing: 0;
+        }
 
         &:hover {
             background-color: rgba($color-white, 0.2);
