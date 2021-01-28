@@ -737,6 +737,10 @@ html, body {
             overflow-y: auto;
         }
 
+        &::-webkit-scrollbar {
+            width: 0;
+        }
+
         h4, li {
             line-height: 2;
         }
