@@ -222,7 +222,7 @@ html, body {
                 border: 1px solid $color-white;
                 font-size: 12px;
 
-                /* 尾巴 */
+                /* 尾巴 up */
                 &::after {
                     content: '';
                     background-color: $color-white;
@@ -233,6 +233,40 @@ html, body {
                     top: -25px;
                     right: -1px;
                 }
+
+                /* 尾巴 down */
+                &.Bb4, &.B4,
+                &.C5, &.Ch5,
+                &.Db5, &.D5, &.Dh5,
+                &.Eb5, &.E5,
+                &.F5, &.Fh5,
+                &.Gb5, &.G5, &.Gh5,
+                &.Ab5, &.A5, &.Ah5,
+                &.Bb5, &.B5,
+                &.C6, &.Ch6,
+                &.Db6, &.D6, &.Dh6,
+                &.Eb6, &.E6,
+                &.F6, &.Fh6,
+                &.Gb6, &.G6, &.Gh6,
+                &.Ab6, &.A6, &.Ah6,
+                &.Bb6, &.B6,
+                &.C7, &.Ch7,
+                &.Db7, &.D7, &.Dh7,
+                &.Eb7, &.E7,
+                &.F7, &.Fh7,
+                &.Gb7, &.G7, &.Gh7,
+                &.Ab7, &.A7, &.Ah7,
+                &.Bb7, &.B7,
+                &.C8 {
+                    &::after {
+                        top: unset;
+                        right: unset;
+                        bottom: -25px;
+                        left: -1px;
+                    }
+                }
+
+
 
                 /* 空格 */
                 &.whitespace {
