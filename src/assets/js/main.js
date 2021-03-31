@@ -919,9 +919,6 @@ $(function(){
         $screenshot_wrap.addClass('capturing');
         $screenshot_wrap.scrollTop(0);
 
-        let $selected_note = $('.note.selected');
-        $selected_note.addClass('capturing');
-
         // 輸出容器
         let $output_warp = $('#output');
         $output_warp.empty();
@@ -932,7 +929,6 @@ $(function(){
 
             // 目標擷取容器
             $screenshot_wrap.removeClass('capturing');
-            $selected_note.removeClass('capturing');
         });
     }
 });
