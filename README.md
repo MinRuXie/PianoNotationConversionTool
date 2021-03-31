@@ -77,11 +77,10 @@ project
     |
 ```
 
-### 使用 gulp 管理專案
-* `gulp-sass`：編譯 SCSS 成 CSS
-* `gulp-clean-css`：壓縮 CSS 
-* `gulp-terser`：壓縮 ES6 JS
-* `webpack-stream`：打包 JS 檔案為 `bundle.js`
+### Gulp Packages
+* `gulp-sass`: Compile SCSS file to CSS file, and output minify file.
+* `webpack-stream`: Bundle multiple JS files into `bundle.js`.
+* `gulp-terser`: minify ES6 JS file.
 
 #### 自動化
 將 `src` 資料夾下的檔案處理到 `dist` 資料夾中。

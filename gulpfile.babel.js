@@ -21,8 +21,7 @@ const paths = {
 
 export const styles = (done) => {
     return gulp.src(paths.styles.src)
-        .pipe(sass().on('error', sass.logError))
-        .pipe(cleanCSS({compatibility: 'ie8'}))
+        .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
         .pipe(gulp.dest(paths.styles.dest));
 }
 
