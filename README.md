@@ -33,7 +33,7 @@
     * 輸出
         * 輸出圖片：將完成的作品輸出成一張圖片預覽在畫面上，右鍵可另存圖檔。
 
-## 開發工具
+## Development
 * jQuery
 * Javascript
 * HTML
@@ -85,7 +85,7 @@ gulp build
 
 ## 外部資源
 ### University of Iowa Electronic Music Studios 鋼琴鍵音檔資源
-http://theremin.music.uiowa.edu/MISpiano.html
+* http://theremin.music.uiowa.edu/MISpiano.html
 
-### 載入動畫
-https://loading.io/
+### Loading Animation
+* https://loading.io/
