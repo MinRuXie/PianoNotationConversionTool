@@ -13,6 +13,7 @@ const paths = {
         src: [
             'src/assets/js/main.js',
             'src/assets/js/piano-note.js',
+            'src/assets/js/language.js'
         ],
         dest: 'dist/assets/js'
     },

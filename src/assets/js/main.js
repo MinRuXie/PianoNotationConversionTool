@@ -1,4 +1,5 @@
 import { colors, key_ivory, key_ebony_b, key_ebony_h, simple_ivory, simple_ebony_b, simple_ebony_h } from './piano-note.js';
+import { i18n } from './language.js';
 
 // 等 HTML 載入完成
 $(function(){
@@ -597,12 +598,11 @@ $(function(){
     $('.title').on('dblclick', function(event) {
         var pre_name = $(this).html(); // 預設值為上次輸入的歌名
         var decodeHtml = htmlDecode(pre_name); //用浏览器内部转换器实现html解码
-        var song_name = prompt('請輸入歌名：', decodeHtml);
-        
-        if (song_name == null) {
-            song_name = decodeHtml;
+        var song_name = prompt(i18n.t('text.__song_title'), decodeHtml);
+
+        if ( song_name != null ) {
+            $(this).text(song_name); // 顯示新歌名
         }
-        $(this).text(song_name); // 顯示新歌名
     });
 
     //-------------------
@@ -656,17 +656,14 @@ $(function(){
             $(this).addClass('selected');
         });
 
-        // 移除確定按鈕
-        $colorbox.find('.checkbtn').remove();
-        // 新增確定按鈕
-        $colorbox.append(`<div class="checkbtn">確定</div>`);
+
         // 按下確定
         $(".checkbtn").on('click', function(){
             // 修改此軌道的左邊線顏色
             $line.css('border-left-color', select_hexString);
 
             $colorarea.hide(); // 隱藏選擇區塊
-            $(this).remove(); // 移除確定按鈕元素 (為了清除前次的事件綁定)
+            $(this).unbind(); // 清除前次的事件綁定
 
             // 此軌道在此面板位於第幾個位置
             let line_index = $line.index();

@@ -5,17 +5,17 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <title>鋼琴簡譜轉換工具</title>
+        <title>Piano Notation Tool</title>
 
         <!-- google info -->
-        <meta name="description" content="哇打譜好輕鬆！嗎">
+        <meta name="description" content="Use the easy way to make musical notation!">
         <meta name="author" content="Copyright&copy;Since 2019, JoyXie.">
         
         <!-- facebook og -->
         <meta property="og:type" content="website"/>
-        <meta property="og:title" content="鋼琴簡譜轉換工具"/>
-        <meta property="og:site_name" content="鋼琴簡譜轉換工具"/>
-        <meta property="og:description" content="哇打譜好輕鬆！嗎"/>
+        <meta property="og:title" content="Piano Notation Tool"/>
+        <meta property="og:site_name" content="Piano Notation Tool"/>
+        <meta property="og:description" content="Use the easy way to make musical notation!"/>
         <meta property="og:url" content="https://minruxie.github.io/PianoNotationConversionTool/"/>
         <meta property="og:image" content="https://minruxie.github.io/PianoNotationConversionTool/dist/assets/image/opengraph.png"/>
         <meta property="og:image:type" content="image/png"/>
@@ -33,122 +33,129 @@
     </head>
     
     <body>
-        <div class="container">
-            <div id="capture" class="text">
-                <div class="title" title="雙擊修改歌名">請輸入歌名</div>
-                <div class="panel number-panel open"></div>
-                <div class="panel tabs-panel"></div>
+        <main id="app">
+            <div class="container">
+                <div id="capture" class="text">
+                    <div class="title" v-bind:title="$t('text.__song_title_point')">{{ $t('text.__song_title') }}</div>
+                    <div class="panel number-panel open"></div>
+                    <div class="panel tabs-panel"></div>
+                </div>
+                <div class="toolbox">
+                    <div id="toolbox-btn"></div>
+                    <div class="toolbutton" title="Backspace">{{ $t('toolbox.__delete_note') }}</div>
+                    <div class="toolbutton" title="Space">{{ $t('toolbox.__space_note') }}</div>
+                    <hr>
+                    <div class="toolbutton" title="Enter">{{ $t('toolbox.__add_line') }}</div>
+                    <div class="toolbutton" title="none">{{ $t('toolbox.__copy_line') }}</div>
+                    <div class="toolbutton" title="none">{{ $t('toolbox.__move_up_line') }}</div>
+                    <div class="toolbutton" title="none">{{ $t('toolbox.__move_down_line') }}</div>
+                    <hr>
+                    <div class="toolbutton" title="none">{{ $t('toolbox.__show_piano') }}</div>
+                    <div class="toolbutton" title="none">{{ $t('toolbox.__hidden_piano') }}</div>
+                    <div class="toolbutton" title="none">{{ $t('toolbox.__switch_mode') }}</div>
+                    <hr>
+                    <div class="toolbutton" title="none">{{ $t('toolbox.__output_result') }}</div>
+                    <div class="toolbutton" title="none">{{ $t('toolbox.__function_description') }}</div>
+                    <div class="toolbutton" title="none" v-on:click="switchLanguage">{{ $t('toolbox.__switch_lang') }}</div>
+                </div>
+                <div class="piano">
+                    <div class="slide"></div>
+                </div>
             </div>
-            <div class="toolbox">
-                <div id="toolbox-btn"></div>
-                <div class="toolbutton" title="Backspace">刪除音符</div>
-                <div class="toolbutton" title="Space">空格音符</div>
-                <hr>
-                <div class="toolbutton" title="Enter">新增一行</div>
-                <div class="toolbutton" title="none">複製此行</div>
-                <div class="toolbutton" title="none">上移此行</div>
-                <div class="toolbutton" title="none">下移此行</div>
-                <hr>
-                <div class="toolbutton" title="none">開啟鋼琴</div>
-                <div class="toolbutton" title="none">關閉鋼琴</div>
-                <div class="toolbutton" title="none">切換模式</div>
-                <hr>
-                <div class="toolbutton" title="none">輸出圖片</div>
-                <div class="toolbutton" title="none">功能說明</div>
+            <div class="colorarea">
+                <div class="colorbox">
+                    <div class="colortitle">{{ $t('colorarea.__color_title') }}</div>
+                    <div class="colorbtn" style="background: #FFF"></div>
+                    <div class="colorbtn" style="background: #D9A813"></div>
+                    <div class="colorbtn" style="background: #12A182"></div>
+                    <div class="colorbtn" style="background: #61318E"></div>
+                    <div class="colorbtn" style="background: #B25520"></div>
+                    <div class="checkbtn">{{ $t('colorarea.__check') }}</div>
+                    <div class="cancelbtn">{{ $t('colorarea.__cancel') }}</div>
+                </div>
             </div>
-            <div class="piano">
-                <div class="slide"></div>
+            <div class="intro-wrap modal-wrap active">
+                <div class="intro-content">
+                    <div class="ctr-btn">X</div>
+                    <h4>樂譜面板</h4>
+                    <ul>
+                        <li>輸入歌名：雙擊歌名區塊可以輸入或修改歌名。</li>
+                        <li>修改軌道顏色：雙擊軌道區塊可以修改軌道左側的邊線顏色（白、黃、綠、紫、橘）。</li>
+                        <li>刪除指定軌道：點擊軌道右上方的叉叉按鈕，即可刪除該軌道及內容。</li>
+                        <li>
+                            移動「焦點」：成為焦點的元素周圍會有發光造型。
+                            <ul>
+                                <li>軌道焦點（鍵盤快捷鍵 [上：W，下：S]）：成為焦點的軌道會發光，新增音符會在其內部產生，或將焦點移動至該軌道最後一個音符。</li>
+                                <li>音符焦點（鍵盤快捷鍵 [左：A，右：D]）：成為焦點的音符會發光，新增音符會在其「後方」產生。</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    
+                    <h4>鋼琴面板：初始位置設定在最常用的高音部分。</h4>
+                    <ul>
+                        <li>新增/插入音符：按下鋼琴面板中的琴鍵，即可於畫面上的「焦點音符後方」產生對應的音符。</li>
+                        <li>播放音檔：按下鋼琴面板中的琴鍵，會播放對應的琴鍵音檔。</li>
+                    </ul>
+    
+                    <h4>右方工具箱（開啟；收合）。</h4>
+                    <ul>
+                        <li>
+                            音符
+                            <ul>
+                                <li>刪除音符（鍵盤快捷鍵 [Backspace]）：刪除一個「焦點音符」。</li>
+                                <li>空格音符（鍵盤快捷鍵 [Space]）：增加一個空心的音符於「焦點音符後方」。</li>
+                            </ul>
+                        </li>
+                        <li>
+                            軌道
+                            <ul>
+                                <li>新增一行（鍵盤快捷鍵 [Enter]）：增加一行空白軌道。</li>
+                                <li>複製此行：複製「焦點軌道和其音符」於其後方。</li>
+                                <li>上移此行：將「焦點軌道」往上移動。</li>
+                                <li>下移此行：將「焦點軌道」往下移動。</li>
+                            </ul>
+                        </li>
+                        <li>
+                            面板控制
+                            <ul>
+                                <li> 關閉/開啟鋼琴：控制鋼琴面板是否顯示於畫面（預設：開啟）</li>
+                                <li>切換模式：切換樂譜面板的顯示模式，有簡譜及五線譜（預設：簡譜模式）。</li>
+                            </ul>
+                        </li>
+                        <li>
+                            輸出
+                            <ul>
+                                <li>輸出圖片：將完成的作品輸出成一張圖片預覽在畫面上，右鍵可另存圖檔。</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="colorarea">
-            <div class="colorbox">
-                <div class="colortitle">請選擇顏色</div>
-                <div class="colorbtn" style="background: #FFF"></div>
-                <div class="colorbtn" style="background: #D9A813"></div>
-                <div class="colorbtn" style="background: #12A182"></div>
-                <div class="colorbtn" style="background: #61318E"></div>
-                <div class="colorbtn" style="background: #B25520"></div>
-                <div class="checkbtn">確定</div>
-                <div class="cancelbtn">取消</div>
-            </div>
-        </div>
-        <div class="intro-wrap modal-wrap active">
-            <div class="intro-content">
+    
+            <div class="screenshot-wrap modal-wrap">
                 <div class="ctr-btn">X</div>
-                <h4>樂譜面板</h4>
-                <ul>
-                    <li>輸入歌名：雙擊歌名區塊可以輸入或修改歌名。</li>
-                    <li>修改軌道顏色：雙擊軌道區塊可以修改軌道左側的邊線顏色（白、黃、綠、紫、橘）。</li>
-                    <li>刪除指定軌道：點擊軌道右上方的叉叉按鈕，即可刪除該軌道及內容。</li>
-                    <li>
-                        移動「焦點」：成為焦點的元素周圍會有發光造型。
-                        <ul>
-                            <li>軌道焦點（鍵盤快捷鍵 [上：W，下：S]）：成為焦點的軌道會發光，新增音符會在其內部產生，或將焦點移動至該軌道最後一個音符。</li>
-                            <li>音符焦點（鍵盤快捷鍵 [左：A，右：D]）：成為焦點的音符會發光，新增音符會在其「後方」產生。</li>
-                        </ul>
-                    </li>
-                </ul>
-                
-                <h4>鋼琴面板：初始位置設定在最常用的高音部分。</h4>
-                <ul>
-                    <li>新增/插入音符：按下鋼琴面板中的琴鍵，即可於畫面上的「焦點音符後方」產生對應的音符。</li>
-		            <li>播放音檔：按下鋼琴面板中的琴鍵，會播放對應的琴鍵音檔。</li>
-                </ul>
-
-                <h4>右方工具箱（開啟；收合）。</h4>
-                <ul>
-                    <li>
-                        音符
-                        <ul>
-                            <li>刪除音符（鍵盤快捷鍵 [Backspace]）：刪除一個「焦點音符」。</li>
-                            <li>空格音符（鍵盤快捷鍵 [Space]）：增加一個空心的音符於「焦點音符後方」。</li>
-                        </ul>
-                    </li>
-                    <li>
-                        軌道
-                        <ul>
-                            <li>新增一行（鍵盤快捷鍵 [Enter]）：增加一行空白軌道。</li>
-                            <li>複製此行：複製「焦點軌道和其音符」於其後方。</li>
-                            <li>上移此行：將「焦點軌道」往上移動。</li>
-                            <li>下移此行：將「焦點軌道」往下移動。</li>
-                        </ul>
-                    </li>
-                    <li>
-                        面板控制
-                        <ul>
-                            <li> 關閉/開啟鋼琴：控制鋼琴面板是否顯示於畫面（預設：開啟）</li>
-                            <li>切換模式：切換樂譜面板的顯示模式，有簡譜及五線譜（預設：簡譜模式）。</li>
-                        </ul>
-                    </li>
-                    <li>
-                        輸出
-                        <ul>
-                            <li>輸出圖片：將完成的作品輸出成一張圖片預覽在畫面上，右鍵可另存圖檔。</li>
-                        </ul>
-                    </li>
-                </ul>
+                <div class="msg_wrap">{{ $t('notice.__capturing') }}</div>
+                <div id="output" class="screenshot-content"></div>
             </div>
-        </div>
+    
+            <div class='warn_size'>
+                <img src="dist/assets/image/Magnify-1s-200px.svg">
+                <span>{{ $t('notice.__size_warn') }}</span>
+            </div>
+    
+            <div class='loading'>
+                <img src="dist/assets/image/Pulse-1s-200px.svg">
+            </div>
+        </main>
 
-        <div class="screenshot-wrap modal-wrap">
-            <div class="ctr-btn">X</div>
-            <div class="msg_wrap">Working...</div>
-            <div id="output" class="screenshot-content"></div>
-        </div>
-
-        <div class='warn_size'>
-            <img src="dist/assets/image/Magnify-1s-200px.svg">
-            <span>直式不可以看</span>
-        </div>
-        <div class='loading'>
-            <img src="dist/assets/image/Pulse-1s-200px.svg">
-        </div>
 
         <!-- plugins -->
         <script src="dist/assets/js/plugins/jquery-3.3.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/ismobilejs@0.5.1/dist/isMobile.min.js"></script>
         <script src="dist/assets/js/plugins/html2canvas.min.js"></script>
-        
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+        <script src="https://unpkg.com/vue-i18n/dist/vue-i18n.js"></script>
+            
         <!-- custom -->
         <script type="module" src="dist/assets/js/bundle.js"></script>
     </body>

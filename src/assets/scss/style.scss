@@ -18,7 +18,8 @@ $color-light-gary: #999;
     user-select: none;
     -o-user-select: none;
     
-    font-family: 'Galindo', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+    // font-family: 'Galindo', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+    font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
     -webkit-font-smoothing: antialiased;
     box-sizing: border-box;
 }
@@ -111,6 +112,8 @@ html, body {
 
             /* 音符 */
             .note {
+                font-family: 'Galindo', sans-serif;
+
                 /* 空格 */
                 &.whitespace {
                     color: transparent;
@@ -551,6 +554,7 @@ html, body {
     }
 
     span {
+        font-family: 'Galindo', sans-serif;
         position: absolute;
         bottom: 3px;
         left: 30%;
@@ -562,6 +566,7 @@ html, body {
     }
 }
 
+/* 黑鍵 */
 .ebony-wrap {
     position: absolute;
     width: 9%;
@@ -571,11 +576,12 @@ html, body {
     overflow: hidden;
 
     span {
+        font-family: 'Galindo', sans-serif;
         color: $color-white;
         height: 100%;
-        display: flex; /*flex: 彈性盒子*/
-        align-items: center; /*flex: 垂直置中*/
-        justify-content: center; /*flex: 水平置中*/
+        display: flex;
+        align-items: center;
+        justify-content: center;
         font-size: 0.8vw;
     }
 
@@ -639,8 +645,11 @@ html, body {
     }
 
     span {
-        font-size: 24px;
+        font-size: 18px;
+        line-height: 1.8;
         letter-spacing: 5px;
+        text-align: center;
+        padding: 0 20px;
     }
 }
 
@@ -663,8 +672,8 @@ html, body {
         background: rgba($color-pure-black, 0.6);
         top: 20%;
         left: 50%;
-        transform: translateY(-50%); /* 扣掉自己的 50% 高度 */
-        transform: translateX(-50%); /* 扣掉自己的 50% 高度 */
+        transform: translateY(-50%);
+        transform: translateX(-50%);
         border-radius: 5px;
         box-shadow: 1px 1px 5px rgba($color-white, 0.3);
         padding: 20px 30px;
@@ -714,8 +723,7 @@ html, body {
 
         .checkbtn,
         .cancelbtn {
-            width: 50px;
-            height: 30px;
+            padding: 3px 12px;
             position: absolute;
             bottom: 20px;
             border: 1px solid rgba($color-white, 0.6);
@@ -732,7 +740,7 @@ html, body {
         }
 
         .checkbtn {
-            right: 90px;
+            right: 105px;
         }
 
         .cancelbtn {

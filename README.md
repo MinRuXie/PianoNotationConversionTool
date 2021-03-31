@@ -1,4 +1,4 @@
-﻿# 鋼琴簡譜工具
+﻿# Piano Notation Tool
  
 ## DEMO 網址
 * https://minruxie.github.io/PianoNotationConversionTool/
@@ -32,12 +32,17 @@
         * 切換模式：切換樂譜面板的顯示模式，有簡譜及五線譜（預設：簡譜模式）。
     * 輸出
         * 輸出圖片：將完成的作品輸出成一張圖片預覽在畫面上，右鍵可另存圖檔。
+    * 切換語系
+        * 提供多語系介面
+            * 繁體中文（預設）
+            * 英文
 
 ## Development
 * jQuery
 * Javascript
 * HTML
 * SCSS
+* Vue + Vue-i18n
 
 ### plugin
 * [html2canvas](https://www.geeksforgeeks.org/how-to-take-screenshot-of-a-div-using-javascript/)
@@ -56,6 +61,7 @@ project
     |       |- js
     |           |- piano-note.js
     |           |- main.js
+    |           |- language.js
     |
     |- dist (production)
     |   |- assets
