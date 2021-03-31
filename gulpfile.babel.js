@@ -1,6 +1,5 @@
 import gulp from 'gulp';
 import sass from 'gulp-sass';
-import cleanCSS from 'gulp-clean-css';
 import terser from 'gulp-terser';
 import gulpWebpack from 'webpack-stream';
 
