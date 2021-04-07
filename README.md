@@ -51,21 +51,21 @@
 * Toolbox Panel: Press the arrow button can closed it.
     * Note
         * Delete note (Keyboard shortcuts `Backspace`): Delete a focused note.
-        * Space note (Keyboard shortcuts `Space`): Add a hollow note behind the focused note.
+        * Space note (Keyboard shortcuts `Space`): Add a hollow note behind "the focused note".
     * Note Track
         * Add new note track (Keyboard shortcuts `Enter`): Add a new empty note track.
-        * Copy this note track: Copy the "focused track and its notes" behind it.複製「焦點軌道和其音符」於其後方。
-        * 上移此行：將「焦點軌道」往上移動。
-        * 下移此行：將「焦點軌道」往下移動。
-    * 面板控制
-        * 關閉/開啟鋼琴：控制鋼琴面板是否顯示於畫面（預設：開啟）。
-        * 切換模式：切換樂譜面板的顯示模式，有簡譜及五線譜（預設：簡譜模式）。
-    * 輸出
-        * 輸出圖片：將完成的作品輸出成一張圖片預覽在畫面上，右鍵可另存圖檔。
-    * 切換語系
-        * 提供兩種語系介面
-            * 繁體中文（預設）
-            * 英文
+        * Copy this note track: Copy "the focused track and its notes" behind itself.
+        * Move this note track up: Move the order of "the focused track" up.
+        * Move this note track down: Move the order of "the focused track" down.
+    * Panel Control
+        * Close/Open piano: The control display of the piano panel. (Default: Open)。
+        * Switch Mode: Switch the display mode of the sheet music panel, there are "numbered notation" and "stave". (Default: Numbered Notation)
+    * Output
+        * Output an image file: The result will be displayed on the screen, and the image file can be saved.
+    * Switch Language
+        * Provide two language interfaces:
+            * Traditional Chinese (Default)
+            * English
 
 ## Development
 * jQuery
