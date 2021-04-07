@@ -53,7 +53,7 @@ export default {
             __item_3: 'Move this note track up: Move the order of "the focused track" up.',
             __item_4: 'Move this note track down: Move the order of "the focused track" down.',
             __item_5: 'Change left side color of note track: Double click note track can change color (white, yellow, green, purple, orange).',
-            __item_6: 'Delete specific note track: Click right top side `x` button of note track, can delete note track and notes inside of it.'
+            __item_6: 'Delete specific note track: Click right top side "x" button of note track, can delete note track and notes inside of it.'
         }
     }
 }
