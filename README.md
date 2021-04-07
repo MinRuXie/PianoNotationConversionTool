@@ -43,17 +43,17 @@
     * Change left side color of note track: Double click note track can change color (white, yellow, green, purple, orange).
     * Delete specific note track: Click right top side `x` button of note track, can delete note track and notes inside of it.
     * Move "Focus": Click Note track or Note can move focus. When the element get focus, its surroundings will glow.
-        * Note track focus (Keyboard shortcuts `up: W, down: S`): When Note track get focus, the last note of it will get focus too.
-        * Note focus (Keyboard shortcuts `left: A, right: D`): When Note get focus, its note track will get focus too.
+        * Note track focus (hot key `up: W, down: S`): When Note track get focus, the last note of it will get focus too.
+        * Note focus (hot key `left: A, right: D`): When Note get focus, its note track will get focus too.
 * Piano Panel: The keyboard default position is the most commonly used treble part.
     * Add / Insert: Press the keyboard of piano will create a note behind the focus note.
     * Play the audio: Press the keyboard of piano will play the audio.
 * Toolbox Panel: Press the arrow button can closed it.
     * Note
-        * Delete note (Keyboard shortcuts `Backspace`): Delete a focused note.
-        * Space note (Keyboard shortcuts `Space`): Add a hollow note behind "the focused note".
+        * Delete note (hot key `Backspace`): Delete a focused note.
+        * Space note (hot key `Space`): Add a hollow note behind "the focused note".
     * Note Track
-        * Add new note track (Keyboard shortcuts `Enter`): Add a new empty note track.
+        * Add new note track (hot key `Enter`): Add a new empty note track.
         * Copy this note track: Copy "the focused track and its notes" behind itself.
         * Move this note track up: Move the order of "the focused track" up.
         * Move this note track down: Move the order of "the focused track" down.
