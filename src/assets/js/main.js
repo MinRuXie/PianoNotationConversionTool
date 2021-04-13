@@ -93,11 +93,15 @@ $(function(){
                 // 新增 key
                 if (index2 < 1) { // 第 0 個 (升記號)
                     $(this).append(`<div data-name="${key_ebony_h[index]}" class="key">${key_ebony_h[index]}</div>`);
+
+                    // 新增音訊
+                    $(this).append(`<audio id="${key_ebony_h[index]}" preload="auto"><source src="./dist/assets/audio/Piano.ff.${key_ebony_b[index]}.mp3" type="audio/mpeg"></audio>`);
                 } else { // 第 1 個 (降記號)
                     $(this).append(`<div data-name="${key_ebony_b[index]}" class="key">${key_ebony_b[index]}</div>`);
+
+                    // 新增音訊
+                    $(this).append(`<audio id="${key_ebony_b[index]}" preload="auto"><source src="./dist/assets/audio/Piano.ff.${key_ebony_b[index]}.mp3" type="audio/mpeg"></audio>`);
                 }
-                // 新增音訊
-                $(this).append(`<audio id="${key_ebony_b[index]}" preload="auto"><source src="./dist/assets/audio/Piano.ff.${key_ebony_b[index]}.mp3" type="audio/mpeg"></audio>`);
             });        
         });
 
@@ -147,11 +151,15 @@ $(function(){
                         // 新增 key (第一個黑鍵 + [一組5個黑鍵] + 現在是第幾個黑鍵)
                         if (index3 < 1) { // 第 0 個 (升記號)
                             $(this).append(`<div data-name="${key_ebony_h[1+(5*index)+i]}" class="key">${key_ebony_h[1+(5*index)+i]}</div>`);
+
+                            // 新增音訊
+                            $(this).append(`<audio id="${key_ebony_h[1+(5*index)+i]}"><source src="./dist/assets/audio/Piano.ff.${key_ebony_b[1+(5*index)+i]}.mp3" type="audio/mpeg"></audio>`);
                         } else { // 第 1 個 (降記號)
                             $(this).append(`<div data-name="${key_ebony_b[1+(5*index)+i]}" class="key">${key_ebony_b[1+(5*index)+i]}</div>`);
+
+                            // 新增音訊
+                            $(this).append(`<audio id="${key_ebony_b[1+(5*index)+i]}"><source src="./dist/assets/audio/Piano.ff.${key_ebony_b[1+(5*index)+i]}.mp3" type="audio/mpeg"></audio>`);
                         }
-                        // 新增音訊
-                        $(this).append(`<audio id="${key_ebony_b[1+(5*index)+i]}"><source src="./dist/assets/audio/Piano.ff.${key_ebony_b[1+(5*index)+i]}.mp3" type="audio/mpeg"></audio>`);
                     });
                 });
             }
