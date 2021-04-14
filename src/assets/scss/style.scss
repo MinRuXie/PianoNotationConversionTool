@@ -55,7 +55,7 @@ main,
             .line {
                 .line-bg {
                     &::before {
-                        background-size: 73%;
+                        background-size: 74%;
                         background-position: 50% 0;
                     }
                 }
@@ -806,15 +806,12 @@ main,
         padding: 30px 50px;
         position: relative;
         max-height: calc(100% - 100px);
-        // overflow: auto;
-        // overflow: hidden;
 
         @media screen and (max-width: 1280px) {
             border: none;
             padding: 10px 20px;
             max-width: 90vw;
             max-height: 90vh;
-            // overflow-y: auto;
         }
 
         &::-webkit-scrollbar {

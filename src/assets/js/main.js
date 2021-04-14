@@ -30,7 +30,6 @@ $(function(){
     let $toolbtn_intro = $toolbtns.eq(9); // 功能說明按鈕
 
     let $colorarea = $(".colorarea");
-    let $colorbox = $(".colorbox");
     
     let $intro = $('.intro-wrap');
     let $intro_closed_btn = $('.intro-wrap .ctr-btn');
