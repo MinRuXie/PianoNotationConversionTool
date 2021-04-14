@@ -806,14 +806,15 @@ main,
         padding: 30px 50px;
         position: relative;
         max-height: calc(100% - 100px);
-        overflow: auto;
+        // overflow: auto;
+        // overflow: hidden;
 
         @media screen and (max-width: 1280px) {
             border: none;
             padding: 10px 20px;
             max-width: 90vw;
             max-height: 90vh;
-            overflow-y: auto;
+            // overflow-y: auto;
         }
 
         &::-webkit-scrollbar {
@@ -823,6 +824,19 @@ main,
         h4, li {
             line-height: 2;
         }
+
+        .intro-outter-wrap {
+            max-height: calc(100vh - 160px);
+            overflow: hidden;
+
+            .intro-inner-wrap {
+                width: calc(100% + 17px);
+                max-height: calc(100vh - 160px);
+                overflow-y: auto;
+            }
+        }
+
+        
     }
 }
 
