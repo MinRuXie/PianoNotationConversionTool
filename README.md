@@ -68,13 +68,14 @@
             * English
 
 ## Development
-* jQuery
 * Javascript
 * HTML
 * SCSS
-* Vue + Vue-i18n
 
 ### plugin
+* jQuery
+* Vue + Vue-i18n
+* isMobile.js
 * [html2canvas](https://www.geeksforgeeks.org/how-to-take-screenshot-of-a-div-using-javascript/)
 
 ## Project Structure
