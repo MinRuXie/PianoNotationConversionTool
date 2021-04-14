@@ -50,18 +50,29 @@ main,
         .del {
             display: none;
         }
+
+        .tabs-panel {
+            .line {
+                .line-bg {
+                    &::before {
+                        background-size: 73%;
+                        background-position: 50% 0;
+                    }
+                }
+            }
+        }
     }
 }
 
 .text {
     background: $color-black;
+    width: 90%;
     height: 70%;
+    float: left;
     overflow-y: auto;
     overflow-x: hidden;
     padding: 5px 10px 15px;
     font-size: 80%;
-    width: 90%;
-    float: left;
     transition: 0.3s;
 
     &.full {
@@ -375,15 +386,25 @@ main,
 /* 工具箱 */
 .toolbox {
     background-color: $color-dark-black;
-    height: 70%;
     width: 10%;
+    height: 70%;
+    overflow-y: auto;
     float: left;
-    padding: 15px 10px 15px 18px;
     position: absolute;
     top: 0;
     right: 0;
-    overflow-y: auto;
+    padding: 15px 10px 15px 18px;
     transition: transform 0.3s;
+
+    /* 關閉狀態 */
+    &.closed {
+        transform: translateX(calc(100% - 18px));
+
+        #toolbox-btn::before {
+            transform: rotate(180deg);
+            transition-delay: 0.2s
+        }
+    }
 
     hr {
         background-color: $color-light-gary;
@@ -421,17 +442,7 @@ main,
             transition: 0.3s;
         }
     }
-
-    /* 關閉狀態 */
-    &.closed {
-        transform: translateX(calc(100% - 18px));
-
-        #toolbox-btn::before {
-            transform: rotate(180deg);
-            transition-delay: 0.2s
-        }
-    }
-
+    
     /* 功能按鈕 */
     .toolbutton {
         width: 100%;
