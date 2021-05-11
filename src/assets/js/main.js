@@ -670,7 +670,7 @@ $(function(){
             $line.css('border-left-color', select_hexString);
 
             $colorarea.hide(); // 隱藏選擇區塊
-            $(this).unbind(); // 清除前次的事件綁定
+            $(this).off(); // 清除前次的事件綁定
 
             // 此軌道在此面板位於第幾個位置
             let line_index = $line.index();
