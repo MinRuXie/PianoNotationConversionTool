@@ -132,14 +132,12 @@ main,
                 }
             }
 
-            /* 刪除按鈕 */
-            .del {
+            /* 刪除 & 播放 按鈕 */
+            .del, .play {
                 position: absolute;
                 right: 0;
-                top: 0;
                 width: 15px;
                 height: 15px;
-                border-bottom-left-radius: 5px;
                 line-height: 15px;
                 font-size: 12px;
                 text-align: center;
@@ -150,6 +148,16 @@ main,
                 &:hover {
                     opacity: 0.6;
                 }
+            }
+
+            .del {
+                top: 0;
+                border-bottom-left-radius: 5px;
+            }
+
+            .play {
+                bottom: 0;
+                border-top-left-radius: 5px;
             }
         }
     }

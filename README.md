@@ -12,6 +12,7 @@
     * 輸入歌名：雙擊歌名區塊可以輸入或修改歌名。
     * 修改軌道顏色：雙擊軌道區塊可以修改軌道左側的邊線顏色（白、黃、綠、紫、橘）。
     * 刪除指定軌道：點擊軌道右上方的叉叉按鈕，可以刪除該軌道及內容。
+    * 播放指定軌道：點擊軌道右下方的播放按鈕，可以播放該軌道的音檔。
     * 移動「焦點」：點擊軌道或者音符可移動焦點，成為焦點的元素周圍會有發光造型。
         * 軌道焦點（鍵盤快捷鍵 `上：W，下：S`）：當軌道獲得焦點，軌道中的最後一個音符也會獲得焦點。
         * 音符焦點（鍵盤快捷鍵 `左：A，右：D`）：當音符獲得焦點，音符所在軌道也會獲得焦點。
@@ -42,6 +43,7 @@
     * Enter the song title: Double click song title can enter or modify it.
     * Change left side color of note track: Double click note track can change color (white, yellow, green, purple, orange).
     * Delete specific note track: Click right top side `x` button of note track, can delete note track and notes inside of it.
+    * Play the specified track: Click right bottom side `▶` button of note track, can play the audio file of the track.
     * Move "Focus": Click Note track or Note can move focus. When the element get focus, its surroundings will glow.
         * Note track focus (hot key `up: W, down: S`): When Note track get focus, the last note of it will get focus too.
         * Note focus (hot key `left: A, right: D`): When Note get focus, its note track will get focus too.

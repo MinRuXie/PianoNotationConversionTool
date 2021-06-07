@@ -350,7 +350,7 @@ $(function(){
             panel.find('.note').removeClass('selected'); 
             
             // 刪除該軌道的音符
-            line.children().not('.del').not('.line-bg').remove();
+            line.children().not('.del').not('.line-bg').not('.play').remove();
             
             // 增加軌道焦點
             line.addClass('selected');
@@ -371,6 +371,7 @@ $(function(){
         let line_html = `
             <div class='line selected' title='雙擊修改區塊顏色'>
                 <div class="del" title="刪除">X</div>
+                <div class="play" title="播放">▶</div>
             </div>`;
 
         // 五線譜
@@ -379,6 +380,7 @@ $(function(){
                 <div class='line selected' title='雙擊修改區塊顏色'>
                     <div class='line-bg'><span></span><span></span><span></span><span></span><span></span></div>
                     <div class="del" title="刪除">X</div>
+                    <div class="play" title="播放">▶</div>
                 </div>`;
         }
 
@@ -426,6 +428,26 @@ $(function(){
             delNoteLine(panel, $line);
         });
 
+        // 裝上 播放軌道事件
+        let $line_play_btn = $line.find('.play');
+        $line_play_btn.on('click', function(event){
+            let note_list = [];
+            $(this).siblings('.note').each(function(index){
+                note_list.push($(this).data('key'));
+            });
+
+            for (let i=0 ; i < note_list.length ; i++) {
+                setTimeout(function(){
+                    try {
+                        playaudio(`${note_list[i]}`); // 播放音訊
+                    } catch (exception) {
+                        // console.log("space");
+                    }
+                }, 400 * i);
+            }
+
+        });
+
         // 移動文字區塊卷軸置焦點軌道
         // moveScrollY(panel); 
 
@@ -441,7 +463,7 @@ $(function(){
         let $selectLine = cur_selected_line.eq(0);
 
         // 複製該軌道的其子元素
-        let $cloneNotes = $selectLine.contents().not('.del').not('.line-bg').clone();
+        let $cloneNotes = $selectLine.contents().not('.del').not('.line-bg').not('.play').clone();
 
         // 新增一行簡譜軌道
         addNoteLine($text_number);
